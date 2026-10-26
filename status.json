@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T13:03:26-05:00",
+  "snapshot_at": "2026-10-26T13:15:55-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -87,12 +87,12 @@
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "idle",
-      "current_task": "Photon H-1B submitted 12:56 PM (43 today). 62 Sky roles Not Started; waiting on Nikhilesh",
-      "last_active": "2026-10-26T12:57:50-05:00",
+      "status": "working",
+      "current_task": "C2C On-site batch: 9 of 15 submitted (56 today); Spire Systems held on a new question for Nikhilesh",
+      "last_active": "2026-10-26T13:06:44-05:00",
       "pending": [
         {
-          "text": "62 Sky 11:42 AM roles marked Not Started; waiting on Nikhilesh's instruction"
+          "text": "58 Sky roles Not Started"
         }
       ],
       "completed": [
@@ -136,10 +136,22 @@
           "text": "Trebecon .Net Full Stack AI Engineer (Dice) submitted 8:43 AM CT"
         },
         {
-          "text": "Latitude AI, Senior Software Engineer - ML Infrastructure (submitted)"
+          "text": "Latitude AI Senior Software Engineer - ML Infrastructure: submitted"
         },
         {
-          "text": "Photon, AI Engineer - Snowflake Certified (submitted 12:56 PM CT)"
+          "text": "Photon AI Engineer - Snowflake Certified: submitted 12:56 PM CT"
+        },
+        {
+          "text": "Winning Edge AI Platform & Agent Engineer 1:02 PM"
+        },
+        {
+          "text": "Talent Groups AI Architect AWS Bedrock 1:03 PM"
+        },
+        {
+          "text": "ApTask Data Scientist GNN 1:04 PM"
+        },
+        {
+          "text": "Burgeon IT Senior AI Security Architect 1:06 PM"
         }
       ],
       "queued": [],
@@ -149,8 +161,8 @@
         "Sent the updated 22-column tracker at 1:31 AM CT.",
         "Went on hold for new applications at 1:34 AM CT."
       ],
-      "groupTask": null,
-      "last_checkin": "2026-10-26T12:57:50-05:00",
+      "groupTask": "H-1B Job Search",
+      "last_checkin": "2026-10-26T13:06:44-05:00",
       "working_with": []
     },
     {
@@ -283,25 +295,25 @@
       "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-26T12:57:50-05:00",
+  "latest_bot_activity": "2026-10-26T13:06:44-05:00",
   "files": {
-    "generated_at": "2026-10-26T13:03:26-05:00",
-    "total": 311,
-    "today": 213,
-    "last_24h": 228,
-    "bytes": 296146240,
-    "runs": 25,
-    "runs_today": 18,
+    "generated_at": "2026-10-26T13:15:55-05:00",
+    "total": 312,
+    "today": 214,
+    "last_24h": 229,
+    "bytes": 296190264,
+    "runs": 26,
+    "runs_today": 19,
     "by_bot": {
       "Sky": {
         "files": 230,
         "bytes": 263730004,
-        "runs": 10
+        "runs": 11
       },
       "Appie": {
         "files": 17,
-        "bytes": 1954160,
-        "runs": 7
+        "bytes": 1955694,
+        "runs": 6
       },
       "Stocker": {
         "files": 17,
@@ -326,6 +338,11 @@
       "Filo": {
         "files": 4,
         "bytes": 2747908,
+        "runs": 1
+      },
+      "other": {
+        "files": 1,
+        "bytes": 42490,
         "runs": 1
       }
     },
@@ -397,12 +414,13 @@
       },
       {
         "date": "2026-10-26",
-        "files": 213,
-        "bytes": 189593450,
-        "runs": 18,
+        "files": 214,
+        "bytes": 189637474,
+        "runs": 19,
         "run_ids": [
-          "appie-task-1026-1257",
-          "appie-task-1026-1202",
+          "sky-task-1026-1314",
+          "other-task-1026-1310",
+          "appie-task-1026-1305",
           "run_1026_1142",
           "filo-task-1026-1034",
           "appie-task-1026-0858",
@@ -424,9 +442,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127836106752,
-      "disk_used_all": 8944582656,
-      "task_files_bytes": 296146240,
+      "disk_free": 127809732608,
+      "disk_used_all": 8970956800,
+      "task_files_bytes": 296190264,
       "task_pct_of_disk": 0.2165
     }
   }
