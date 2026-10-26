@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T12:06:53-05:00",
+  "snapshot_at": "2026-10-26T12:14:09-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -44,7 +44,7 @@
       "color": "#3fa9f5",
       "status": "working",
       "current_task": "Ad-hoc H-1B job search refresh (started 11:42 AM CT, ETA ~12:25 PM CT); ~11:50 AM scheduled run skipped",
-      "last_active": "2026-10-26T11:53:12-05:00",
+      "last_active": "2026-10-26T12:07:11-05:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
@@ -76,7 +76,7 @@
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
       "groupTask": "H-1B Job Search",
-      "last_checkin": "2026-10-26T11:53:12-05:00",
+      "last_checkin": "2026-10-26T12:07:11-05:00",
       "working_with": []
     },
     {
@@ -139,7 +139,7 @@
           "text": "Trebecon .Net Full Stack AI Engineer (Dice) submitted 8:43 AM CT"
         },
         {
-          "text": "Latitude AI Senior Software Engineer - ML Infrastructure: submitted"
+          "text": "Latitude AI: Senior Software Engineer - ML Infrastructure (submitted)"
         }
       ],
       "queued": [
@@ -287,13 +287,13 @@
       "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-26T11:53:12-05:00",
+  "latest_bot_activity": "2026-10-26T12:07:11-05:00",
   "files": {
-    "generated_at": "2026-10-26T12:06:53-05:00",
+    "generated_at": "2026-10-26T12:14:09-05:00",
     "total": 308,
     "today": 210,
     "last_24h": 225,
-    "bytes": 295813196,
+    "bytes": 295813876,
     "runs": 25,
     "runs_today": 18,
     "by_bot": {
@@ -304,7 +304,7 @@
       },
       "Appie": {
         "files": 17,
-        "bytes": 1934123,
+        "bytes": 1934803,
         "runs": 6
       },
       "Stocker": {
@@ -402,7 +402,7 @@
       {
         "date": "2026-10-26",
         "files": 210,
-        "bytes": 189260406,
+        "bytes": 189261086,
         "runs": 18,
         "run_ids": [
           "appie-task-1026-1202",
@@ -428,9 +428,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127829520384,
-      "disk_used_all": 8951169024,
-      "task_files_bytes": 295813196,
+      "disk_free": 127828430848,
+      "disk_used_all": 8952258560,
+      "task_files_bytes": 295813876,
       "task_pct_of_disk": 0.2162
     }
   }
