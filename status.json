@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T09:03:57-05:00",
+  "snapshot_at": "2026-10-26T09:35:00-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -40,15 +40,18 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "8:54 AM CT job search refresh running",
-      "last_active": "2026-10-26T08:55:00-05:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-10-26T09:35:00-05:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
         }
       ],
       "completed": [
+        {
+          "text": "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT"
+        },
         {
           "text": "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
         },
@@ -77,8 +80,8 @@
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "working",
-      "current_task": "C2C Remote sheet: filling GLOBAL IT CON (Dice) to review, no submit",
+      "status": "idle",
+      "current_task": "C2C Remote batch done: 5 Dice submitted (23 today). Waiting on Nikhilesh for next step",
       "last_active": "2026-10-26T09:03:57-05:00",
       "pending": [
         {
