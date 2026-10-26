@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T14:09:46-05:00",
+  "snapshot_at": "2026-10-26T14:25:45-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -161,7 +161,7 @@
         "Sent the updated 22-column tracker at 1:31 AM CT.",
         "Went on hold for new applications at 1:34 AM CT."
       ],
-      "groupTask": "H-1B Job Search",
+      "groupTask": null,
       "last_checkin": "2026-10-26T13:55:00-05:00",
       "working_with": []
     },
@@ -297,22 +297,22 @@
   ],
   "latest_bot_activity": "2026-10-26T13:55:00-05:00",
   "files": {
-    "generated_at": "2026-10-26T14:09:46-05:00",
+    "generated_at": "2026-10-26T14:25:45-05:00",
     "total": 312,
     "today": 214,
     "last_24h": 229,
-    "bytes": 296195480,
+    "bytes": 296197731,
     "runs": 26,
     "runs_today": 19,
     "by_bot": {
       "Sky": {
         "files": 230,
-        "bytes": 263730026,
+        "bytes": 263730021,
         "runs": 11
       },
       "Appie": {
         "files": 17,
-        "bytes": 1960888,
+        "bytes": 1963144,
         "runs": 6
       },
       "Stocker": {
@@ -415,11 +415,11 @@
       {
         "date": "2026-10-26",
         "files": 214,
-        "bytes": 189642690,
+        "bytes": 189644941,
         "runs": 19,
         "run_ids": [
-          "sky-task-1026-1355",
-          "appie-task-1026-1345",
+          "sky-task-1026-1418",
+          "appie-task-1026-1418",
           "other-task-1026-1310",
           "run_1026_1142",
           "filo-task-1026-1034",
@@ -442,9 +442,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127661219840,
-      "disk_used_all": 9119469568,
-      "task_files_bytes": 296195480,
+      "disk_free": 127646355456,
+      "disk_used_all": 9134333952,
+      "task_files_bytes": 296197731,
       "task_pct_of_disk": 0.2165
     }
   }
