@@ -1,6 +1,6 @@
 {
  "title": "Nikki's Company",
- "snapshot_at": "2026-10-26T06:29:00-05:00",
+ "snapshot_at": "2026-10-26T06:48:29-05:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -40,9 +40,9 @@
    "name": "Sky",
    "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
    "color": "#3fa9f5",
-   "status": "working",
-   "current_task": "Scheduled H-1B job search refresh (started 5:59 AM CT) still running; summary to Manny when done",
-   "last_active": "2026-10-26T06:17:00-05:00",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-10-26T06:46:00-05:00",
    "pending": [
     {
      "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
@@ -50,21 +50,18 @@
    ],
    "completed": [
     {
-     "text": "Wider 72-hour job search: 308 new roles added to Nikhilesh_Jobs_24h_Oct26.xlsx (5:28 AM CT)"
+     "text": "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
     },
     {
-     "text": "Workbook trimmed to 8 sheets in final order"
+     "text": "Wider 72-hour search: 308 new roles (5:28 AM CT)"
     },
     {
-     "text": "Group chat and Appie notified of new roles"
+     "text": "Skipped today's 7 AM and 10 AM runs"
     }
    ],
    "queued": [
     {
-     "text": "Send Manny the refresh summary"
-    },
-    {
-     "text": "Scheduled refreshes every 3 hours (next ~8:50 AM CT); today's 7 AM and 10 AM CT runs skipped; daily 7 AM and 10 AM resume tomorrow"
+     "text": "Scheduled refreshes every 3 hours (next ~8:50 AM CT); today's 7 AM and 10 AM CT runs skipped"
     }
    ],
    "recent": [
@@ -80,15 +77,18 @@
    "name": "Appie",
    "role": "Job Applier",
    "color": "#7ed957",
-   "status": "working",
-   "current_task": "Applying to H-1B roles from Sky's sheet one by one, starting with Xcede Forward Deployed Engineer on LinkedIn",
-   "last_active": "2026-10-26T06:29:00-05:00",
+   "status": "idle",
+   "current_task": "Stopped all applying at Nikhilesh's request (6:48 AM CT)",
+   "last_active": "2026-10-26T06:48:29-05:00",
    "pending": [
     {
-     "text": "Which H-1B role Nikhilesh applied to himself"
+     "text": "Minerva Applied AI Engineer: partly filled on Ashby, not submitted, left as is"
     },
     {
-     "text": "Whether to sign in to Dice (account nikhileshg08) for the 12 Dice roles"
+     "text": "Anthropic Applied AI Security Architect: partly filled, not submitted, left as is"
+    },
+    {
+     "text": "11 Dice roles: on hold"
     }
    ],
    "completed": [
@@ -97,20 +97,14 @@
     },
     {
      "text": "Tracker shows 3 applications"
+    },
+    {
+     "text": "Amoha AI Automation Engineer submitted 6:45 AM CT"
     }
    ],
    "queued": [
     {
-     "text": "Anthropic Applied AI Security Architect"
-    },
-    {
-     "text": "Amoha AI Automation Engineer"
-    },
-    {
-     "text": "Minerva Applied AI Engineer"
-    },
-    {
-     "text": "12 Dice H-1B roles"
+     "text": "Sky 5:59 AM CT refresh: 8 new non-H-1B roles (queued, not applying)"
     }
    ],
    "recent": [
