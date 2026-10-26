@@ -3366,14 +3366,18 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     g.globalCompositeOperation = 'source-atop'; g.fillStyle = 'rgba(200,206,216,0.35)'; g.fillRect(0, 94, 256, 34); g.globalCompositeOperation = 'source-over'; // soft grey underside
   }));
   const clouds = [];
-  const NCLOUD = Math.round(40 * WXN) + 8; // spread around the whole dome (phones: fewer)
+  const NCLOUD = TIER === 'phone' ? 42 : TIER === 'tablet' ? 64 : 96; // dense sky all around the dome (phones/tablets: fewer)
   for (let i = 0; i < NCLOUD; i++) {
     const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: cloudTex[i % 4].t, transparent: true, depthWrite: false, fog: false, opacity: 0.7 }));
-    const over = i % 4 === 0; // ~1 in 4 overhead
-    const ang = (i + Math.random() * 0.8) / NCLOUD * TAU, r = over ? rand(0, 70) : rand(48, 150), y = over ? rand(85, 125) : rand(6, 18) + (r - 48) * rand(0.15, 0.45);
-    const sc = (over ? rand(0.22, 0.34) : rand(0.16, 0.26)) * Math.max(r, 60); sp.scale.set(sc, sc * 0.5, 1);
+    const kind = i % 20 < 6 ? 'over' : i % 20 < 9 ? 'bank' : 'puff'; // ~30% overhead, ~15% big cumulus banks low on the horizon, rest varied puffs
+    const ang = i * 2.39996 + Math.random() * 0.4; // golden-angle spread so the whole sky fills evenly
+    let r, y, sc, asp = 0.5;
+    if (kind === 'over') { r = rand(0, 85); y = rand(80, 130); sc = rand(0.16, 0.42) * Math.max(r, 60); }
+    else if (kind === 'bank') { r = rand(120, 158); y = rand(4, 12) + (r - 48) * rand(0.06, 0.14); sc = rand(0.32, 0.5) * r; asp = rand(0.34, 0.42); }
+    else { r = rand(40, 150); y = rand(6, 18) + (r - 48) * rand(0.12, 0.5); sc = rand(0.08, 0.3) * Math.max(r, 60); asp = rand(0.42, 0.56); }
+    sp.scale.set(sc, sc * asp, 1);
     sp.position.set(Math.cos(ang) * r, y, Math.sin(ang) * r); sp.renderOrder = -1;
-    outside.add(sp); clouds.push({ sp, ang, r, y, v: rand(0.15, 0.4), base: rand(0.85, 1) });
+    outside.add(sp); clouds.push({ sp, ang, r, y, v: rand(0.15, 0.4), base: kind === 'bank' ? rand(0.8, 0.95) : rand(0.85, 1), thin: i % 2 === 1 }); // thin: fades to wisps in clear weather
   }
   // drifting cloud shadows on the floor (daytime only)
   const shadeT = canvasTex(512, 512, (g, w, h) => { g.clearRect(0, 0, w, h);
@@ -3441,7 +3445,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     skyU.glowCol.value.setRGB(1, 0.93, 0.8).lerp(new THREE.Color(0.75, 0.82, 1), night); skyU.glowK.value = (0.7 - 0.35 * night) * (1 - 0.8 * c.cloud * (0.5 + 0.5 * c.rain)) * (1 - 0.6 * c.fog);
     lightningTick(t, night);
     // clouds drift
-    clouds.forEach((cl) => { const m = cl.sp.material; m.opacity = Math.min(1, (0.62 + 0.33 * c.cloud) * cl.base * (1 - 0.25 * c.fog)); // always clearly visible
+    clouds.forEach((cl) => { const m = cl.sp.material; m.opacity = Math.min(1, (0.62 + 0.33 * c.cloud) * cl.base * (1 - 0.25 * c.fog) * (cl.thin ? 0.4 + 0.6 * Math.min(1, c.cloud / 0.7) : 1)); // half the clouds thin out in clear weather // always clearly visible
       m.color.setRGB(1 - 0.42 * c.rain - 0.42 * night, 1 - 0.42 * c.rain - 0.4 * night, 1 - 0.38 * c.rain - 0.3 * night).lerp(WHITE, wx.flash * 0.5); // moonlit grey at night
       cl.ang += cl.v * dt / Math.max(cl.r, 40); cl.sp.position.set(Math.cos(cl.ang) * cl.r, cl.y, Math.sin(cl.ang) * cl.r); }); // slow drift around the dome
     { const day = THREE.MathUtils.clamp((dayCur.si - 1.6) / 0.6, 0, 1); shadeMat.opacity = 0.13 * day * (0.6 + 0.4 * c.cloud) * (1 - 0.6 * c.rain); shade.visible = shadeMat.opacity > 0.005;
