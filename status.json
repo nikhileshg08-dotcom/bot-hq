@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T07:35:55.501378-05:00",
+  "snapshot_at": "2026-10-26T07:53:06-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -77,9 +77,9 @@
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "working",
-      "current_task": "Etsy Senior SWE I, ML Enablement (Workday): creating account, then filling (no submit)",
-      "last_active": "2026-10-26T07:35:55.501378-05:00",
+      "status": "idle",
+      "current_task": "Etsy Workday application: waiting on Nikhilesh to answer the 60-mile radius question",
+      "last_active": "2026-10-26T07:53:06-05:00",
       "pending": [
         {
           "text": "Anthropic: waiting on Nikhilesh's answers to 6 required questions"

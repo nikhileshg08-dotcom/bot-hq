@@ -183,7 +183,7 @@
 <!-- STATUS_DATA_START -->
 <script type="application/json" id="bot-status">{
  "title": "Nikki's Company",
- "snapshot_at": "2026-10-26T07:35:55.501378-05:00",
+ "snapshot_at": "2026-10-26T07:53:06-05:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -258,9 +258,9 @@
    "name": "Appie",
    "role": "Job Applier",
    "color": "#7ed957",
-   "status": "working",
-   "current_task": "Etsy Senior SWE I, ML Enablement (Workday): creating account, then filling (no submit)",
-   "last_active": "2026-10-26T07:35:55.501378-05:00",
+   "status": "idle",
+   "current_task": "Etsy Workday application: waiting on Nikhilesh to answer the 60-mile radius question",
+   "last_active": "2026-10-26T07:53:06-05:00",
    "pending": [
     {
      "text": "Anthropic: waiting on Nikhilesh's answers to 6 required questions"
@@ -3437,9 +3437,58 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const st = wx.state, night = dayCur && dayCur.part === 'n';
     return st === 'storm' ? '⛈️' : st === 'rain' ? '🌧️' : st === 'fog' ? '🌫️' : st === 'cloudy' ? (night ? '☁️' : '⛅') : night ? '🌙' : dayCur && (dayCur.part === 'm' || dayCur.part === 'e') ? '🌅' : '☀️';
   }
+  // ---------- live weather (Open-Meteo, no key): follows the viewer's rounded location, else the Nashville area ----------
+  const NASH = { lat: 36.16, lon: -86.78 }; // public fallback only; viewer coordinates are rounded to 2 decimals and never stored
+  const LIVE = { state: null, at: 0, lat: null, lon: null, fLat: null, fLon: null, lastFetch: 0, fromGeo: false };
+  const r2 = (v) => Math.round(v * 100) / 100;
+  const kmBetween = (a, b, c, d) => { const dy = (c - a) * 111.2, dx = (d - b) * 111.2 * Math.cos(((a + c) / 2) * Math.PI / 180); return Math.hypot(dx, dy); };
+  function wmoState(cu) {
+    const code = cu.weather_code, cc = cu.cloud_cover == null ? 0 : cu.cloud_cover;
+    if (code >= 95 && code <= 99) return 'storm';
+    if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82) || cu.precipitation > 0.1) return 'rain';
+    if (code === 45 || code === 48 || (cu.visibility != null && cu.visibility < 1000)) return 'fog';
+    if ((code >= 71 && code <= 77) || code === 85 || code === 86) return 'cloudy'; // snow: no snow state
+    if (code === 2 || code === 3 || cc >= 50) return 'cloudy';
+    return 'clear';
+  }
+  async function fetchLive() {
+    if (LIVE.lat == null) return; const lat = LIVE.lat, lon = LIVE.lon; LIVE.lastFetch = Date.now(); LIVE.n = (LIVE.n || 0) + 1; LIVE.fLat = lat; LIVE.fLon = lon;
+    try {
+      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=weather_code,cloud_cover,precipitation,visibility,is_day`, { cache: 'no-store' });
+      if (!res.ok) throw new Error('http ' + res.status); const j = await res.json(); if (!j || !j.current || j.current.weather_code == null) throw new Error('no data');
+      LIVE.state = wmoState(j.current); LIVE.at = Date.now(); LIVE.reading = j.current;
+    } catch (e) { /* keep the previous reading; after 1 h without fresh data the random simulation takes over */ }
+  }
+  function useSpot(lat, lon, geo) { // a new location triggers an immediate weather fetch
+    LIVE.lat = lat; LIVE.lon = lon; LIVE.fromGeo = geo;
+    if (LIVE.fLat == null || kmBetween(lat, lon, LIVE.fLat, LIVE.fLon) > 5 || !LIVE.state) fetchLive();
+  }
+  const LOC_KEY = 'bothq.loc', LOC_TTL = 12 * 3600 * 1000;
+  const readLoc = () => { try { const c = JSON.parse(localStorage.getItem(LOC_KEY) || 'null'); return c && isFinite(c.lat) && isFinite(c.lon) && isFinite(c.at) ? c : null; } catch (e) { return null; } };
+  function lookupLocation() { // one low-accuracy lookup; cached (rounded to 2 decimals) for 12 h
+    const failed = () => { const c = readLoc(); if (c) useSpot(c.lat, c.lon, true); else if (LIVE.lat == null || !LIVE.fromGeo) useSpot(NASH.lat, NASH.lon, false); };
+    let done = false; const fin = (fn) => (...a) => { if (!done) { done = true; fn(...a); } };
+    try {
+      if (!navigator.geolocation || !navigator.geolocation.getCurrentPosition) return failed();
+      navigator.geolocation.getCurrentPosition(fin((p) => { const lat = r2(p.coords.latitude), lon = r2(p.coords.longitude);
+        try { localStorage.setItem(LOC_KEY, JSON.stringify({ lat, lon, at: Date.now() })); } catch (e) {}
+        useSpot(lat, lon, true); }), fin(failed), { enableHighAccuracy: false, timeout: 8000, maximumAge: 30 * 60 * 1000 });
+      setTimeout(fin(failed), 9000); // prompt ignored / never answered
+    } catch (e) { fin(failed)(); }
+  }
+  function startLiveWeather() {
+    const c = readLoc();
+    if (c && Date.now() - c.at < LOC_TTL) useSpot(c.lat, c.lon, true); else lookupLocation();
+    setInterval(lookupLocation, LOC_TTL); // re-check the location every 12 h while open
+    setInterval(() => { if (LIVE.lat != null) fetchLive(); }, 15 * 60 * 1000); // weather every 15 min
+  }
+  const liveValid = () => !!LIVE.state && Date.now() - LIVE.at < 3600 * 1000;
+  const liveNote = () => wx.forced ? 'test override' : !liveValid() ? 'simulated' : LIVE.fromGeo ? 'live, your location' : 'live, Nashville area';
+  startLiveWeather();
   function weatherTick(dt, t) {
     if (!dayCur) return;
-    if (!wx.forced && t > wx.next) { if (wx.next) { const o = WX_NEXT[wx.state]; wx.state = o[Math.floor(Math.random() * o.length)]; } wx.next = t + rand(200, 480); } // every few minutes
+    if (!wx.forced && liveValid()) wx.state = LIVE.state; // real weather; blends below over ~25 s
+    else if (!wx.forced && t > wx.next) { if (wx.next) { const o = WX_NEXT[wx.state]; wx.state = o[Math.floor(Math.random() * o.length)]; } wx.next = t + rand(200, 480); } // every few minutes
     if (wx.forced) wx.state = wx.forced;
     const tg = WX[wx.state], k = Math.min(1, dt / 25); for (const key in tg) wx.cur[key] += (tg[key] - wx.cur[key]) * k; // ~25 s blends
     const c = wx.cur, dim = 1 - 0.45 * c.cloud * (0.5 + 0.5 * c.rain) - 0.15 * c.fog;
@@ -3471,7 +3520,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       for (let i = 0; i < n; i++) { const o = i * 6, v = 11 * rainSeed[i] * step; a[o + 1] -= v; a[o + 4] -= v; if (a[o + 4] < -0.5) { const y = 11 + Math.random() * 2; a[o + 1] = y; a[o + 4] = y - 0.38; } }
       rainGeo.attributes.position.needsUpdate = true; rainGeo.setDrawRange(0, n * 2); }
     dropB.visible = dropL.visible = c.rain > 0.03; dropMat.opacity = dropMat2.opacity = 0.6 * c.rain; dropT.t.offset.y = dropMat2.map.offset.y = (t * 0.004) % 1;
-    if (frame % 60 === 0 && wxEl) { const ic = weatherIcon(); if (wxEl.textContent !== ic) wxEl.textContent = ic; wxEl.title = `Outside: ${wx.state} · ${({ n: 'night', m: 'morning', d: 'day', e: 'evening' })[dayCur.part]}`; }
+    if (frame % 60 === 0 && wxEl) { const ic = weatherIcon(); if (wxEl.textContent !== ic) wxEl.textContent = ic; wxEl.title = `Outside: ${wx.state} · ${({ n: 'night', m: 'morning', d: 'day', e: 'evening' })[dayCur.part]} · ${liveNote()}`; }
   }
 
   if (TIER === 'phone') pendants.forEach((p) => { p.pl.visible = false; p.pl.intensity = 0; });
@@ -3861,7 +3910,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     walk: (name, k = 0) => { const o = botObjs.find((x) => x.data.name === name); if (o && o.routes && o.mode === 'sit') startRoute(o, o.routes.routes[k].map((w) => Object.assign({}, w, { p: w.p.clone() }))); },
     act: (name, a) => { const o = botObjs.find((x) => x.data.name === name); o.act = a; o.actUntil = simT + 5; },
     drone: () => { droneFlightStart = simT; }, teams: () => teams.map((t) => ({ task: t.task, members: t.members.map((m) => m.name), sign: !!t.sign, cx: t.group.position.x, cz: t.group.position.z, w: t.w })), plan: () => PLAN.sig, regroup,
-    weather: (st) => { wx.forced = st && WX[st] ? st : null; if (st && WX[st]) { wx.state = st; Object.assign(wx.cur, WX[st]); } return wx.state; }, wx: () => Object.assign({ state: wx.state, icon: weatherIcon() }, wx.cur),
+    weather: (st) => { wx.forced = st && WX[st] ? st : null; if (st && WX[st]) { wx.state = st; Object.assign(wx.cur, WX[st]); } return wx.state; }, wx: () => Object.assign({ state: wx.state, icon: weatherIcon() }, wx.cur), liveWx: () => ({ state: LIVE.state, valid: liveValid(), note: liveNote(), fromGeo: LIVE.fromGeo, fetches: LIVE.n || 0, at: LIVE.at, title: wxEl && wxEl.title }),
     spoken: [], tier: TIER, cards, setAmbient: (v) => { ambEl.checked = v; ambEl.dispatchEvent(new Event('change')); }, state: () => botObjs.map((o) => ({ n: o.data.name, mode: o.mode, act: o.act, speaking: o.speaking })) });
 
   // ---------- hide/show toggles ----------
