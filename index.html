@@ -139,6 +139,57 @@
   .tgbtn.off.flip svg { transform:none; } .tgbtn.off:not(.flip) svg { transform:rotate(180deg); }
   .tgbtn.gone { display:none; }
   #hudtoggle, #voicetoggle, #legendtoggle { display:none !important; pointer-events:none !important; } /* arrow handles hidden; the icons are the visible toggles */
+  /* ---------- Files panel (Filo's file tracker) ---------- */
+  #files { position:fixed; top:calc(18px + var(--sat)); right:calc(18px + var(--sar)); width:318px; border-radius:16px; z-index:6; font-size:12px; display:flex; flex-direction:column; max-height:calc(100dvh - 96px - var(--sat) - var(--sab)); transition:opacity .2s; }
+  body.inspecting #files { opacity:0; pointer-events:none; }
+  #fhead { display:flex; align-items:center; gap:8px; width:100%; padding:9px 12px; border:0; background:transparent; font:inherit; font-size:12.5px; font-weight:700; color:var(--ink); cursor:pointer; text-align:left; touch-action:manipulation; }
+  #fhead .fic { width:22px; height:22px; border-radius:7px; display:grid; place-items:center; background:linear-gradient(135deg,#2bb3a3,#1f7f9a); color:#fff; flex:none; }
+  #fhead .fic svg { width:13px; height:13px; }
+  #fhead .fsub { font-weight:600; color:var(--muted); font-size:11.5px; }
+  #fhead .fchev { margin-left:auto; width:14px; height:14px; color:var(--muted); transition:transform .2s; }
+  #files.open #fhead .fchev { transform:rotate(180deg); }
+  #fbody { display:none; padding:0 12px 10px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+  #files.open #fbody { display:block; }
+  #files .fstats { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; }
+  #files .fst { background:rgba(255,255,255,0.65); border:1px solid var(--line); border-radius:10px; padding:5px 6px; }
+  #files .fst b { display:block; white-space:nowrap; font-size:13.5px; font-weight:750; letter-spacing:-0.01em; font-variant-numeric:tabular-nums; }
+  #files .fst span { white-space:nowrap; font-size:10px; color:var(--muted); font-weight:600; }
+  #files .fsec { margin-top:9px; }
+  #files .flbl { font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:700; margin-bottom:4px; display:flex; justify-content:space-between; gap:6px; }
+  #files .flbl i { font-style:normal; text-transform:none; letter-spacing:0; font-weight:600; }
+  #files .fmeter { height:8px; border-radius:5px; background:rgba(42,36,32,0.07); overflow:hidden; display:flex; }
+  #files .fmeter .t { background:#2bb3a3; min-width:3px; } #files .fmeter .o { background:rgba(42,36,32,0.16); }
+  #files .fmtxt { font-size:11px; color:#4b423b; margin-top:3px; } #files .fmtxt .lg { color:var(--muted); }
+  #files .fchart { display:flex; align-items:flex-end; gap:4px; height:58px; }
+  #files .fday { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; cursor:default; }
+  #files .fday .bar { width:100%; max-width:26px; border-radius:4px 4px 2px 2px; background:linear-gradient(180deg,#3cc4b3,#2b93a8); min-height:2px; }
+  #files .fday .n { font-size:9.5px; color:#4b423b; font-weight:700; font-variant-numeric:tabular-nums; }
+  #files .fday .d { font-size:9.5px; color:var(--muted); margin-top:2px; }
+  #files .fday.sel .bar, #files .fday:hover .bar { background:linear-gradient(180deg,#f0a030,#d0704f); }
+  #files .fdayinfo { font-size:10.5px; color:#4b423b; margin-top:3px; min-height:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #files .fbot { display:grid; grid-template-columns:54px 1fr auto; align-items:center; gap:7px; margin:3px 0; font-size:11.5px; }
+  #files .fbot .nm { display:flex; align-items:center; gap:5px; font-weight:650; } #files .fbot .nm span { width:7px; height:7px; border-radius:50%; flex:none; }
+  #files .fbot .tr { height:6px; border-radius:4px; background:rgba(42,36,32,0.07); overflow:hidden; } #files .fbot .tr div { height:100%; border-radius:4px; }
+  #files .fbot .v { font-size:10.5px; color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap; } #files .fbot .v b { color:var(--ink); }
+  #files .fctl { display:flex; gap:5px; margin-bottom:5px; }
+  #files .fctl select, #files .fctl input { height:27px; border-radius:8px; border:1px solid rgba(120,100,80,.18); background:rgba(255,255,255,.8); font:inherit; font-size:11.5px; color:#2d2620; padding:0 7px; outline:none; min-width:0; }
+  #files .fctl input { flex:1; } #files .fctl input:focus, #files .fctl select:focus { border-color:#2bb3a3; }
+  #files .flist { max-height:230px; overflow-y:auto; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,0.55); overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+  #files .fr { padding:5px 8px; border-bottom:1px solid var(--line); } #files .fr:last-child { border-bottom:0; }
+  #files .fr .a { display:flex; gap:6px; align-items:baseline; } #files .fr .fn { font-weight:650; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #files .fr .bt { font-size:10px; font-weight:700; padding:0 5px; border-radius:5px; color:#fff; flex:none; }
+  #files .fr .tm, #files .fr .sz { font-size:10.5px; color:var(--muted); flex:none; font-variant-numeric:tabular-nums; }
+  #files .fr .s { font-size:10.5px; color:#7a6e63; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #files .fnote { font-size:10.5px; color:#a39689; margin-top:6px; }
+  html.touch #files .fctl input, html.touch #files .fctl select { font-size:16px; height:30px; }
+  @media (max-width: 700px) {
+    #files { right:calc(8px + var(--sar)); width:auto; max-width:calc(100vw - 16px); border-radius:14px; }
+    #files.open { left:calc(8px + var(--sal)); }
+    #fhead { padding:6px 10px; font-size:12px; } #fhead .fic { width:20px; height:20px; }
+    #files .flist { max-height:none; }
+    #files .fctl { position:sticky; top:0; z-index:1; padding:4px 0; margin:-4px 0 1px; background:rgba(250,245,238,0.96); }
+    body.inspecting #files { display:none; }
+  }
 </style>
 <!-- Import map: CDN fallback, used only if the inlined copy below fails to load -->
 <script type="importmap">
@@ -177,13 +228,17 @@
   </div>
   <div class="meta"><span id="to"></span><span id="vnote"></span></div>
 </div>
+<div id="files" class="glass" aria-label="Files created by the bots">
+  <button id="fhead" type="button" aria-expanded="false" aria-controls="fbody"><span class="fic"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3.5A1.5 1.5 0 0 1 3 2h3.2l1.5 1.6H13A1.5 1.5 0 0 1 14.5 5v7.5A1.5 1.5 0 0 1 13 14H3a1.5 1.5 0 0 1-1.5-1.5z"/></svg></span>Files <span class="fsub" id="fsub"></span><svg class="fchev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+  <div id="fbody"></div>
+</div>
 <aside id="panel" class="glass" aria-live="polite"></aside>
 <div id="err" class="glass"></div>
 
 <!-- STATUS_DATA_START -->
 <script type="application/json" id="bot-status">{
  "title": "Nikki's Company",
- "snapshot_at": "2026-10-26T09:35:00-05:00",
+ "snapshot_at": "2026-10-26T10:36:13-05:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -215,7 +270,8 @@
    "recent": [
     "Started building the Bot HQ office page at 1:39 AM CT."
    ],
-   "source_note": "Reading Manny's id returned this build session, so Manny's role and schedule come from the brief."
+   "source_note": "Reading Manny's id returned this build session, so Manny's role and schedule come from the brief.",
+   "last_checkin": "2026-10-26T06:05:31-05:00"
   },
   {
    "id": "1d32907d-b422-46e8-83cb-6788b25ea079",
@@ -254,7 +310,8 @@
     "Agreed to report each run's duration; can't see compute usage, so links the Usage page instead.",
     "Changed runs to add their own sheets, and to start a new workbook each day.",
     "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
-   ]
+   ],
+   "last_checkin": "2026-10-26T09:35:00-05:00"
   },
   {
    "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -329,7 +386,8 @@
     "Filled in Capital One and JeffreyM details; no recruiter was named on either posting.",
     "Sent the updated 22-column tracker at 1:31 AM CT.",
     "Went on hold for new applications at 1:34 AM CT."
-   ]
+   ],
+   "last_checkin": "2026-10-26T10:01:15-05:00"
   },
   {
    "id": "5e05cab1-8a7a-4871-8c92-f36e2e6e8c2c",
@@ -361,7 +419,8 @@
     "Found that none of the 22 laptops had a dedicated graphics card.",
     "Raised the budget to $1,300 at Nikhilesh's request.",
     "Sent the final two options at 5:47 PM CT on Oct 24."
-   ]
+   ],
+   "last_checkin": "2026-10-26T05:30:00-05:00"
   },
   {
    "id": "8e88aa47-6fca-4cc4-b4b3-3bfcef51f2cf",
@@ -393,7 +452,8 @@
     "Expanded the research to five years, weighted toward recent months.",
     "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
     "Last posted at 2:17 AM CT on Oct 24."
-   ]
+   ],
+   "last_checkin": "2026-10-26T05:30:25-05:00"
   },
   {
    "id": "a4c8649c-2d39-4f0a-b4e5-89eeb6224db2",
@@ -424,9 +484,178 @@
     "Said hello to Nikhilesh at Sky's request.",
     "Researched vendors and pricing for reselling reports.",
     "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
-   ]
+   ],
+   "last_checkin": "2026-10-26T05:30:00-05:00"
+  },
+  {
+   "id": "bdaff4eb-8345-41f5-beb6-5147b8a5fe7a",
+   "name": "Filo",
+   "role": "File manager: tracks the files the bots create",
+   "color": "#2bb3a3",
+   "status": "idle",
+   "manager": false,
+   "current_task": "Tracking file counts",
+   "last_active": "2026-10-26T10:28:07-05:00",
+   "pending": [],
+   "completed": [
+    {
+     "text": "Built the file tracker and the Files panel on Bot HQ"
+    }
+   ],
+   "queued": [
+    {
+     "text": "Refresh file counts with every site build (count_files.py)"
+    }
+   ],
+   "recent": [],
+   "last_checkin": "2026-10-26T10:28:07-05:00"
   }
- ]
+ ],
+ "latest_bot_activity": "2026-10-26T10:28:07-05:00",
+ "files": {
+  "generated_at": "2026-10-26T10:36:13-05:00",
+  "total": 283,
+  "today": 185,
+  "last_24h": 200,
+  "bytes": 266318053,
+  "runs": 23,
+  "runs_today": 16,
+  "by_bot": {
+   "Sky": {
+    "files": 202,
+    "bytes": 233926957,
+    "runs": 9
+   },
+   "Appie": {
+    "files": 17,
+    "bytes": 1929020,
+    "runs": 6
+   },
+   "Stocker": {
+    "files": 17,
+    "bytes": 4128432,
+    "runs": 1
+   },
+   "Neo": {
+    "files": 2,
+    "bytes": 399673,
+    "runs": 1
+   },
+   "Rio": {
+    "files": 4,
+    "bytes": 983827,
+    "runs": 1
+   },
+   "Manny": {
+    "files": 37,
+    "bytes": 22202236,
+    "runs": 4
+   },
+   "Filo": {
+    "files": 4,
+    "bytes": 2747908,
+    "runs": 1
+   }
+  },
+  "top_types": [
+   {
+    "type": "json",
+    "files": 168
+   },
+   {
+    "type": "png",
+    "files": 52
+   },
+   {
+    "type": "html",
+    "files": 30
+   }
+  ],
+  "by_day": [
+   {
+    "date": "2026-10-20",
+    "files": 0,
+    "bytes": 0,
+    "runs": 0,
+    "run_ids": []
+   },
+   {
+    "date": "2026-10-21",
+    "files": 0,
+    "bytes": 0,
+    "runs": 0,
+    "run_ids": []
+   },
+   {
+    "date": "2026-10-22",
+    "files": 0,
+    "bytes": 0,
+    "runs": 0,
+    "run_ids": []
+   },
+   {
+    "date": "2026-10-23",
+    "files": 0,
+    "bytes": 0,
+    "runs": 0,
+    "run_ids": []
+   },
+   {
+    "date": "2026-10-24",
+    "files": 83,
+    "bytes": 97100771,
+    "runs": 6,
+    "run_ids": [
+     "oct24",
+     "stocker-task-1024-0211",
+     "rio-task-1024-0202",
+     "ng_exec_a7",
+     "js",
+     "appie-task-1024-0129"
+    ]
+   },
+   {
+    "date": "2026-10-25",
+    "files": 15,
+    "bytes": 9452019,
+    "runs": 1,
+    "run_ids": [
+     "oct25"
+    ]
+   },
+   {
+    "date": "2026-10-26",
+    "files": 185,
+    "bytes": 159765263,
+    "runs": 16,
+    "run_ids": [
+     "filo-task-1026-1034",
+     "appie-task-1026-1001",
+     "appie-task-1026-0858",
+     "oct26/run_0854",
+     "manny-task-1026-0832",
+     "appie-task-1026-0642",
+     "run_1026_0559",
+     "manny-task-1026-0539",
+     "run_1026_0452W",
+     "appie-task-1026-0426",
+     "manny-task-1026-0414",
+     "run_1026_0259",
+     "neo-task-1026-0238",
+     "manny-task-1026-0230",
+     "oct26",
+     "appie-task-1026-0005"
+    ]
+   }
+  ],
+  "storage": {
+   "disk_total": 136797466624,
+   "disk_free": 127930281984,
+   "disk_used_all": 8850407424,
+   "task_files_bytes": 266318053,
+   "task_pct_of_disk": 0.1947
+  }
+ }
 }</script>
 <!-- STATUS_DATA_END -->
 
@@ -2260,6 +2489,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   const AVC = { active: '#34d46a', recent: '#3fa9f5', away: '#9a9085', problem: '#e5484d', unknown: '#b5ada3' };
   // any pending item or a current task = busy: stays seated working, never roams (Manny's patrol is separate)
   const hasTask = (b) => (b.pending || []).length > 0 || !!(b.current_task && String(b.current_task).trim());
+  const agoText = (iso) => { const ms = Date.parse(iso || ''); if (!Number.isFinite(ms)) return 'unknown'; const m = Math.max(0, Math.round((Date.now() - ms) / 60000));
+    return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.floor(m / 60)}h ${m % 60}m ago` : `${Math.floor(m / 1440)}d ago`; };
   function availOf(b) {
     if ((b.status || '').toLowerCase() === 'problem') return { k: 'problem', text: 'Problem', css: AVC.problem };
     const ms = Date.parse(b.last_active || ''); if (!Number.isFinite(ms)) return { k: 'unknown', text: 'Unknown', css: AVC.unknown };
@@ -2855,6 +3086,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
         <div class="pill" style="--c:${s.css}"><span class="ld"></span>${esc(s.label === 'Idle / waiting' ? 'Idle / waiting' : s.label)}</div>
         <div class="pill av" style="--c:${availOf(b).css}"><span class="ld"></span>${esc(availOf(b).text)}</div>
         <div class="la">Last active <b>${esc(fmtCT(b.last_active) || 'Unknown')}</b></div>
+        ${b.last_checkin ? `<div class="la ci" title="Checked in ${esc(fmtCT(b.last_checkin))}">Checked in <b>${esc(agoText(b.last_checkin))}</b></div>` : ''}
       </div>
       <div class="now"><div class="lbl">Current task</div><div>${esc(b.current_task || 'No recent activity found')}</div></div>
       ${hasAny ? '' : '<p class="none big">No recent activity found</p>'}
@@ -2868,7 +3100,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   }
   // header + chips
   document.getElementById('title').textContent = "Nikki's Company";
-  document.getElementById('snap').textContent = 'Snapshot taken at ' + (fmtCT(DATA.snapshot_at) || 'unknown time');
+  document.getElementById('snap').textContent = 'Updated ' + (fmtCT(DATA.snapshot_at, false) || 'unknown time');
   const counts = { working: 0, idle: 0, problem: 0, unknown: 0 }; bots.forEach((b) => counts[(b.status || 'unknown').toLowerCase()] = (counts[(b.status || 'unknown').toLowerCase()] || 0) + 1);
   const openCount = deskSlots.filter((x) => !assigned.has(x) && !x.homeBot && !x.groupOnly).length;
   document.getElementById('summary').textContent = `${bots.length} bots · ${counts.working || 0} working · ${counts.idle || 0} idle · ${openCount} open seats`;
@@ -3592,10 +3824,11 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       const A = availOf(o.data); o.avail = A; o.away = A.k === 'away'; o.avTag.userData.set(A.text, A.css);
       if (A.k === 'problem') { o.r.mats.light.color.set(0xff2a2a); o.r.halo.material.color.set(0xff2a2a); } // red antenna
       else { o.r.mats.light.color.set(o.s.color); o.r.halo.material.color.set(o.s.color); } });
-    if (selected) { const el = panel.querySelector('.pill.av'); if (el) { const A = selected.avail; el.style.setProperty('--c', A.css); el.innerHTML = `<span class="ld"></span>${esc(A.text)}`; } }
+    if (selected) { const el = panel.querySelector('.pill.av'); if (el) { const A = selected.avail; el.style.setProperty('--c', A.css); el.innerHTML = `<span class="ld"></span>${esc(A.text)}`; }
+      const ci = panel.querySelector('.la.ci b'); if (ci && selected.data.last_checkin) ci.textContent = agoText(selected.data.last_checkin); }
   }
   function refreshHeader() {
-    document.getElementById('snap').textContent = 'Snapshot taken at ' + (fmtCT(DATA.snapshot_at) || 'unknown time');
+    document.getElementById('snap').textContent = 'Updated ' + (fmtCT(DATA.snapshot_at, false) || 'unknown time');
     const c = { working: 0, idle: 0, problem: 0, unknown: 0 }; botObjs.forEach((o) => { const k = (o.data.status || 'unknown').toLowerCase(); c[k] = (c[k] || 0) + 1; });
     document.getElementById('summary').textContent = `${botObjs.length} bots · ${c.working} working · ${c.idle} idle${c.problem ? ` · ${c.problem} problem` : ''} · ${deskSlots.filter((d) => !d.groupOnly && !d.homeBot).length - botObjs.filter((o) => !o.slot.groupOnly).length} open seats`;
   }
@@ -3623,6 +3856,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       if (selected === o) openPanel(ob);
     });
     if (nd.snapshot_at) DATA.snapshot_at = nd.snapshot_at; if (nd.title) DATA.title = nd.title;
+    if (nd.files && window.__bothq.files) window.__bothq.files(nd.files);
     refreshHeader();
     if (changes.length) toast(changes.slice(0, 4).join(' · '));
     return { ok: true, changes };
@@ -4007,6 +4241,104 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     // bars move when a bot panel opens/closes (body.inspecting): re-pin after their slide
     if (window.MutationObserver) new MutationObserver(() => { placeAll(true); setTimeout(() => placeAll(true), 500); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
     window.__bothq.toggles = api; window.__bothq.hud = api.hud;
+  })();
+
+  // ---------- Files panel (Filo's file tracker): totals + storage + 7-day chart + per-bot bars + file list ----------
+  (() => {
+    const box = document.getElementById('files'), head = document.getElementById('fhead'), body = document.getElementById('fbody'), sub = document.getElementById('fsub');
+    if (!box) return;
+    const served = location.protocol.startsWith('http');
+    const hb = (n) => { n = +n || 0; const u = ['B', 'KB', 'MB', 'GB', 'TB']; let i = 0; while (n >= 1024 && i < 4) { n /= 1024; i++; } return i ? n.toFixed(n < 10 ? 2 : 1).replace(/\.0+$/, '') + ' ' + u[i] : n + ' B'; };
+    const colorOf = (name) => ((DATA.bots || []).find((b) => b.name === name) || {}).color || '#a39689';
+    let F = DATA.files || null, LIST = null, listErr = '', fBot = '', fQ = '', selDay = -1, timer = null, built = false;
+    let open = false; try { open = localStorage.getItem('bothq.filesOpen') === '1'; } catch (e) {}
+    const dayName = (d) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short' }).slice(0, 2);
+    const dayLong = (d) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    function dayInfo(i) {
+      const d = F.by_day[i]; if (!d) return '';
+      const ids = (d.run_ids || []); const more = ids.length > 3 ? ` +${ids.length - 3}` : '';
+      return `${dayLong(d.date)}: ${d.files} files · ${hb(d.bytes)} · ${d.runs} run${d.runs === 1 ? '' : 's'}${ids.length ? ': ' + ids.slice(0, 3).join(', ') + more : ''}`;
+    }
+    function render() {
+      if (!F) { sub.textContent = ''; body.innerHTML = '<div class="fnote">No file counts yet.</div>'; return; }
+      sub.textContent = `· ${F.total.toLocaleString()} · ${F.today} today`;
+      const S = F.storage || {}, pt = S.disk_total ? (S.task_files_bytes / S.disk_total * 100) : 0, po = S.disk_total ? Math.max(0, (S.disk_used_all - S.task_files_bytes) / S.disk_total * 100) : 0;
+      const days = F.by_day || [], mx = Math.max(1, ...days.map((d) => d.files));
+      const bots = Object.entries(F.by_bot || {}).filter(([, v]) => v.files > 0).sort((a, b) => b[1].files - a[1].files), bmx = Math.max(1, ...bots.map(([, v]) => v.files));
+      const tiles = [[F.total.toLocaleString(), 'files'], [F.today, 'today'], [hb(F.bytes), 'size'], [F.runs, `runs · ${F.runs_today} today`]];
+      body.innerHTML = `<div class="fstats">${tiles.map(([v, l]) => `<div class="fst"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
+        <div class="fsec"><div class="flbl">Storage</div>
+          <div class="fmeter" title="Task files ${hb(S.task_files_bytes)} · other/system ${hb(S.disk_used_all - S.task_files_bytes)} · free ${hb(S.disk_free)}"><div class="t" style="width:${pt.toFixed(3)}%"></div><div class="o" style="width:${po.toFixed(3)}%"></div></div>
+          <div class="fmtxt">Task files: ${hb(S.task_files_bytes)} of ${hb(S.disk_total)} (${pt < 0.01 ? pt.toFixed(3) : pt.toFixed(2)}%) · ${hb(S.disk_free)} free <span class="lg">· grey = other/system ${hb(S.disk_used_all - S.task_files_bytes)}</span></div></div>
+        <div class="fsec"><div class="flbl">Last 7 days <i>files added</i></div>
+          <div class="fchart">${days.map((d, i) => `<div class="fday${i === selDay ? ' sel' : ''}" data-i="${i}" title="${esc(dayInfo(i))}"><span class="n">${d.files || ''}</span><div class="bar" style="height:${Math.round(d.files / mx * 38)}px"></div><span class="d">${dayName(d.date)}</span></div>`).join('')}</div>
+          <div class="fdayinfo" id="fdayinfo">${esc(dayInfo(selDay >= 0 ? selDay : days.length - 1))}</div></div>
+        <div class="fsec"><div class="flbl">By bot <i>files · size</i></div>${bots.map(([n, v]) => `<div class="fbot"><span class="nm"><span style="background:${esc(colorOf(n))}"></span>${esc(n)}</span><div class="tr"><div style="width:${Math.max(2, v.files / bmx * 100).toFixed(1)}%;background:${esc(colorOf(n))}"></div></div><span class="v"><b>${v.files}</b> · ${hb(v.bytes)}</span></div>`).join('')}</div>
+        <div class="fsec"><div class="flbl">All files <i id="fcount"></i></div>
+          <div class="fctl"><select id="fbotsel" aria-label="Filter by bot"><option value="">All bots</option>${bots.map(([n]) => `<option${n === fBot ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select><input id="fq" type="search" placeholder="Search name, run, summary" value="${esc(fQ)}" autocomplete="off"></div>
+          <div class="flist" id="flist"></div></div>
+        <div class="fnote">Updated ${esc(fmtCT(F.generated_at))} · task outputs only, paths under /workspace</div>`;
+      built = true; renderList(); bindBody(); place();
+    }
+    function renderList() {
+      const el = document.getElementById('flist'), cnt = document.getElementById('fcount'); if (!el) return;
+      if (!LIST) { el.innerHTML = `<div class="fr"><div class="s">${esc(listErr || (served ? 'Loading file list…' : 'File list loads on the live site (files.json).'))}</div></div>`; cnt.textContent = ''; return; }
+      const q = fQ.trim().toLowerCase();
+      const rows = LIST.files.filter((f) => (!fBot || f.b === fBot) && (!q || (f.p + ' ' + f.r + ' ' + f.sm + ' ' + f.t).toLowerCase().includes(q)));
+      cnt.textContent = `${rows.length} of ${LIST.count}`;
+      el.innerHTML = rows.slice(0, 400).map((f) => `<div class="fr" title="${esc(f.p)}"><div class="a"><span class="fn">${esc(f.n)}</span><span class="bt" style="background:${esc(colorOf(f.b))}">${esc(f.b)}</span><span class="sz">${hb(f.s)}</span><span class="tm">${esc(fmtCT(f.m).replace(' CT', ''))}</span></div><div class="s">${esc([f.r, f.sm].filter(Boolean).join(' · ') || f.p)}</div></div>`).join('')
+        + (rows.length > 400 ? `<div class="fr"><div class="s">Showing 400 of ${rows.length}; search to narrow.</div></div>` : '') + (!rows.length ? '<div class="fr"><div class="s">No files match.</div></div>' : '');
+    }
+    function bindBody() {
+      const bs = document.getElementById('fbotsel'), q = document.getElementById('fq');
+      bs.addEventListener('change', () => { fBot = bs.value; renderList(); });
+      q.addEventListener('input', () => { fQ = q.value; renderList(); });
+      body.querySelectorAll('.fday').forEach((d) => {
+        const show = () => { const i = +d.dataset.i; document.getElementById('fdayinfo').textContent = dayInfo(i); body.querySelectorAll('.fday').forEach((x) => x.classList.toggle('sel', x === d)); selDay = i; };
+        d.addEventListener('mouseenter', show); d.addEventListener('click', show);
+      });
+    }
+    async function loadList() {
+      if (!served) { renderList(); return; }
+      try { const r = await fetch('files.json?ts=' + Date.now(), { cache: 'no-store' }); if (!r.ok) throw new Error(r.status); const d = await r.json();
+        if (d && Array.isArray(d.files)) { const changed = !LIST || LIST.generated_at !== d.generated_at; LIST = d; listErr = ''; if (changed) renderList(); }
+      } catch (e) { if (!LIST) { listErr = 'File list not available yet.'; renderList(); } }
+    }
+    function place() { // keep clear of the header, voice bar and toggle icons (desktop + phone)
+      const hud = document.getElementById('hud'), hr = hud.getBoundingClientRect(), hudOn = !hud.classList.contains('tg-hidden') && hr.width;
+      const sat = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sat')) || 0, phone = window.innerWidth <= 700;
+      const w = phone ? (open ? window.innerWidth - 16 : box.offsetWidth) : 318, left = window.innerWidth - w - (phone ? 8 : 18);
+      let top = (phone ? 8 : 18) + sat;
+      if (hudOn && (phone || hr.right + 10 > left)) top = hr.bottom + (phone ? 20 : 22); // clear the header's toggle icon
+      box.style.top = Math.round(top) + 'px';
+      let bottomLimit = window.innerHeight - (phone ? 8 : 72);
+      for (const id of ['voice', 'legend']) { const el = document.getElementById(id); if (!el || el.classList.contains('tg-hidden')) continue; const r = el.getBoundingClientRect();
+        if (r.width && r.right > left && r.left < left + w) bottomLimit = Math.min(bottomLimit, r.top - 22); }
+      box.style.maxHeight = Math.max(120, Math.round(bottomLimit - top)) + 'px';
+    }
+    function setOpen(v) {
+      open = v; box.classList.toggle('open', open); head.setAttribute('aria-expanded', String(open)); try { localStorage.setItem('bothq.filesOpen', open ? '1' : '0'); } catch (e) {}
+      clearInterval(timer); timer = null;
+      if (open) { if (!built) render(); loadList(); if (served) timer = setInterval(loadList, 30000); }
+      place();
+    }
+    head.addEventListener('click', (e) => { e.stopPropagation(); setOpen(!open); });
+    ['pointerdown', 'touchstart', 'wheel'].forEach((ev) => box.addEventListener(ev, (e) => e.stopPropagation(), { passive: true }));
+    box.addEventListener('keydown', (e) => e.stopPropagation());
+    render(); setOpen(open);
+    window.addEventListener('resize', () => setTimeout(place, 80)); setTimeout(place, 700); setTimeout(place, 2600);
+    if (window.MutationObserver) { const mo = new MutationObserver(() => setTimeout(place, 350)); ['hud', 'voice', 'legend'].forEach((id) => { const el = document.getElementById(id); if (el) mo.observe(el, { attributes: true, attributeFilter: ['class'] }); }); }
+    // small floating label above Filo's cabin with the running total
+    let filoLab = null;
+    function filoLabel() {
+      const o = botObjs.find((x) => x.data.name === 'Filo'); if (!o || !F) return;
+      if (filoLab) { scene.remove(filoLab); filoLab.material.map.dispose(); }
+      filoLab = labelSprite(`${F.total.toLocaleString()} files tracked`, null, null); filoLab.scale.multiplyScalar(0.9);
+      filoLab.position.copy(o.slot.seat).add(new THREE.Vector3(0, 3.15, 0)); scene.add(filoLab);
+    }
+    filoLabel();
+    window.__bothq.files = (nf) => { if (!nf) return; const ch = !F || F.generated_at !== nf.generated_at; F = nf; DATA.files = nf; if (ch) { built = false; if (open) render(); else sub.textContent = `· ${F.total.toLocaleString()} · ${F.today} today`; filoLabel(); } };
+    window.__bothq.filesPanel = { open: () => setOpen(true), close: () => setOpen(false), data: () => F, list: () => LIST };
   })();
 
   // camera floor guard: the camera never goes below y=0.5. Tilting further up lifts the orbit pivot instead (view direction kept),
