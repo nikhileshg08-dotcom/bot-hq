@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T07:53:06-05:00",
+  "snapshot_at": "2026-10-26T08:21:05-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -78,8 +78,8 @@
       "role": "Job Applier",
       "color": "#7ed957",
       "status": "idle",
-      "current_task": "Etsy Workday application: waiting on Nikhilesh to answer the 60-mile radius question",
-      "last_active": "2026-10-26T07:53:06-05:00",
+      "current_task": "Magicforce submitted; waiting for Nikhilesh before TechniPros (next in Sky's list)",
+      "last_active": "2026-10-26T08:21:05-05:00",
       "pending": [
         {
           "text": "Anthropic: waiting on Nikhilesh's answers to 6 required questions"
@@ -115,6 +115,15 @@
         },
         {
           "text": "Digital Dhara Agentic AI engineer with J2EE (Dice, 7:32 AM CT)"
+        },
+        {
+          "text": "Etsy Scala Senior SWE I, ML Enablement (Workday) submitted 8:05 AM CT"
+        },
+        {
+          "text": "Data Capital Senior AI/LLM Optimization Engineer (Dice) submitted 8:11 AM CT"
+        },
+        {
+          "text": "Magicforce Python AI Developer (Dice) submitted 8:20 AM CT"
         }
       ],
       "queued": [
