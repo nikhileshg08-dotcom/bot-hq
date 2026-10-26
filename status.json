@@ -80,8 +80,8 @@
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "idle",
-      "current_task": "C2C Remote batch done: 5 Dice submitted (23 today). Waiting on Nikhilesh for next step",
+      "status": "working",
+      "current_task": "H-1B refresh: filling 3 TechniPros Dice roles to review (no submit)",
       "last_active": "2026-10-26T09:03:57-05:00",
       "pending": [
         {
