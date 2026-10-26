@@ -68,6 +68,7 @@
   .switch input::after { content:''; position:absolute; left:2px; top:2px; width:13px; height:13px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); transition:left .2s; }
   .switch input:checked { background:#34c46a; } .switch input:checked::after { left:15px; }
   .live { display:inline-flex; align-items:center; gap:5px; } .live::before { content:''; width:7px; height:7px; border-radius:50%; background:#b5ada3; }
+  #sndbtn { display:inline-flex; align-items:center; justify-content:center; width:26px; height:22px; padding:0; border:1px solid rgba(0,0,0,0.08); border-radius:8px; background:rgba(255,255,255,0.7); color:#5a4f45; cursor:pointer; touch-action:manipulation; } #sndbtn.off { color:#a59a8e; }
   .live.on::before { background:#34d46a; box-shadow:0 0 6px #34d46a; animation:pulse 2s infinite; }
   @keyframes pulse { 50% { opacity:.35; } }
   #toast { position:fixed; top:18px; left:50%; transform:translate(-50%,-20px); opacity:0; transition:all .35s; padding:9px 16px; border-radius:12px; font-size:12.5px; pointer-events:none; max-width:min(560px,80vw); }
@@ -2084,7 +2085,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   });
 
   // ---------- lights ----------
-  scene.add(new THREE.HemisphereLight(0xfff4e6, 0xb89b7a, 0.85));
+  const hemi = new THREE.HemisphereLight(0xfff4e6, 0xb89b7a, 0.85); scene.add(hemi);
   const sun = new THREE.DirectionalLight(0xffe2bd, 2.2);
   sun.position.set(-18, 30, 14); sun.castShadow = true;
   sun.shadow.mapSize.set(TIER === 'desktop' ? 4096 : 2048, TIER === 'desktop' ? 4096 : 2048);
@@ -2092,7 +2093,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.03; sun.shadow.radius = 4;
   scene.add(sun);
   const fill = new THREE.DirectionalLight(0xcfe3ff, 0.55); fill.position.set(20, 14, -20); scene.add(fill);
-  scene.add(new THREE.AmbientLight(0xffffff, 0.12));
+  const ambLight = new THREE.AmbientLight(0xffffff, 0.12); scene.add(ambLight);
 
   // ---------- helpers ----------
   const matCache = {};
@@ -2122,6 +2123,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   };
 
   // ---------- floor ----------
+  const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
   const FW = 42, FD = 30;
   const floorTex = canvasTex(1024, 1024, (g, w, h) => {
     const rows = 16; const rh = h / rows;
@@ -2257,6 +2259,27 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     draw();
     const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: ct.t, depthTest: false, transparent: true, sizeAttenuation: false }));
     sp.scale.set(0.13, 0.0325, 1); sp.renderOrder = 10; sp.userData.redraw = draw;
+    return sp;
+  }
+  // availability from real status.json timestamps (last_active); no timestamp -> Unknown
+  const AVC = { active: '#34d46a', recent: '#3fa9f5', away: '#9a9085', problem: '#e5484d', unknown: '#b5ada3' };
+  function availOf(b) {
+    if ((b.status || '').toLowerCase() === 'problem') return { k: 'problem', text: 'Problem', css: AVC.problem };
+    const ms = Date.parse(b.last_active || ''); if (!Number.isFinite(ms)) return { k: 'unknown', text: 'Unknown', css: AVC.unknown };
+    const m = Math.max(0, Math.round((Date.now() - ms) / 60000));
+    if (m > 120) return { k: 'away', text: 'Away', css: AVC.away };
+    if (m < 5) return { k: 'active', text: 'Active now', css: AVC.active };
+    return { k: 'recent', text: m < 60 ? `Active ${m}m ago` : `Active ${Math.floor(m / 60)}h ${m % 60}m ago`, css: AVC.recent };
+  }
+  function tagSprite() { // small pill under a bot's name label (screen-space, follows the label)
+    const W = 512, H = 96; const ct = canvasTex(W, H, () => {}); let last = '';
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: ct.t, depthTest: false, transparent: true, sizeAttenuation: false }));
+    sp.scale.set(0.105, 0.0197, 1); sp.center.set(0.5, 1.62); sp.renderOrder = 10;
+    sp.userData.set = (text, css) => { if (last === text + css) return; last = text + css; const g = ct.g; g.clearRect(0, 0, W, H);
+      g.font = '600 40px Inter, "Segoe UI", system-ui, sans-serif'; const tw = g.measureText(text).width, bw = Math.min(W - 8, tw + 74), bx = (W - bw) / 2;
+      roundRect(g, bx, 14, bw, 66, 33); g.fillStyle = 'rgba(255,253,249,0.9)'; g.fill(); g.lineWidth = 3; g.strokeStyle = css; g.stroke();
+      g.beginPath(); g.arc(bx + 30, 47, 10, 0, Math.PI * 2); g.fillStyle = css; g.fill();
+      g.fillStyle = '#4a4038'; g.textBaseline = 'middle'; g.textAlign = 'left'; g.fillText(text, bx + 50, 49); ct.t.needsUpdate = true; };
     return sp;
   }
   function nameplate(name, role, accentCss, open = false) {
@@ -2493,6 +2516,51 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     slot.plateAnchor = new THREE.Vector3(w / 2 - 0.6 - door / 2 - 0.2, 2.62, d / 2 + 0.02);
     deskSlots.push(slot); return slot;
   }
+  // ---------- group tables: every groupTask team (2+) sits side by side at ONE continuous desk ----------
+  // seats = max(3, team size); each seat has its own chair, monitor, keyboard and mug. Two-sided (facing pairs) when long.
+  const GB_SEAT = 1.3, GB_MIN = 3;
+  const benchLen = (perSide) => perSide * GB_SEAT + 0.5;
+  function groupBench(g, bx, bz, members, twoSided, decorate) {
+    const S = Math.max(GB_MIN, members.length), perSide = twoSided ? Math.ceil(S / 2) : S, L = benchLen(perSide);
+    const bench = new THREE.Group(); bench.position.set(bx, 0, bz); g.add(bench);
+    desk(bench, L, twoSided ? 1.6 : 0.85, P.deskTop); // one continuous surface
+    plant(bench, -L / 2 + 0.2, twoSided ? 0 : -0.15, 0.42);
+    const slots = [];
+    for (let i = 0; i < S; i++) {
+      const side = twoSided ? i % 2 : 0, col = twoSided ? Math.floor(i / 2) : i;
+      const x = (col - (perSide - 1) / 2) * GB_SEAT;
+      const ws = new THREE.Group(); ws.position.set(bx + x, 0, bz + (twoSided ? (side ? -0.4 : 0.4) : 0)); ws.rotation.y = side ? Math.PI : 0; g.add(ws);
+      const monitors = [monitor(ws, 0, -0.2, 0.92, 0)];
+      keyboard(ws, 0.0, 0.12, 0); mug(ws, 0.45, 0.15, P.terracotta);
+      const b = members[i] || null;
+      const slot = { type: 'group', group: g, ws, dw: 2.0, monitors, lampG: ws, preBot: b, groupOnly: true, noLamp: true, noLabel: true,
+        backDir: new THREE.Vector3(0, 0, 1).applyEuler(ws.rotation), chairParent: ws, chairLocal: new THREE.Vector3(0, 0, 0.78) };
+      slot.seat = new THREE.Vector3(0, 0, 0.72).applyEuler(ws.rotation).add(ws.position).add(g.position);
+      slot.face = new THREE.Vector3(0, 0, -1).applyEuler(ws.rotation);
+      if (decorate) decorate(slot, ws.position.x, side);
+      slots.push(slot); deskSlots.push(slot);
+    }
+    const lampCol = members.length ? new THREE.Color(members[0].color || '#e0a83e') : new THREE.Color(0xb9b2a8);
+    lamp(bench, L / 2 - 0.3, twoSided ? 0 : -0.25, lampCol);
+    return slots;
+  }
+  // free-floor group tables (spares + extra teams): packed into rows that avoid cabins, the corridors and furniture
+  const GT_ROWS = [{ z: 9.4, x0: -7.5, x1: 4.2 }, { z: -2.0, x0: 10.0, x1: 18.6 }, { z: 12.6, x0: -5.0, x1: 0.2 }];
+  function floorGroupTable(cx, cz, task, members, twoSided) {
+    const g = new THREE.Group(); g.position.set(cx, 0, cz); scene.add(g);
+    const S = Math.max(GB_MIN, members.length), L = benchLen(twoSided ? Math.ceil(S / 2) : S);
+    rug(cx, cz + (twoSided ? 0 : 0.5), L + 1.0, twoSided ? 4.0 : 2.6, 0xe8dccd);
+    const css = members.length ? '#' + members.reduce((c, b) => c.add(new THREE.Color(b.color || '#e0a83e').multiplyScalar(1 / members.length)), new THREE.Color(0, 0, 0)).getHexString() : '#c9c1b6';
+    const team = members.length ? { task, members, group: g, w: L, d: twoSided ? 1.6 : 0.85, built: true, slots: [], floor: true } : null;
+    const slots = groupBench(g, 0, 0, members, twoSided, (slot) => { if (team) slot.team = team; slot.outsideP = V3(slot.seat.x, 0, slot.seat.z + (slot.backDir.z > 0 ? 1.1 : -1.1)); });
+    // sign above the table on a slim post (team name + members, or an open group table)
+    const post = mesh(new THREE.CylinderGeometry(0.025, 0.025, 2.2, 8), M(P.charcoal), L / 2 + 0.15, 1.1, twoSided ? 0 : -0.35, g);
+    const sign = team ? nameplate(task, 'Team: ' + members.map((b) => b.name).join(' · '), css) : nameplate('Group table', 'Open for a team', css, true);
+    sign.position.set(0, 2.45, twoSided ? 0 : -0.35); sign.scale.multiplyScalar(1.2); g.add(sign);
+    if (team) { sign.name = 'teamSign'; sign.userData.team = task; sign.userData.bot = members[0]; clickables.push(sign); team.sign = sign; slots.forEach((sl) => team.slots.push(sl)); }
+    return team;
+  }
+
   // ---------- team cabins: bots that share a groupTask share one larger glass cabin ----------
   function teamCabin(cx, cz, w, d, task, members) {
     const g = new THREE.Group(); g.position.set(cx, 0, cz); scene.add(g);
@@ -2515,22 +2583,13 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       sign.position.set(0, 2.66, d / 2 + 0.02); sign.scale.multiplyScalar(1.45); sign.name = 'teamSign'; sign.userData.team = task; sign.userData.bot = members[0];
       g.add(sign); clickables.push(sign); team.sign = sign;
     };
-    const n = members.length;
-    members.forEach((b, i) => {
-      const x = -w / 2 + (i + 0.5) * w / n;
-      const ws = new THREE.Group(); ws.position.set(x, 0, -d / 2 + 0.95); g.add(ws);
-      const dw = 2.0; desk(ws, dw, 0.85, P.deskTop);
-      const monitors = [monitor(ws, -0.22, -0.2, 1, 0.12), monitor(ws, 0.58, -0.16, 0.9, -0.3)];
-      keyboard(ws, 0.0, 0.12, 0); mug(ws, dw / 2 - 0.25, 0.15, P.terracotta); plant(ws, -dw / 2 + 0.2, -0.15, 0.42);
-      const slot = { type: 'cabin', group: g, w, d, team, ws, dw, monitors, lampG: ws, preBot: b, wallBuild: buildWalls, backDir: new THREE.Vector3(0, 0, 1), sharedShelf: true };
-      slot.seat = new THREE.Vector3(0, 0, 0.72).add(ws.position).add(g.position);
-      slot.face = new THREE.Vector3(0, 0, -1);
-      slot.chairParent = ws; slot.chairLocal = new THREE.Vector3(0, 0, 0.78);
-      slot.shelfPos = [x, 1.78, -d / 2 + 0.2, Math.min(w / n * 0.55, 2.0)];
-      const toC = -Math.sign(x) || 1; // huddle point toward the cabin centre (teammates meet), plus own window spot
-      slot.spots = [{ x, z: d / 2 - 0.85, face: 0, look: 'window' }, { x: x + toC * Math.min(1.2, Math.abs(x) - 0.35 || 1.2), z: 0.35, face: toC > 0 ? Math.PI / 2 : -Math.PI / 2, look: 'team' }];
-      team.slots.push(slot); deskSlots.push(slot);
+    const seats = groupBench(g, 0, -d / 2 + 0.95, members, false, (slot, x) => {
+      Object.assign(slot, { type: 'cabin', w, d, team, wallBuild: buildWalls, sharedShelf: true });
+      slot.shelfPos = [x, 1.78, -d / 2 + 0.2, Math.min(GB_SEAT * 0.8, 1.1)];
+      const toC = -Math.sign(x) || 1, off = Math.max(0.5, Math.min(1.2, Math.abs(x) + 0.5)); // huddle spot toward the cabin centre + own window spot
+      slot.spots = [{ x, z: d / 2 - 0.85, face: 0, look: 'window' }, { x: x + toC * off, z: 0.35, face: toC > 0 ? Math.PI / 2 : -Math.PI / 2, look: 'team' }];
     });
+    seats.forEach((slot) => team.slots.push(slot));
     return team;
   }
   const groupKey = (b) => String(b.groupTask || '').trim();
@@ -2539,31 +2598,44 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); if (!k) return; if (!groups.has(k)) groups.set(k, { task: groupKey(b), members: [] }); groups.get(k).members.push(b); });
     const units = [], seen = new Set();
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); const gr = k && groups.get(k);
-      if (gr && gr.members.length >= 2) { if (!seen.has(k)) { seen.add(k); units.push({ team: gr.task, members: gr.members.slice(0, cabinXs.length) }); gr.members.slice(cabinXs.length).forEach((m) => units.push({ members: [m] })); } }
+      if (gr && gr.members.length >= 2) { if (!seen.has(k)) { seen.add(k); units.push({ team: gr.task, members: gr.members.slice() }); } }
       else units.push({ members: [b] }); });
-    const occ = rowZ.map(() => cabinXs.map(() => false)); const placed = [], overflow = [];
+    const occ = rowZ.map(() => cabinXs.map(() => false)); const placed = [], overflow = [], floor = [];
+    const cellsFor = (u) => (u.team ? Math.max(2, Math.ceil((benchLen(Math.max(GB_MIN, u.members.length)) + 1.4) / 6)) : 1);
     // teams first so they get contiguous cells, then solos fill in reading order
     for (const u of [...units.filter((u) => u.team), ...units.filter((u) => !u.team)]) {
-      const nn = u.members.length; let ok = false;
+      const nn = cellsFor(u); let ok = false;
       for (let r = 0; r < rowZ.length && !ok; r++) for (let c = 0; c + nn <= cabinXs.length && !ok; c++) {
         if (occ[r].slice(c, c + nn).every((x) => !x)) { for (let k = c; k < c + nn; k++) occ[r][k] = true; placed.push({ u, r, c }); ok = true; }
       }
-      if (!ok) u.members.forEach((m) => overflow.push(m));
+      if (!ok) { if (u.team) floor.push(u); else u.members.forEach((m) => overflow.push(m)); }
     }
-    return { placed, occ, overflow, sig: placed.map((p) => `${p.r}:${p.c}:${p.u.team ? 'T' : 'S'}:${p.u.members.map((m) => m.id || m.name).join(',')}`).sort().join('|') + '#' + overflow.map((m) => m.id || m.name).join(',') };
+    return { placed, occ, overflow, floor, cellsFor, sig: floor.map((u) => 'F:' + u.members.map((m) => m.id || m.name).join(',')).join('|') + '/' + placed.map((p) => `${p.r}:${p.c}:${p.u.team ? 'T' : 'S'}:${p.u.members.map((m) => m.id || m.name).join(',')}`).sort().join('|') + '#' + overflow.map((m) => m.id || m.name).join(',') };
   }
   // build cabins
   const MAN = cabin(13.5, -10.4, 8.6, 7.0, 0, true);
   const PLAN = planLayout(DATA.bots || []);
   const teams = [];
   for (const pl of PLAN.placed) {
-    const z = rowZ[pl.r], nn = pl.u.members.length;
+    const z = rowZ[pl.r], nn = PLAN.cellsFor(pl.u);
     if (pl.u.team) {
       const x0 = cabinXs[pl.c], x1 = cabinXs[pl.c + nn - 1];
       teams.push(teamCabin((x0 + x1) / 2, z, (x1 - x0) + CAB_W, CAB_D, pl.u.team, pl.u.members));
     } else { const sl = cabin(cabinXs[pl.c], z, CAB_W, CAB_D); sl.preBot = pl.u.members[0]; }
   }
   PLAN.occ.forEach((row, r) => row.forEach((used, c) => { if (!used) cabin(cabinXs[c], rowZ[r], CAB_W, CAB_D); }));
+  { // floor group tables: teams that didn't fit a cabin row first, then empty spares (always at least 2 tables)
+    const want = PLAN.floor.map((u) => ({ task: u.team, members: u.members }));
+    while (want.length < 2) want.push({ task: null, members: [] });
+    const cur = GT_ROWS.map((r) => r.x0);
+    want.forEach((t) => {
+      const S = Math.max(GB_MIN, t.members.length); let two = S > 4, L = benchLen(two ? Math.ceil(S / 2) : S) + 0.8;
+      let ri = GT_ROWS.findIndex((r, i) => cur[i] + L <= r.x1);
+      if (ri < 0) { ri = 0; } // no free row left: extend the front row (may crowd the lounge for very large teams)
+      const r = GT_ROWS[ri], cx = cur[ri] + L / 2; cur[ri] += L + 0.6;
+      const tm = floorGroupTable(cx, r.z, t.task, t.members, two); if (tm) teams.push(tm);
+    });
+  }
   // open-plan desks (front center)
   function openDesk(x, z, rotY) {
     const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = rotY; scene.add(g);
@@ -2659,7 +2731,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   for (const b of bots.filter((b) => b.manager)) { const s = managerSlots.find((x) => !assigned.has(x)); if (s) { assigned.set(s, b); queue.splice(queue.indexOf(b), 1); } }
   for (const s of regularSlots) if (s.preBot && queue.includes(s.preBot)) { assigned.set(s, s.preBot); queue.splice(queue.indexOf(s.preBot), 1); }
   for (const b of queue) {
-    let s = regularSlots.find((x) => !assigned.has(x) && !x.preBot);
+    let s = regularSlots.find((x) => !assigned.has(x) && !x.preBot && !x.groupOnly);
     if (!s) { // grow: add extra open desks in a new row
       const n = deskSlots.filter((d) => d.type === 'open').length; const col = n % 4, row = Math.floor(n / 4);
       s = openDesk(-2.5 + col * 3, 1.6 + row * 2.6, 0); regularSlots.push(s);
@@ -2677,7 +2749,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const ch = chair(slot.chairParent, slot.chairLocal.x, slot.chairLocal.z, 0, b ? 0x3c4552 : 0x8b8f96); slot.chair = ch;
     if (slot.wallBuild) {
       slot.wallBuild(accentCss, b ? accentCol : new THREE.Color(0xd8d2c8));
-      lamp(slot.ws, (slot.dw / 2) - 0.55, -0.22, b ? accentCol : new THREE.Color(0xb9b2a8));
+      if (!slot.noLamp) lamp(slot.ws, (slot.dw / 2) - 0.55, -0.22, b ? accentCol : new THREE.Color(0xb9b2a8));
       shelf(slot.group, slot.shelfPos[0], slot.shelfPos[1], slot.shelfPos[2], slot.shelfPos[3], 0, b ? accentCol : new THREE.Color(0xcfc8bd));
       if (slot.team) { if (b) { /* team sign already built */ } } else {
       const plate = nameplate(b ? b.name : 'Open seat', b ? (b.role || '') : 'Available for a new bot', accentCss, !b);
@@ -2685,7 +2757,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       if (b) { plate.userData.bot = b; slot.plate = plate; }
       if (!b) { const lab = labelSprite('Open seat', null, null, true); lab.position.copy(slot.seat).add(new THREE.Vector3(0, 1.0, 0)); scene.add(lab); }
       }
-    } else if (!b) {
+    } else if (!b && !slot.noLabel) {
       const lab = labelSprite('Open seat', null, null, true); lab.position.copy(slot.seat).add(new THREE.Vector3(0, 1.3, 0)); scene.add(lab);
     }
     slot.monitors.forEach((m, k) => screens.push({ m, bot: b, k, phase: i * 13 + k * 7, lines: [] }));
@@ -2705,7 +2777,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const lab = labelSprite(b.name, null, st(b.status).css);
     lab.position.set(0, (slot.type === 'manager' ? 2.3 : 2.1), 0); r.root.add(lab);
     lab.scale.set(0.15, 0.0375, 1);
-    const obj = { data: b, r, slot, ring, label: lab, hover: 0, sel: 0, phase: i * 1.7, s: st(b.status) };
+    const avTag = tagSprite(); avTag.position.copy(lab.position); r.root.add(avTag);
+    const obj = { data: b, r, slot, ring, label: lab, avTag, hover: 0, sel: 0, phase: i * 1.7, s: st(b.status) };
     botObjs.push(obj);
   });
 
@@ -2781,6 +2854,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       </div>
       <div class="meta">
         <div class="pill" style="--c:${s.css}"><span class="ld"></span>${esc(s.label === 'Idle / waiting' ? 'Idle / waiting' : s.label)}</div>
+        <div class="pill av" style="--c:${availOf(b).css}"><span class="ld"></span>${esc(availOf(b).text)}</div>
         <div class="la">Last active <b>${esc(fmtCT(b.last_active) || 'Unknown')}</b></div>
       </div>
       <div class="now"><div class="lbl">Current task</div><div>${esc(b.current_task || 'No recent activity found')}</div></div>
@@ -2825,7 +2899,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     ptrEnd(ev);
     if (!down || down.id !== ev.pointerId) return; const moved = Math.hypot(ev.clientX - down.x, ev.clientY - down.y); const dur = performance.now() - down.t; down = null;
     if (moved > (ev.pointerType === 'mouse' ? 5 : 12) || (ev.pointerType !== 'mouse' && dur > 600)) return;
-    const o = pick(ev); if (o) select(o); else if (selected) select(null);
+    const o = pick(ev); if (o) { o.react = simT; const sel = o; setTimeout(() => select(sel), 420); } else if (selected) select(null); // react first, then open the panel
   });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') select(null); });
 
@@ -2858,7 +2932,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   // ===== LIVE OFFICE LIFE: behaviours, task cards, ambient, voice, sync =====
   // =====================================================================
   scene.updateMatrixWorld(true);
-  const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
+  // V3 defined earlier
   const rand = (a, b) => a + Math.random() * (b - a);
   const TAU = Math.PI * 2;
   const angLerp = (a, b, k) => { let d = ((b - a + Math.PI) % TAU + TAU) % TAU - Math.PI; return a + d * k; };
@@ -2909,6 +2983,36 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     return pts;
   }
 
+  const IDLE_SLOW = TIER === 'phone' ? 1.8 : 1; // phones: fewer idle fidgets
+  const ROAM_PLANTS = [[-20.4, -5.2], [20.2, -2.5], [20.2, 12.5], [-20.2, 13.5], [-6, 12.5], [1, 13], [9.7, 9.4], [-4.6, 1.6], [8.6, 1.6]];
+  function roamRoute(o) { // short stroll out of the seat (neighbour, window, plant, coffee) and back the same way
+    const out = outsideOf(o.slot), ins = insideOf(o.slot), cab = !!o.slot.wallBuild;
+    const head = [{ p: backOf(o) }]; if (ins) head.push({ p: ins }); head.push({ p: out });
+    const faceTo = (a, b) => Math.atan2(b.x - a.x, b.z - a.z);
+    const others = botObjs.filter((x) => x !== o && x.slot.group !== o.slot.group && x.mode === 'sit');
+    const opts = [];
+    if (others.length) { const n = others.slice().sort((a, b) => a.seat.distanceToSquared(o.seat) - b.seat.distanceToSquared(o.seat))[0];
+      const q = outsideOf(n.slot).add(V3(0.7, 0, 0)); opts.push({ p: q, face: faceTo(q, n.seat), pause: 4, visit: [n], kind: 'neighbour' }); }
+    if (out.x < -8) opts.push({ p: V3(-20.0, 0, THREE.MathUtils.clamp(out.z, -13, 13)), face: -Math.PI / 2, pause: 5, look: 'window', kind: 'window' });
+    else opts.push({ p: V3(7.0, 0, -13.9), face: Math.PI, pause: 5, look: 'window', kind: 'window' });
+    const pl = ROAM_PLANTS.map((a) => V3(a[0], 0, a[1])).sort((a, b) => a.distanceToSquared(out) - b.distanceToSquared(out))[0];
+    const pp = pl.clone().add(out.clone().sub(pl).setY(0).normalize().multiplyScalar(1.0)); opts.push({ p: pp, face: faceTo(pp, pl), pause: 3.5, look: 'shelf', kind: 'plant' });
+    opts.push({ p: V3(17.0, 0, 6.0), face: Math.PI / 2, pause: 5, kind: 'coffee' });
+    const near = opts.filter((d) => d.p.distanceTo(out) < 16); const d = (near.length ? near : opts)[Math.floor(Math.random() * (near.length || opts.length))];
+    const mid = []; if (cab && Math.abs(d.p.z - out.z) > 0.3 && !(d.kind === 'window' && out.x < -8)) { mid.push({ p: V3(7.0, 0, out.z) }); if (d.p.z > out.z) mid.push({ p: V3(7.0, 0, -0.6) }); }
+    if (d.kind === 'window' && out.x < -8 && cab) mid.push({ p: V3(-19.4, 0, out.z) });
+    const go = [...head, ...mid, d]; const back = go.slice(0, -1).reverse().map((w) => ({ p: w.p.clone() }));
+    o.roamKind = d.kind; return [...go.map((w) => Object.assign({}, w, { p: w.p.clone() })), ...back];
+  }
+  function pickLook(o, t, working) {
+    const others = botObjs.filter((x) => x !== o); const mate = o.slot.team ? others.filter((x) => x.slot.team === o.slot.team) : [];
+    const near = others.slice().sort((a, b) => a.r.root.position.distanceToSquared(o.r.root.position) - b.r.root.position.distanceToSquared(o.r.root.position))[0];
+    const man = others.find((x) => x.data.manager); const r = Math.random();
+    const who = (mate.length && r < 0.45) ? mate[Math.floor(Math.random() * mate.length)] : r < 0.7 ? near : r < 0.85 ? man : null;
+    const dur = working ? rand(0.9, 1.7) : rand(1.8, 3.4);
+    if (who) return { who, until: t + dur };
+    return { yaw: (Math.random() < 0.5 ? -1 : 1) * rand(0.6, 1.0), up: rand(-0.12, -0.02), until: t + dur }; // window / around the room
+  }
   botObjs.forEach((o, i) => {
     o.pose = newPose(); o.tgt = newPose();
     o.seat = o.r.root.position.clone(); o.seatYaw = o.r.root.rotation.y;
@@ -2916,9 +3020,9 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     o.nextAct = rand(4, 12) + i; o.routes = makeRoutes(o);
     o.nextWalk = o.data.manager ? 14 : rand(18, 45) + i * 4;
     o.speaking = false; o.speakEnd = 0; o.glance = null;
-    o.walkCount = 0;
+    o.walkCount = 0; o.nextRoam = o.data.manager ? Infinity : rand(40, 90) * IDLE_SLOW + i * 9; o.react = -99;
   });
-  const outsideOf = (slot) => slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 + 0.75) : V3(slot.seat.x, 0, -0.6);
+  const outsideOf = (slot) => slot.outsideP ? slot.outsideP.clone() : slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 + 0.75) : V3(slot.seat.x, 0, -0.6);
   const insideOf = (slot) => slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 - 0.7) : null;
   const hubPath = (a, b) => (Math.abs(a.z - b.z) < 0.05 ? [b] : [V3(7.0, 0, a.z), V3(7.0, 0, b.z), b]);
   // arriving after a regroup: start standing where we left the old seat and walk to the new one
@@ -2962,18 +3066,23 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   }
 
   function behave(o, dt, t) {
-    const r = o.r, p = o.tgt, working = o.data.status === 'working', tt = t + o.phase;
+    const r = o.r, p = o.tgt, working = o.data.status === 'working' && !o.away, tt = t + o.phase;
     // --- schedule new things while seated ---
     if (o.mode === 'sit' && ambient && !o.speaking && o !== selected) {
-      if (t > o.nextWalk && o.routes) {
+      if (t > o.nextRoam && !regrouping) { // occasional short roam, then back to the seat (away bots step out more)
+        startRoute(o, roamRoute(o)); o.nextRoam = t + rand(90, 170) * IDLE_SLOW * (working ? 1.4 : 1) * (o.away ? 0.5 : 1); o.nextWalk = Math.max(o.nextWalk, t + 30);
+      } else if (t > o.nextWalk && o.routes) {
         o.walkCount++;
         if (o.data.manager && o.walkCount % 2 === 1) startRoute(o, patrolRoute(o), true);
         else startRoute(o, o.routes.routes[Math.floor(Math.random() * o.routes.routes.length)].map((w) => Object.assign({}, w, { p: w.p.clone() })));
         o.nextWalk = t + (o.data.manager ? rand(60, 90) : working ? rand(70, 120) : rand(35, 70));
       } else if (!o.act && t > o.nextAct) {
-        const opts = working ? ['lean', 'lean', 'sip'] : ['stretch', 'sip', 'phone', 'phone'];
-        o.act = opts[Math.floor(Math.random() * opts.length)]; o.actUntil = t + (o.act === 'stretch' ? 2.6 : o.act === 'lean' ? rand(3, 5) : rand(3.5, 5));
-        o.nextAct = o.actUntil + rand(6, 16);
+        const opts = o.away ? ['leanback', 'leanback', 'leanback', 'phone', 'stretch'] : working ? ['lean', 'lean', 'sip', 'leanback', 'adjust'] : ['stretch', 'sip', 'phone', 'phone', 'leanback', 'adjust', 'stretch'];
+        o.act = opts[Math.floor(Math.random() * opts.length)]; o.actDur = o.act === 'stretch' ? 2.6 : o.act === 'lean' ? rand(3, 5) : o.act === 'adjust' ? rand(1.4, 2.2) : o.act === 'leanback' ? rand(3, 6) * (o.away ? 2 : 1) : rand(3.5, 5); o.actUntil = t + o.actDur;
+        o.nextAct = o.actUntil + rand(6, 16) * IDLE_SLOW;
+      }
+      if (t > (o.nextLook || 0)) { // idle glance: teammate, desk neighbour, Manny, or out of the window
+        o.nextLook = t + rand(7, 18) * IDLE_SLOW; o.look = pickLook(o, t, working);
       }
     }
     if (o.act && t > o.actUntil) o.act = null;
@@ -3038,6 +3147,14 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
         p.arms.forEach((q, i) => { q.sh = THREE.MathUtils.lerp(-0.45, -2.95, k); q.el = THREE.MathUtils.lerp(-0.9, -0.15, k); q.shz = (i ? 1 : -1) * 0.25 * k; }); p.headX = -0.25 * k; p.headY = 0; p.torsoX = -0.08 * k; }
       if (o.act === 'sip') { const q = p.arms[1]; const k = 0.5 + 0.5 * Math.sin((o.actUntil - t) * 1.6); q.sh = -1.25 - 0.25 * k; q.el = -1.75 - 0.2 * k; q.shz = 0.35; p.headX = -0.12 * k; p.headY = 0.1; }
       if (o.act === 'phone') { const q = p.arms[0]; q.sh = -0.75; q.el = -1.45; q.shz = 0.12; p.headX = 0.38; p.headY = -0.12; }
+      if (o.act === 'leanback') { const k = Math.min(1, (o.actDur - (o.actUntil - t)) / 0.8, (o.actUntil - t) / 0.8); p.torsoX = -0.14 * k; p.headX = -0.1 * k; p.arms.forEach((q) => { q.sh = -0.25 - 0.1 * (1 - k); q.el = -0.6 - 0.3 * (1 - k); }); }
+      if (o.act === 'adjust') { const u = 1 - (o.actUntil - t) / o.actDur; const w = Math.sin(u * Math.PI); p.torsoX = Math.sin(u * TAU * 1.5) * 0.06 * w; p.headZ = Math.sin(u * TAU) * 0.07 * w; p.arms.forEach((q, i) => { q.shz += (i ? 1 : -1) * 0.12 * w; q.sh = -0.6 * w + q.sh * (1 - w); }); }
+    }
+    // idle glance (seated only; visitor glances and speaking below take priority)
+    if (o.look && t < o.look.until && s <= 0.05 && o.mode === 'sit' && !(o.act === 'phone' || o.act === 'stretch')) {
+      if (o.look.who) { const w = o.look.who.r.root.position.clone().sub(r.root.position); const yaw = Math.atan2(w.x, w.z) - r.root.rotation.y;
+        p.headY = THREE.MathUtils.clamp(((yaw + Math.PI) % TAU + TAU) % TAU - Math.PI, -1.0, 1.0); p.headX = 0.02; }
+      else { p.headY = o.look.yaw; p.headX = o.look.up; }
     }
     // glance at visiting Manny
     if (o.glance && t < o.glance.until) {
@@ -3049,7 +3166,11 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       const w = camera.position.clone().sub(r.root.position); const yaw = Math.atan2(w.x, w.z) - r.root.rotation.y;
       p.headY = THREE.MathUtils.clamp(((yaw + Math.PI) % TAU + TAU) % TAU - Math.PI, -1.0, 1.0); p.headX = -0.08 + Math.sin(t * 4) * 0.05; p.headZ = Math.sin(t * 2.3) * 0.06;
     }
-    lerpPose(o.pose, p, Math.min(1, dt * (walking ? 16 : 9)));
+    const ra = t - o.react; // tapped: look at the camera and wave
+    if (ra >= 0 && ra < 1.5) { const k = Math.sin(Math.min(1, ra / 1.5) * Math.PI); const w = camera.position.clone().sub(r.root.position);
+      const yaw = Math.atan2(w.x, w.z) - r.root.rotation.y; p.headY = THREE.MathUtils.clamp(((yaw + Math.PI) % TAU + TAU) % TAU - Math.PI, -1.1, 1.1); p.headX = -0.18;
+      const q = p.arms[0], ax = r.arms[0].sx; q.sh = THREE.MathUtils.lerp(q.sh, -2.75, Math.min(1, k * 1.6)); q.shz = ax * (0.3 + 0.28 * Math.sin(ra * 13)); q.el = -0.35; q.hand = 0; }
+    lerpPose(o.pose, p, Math.min(1, dt * (walking || (ra >= 0 && ra < 1.5) ? 16 : 9)));
     // fast oscillators applied directly so they are not smoothed away
     if (s <= 0.05 && working && (!o.act || o.act === 'lean')) r.arms.forEach((a, i) => { o.pose.arms[i].hand = p.arms[i].hand; });
     applyPose(o);
@@ -3234,15 +3355,111 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ map: softT.t, size: 0.06, color: 0xfff2d6, transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true }));
   scene.add(dust);
   const sunBase = sun.position.clone();
+  // keyframes by local hour: night (cool, dim, lamps up) -> warm morning -> neutral day -> golden evening -> night
+  const DAYK = [[0, 'n'], [5.5, 'n'], [7.5, 'm'], [10, 'd'], [16.5, 'd'], [18.5, 'e'], [20.5, 'n'], [24, 'n']];
+  const DAYP = { n: { si: 1.25, hi: 0.6, fi: 0.5, ai: 0.14, ex: 0.94, lamp: 1.7, sun: 0xb8ccff, sky: 0xd4dcff, top: 0x0d1733, hor: 0x2c3a60 }, m: { si: 1.95, hi: 0.8, fi: 0.5, ai: 0.12, ex: 1.03, lamp: 1.15, sun: 0xffd2a2, sky: 0xfff0e0, top: 0x8fb6e8, hor: 0xffd4ae },
+    d: { si: 2.2, hi: 0.85, fi: 0.55, ai: 0.12, ex: 1.05, lamp: 1.0, sun: 0xffe8cc, sky: 0xfff4e6, top: 0x86bdf5, hor: 0xd9ecfb }, e: { si: 1.8, hi: 0.76, fi: 0.45, ai: 0.12, ex: 1.0, lamp: 1.35, sun: 0xffb066, sky: 0xffe6cc, top: 0x4d63a8, hor: 0xffa566 } };
+  let dayCur = null, dayTgt = null, lastDH;
+  function dayParams(h) {
+    let i = 0; while (i < DAYK.length - 2 && h >= DAYK[i + 1][0]) i++;
+    const [h0, a] = DAYK[i], [h1, b] = DAYK[i + 1]; const u = THREE.MathUtils.smoothstep(h, h0, h1); const A = DAYP[a], B = DAYP[b]; const o = {};
+    for (const key of ['si', 'hi', 'fi', 'ai', 'ex', 'lamp']) o[key] = A[key] + (B[key] - A[key]) * u;
+    o.sun = new THREE.Color(A.sun).lerp(new THREE.Color(B.sun), u); o.sky = new THREE.Color(A.sky).lerp(new THREE.Color(B.sky), u);
+    o.top = new THREE.Color(A.top).lerp(new THREE.Color(B.top), u); o.hor = new THREE.Color(A.hor).lerp(new THREE.Color(B.hor), u); o.part = u < 0.5 ? a : b; return o;
+  }
+  // ---------- weather outside the perimeter windows (back wall z=-FD/2, left wall x=-FW/2) ----------
+  const WX = { clear: { cloud: 0.12, rain: 0, fog: 0, storm: 0 }, cloudy: { cloud: 0.85, rain: 0, fog: 0.1, storm: 0 }, rain: { cloud: 1, rain: 1, fog: 0.25, storm: 0 },
+    fog: { cloud: 0.6, rain: 0, fog: 1, storm: 0 }, storm: { cloud: 1, rain: 1, fog: 0.3, storm: 1 } };
+  const WX_NEXT = { clear: ['clear', 'cloudy', 'cloudy', 'fog'], cloudy: ['clear', 'rain', 'rain', 'cloudy', 'fog'], rain: ['cloudy', 'rain', 'storm', 'cloudy'], fog: ['clear', 'cloudy'], storm: ['rain', 'rain', 'cloudy'] };
+  const wx = { state: Math.random() < 0.5 ? 'clear' : 'cloudy', cur: null, next: 0, flash: 0, nextFlash: 0, forced: null };
+  wx.cur = Object.assign({}, WX[wx.state]);
+  const WXN = TIER === 'phone' ? 0.3 : TIER === 'tablet' ? 0.6 : 1; // phones: fewer particles
+  const outside = new THREE.Group(); scene.add(outside);
+  const skyMats = [];
+  function skyPanel(w, h, x, z, ry) { // vertex-coloured gradient: top -> horizon
+    const geo = new THREE.PlaneGeometry(w, h, 1, 1); geo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(12).fill(1), 3));
+    const m = new THREE.MeshBasicMaterial({ vertexColors: true, fog: false, toneMapped: false, transparent: true, opacity: 0.92, depthWrite: false });
+    const pl = new THREE.Mesh(geo, m); pl.position.set(x, h / 2 - 0.6, z); pl.rotation.y = ry; pl.renderOrder = -2; outside.add(pl); skyMats.push(geo); return pl;
+  }
+  skyPanel(FW + 12, 11, 0, -FD / 2 - 4.2, 0); skyPanel(FD + 12, 11, -FW / 2 - 4.2, 0, Math.PI / 2);
+  const cloudT = canvasTex(256, 128, (g) => { for (let i = 0; i < 9; i++) { const x = 40 + Math.random() * 176, y = 50 + Math.random() * 40, r = 22 + Math.random() * 26;
+    const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, 'rgba(255,255,255,0.85)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 256, 128); } });
+  const clouds = [];
+  for (let i = 0; i < Math.round(12 * WXN) + 3; i++) {
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: cloudT.t, transparent: true, depthWrite: false, fog: false, opacity: 0 }));
+    const back = i % 3 !== 0; const sc = 5 + Math.random() * 5; sp.scale.set(sc, sc * 0.45, 1);
+    sp.position.set(back ? rand(-FW / 2, FW / 2) : -FW / 2 - 3.4, rand(3.6, 7.5), back ? -FD / 2 - 3.4 : rand(-FD / 2, FD / 2)); sp.renderOrder = -1;
+    outside.add(sp); clouds.push({ sp, back, v: rand(0.15, 0.4), base: rand(0.55, 1) });
+  }
+  const RAIN = Math.round(900 * WXN); const rainPos = new Float32Array(RAIN * 6); const rainSeed = new Float32Array(RAIN);
+  const rainSpot = (i) => { const back = i % 3 !== 0; return back ? [rand(-FW / 2, FW / 2), rand(-FD / 2 - 3.6, -FD / 2 - 0.4)] : [rand(-FW / 2 - 3.6, -FW / 2 - 0.4), rand(-FD / 2, FD / 2)]; };
+  for (let i = 0; i < RAIN; i++) { const [x, z] = rainSpot(i), y = rand(-0.4, 8); rainPos.set([x, y, z, x + 0.03, y - 0.38, z], i * 6); rainSeed[i] = rand(0.8, 1.25); }
+  const rainGeo = new THREE.BufferGeometry(); rainGeo.setAttribute('position', new THREE.BufferAttribute(rainPos, 3));
+  const rainMat = new THREE.LineBasicMaterial({ color: 0xc9d6e6, transparent: true, opacity: 0, depthWrite: false, fog: false });
+  const rain = new THREE.LineSegments(rainGeo, rainMat); rain.frustumCulled = false; rain.visible = false; outside.add(rain);
+  // droplets on the inside of the window glass
+  const dropT = canvasTex(512, 256, (g, w, h) => { g.clearRect(0, 0, w, h);
+    for (let i = 0; i < 260; i++) { const x = Math.random() * w, y = Math.random() * h, r = 1 + Math.random() * 3.2; g.fillStyle = 'rgba(210,225,240,0.55)'; g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill();
+      g.fillStyle = 'rgba(255,255,255,0.8)'; g.beginPath(); g.arc(x - r * 0.3, y - r * 0.3, r * 0.35, 0, TAU); g.fill(); }
+    for (let i = 0; i < 26; i++) { const x = Math.random() * w, y = Math.random() * h * 0.6; g.strokeStyle = 'rgba(220,232,245,0.35)'; g.lineWidth = 1.4; g.beginPath(); g.moveTo(x, y); g.lineTo(x + (Math.random() - 0.5) * 6, y + 30 + Math.random() * 70); g.stroke(); } });
+  dropT.t.wrapS = dropT.t.wrapT = THREE.RepeatWrapping;
+  const dropMat = new THREE.MeshBasicMaterial({ map: dropT.t, transparent: true, opacity: 0, depthWrite: false, toneMapped: false });
+  const dropB = mesh(new THREE.PlaneGeometry(FW, WH), dropMat, 0, WH / 2, -FD / 2 + 0.05, scene, false, false); dropT.t.repeat.set(FW / 6, 1);
+  const dropMat2 = dropMat.clone(); dropMat2.map = dropT.t.clone(); dropMat2.map.repeat.set(FD / 6, 1); dropMat2.map.needsUpdate = true;
+  const dropL = mesh(new THREE.PlaneGeometry(FD, WH), dropMat2, -FW / 2 + 0.05, WH / 2, 0, scene, false, false); dropL.rotation.y = Math.PI / 2;
+  dropB.visible = dropL.visible = false;
+  var wxEl = null;
+  const fogBase = { near: scene.fog.near, far: scene.fog.far };
+  const tmpTop = new THREE.Color(), tmpHor = new THREE.Color(), GREY_T = new THREE.Color(0x8d97a3), GREY_H = new THREE.Color(0xb7bec7), WHITE = new THREE.Color(0xffffff);
+  function weatherIcon() {
+    const st = wx.state, night = dayCur && dayCur.part === 'n';
+    return st === 'storm' ? '⛈️' : st === 'rain' ? '🌧️' : st === 'fog' ? '🌫️' : st === 'cloudy' ? (night ? '☁️' : '⛅') : night ? '🌙' : dayCur && (dayCur.part === 'm' || dayCur.part === 'e') ? '🌅' : '☀️';
+  }
+  function weatherTick(dt, t) {
+    if (!dayCur) return;
+    if (!wx.forced && t > wx.next) { if (wx.next) { const o = WX_NEXT[wx.state]; wx.state = o[Math.floor(Math.random() * o.length)]; } wx.next = t + rand(200, 480); } // every few minutes
+    if (wx.forced) wx.state = wx.forced;
+    const tg = WX[wx.state], k = Math.min(1, dt / 25); for (const key in tg) wx.cur[key] += (tg[key] - wx.cur[key]) * k; // ~25 s blends
+    const c = wx.cur, dim = 1 - 0.45 * c.cloud * (0.5 + 0.5 * c.rain) - 0.15 * c.fog;
+    // lightning (storm only): quick double flash
+    if (c.storm > 0.5 && t > wx.nextFlash) { wx.nextFlash = t + rand(7, 20); wx.flashAt = t; }
+    const fa = t - (wx.flashAt || -99); wx.flash = fa < 0.5 ? Math.max(0, 1 - fa / 0.12) * 0.9 + (fa > 0.22 ? Math.max(0, 1 - (fa - 0.22) / 0.15) * 0.6 : 0) : 0;
+    // layer onto the day-night lights (kept subtle so the office stays readable)
+    sun.intensity *= dim; sun.color.lerp(GREY_H, 0.6 * c.cloud * (0.4 + 0.6 * c.rain));
+    hemi.intensity = hemi.intensity * (1 - 0.12 * c.cloud) + wx.flash * 0.9; hemi.color.lerp(GREY_H, 0.35 * c.cloud);
+    renderer.toneMappingExposure *= 1 - 0.05 * c.rain;
+    scene.fog.near = fogBase.near - 38 * c.fog; scene.fog.far = fogBase.far - 45 * c.fog;
+    // sky backdrop
+    const night = THREE.MathUtils.clamp(1 - (dayCur.si - 1.25) / 0.95, 0, 1);
+    tmpTop.copy(dayCur.top).lerp(GREY_T.clone().multiplyScalar(1 - 0.75 * night), c.cloud * 0.8); tmpHor.copy(dayCur.hor).lerp(GREY_H.clone().multiplyScalar(1 - 0.7 * night), c.cloud * 0.75);
+    if (wx.flash) { tmpTop.lerp(WHITE, wx.flash * 0.6); tmpHor.lerp(WHITE, wx.flash * 0.5); }
+    skyMats.forEach((geo) => { const a = geo.attributes.color.array; [tmpTop, tmpTop, tmpHor, tmpHor].forEach((col, i) => { a[i * 3] = col.r; a[i * 3 + 1] = col.g; a[i * 3 + 2] = col.b; }); geo.attributes.color.needsUpdate = true; });
+    // clouds drift
+    clouds.forEach((cl) => { const m = cl.sp.material; m.opacity = (0.12 + 0.75 * c.cloud) * cl.base * (1 - 0.5 * c.fog); m.color.setScalar(1 - 0.45 * c.rain - 0.5 * night).lerp(WHITE, wx.flash * 0.5);
+      const P = cl.sp.position; if (cl.back) { P.x += cl.v * dt; if (P.x > FW / 2 + 6) P.x = -FW / 2 - 6; } else { P.z += cl.v * dt; if (P.z > FD / 2 + 6) P.z = -FD / 2 - 6; } });
+    // rain streaks outside + droplets on glass
+    rain.visible = c.rain > 0.03; rainMat.opacity = 0.5 * c.rain; rainMat.color.setScalar(0.85 - 0.4 * night).lerp(WHITE, wx.flash);
+    if (rain.visible && (TIER !== 'phone' || frame % 2 === 0)) { const a = rainPos, n = Math.ceil(RAIN * Math.min(1, c.rain + 0.1)), step = dt * (TIER === 'phone' ? 2 : 1);
+      for (let i = 0; i < n; i++) { const o = i * 6, v = 11 * rainSeed[i] * step; a[o + 1] -= v; a[o + 4] -= v; if (a[o + 4] < -0.5) { const y = 8 + Math.random(); a[o + 1] = y; a[o + 4] = y - 0.38; } }
+      rainGeo.attributes.position.needsUpdate = true; rainGeo.setDrawRange(0, n * 2); }
+    dropB.visible = dropL.visible = c.rain > 0.03; dropMat.opacity = dropMat2.opacity = 0.6 * c.rain; dropT.t.offset.y = dropMat2.map.offset.y = (t * 0.004) % 1;
+    if (frame % 60 === 0 && wxEl) { const ic = weatherIcon(); if (wxEl.textContent !== ic) wxEl.textContent = ic; wxEl.title = `Outside: ${wx.state} · ${({ n: 'night', m: 'morning', d: 'day', e: 'evening' })[dayCur.part]}`; }
+  }
 
   if (TIER === 'phone') pendants.forEach((p) => { p.pl.visible = false; p.pl.intensity = 0; });
   function ambientTick(dt, t) {
     // plants sway
     plants.forEach((p) => { const a = ambient ? p.amp : 0; p.g.rotation.z = Math.sin(t * 0.9 + p.ph) * a; p.g.rotation.x = Math.sin(t * 0.7 + p.ph * 1.3) * a * 0.6; });
     // pendant lights breathing
-    pendants.forEach((p) => { const k = ambient ? 0.5 + 0.5 * Math.sin(t * 0.25 + p.ph) : 0.5; p.pl.intensity = 0.9 + 0.6 * k; p.bulbM.color.setRGB(1, 0.93 + 0.05 * k, 0.78 + 0.1 * k); });
-    // daylight cycle (~4 min loop): sun drifts, warms and cools
-    if (ambient) { const c = t / 240 * TAU; sun.position.set(sunBase.x + Math.sin(c) * 8, sunBase.y + Math.cos(c) * 3, sunBase.z + Math.cos(c) * 5); sun.intensity = 2.05 + 0.35 * Math.sin(c); sun.color.setHSL(0.09, 0.75, 0.83 + 0.06 * Math.sin(c)); }
+    pendants.forEach((p) => { const k = ambient ? 0.5 + 0.5 * Math.sin(t * 0.25 + p.ph) : 0.5; p.pl.intensity = (0.9 + 0.6 * k) * (dayCur ? dayCur.lamp : 1); p.bulbM.color.setRGB(1, 0.93 + 0.05 * k, 0.78 + 0.1 * k); });
+    // day-night from the viewer's local clock (subtle), plus a gentle sun drift when ambient is on
+    if (frame % 30 === 1 || !dayCur || window.__bothq.dayHour !== lastDH) lastDH = window.__bothq.dayHour, dayTgt = dayParams(window.__bothq.dayHour != null ? window.__bothq.dayHour : (() => { const d = new Date(); return d.getHours() + d.getMinutes() / 60; })());
+    if (!dayCur) dayCur = Object.assign({}, dayTgt, { sun: dayTgt.sun.clone(), sky: dayTgt.sky.clone(), top: dayTgt.top.clone(), hor: dayTgt.hor.clone() });
+    { const k = Math.min(1, dt * 0.8); for (const key of ['si', 'hi', 'fi', 'ai', 'ex', 'lamp']) dayCur[key] += (dayTgt[key] - dayCur[key]) * k; dayCur.sun.lerp(dayTgt.sun, k); dayCur.sky.lerp(dayTgt.sky, k); dayCur.top.lerp(dayTgt.top, k); dayCur.hor.lerp(dayTgt.hor, k); dayCur.part = dayTgt.part; }
+    { const c = ambient ? t / 240 * TAU : 0; sun.position.set(sunBase.x + Math.sin(c) * 8, sunBase.y + Math.cos(c) * 3, sunBase.z + Math.cos(c) * 5);
+      sun.intensity = dayCur.si * (1 + (ambient ? 0.08 * Math.sin(c) : 0)); sun.color.copy(dayCur.sun);
+      hemi.intensity = dayCur.hi; hemi.color.copy(dayCur.sky); fill.intensity = dayCur.fi; ambLight.intensity = dayCur.ai; renderer.toneMappingExposure = dayCur.ex; }
+    weatherTick(dt, t);
     // steam
     steam.forEach((s) => { const k = ((t * 0.33) + s.ph) % 1; const on = ambient; s.sp.position.set(steamBase.x + Math.sin(k * 6 + s.ph * 9) * 0.05, steamBase.y + k * 0.7, steamBase.z + k * 0.05); s.sp.scale.setScalar(0.08 + k * 0.28); s.sp.material.opacity = on ? Math.sin(k * Math.PI) * 0.45 : 0; });
     // printer
@@ -3271,10 +3488,16 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const old = o.label; const lab = labelSprite(o.data.name, null, o.s.css); lab.position.copy(old.position); o.r.root.add(lab); o.r.root.remove(old); old.material.map.dispose(); o.label = lab;
     if (o.chip) o.chip.querySelector('span').style.background = o.s.css;
   }
+  function refreshAvail() {
+    botObjs.forEach((o) => { const A = availOf(o.data); o.avail = A; o.away = A.k === 'away'; o.avTag.userData.set(A.text, A.css);
+      if (A.k === 'problem') { o.r.mats.light.color.set(0xff2a2a); o.r.halo.material.color.set(0xff2a2a); } // red antenna
+      else { o.r.mats.light.color.set(o.s.color); o.r.halo.material.color.set(o.s.color); } });
+    if (selected) { const el = panel.querySelector('.pill.av'); if (el) { const A = selected.avail; el.style.setProperty('--c', A.css); el.innerHTML = `<span class="ld"></span>${esc(A.text)}`; } }
+  }
   function refreshHeader() {
     document.getElementById('snap').textContent = 'Snapshot taken at ' + (fmtCT(DATA.snapshot_at) || 'unknown time');
     const c = { working: 0, idle: 0, problem: 0, unknown: 0 }; botObjs.forEach((o) => { const k = (o.data.status || 'unknown').toLowerCase(); c[k] = (c[k] || 0) + 1; });
-    document.getElementById('summary').textContent = `${botObjs.length} bots · ${c.working} working · ${c.idle} idle${c.problem ? ` · ${c.problem} problem` : ''} · ${deskSlots.length - botObjs.length} open seats`;
+    document.getElementById('summary').textContent = `${botObjs.length} bots · ${c.working} working · ${c.idle} idle${c.problem ? ` · ${c.problem} problem` : ''} · ${deskSlots.filter((d) => !d.groupOnly).length - botObjs.filter((o) => !o.slot.groupOnly).length} open seats`;
   }
   const keyOf = (b) => b.id || b.name;
   const txt = (it) => (typeof it === 'string' ? it : it.text);
@@ -3308,15 +3531,63 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   let toastTimer = null;
   function toast(msg) { toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 5000); }
   // live sync: poll status.json when served over http(s); file:// keeps the embedded snapshot
-  const liveEl = document.getElementById('live');
+  const liveBox = document.getElementById('live'); liveBox.textContent = '';
+  const liveEl = document.createElement('span'); liveEl.textContent = 'Live sync…'; liveBox.appendChild(liveEl);
+  wxEl = document.createElement('span'); wxEl.className = 'wx'; wxEl.style.marginLeft = '5px'; liveBox.appendChild(wxEl);
+  Object.defineProperty(liveEl, 'className', { set: (v) => { liveBox.className = v; }, get: () => liveBox.className });
   if (location.protocol.startsWith('http')) {
     const poll = async () => {
       try { const r = await fetch('status.json?ts=' + Date.now(), { cache: 'no-store' }); if (!r.ok) throw new Error(r.status); const nd = await r.json();
-        const res = applyStatus(nd); liveEl.textContent = 'Live sync on'; liveEl.title = 'Checked status.json at ' + fmtCT(new Date().toISOString()); liveEl.className = 'live on'; return res;
+        const res = applyStatus(nd); refreshAvail(); liveEl.textContent = 'Live sync on · updated ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); liveEl.title = 'Checked status.json at ' + fmtCT(new Date().toISOString()); liveEl.className = 'live on'; return res;
       } catch (e) { liveEl.textContent = 'Live sync: no status.json'; liveEl.className = 'live off'; }
     };
-    poll(); setInterval(poll, 20000);
+    poll(); setInterval(poll, 30000);
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') poll(); });
+    window.__bothq.poll = poll;
   } else { liveEl.textContent = 'Live sync off · file snapshot'; liveEl.title = 'Opened from a file, so the page shows the embedded snapshot. Serve the folder over http to auto-refresh from status.json.'; liveEl.className = 'live off'; }
+
+  refreshAvail(); setInterval(refreshAvail, 30000); // ages tick on even when status.json is unchanged / file://
+
+  // ---------- office sound (WebAudio, generated; silent until the first tap/click/key) ----------
+  const SND = { ctx: null, on: localStorage.getItem('bothq.sound') !== 'off', master: null, chimes: 0, clicks: 0 };
+  function sndInit() {
+    if (SND.ctx) return; const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    try {
+      const ctx = SND.ctx = new AC(); const m = SND.master = ctx.createGain(); m.gain.value = 0; m.connect(ctx.destination);
+      const len = ctx.sampleRate * 4, buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0); let last = 0;
+      for (let i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last * 3.2; } // brown noise = soft air / HVAC
+      const src = ctx.createBufferSource(); src.buffer = buf; src.loop = true; const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 380;
+      const ag = ctx.createGain(); ag.gain.value = 0.07; src.connect(lp); lp.connect(ag); ag.connect(m); src.start();
+      [[55, 0.006], [110, 0.0035]].forEach(([f, v]) => { const os = ctx.createOscillator(); os.frequency.value = f; const g = ctx.createGain(); g.gain.value = v; os.connect(g); g.connect(m); os.start(); }); // gentle hum
+      const cb = ctx.createBuffer(1, Math.round(ctx.sampleRate * 0.02), ctx.sampleRate), cd = cb.getChannelData(0); for (let i = 0; i < cd.length; i++) cd[i] = (Math.random() * 2 - 1) * Math.exp(-i / (cd.length * 0.12));
+      SND.clickBuf = cb; SND.hp = ctx.createBiquadFilter(); SND.hp.type = 'highpass'; SND.hp.frequency.value = 2200; SND.hp.connect(m);
+      SND.chimeOut = ctx.createGain(); SND.chimeOut.gain.value = 1; SND.chimeOut.connect(ctx.destination);
+    } catch (e) { SND.ctx = null; }
+  }
+  function sndApply() { if (!SND.ctx) return; const on = SND.on && document.visibilityState !== 'hidden'; SND.master.gain.setTargetAtTime(on ? 0.6 : 0, SND.ctx.currentTime, 0.5); }
+  function sndUnlock() { sndInit(); if (!SND.ctx) return; if (SND.ctx.state !== 'running' && SND.on) SND.ctx.resume().catch(() => {}); sndApply(); }
+  ['pointerdown', 'touchend', 'click', 'keydown'].forEach((ev) => window.addEventListener(ev, sndUnlock, { passive: true, capture: true }));
+  document.addEventListener('visibilitychange', sndApply);
+  setInterval(() => { // very faint, occasional keyboard clicks
+    const c = SND.ctx; if (!c || !SND.on || c.state !== 'running' || !ambient || Math.random() > 0.1) return;
+    const n = 3 + Math.floor(Math.random() * 7); let at = c.currentTime + 0.05;
+    for (let i = 0; i < n; i++) { const b = c.createBufferSource(); b.buffer = SND.clickBuf; b.playbackRate.value = 0.8 + Math.random() * 0.5; const g = c.createGain(); g.gain.value = 0.02 + Math.random() * 0.015;
+      b.connect(g); g.connect(SND.hp); b.start(at); at += 0.07 + Math.random() * 0.11; SND.clicks++; }
+  }, 900);
+  function playChime() { // soft two-note chime right before a bot speaks
+    const c = SND.ctx; if (!c || !SND.on || c.state !== 'running') return false;
+    [[784, 0], [1047, 0.13]].forEach(([f, dt0]) => { const os = c.createOscillator(); os.type = 'sine'; os.frequency.value = f; const g = c.createGain(); const t0 = c.currentTime + dt0;
+      g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(0.07, t0 + 0.012); g.gain.exponentialRampToValueAtTime(0.0008, t0 + 0.55); os.connect(g); g.connect(SND.chimeOut); os.start(t0); os.stop(t0 + 0.6); });
+    SND.chimes++; return true;
+  }
+  { const row = document.getElementById('hudrow'); const btn = document.createElement('button'); btn.id = 'sndbtn'; btn.type = 'button';
+    const ICON_ON = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" stroke="none"/><path d="M16 9.5a3.5 3.5 0 0 1 0 5M18.5 7a7 7 0 0 1 0 10"/></svg>';
+    const ICON_OFF = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" stroke="none"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></svg>';
+    const paint = () => { btn.innerHTML = SND.on ? ICON_ON : ICON_OFF; btn.title = SND.on ? 'Office sound on (starts after your first tap) · click to mute' : 'Office sound off · click to turn on'; btn.setAttribute('aria-label', btn.title); btn.classList.toggle('off', !SND.on); };
+    btn.addEventListener('click', () => { SND.on = !SND.on; try { localStorage.setItem('bothq.sound', SND.on ? 'on' : 'off'); } catch (e) {} sndUnlock(); paint(); });
+    paint(); row.appendChild(btn); }
+  window.__bothq.sound = () => ({ on: SND.on, state: SND.ctx ? SND.ctx.state : 'none', chimes: SND.chimes, clicks: SND.clicks });
+  window.__bothq.avail = () => botObjs.map((o) => [o.data.name, o.avail && o.avail.text]);
 
   // ---------- ambient toggle ----------
   const ambEl = document.getElementById('ambient');
@@ -3421,6 +3692,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       try {
         // iOS: cancel() immediately followed by speak() silences the next utterance -> cancel, then speak after a short gap
         if (synth.speaking || synth.pending) { synth.cancel(); delay = 150; }
+        if (playChime()) delay = Math.max(delay, 250); // chime first, then the voice
         const spoken = text.replace(/\bCT\b/g, 'Central Time').replace(/\.xlsx\b/gi, ' spreadsheet').replace(/_/g, ' ').replace(/\bH-1B\b/g, 'H 1 B');
         const u = new SpeechSynthesisUtterance(spoken); const vp = voiceFor(o);
         const live = vp.voice && (synth.getVoices() || []).find((x) => x.name === vp.voice.name && x.lang === vp.voice.lang); // chosen voice must still exist, else system default
@@ -3557,41 +3829,80 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     walk: (name, k = 0) => { const o = botObjs.find((x) => x.data.name === name); if (o && o.routes && o.mode === 'sit') startRoute(o, o.routes.routes[k].map((w) => Object.assign({}, w, { p: w.p.clone() }))); },
     act: (name, a) => { const o = botObjs.find((x) => x.data.name === name); o.act = a; o.actUntil = simT + 5; },
     drone: () => { droneFlightStart = simT; }, teams: () => teams.map((t) => ({ task: t.task, members: t.members.map((m) => m.name), sign: !!t.sign, cx: t.group.position.x, cz: t.group.position.z, w: t.w })), plan: () => PLAN.sig, regroup,
+    weather: (st) => { wx.forced = st && WX[st] ? st : null; if (st && WX[st]) { wx.state = st; Object.assign(wx.cur, WX[st]); } return wx.state; }, wx: () => Object.assign({ state: wx.state, icon: weatherIcon() }, wx.cur),
     spoken: [], tier: TIER, cards, setAmbient: (v) => { ambEl.checked = v; ambEl.dispatchEvent(new Event('change')); }, state: () => botObjs.map((o) => ({ n: o.data.name, mode: o.mode, act: o.act, speaking: o.speaking })) });
 
-  // ---------- hide/show toggles (handle stays in the same spot; state remembered per bar) ----------
+  // ---------- hide/show toggles ----------
+  // Each bar has an arrow handle that never moves (same spot) and an icon that rides on the bar's corner while it is
+  // open and pins to the nearest screen edge while it is hidden. Both flip the same state (saved per bar).
   (() => {
-    const all = [];
-    function makeToggle(elId, btnId, key, name, spot, extraTrigger) {
+    const all = [], icons = [];
+    const ICON = {
+      hud: '<svg viewBox="0 0 16 16"><path d="M8 1.6 14.4 8 8 14.4 1.6 8z" fill="currentColor"/></svg>',
+      voice: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
+      legend: '<svg viewBox="0 0 16 16"><circle cx="3.5" cy="8" r="2.2" fill="#34d46a"/><circle cx="8" cy="8" r="2.2" fill="#3b8cff"/><circle cx="12.5" cy="8" r="2.2" fill="#ff4d4d"/></svg>',
+    };
+    const css = document.createElement('style');
+    css.textContent = `.tgicon{position:fixed;z-index:31;width:30px;height:30px;padding:0;margin:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+      background:rgba(255,253,249,0.94);border:1px solid rgba(90,70,50,0.16);box-shadow:0 3px 12px rgba(60,40,20,0.16);color:#c0663f;touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;transition:left .28s ease, top .28s ease, opacity .2s ease, transform .15s ease}
+      .tgicon svg{width:15px;height:15px;pointer-events:none}.tgicon:active{transform:scale(.92)}.tgicon.off{color:#7a6e63;opacity:.92}.tgicon.gone{display:none}
+      .tgicon[data-k=hud]{color:#e08a3a}`;
+    document.head.appendChild(css);
+    const sa = () => { const cs = getComputedStyle(document.documentElement); const v = (n) => parseFloat(cs.getPropertyValue(n)) || 0; return { t: v('--sat'), r: v('--sar'), b: v('--sab'), l: v('--sal') }; };
+    const mobileSheet = () => document.body.classList.contains('inspecting') && window.innerWidth <= 700;
+    function makeToggle(k, elId, btnId, key, name, spot, openSpot, pinSpot, extraTrigger) {
       const el = document.getElementById(elId), btn = document.getElementById(btnId); if (!el || !btn) return;
-      let hidden = false; try { hidden = localStorage.getItem(key) === '1'; } catch (e) {}
-      const place = () => { // measure the bar without its hide offset, then pin the handle to it
-        const was = el.classList.contains('tg-hidden'); el.style.transition = 'none'; if (was) el.classList.remove('tg-hidden');
-        const rc = el.getBoundingClientRect(), shown = getComputedStyle(el).display !== 'none';
-        if (was) el.classList.add('tg-hidden'); void el.offsetWidth; el.style.transition = '';
-        btn.classList.toggle('gone', !shown || !rc.width); if (!shown || !rc.width) return;
-        const pt = spot(rc); btn.style.left = Math.round(pt[0]) + 'px'; btn.style.top = Math.round(pt[1]) + 'px';
+      let hidden = false, lastRc = null; try { hidden = localStorage.getItem(key) === '1'; } catch (e) {}
+      const ic = document.createElement('button'); ic.type = 'button'; ic.className = 'tgicon'; ic.dataset.k = k; ic.innerHTML = ICON[k]; document.body.appendChild(ic);
+      const measure = (force) => { // bar rect without its hide offset; while hidden reuse the last one unless forced (resize)
+        if (!hidden) { const rc = el.getBoundingClientRect(); if (getComputedStyle(el).display === 'none' || !rc.width) return null; lastRc = rc; return rc; }
+        if (lastRc && !force) return lastRc;
+        el.style.transition = 'none'; el.classList.remove('tg-hidden'); const rc = el.getBoundingClientRect(), shown = getComputedStyle(el).display !== 'none';
+        el.classList.add('tg-hidden'); void el.offsetWidth; el.style.transition = ''; if (!shown || !rc.width) return null; lastRc = rc; return rc;
       };
-      const apply = () => { el.classList.toggle('tg-hidden', hidden); btn.classList.toggle('off', hidden); const l = (hidden ? 'Show ' : 'Hide ') + name;
-        btn.setAttribute('aria-label', l); btn.title = l; btn.setAttribute('aria-expanded', String(!hidden));
+      const put = (b, pt) => { b.style.left = Math.round(pt[0]) + 'px'; b.style.top = Math.round(pt[1]) + 'px'; };
+      const place = (force) => {
+        const rc = measure(force); btn.classList.toggle('gone', !rc); if (rc) put(btn, spot(rc));
+        const sheetHides = mobileSheet() && k !== 'voice'; ic.classList.toggle('gone', !rc || sheetHides);
+        if (rc) { const pt = hidden ? pinSpot(rc, sa()) : openSpot(rc, sa()); ic.__pt = pt; put(ic, pt); }
+      };
+      const apply = () => { el.classList.toggle('tg-hidden', hidden); btn.classList.toggle('off', hidden); ic.classList.toggle('off', hidden);
+        const l = (hidden ? 'Show ' : 'Hide ') + name; [btn, ic].forEach((b) => { b.setAttribute('aria-label', l); b.title = l; b.setAttribute('aria-expanded', String(!hidden)); });
         if (hidden && el.contains(document.activeElement)) document.activeElement.blur(); };
-      const toggle = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } hidden = !hidden; apply(); try { localStorage.setItem(key, hidden ? '1' : '0'); } catch (er) {} };
-      btn.addEventListener('click', toggle); if (extraTrigger) extraTrigger.addEventListener('click', toggle);
-      ['pointerdown', 'touchstart'].forEach((ev) => btn.addEventListener(ev, (e) => e.stopPropagation(), { passive: true }));
-      apply(); if (window.ResizeObserver) new ResizeObserver(place).observe(el);
-      all.push(place); return { toggle: () => toggle(), hidden: () => hidden };
+      const toggle = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } hidden = !hidden; apply(); place(); resolve();
+        if (!hidden) setTimeout(() => { place(); resolve(); }, 320); try { localStorage.setItem(key, hidden ? '1' : '0'); } catch (er) {} };
+      [btn, ic].forEach((b) => { b.addEventListener('click', toggle); ['pointerdown', 'touchstart'].forEach((ev) => b.addEventListener(ev, (e) => e.stopPropagation(), { passive: true })); });
+      if (extraTrigger) extraTrigger.addEventListener('click', toggle);
+      apply(); if (window.ResizeObserver) new ResizeObserver(() => { if (!hidden) { place(); resolve(); } }).observe(el);
+      all.push(place); icons.push(ic); return { toggle: () => toggle(), hidden: () => hidden, icon: ic };
     }
-    const placeAll = () => all.forEach((f) => f());
+    // keep icons from overlapping each other or the arrow handles (nudge sideways)
+    const resolve = () => {
+      const vis = icons.filter((i) => !i.classList.contains('gone') && i.__pt);
+      const blocks = [...document.querySelectorAll('.tgbtn:not(.gone)')].map((b) => b.getBoundingClientRect());
+      vis.forEach((ic, i) => { let [x, y] = ic.__pt; for (let n = 0; n < 6; n++) {
+        const hit = [...vis.slice(0, i).map((o) => ({ x: o.__pt[0], y: o.__pt[1], w: 30, h: 30 })), ...blocks.map((r) => ({ x: r.left, y: r.top, w: r.width, h: r.height }))]
+          .find((r) => x < r.x + r.w + 4 && x + 30 + 4 > r.x && y < r.y + r.h + 4 && y + 30 + 4 > r.y);
+        if (!hit) break; x = Math.min(window.innerWidth - 36, hit.x + hit.w + 6); }
+        ic.__pt = [x, y]; ic.style.left = Math.round(x) + 'px'; ic.style.top = Math.round(y) + 'px'; });
+    };
+    const placeAll = (force) => { all.forEach((f) => f(force === true)); resolve(); };
+    const W = () => window.innerWidth, H = () => window.innerHeight;
     const hudEl = document.getElementById('hud');
     const api = {
-      hud: makeToggle('hud', 'hudtoggle', 'bothq.hudHidden', 'header', (rc) => [rc.right - 38, rc.top + 10], hudEl && hudEl.querySelector('h1')),
-      voice: makeToggle('voice', 'voicetoggle', 'bothq.voiceHidden', 'voice bar', (rc) => [rc.right - 18, Math.max(2, rc.top - 12)]),
-      legend: makeToggle('legend', 'legendtoggle', 'bothq.legendHidden', 'status bar', (rc) => [rc.right - 18, rc.top - 12]),
+      hud: makeToggle('hud', 'hud', 'hudtoggle', 'bothq.hudHidden', 'header', (rc) => [rc.right - 38, rc.top + 10],
+        (rc) => [rc.left - 8, rc.bottom - 16], (rc, s) => [s.l + 8, s.t + 8], hudEl && hudEl.querySelector('h1')),
+      voice: makeToggle('voice', 'voice', 'voicetoggle', 'bothq.voiceHidden', 'voice bar', (rc) => [rc.right - 18, Math.max(2, rc.top - 12)],
+        (rc, s) => [rc.left - 8, Math.max(s.t + 2, rc.top - 16)],
+        (rc, s) => [Math.min(W() - s.r - 38, Math.max(s.l + 8, rc.left + rc.width / 2 - 15)), rc.top + rc.height / 2 < H() / 2 ? s.t + 8 : H() - s.b - 38]),
+      legend: makeToggle('legend', 'legend', 'legendtoggle', 'bothq.legendHidden', 'status bar', (rc) => [rc.right - 18, rc.top - 12],
+        (rc) => [rc.left - 8, rc.top - 16], (rc, s) => [s.l + 8, H() - s.b - 38]),
     };
-    placeAll(); requestAnimationFrame(placeAll); setTimeout(placeAll, 600); setTimeout(placeAll, 2500);
-    window.addEventListener('resize', () => setTimeout(placeAll, 60)); window.addEventListener('orientationchange', () => setTimeout(placeAll, 300));
+    placeAll(); requestAnimationFrame(() => placeAll()); setTimeout(() => placeAll(), 600); setTimeout(() => placeAll(), 2500);
+    window.addEventListener('resize', () => setTimeout(() => placeAll(true), 60)); window.addEventListener('orientationchange', () => setTimeout(() => placeAll(true), 300));
     // bars move when a bot panel opens/closes (body.inspecting): re-pin after their slide
-    if (window.MutationObserver) new MutationObserver(() => { placeAll(); setTimeout(placeAll, 500); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    if (window.MutationObserver) new MutationObserver(() => { placeAll(true); setTimeout(() => placeAll(true), 500); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
     window.__bothq.toggles = api; window.__bothq.hud = api.hud;
   })();
 
@@ -3613,6 +3924,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       // status light pulse
       const pulse = 0.75 + 0.25 * Math.sin(t * (working ? 5 : 2) + o.phase);
       r.halo.material.opacity = pulse; r.halo.scale.setScalar(0.32 + 0.1 * pulse);
+      const ra = simT - o.react; if (ra >= 0 && ra < 1.5) { const on = Math.sin(ra * 22) > 0; r.halo.material.opacity = on ? 1 : 0.2; r.halo.scale.setScalar(on ? 0.62 : 0.3);
+        r.body.position.y += Math.abs(Math.sin(ra * 8.5)) * 0.07 * (1 - ra / 1.5); } // antenna blink + small bounce
       r.chestLight.material.color.copy(tmpC.set(o.data.color || '#e0a83e')).lerp(new THREE.Color(0xffffff), 0.3 + 0.3 * Math.sin(tt * (working ? 6 : 1.5)));
       // hover / select glow
       const target = (o === hovered ? 1 : 0) + (o === selected ? 0.6 : 0);
