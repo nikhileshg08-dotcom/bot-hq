@@ -123,7 +123,7 @@
   /* ---------- hide/show toggles: header (#hud), voice bar (#voice), status legend (#legend) ---------- */
   #hud, #legend { transition:transform .28s ease, opacity .22s ease; }
   #voice { transition:left .45s, transform .45s, translate .28s ease, opacity .22s ease; }
-  #hud h1 { cursor:pointer; -webkit-user-select:none; user-select:none; padding-right:30px; }
+  #hud h1 { cursor:default; -webkit-user-select:none; user-select:none; }
   #hud.tg-hidden { transform:translateY(calc(-100% - 40px)); }
   #voice.tg-hidden { translate:0 calc(100% + 40px); }
   #hud.tg-hidden, #voice.tg-hidden, #legend.tg-hidden { opacity:0; pointer-events:none; }
@@ -138,6 +138,7 @@
   .tgbtn.flip svg { transform:rotate(180deg); }
   .tgbtn.off.flip svg { transform:none; } .tgbtn.off:not(.flip) svg { transform:rotate(180deg); }
   .tgbtn.gone { display:none; }
+  #hudtoggle, #voicetoggle, #legendtoggle { display:none !important; pointer-events:none !important; } /* arrow handles hidden; the icons are the visible toggles */
 </style>
 <!-- Import map: CDN fallback, used only if the inlined copy below fails to load -->
 <script type="importmap">
@@ -2263,6 +2264,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   }
   // availability from real status.json timestamps (last_active); no timestamp -> Unknown
   const AVC = { active: '#34d46a', recent: '#3fa9f5', away: '#9a9085', problem: '#e5484d', unknown: '#b5ada3' };
+  // any pending item or a current task = busy: stays seated working, never roams (Manny's patrol is separate)
+  const hasTask = (b) => (b.pending || []).length > 0 || !!(b.current_task && String(b.current_task).trim());
   function availOf(b) {
     if ((b.status || '').toLowerCase() === 'problem') return { k: 'problem', text: 'Problem', css: AVC.problem };
     const ms = Date.parse(b.last_active || ''); if (!Number.isFinite(ms)) return { k: 'unknown', text: 'Unknown', css: AVC.unknown };
@@ -2557,6 +2560,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const post = mesh(new THREE.CylinderGeometry(0.025, 0.025, 2.2, 8), M(P.charcoal), L / 2 + 0.15, 1.1, twoSided ? 0 : -0.35, g);
     const sign = team ? nameplate(task, 'Team: ' + members.map((b) => b.name).join(' · '), css) : nameplate('Group table', 'Open for a team', css, true);
     sign.position.set(0, 2.45, twoSided ? 0 : -0.35); sign.scale.multiplyScalar(1.2); g.add(sign);
+    if (team) { const fl = labelSprite(task, null, css); fl.scale.set(0.2, 0.05, 1); fl.position.set(0, 3.35, twoSided ? 0 : -0.35); g.add(fl); team.floatLabel = fl; }
     if (team) { sign.name = 'teamSign'; sign.userData.team = task; sign.userData.bot = members[0]; clickables.push(sign); team.sign = sign; slots.forEach((sl) => team.slots.push(sl)); }
     return team;
   }
@@ -2596,11 +2600,11 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   function planLayout(bots) { // 2 rows x 4 cells; a team takes adjacent cells in one row
     const non = bots.filter((b) => !b.manager); const groups = new Map();
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); if (!k) return; if (!groups.has(k)) groups.set(k, { task: groupKey(b), members: [] }); groups.get(k).members.push(b); });
-    const units = [], seen = new Set();
+    const units = [], seen = new Set(), teamUnits = [];
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); const gr = k && groups.get(k);
-      if (gr && gr.members.length >= 2) { if (!seen.has(k)) { seen.add(k); units.push({ team: gr.task, members: gr.members.slice() }); } }
+      if (gr && gr.members.length >= 2) { units.push({ members: [b], home: true }); if (!seen.has(k)) { seen.add(k); teamUnits.push({ team: gr.task, members: gr.members.slice() }); } }
       else units.push({ members: [b] }); });
-    const occ = rowZ.map(() => cabinXs.map(() => false)); const placed = [], overflow = [], floor = [];
+    const occ = rowZ.map(() => cabinXs.map(() => false)); const placed = [], overflow = [], floor = teamUnits.slice(); // teams -> group tables
     const cellsFor = (u) => (u.team ? Math.max(2, Math.ceil((benchLen(Math.max(GB_MIN, u.members.length)) + 1.4) / 6)) : 1);
     // teams first so they get contiguous cells, then solos fill in reading order
     for (const u of [...units.filter((u) => u.team), ...units.filter((u) => !u.team)]) {
@@ -2621,7 +2625,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     if (pl.u.team) {
       const x0 = cabinXs[pl.c], x1 = cabinXs[pl.c + nn - 1];
       teams.push(teamCabin((x0 + x1) / 2, z, (x1 - x0) + CAB_W, CAB_D, pl.u.team, pl.u.members));
-    } else { const sl = cabin(cabinXs[pl.c], z, CAB_W, CAB_D); sl.preBot = pl.u.members[0]; }
+    } else { const sl = cabin(cabinXs[pl.c], z, CAB_W, CAB_D); if (pl.u.home) sl.homeBot = pl.u.members[0]; else sl.preBot = pl.u.members[0]; } // homeBot: own cabin kept while at a group table
   }
   PLAN.occ.forEach((row, r) => row.forEach((used, c) => { if (!used) cabin(cabinXs[c], rowZ[r], CAB_W, CAB_D); }));
   { // floor group tables: teams that didn't fit a cabin row first, then empty spares (always at least 2 tables)
@@ -2731,7 +2735,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   for (const b of bots.filter((b) => b.manager)) { const s = managerSlots.find((x) => !assigned.has(x)); if (s) { assigned.set(s, b); queue.splice(queue.indexOf(b), 1); } }
   for (const s of regularSlots) if (s.preBot && queue.includes(s.preBot)) { assigned.set(s, s.preBot); queue.splice(queue.indexOf(s.preBot), 1); }
   for (const b of queue) {
-    let s = regularSlots.find((x) => !assigned.has(x) && !x.preBot && !x.groupOnly);
+    let s = regularSlots.find((x) => !assigned.has(x) && !x.preBot && !x.groupOnly && !x.homeBot);
     if (!s) { // grow: add extra open desks in a new row
       const n = deskSlots.filter((d) => d.type === 'open').length; const col = n % 4, row = Math.floor(n / 4);
       s = openDesk(-2.5 + col * 3, 1.6 + row * 2.6, 0); regularSlots.push(s);
@@ -2742,25 +2746,26 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   const botObjs = [];
   const screens = [];
   deskSlots.forEach((slot, i) => {
-    const b = assigned.get(slot);
-    const accentCss = b ? (b.color || '#e0a83e') : '#c9c1b6';
+    const b = assigned.get(slot), own = b || slot.homeBot;
+    const accentCss = own ? (own.color || '#e0a83e') : '#c9c1b6';
     const accentCol = new THREE.Color(accentCss);
     // chair
-    const ch = chair(slot.chairParent, slot.chairLocal.x, slot.chairLocal.z, 0, b ? 0x3c4552 : 0x8b8f96); slot.chair = ch;
+    const ch = chair(slot.chairParent, slot.chairLocal.x, slot.chairLocal.z, 0, own ? 0x3c4552 : 0x8b8f96); slot.chair = ch;
     if (slot.wallBuild) {
-      slot.wallBuild(accentCss, b ? accentCol : new THREE.Color(0xd8d2c8));
-      if (!slot.noLamp) lamp(slot.ws, (slot.dw / 2) - 0.55, -0.22, b ? accentCol : new THREE.Color(0xb9b2a8));
-      shelf(slot.group, slot.shelfPos[0], slot.shelfPos[1], slot.shelfPos[2], slot.shelfPos[3], 0, b ? accentCol : new THREE.Color(0xcfc8bd));
+      slot.wallBuild(accentCss, own ? accentCol : new THREE.Color(0xd8d2c8));
+      if (!slot.noLamp) lamp(slot.ws, (slot.dw / 2) - 0.55, -0.22, own ? accentCol : new THREE.Color(0xb9b2a8));
+      shelf(slot.group, slot.shelfPos[0], slot.shelfPos[1], slot.shelfPos[2], slot.shelfPos[3], 0, own ? accentCol : new THREE.Color(0xcfc8bd));
       if (slot.team) { if (b) { /* team sign already built */ } } else {
-      const plate = nameplate(b ? b.name : 'Open seat', b ? (b.role || '') : 'Available for a new bot', accentCss, !b);
+      const plate = nameplate(own ? own.name : 'Open seat', own ? (own.role || '') : 'Available for a new bot', accentCss, !own);
       plate.position.copy(slot.plateAnchor); slot.group.add(plate);
       if (b) { plate.userData.bot = b; slot.plate = plate; }
-      if (!b) { const lab = labelSprite('Open seat', null, null, true); lab.position.copy(slot.seat).add(new THREE.Vector3(0, 1.0, 0)); scene.add(lab); }
+      if (!b && own) { plate.userData.bot = own; clickables.push(plate); } // away at a group table: plate still opens the bot
+      if (!own) { const lab = labelSprite('Open seat', null, null, true); lab.position.copy(slot.seat).add(new THREE.Vector3(0, 1.0, 0)); scene.add(lab); }
       }
     } else if (!b && !slot.noLabel) {
       const lab = labelSprite('Open seat', null, null, true); lab.position.copy(slot.seat).add(new THREE.Vector3(0, 1.3, 0)); scene.add(lab);
     }
-    slot.monitors.forEach((m, k) => screens.push({ m, bot: b, k, phase: i * 13 + k * 7, lines: [] }));
+    slot.monitors.forEach((m, k) => screens.push({ m, bot: own, k, phase: i * 13 + k * 7, lines: [] }));
     if (!b) return;
     const r = robot(b, slot.type === 'manager' ? 1.12 : 1);
     r.root.position.copy(slot.seat); r.root.position.y = 0;
@@ -2871,7 +2876,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   document.getElementById('title').textContent = "Nikki's Company";
   document.getElementById('snap').textContent = 'Snapshot taken at ' + (fmtCT(DATA.snapshot_at) || 'unknown time');
   const counts = { working: 0, idle: 0, problem: 0, unknown: 0 }; bots.forEach((b) => counts[(b.status || 'unknown').toLowerCase()] = (counts[(b.status || 'unknown').toLowerCase()] || 0) + 1);
-  const openCount = deskSlots.length - assigned.size;
+  const openCount = deskSlots.filter((x) => !assigned.has(x) && !x.homeBot && !x.groupOnly).length;
   document.getElementById('summary').textContent = `${bots.length} bots · ${counts.working || 0} working · ${counts.idle || 0} idle · ${openCount} open seats`;
   const chips = document.getElementById('chips');
   botObjs.forEach((o) => { const c = document.createElement('button'); c.className = 'chip'; c.innerHTML = `<span style="background:${st(o.data.status).css}"></span>${esc(o.data.name)}`; c.style.setProperty('--acc', o.data.color); c.onclick = () => select(o); chips.appendChild(c); o.chip = c; });
@@ -3066,12 +3071,14 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   }
 
   function behave(o, dt, t) {
-    const r = o.r, p = o.tgt, working = o.data.status === 'working' && !o.away, tt = t + o.phase;
+    const r = o.r, p = o.tgt, working = (o.data.status === 'working' || o.hasTask) && !o.away, tt = t + o.phase;
     // --- schedule new things while seated ---
     if (o.mode === 'sit' && ambient && !o.speaking && o !== selected) {
-      if (t > o.nextRoam && !regrouping) { // occasional short roam, then back to the seat (away bots step out more)
+      const roamFull = !o.data.manager && botObjs.filter((x) => !x.data.manager && x.mode !== 'sit' && !x.holdAtEnd).length >= 2; // max two roamers at once
+      if (roamFull && (t > o.nextRoam || (o.routes && t > o.nextWalk)) && !o.hasTask) { o.nextRoam = Math.max(o.nextRoam, t + rand(8, 25)); o.nextWalk = Math.max(o.nextWalk, t + rand(8, 25)); } // wait for a free slot
+      else if (t > o.nextRoam && !regrouping && !o.hasTask) { // occasional short roam, then back to the seat (away bots step out more)
         startRoute(o, roamRoute(o)); o.nextRoam = t + rand(90, 170) * IDLE_SLOW * (working ? 1.4 : 1) * (o.away ? 0.5 : 1); o.nextWalk = Math.max(o.nextWalk, t + 30);
-      } else if (t > o.nextWalk && o.routes) {
+      } else if (t > o.nextWalk && o.routes && (o.data.manager || !o.hasTask)) {
         o.walkCount++;
         if (o.data.manager && o.walkCount % 2 === 1) startRoute(o, patrolRoute(o), true);
         else startRoute(o, o.routes.routes[Math.floor(Math.random() * o.routes.routes.length)].map((w) => Object.assign({}, w, { p: w.p.clone() })));
@@ -3382,15 +3389,30 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const pl = new THREE.Mesh(geo, m); pl.position.set(x, h / 2 - 0.6, z); pl.rotation.y = ry; pl.renderOrder = -2; outside.add(pl); skyMats.push(geo); return pl;
   }
   skyPanel(FW + 12, 11, 0, -FD / 2 - 4.2, 0); skyPanel(FD + 12, 11, -FW / 2 - 4.2, 0, Math.PI / 2);
-  const cloudT = canvasTex(256, 128, (g) => { for (let i = 0; i < 9; i++) { const x = 40 + Math.random() * 176, y = 50 + Math.random() * 40, r = 22 + Math.random() * 26;
-    const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, 'rgba(255,255,255,0.85)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 256, 128); } });
+  // fuller, puffier, multi-lobed cloud textures (a few variants), spread across the sky behind both window walls
+  const cloudTex = [0, 1, 2, 3].map((v) => canvasTex(256, 128, (g) => {
+    const lobes = 7 + v * 2, base = 86;
+    for (let i = 0; i < lobes; i++) { const u = (i + 0.5) / lobes, x = 30 + u * 196 + (Math.random() - 0.5) * 14, r = 18 + Math.sin(u * Math.PI) * (22 + Math.random() * 14), y = base - Math.sin(u * Math.PI) * (12 + Math.random() * 12);
+      const gr = g.createRadialGradient(x, y - r * 0.15, 0, x, y, r); gr.addColorStop(0, 'rgba(255,255,255,0.98)'); gr.addColorStop(0.55, 'rgba(250,250,252,0.9)'); gr.addColorStop(1, 'rgba(235,238,244,0)');
+      g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill(); }
+    g.globalCompositeOperation = 'source-atop'; g.fillStyle = 'rgba(200,206,216,0.35)'; g.fillRect(0, 94, 256, 34); g.globalCompositeOperation = 'source-over'; // soft grey underside
+  }));
   const clouds = [];
-  for (let i = 0; i < Math.round(12 * WXN) + 3; i++) {
-    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: cloudT.t, transparent: true, depthWrite: false, fog: false, opacity: 0 }));
-    const back = i % 3 !== 0; const sc = 5 + Math.random() * 5; sp.scale.set(sc, sc * 0.45, 1);
-    sp.position.set(back ? rand(-FW / 2, FW / 2) : -FW / 2 - 3.4, rand(3.6, 7.5), back ? -FD / 2 - 3.4 : rand(-FD / 2, FD / 2)); sp.renderOrder = -1;
-    outside.add(sp); clouds.push({ sp, back, v: rand(0.15, 0.4), base: rand(0.55, 1) });
+  const NCLOUD = Math.round(24 * WXN) + 6; // ~double the old count
+  for (let i = 0; i < NCLOUD; i++) {
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: cloudTex[i % 4].t, transparent: true, depthWrite: false, fog: false, opacity: 0.7 }));
+    const back = i % 3 !== 0; const sc = rand(5.5, 10.5); sp.scale.set(sc, sc * 0.5, 1);
+    const k = back ? (Math.floor(i * 2 / 3) + Math.random()) / Math.ceil(NCLOUD * 2 / 3) : (Math.floor(i / 3) + Math.random()) / Math.ceil(NCLOUD / 3); // even spread along each wall
+    sp.position.set(back ? -FW / 2 - 6 + k * (FW + 12) : -FW / 2 - 3.4, rand(2.6, 9.0), back ? -FD / 2 - 3.4 : -FD / 2 - 6 + k * (FD + 12)); sp.renderOrder = -1;
+    outside.add(sp); clouds.push({ sp, back, v: rand(0.15, 0.4), base: rand(0.85, 1) });
   }
+  // drifting cloud shadows on the floor (daytime only)
+  const shadeT = canvasTex(512, 512, (g, w, h) => { g.clearRect(0, 0, w, h);
+    for (let i = 0; i < 14; i++) { const x = Math.random() * w, y = Math.random() * h, r = 60 + Math.random() * 110;
+      for (const dx of [-w, 0, w]) for (const dy of [-h, 0, h]) { const gr = g.createRadialGradient(x + dx, y + dy, 0, x + dx, y + dy, r); gr.addColorStop(0, 'rgba(20,28,40,0.85)'); gr.addColorStop(1, 'rgba(20,28,40,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); } } });
+  shadeT.t.wrapS = shadeT.t.wrapT = THREE.RepeatWrapping; shadeT.t.repeat.set(1.2, 0.9);
+  const shadeMat = new THREE.MeshBasicMaterial({ map: shadeT.t, transparent: true, opacity: 0, depthWrite: false, toneMapped: false, polygonOffset: true, polygonOffsetFactor: -2 });
+  const shade = mesh(new THREE.PlaneGeometry(FW, FD), shadeMat, 0, 0.03, 0, scene, false, false); shade.rotation.x = -Math.PI / 2; shade.renderOrder = 1; shade.visible = false;
   const RAIN = Math.round(900 * WXN); const rainPos = new Float32Array(RAIN * 6); const rainSeed = new Float32Array(RAIN);
   const rainSpot = (i) => { const back = i % 3 !== 0; return back ? [rand(-FW / 2, FW / 2), rand(-FD / 2 - 3.6, -FD / 2 - 0.4)] : [rand(-FW / 2 - 3.6, -FW / 2 - 0.4), rand(-FD / 2, FD / 2)]; };
   for (let i = 0; i < RAIN; i++) { const [x, z] = rainSpot(i), y = rand(-0.4, 8); rainPos.set([x, y, z, x + 0.03, y - 0.38, z], i * 6); rainSeed[i] = rand(0.8, 1.25); }
@@ -3435,8 +3457,11 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     if (wx.flash) { tmpTop.lerp(WHITE, wx.flash * 0.6); tmpHor.lerp(WHITE, wx.flash * 0.5); }
     skyMats.forEach((geo) => { const a = geo.attributes.color.array; [tmpTop, tmpTop, tmpHor, tmpHor].forEach((col, i) => { a[i * 3] = col.r; a[i * 3 + 1] = col.g; a[i * 3 + 2] = col.b; }); geo.attributes.color.needsUpdate = true; });
     // clouds drift
-    clouds.forEach((cl) => { const m = cl.sp.material; m.opacity = (0.12 + 0.75 * c.cloud) * cl.base * (1 - 0.5 * c.fog); m.color.setScalar(1 - 0.45 * c.rain - 0.5 * night).lerp(WHITE, wx.flash * 0.5);
+    clouds.forEach((cl) => { const m = cl.sp.material; m.opacity = Math.min(1, (0.62 + 0.33 * c.cloud) * cl.base * (1 - 0.25 * c.fog)); // always clearly visible
+      m.color.setRGB(1 - 0.42 * c.rain - 0.42 * night, 1 - 0.42 * c.rain - 0.4 * night, 1 - 0.38 * c.rain - 0.3 * night).lerp(WHITE, wx.flash * 0.5); // moonlit grey at night
       const P = cl.sp.position; if (cl.back) { P.x += cl.v * dt; if (P.x > FW / 2 + 6) P.x = -FW / 2 - 6; } else { P.z += cl.v * dt; if (P.z > FD / 2 + 6) P.z = -FD / 2 - 6; } });
+    { const day = THREE.MathUtils.clamp((dayCur.si - 1.6) / 0.6, 0, 1); shadeMat.opacity = 0.13 * day * (0.6 + 0.4 * c.cloud) * (1 - 0.6 * c.rain); shade.visible = shadeMat.opacity > 0.005;
+      shadeT.t.offset.set((t * 0.0035) % 1, (t * 0.0012) % 1); } // soft drifting cloud shadows, daytime only
     // rain streaks outside + droplets on glass
     rain.visible = c.rain > 0.03; rainMat.opacity = 0.5 * c.rain; rainMat.color.setScalar(0.85 - 0.4 * night).lerp(WHITE, wx.flash);
     if (rain.visible && (TIER !== 'phone' || frame % 2 === 0)) { const a = rainPos, n = Math.ceil(RAIN * Math.min(1, c.rain + 0.1)), step = dt * (TIER === 'phone' ? 2 : 1);
@@ -3489,7 +3514,9 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     if (o.chip) o.chip.querySelector('span').style.background = o.s.css;
   }
   function refreshAvail() {
-    botObjs.forEach((o) => { const A = availOf(o.data); o.avail = A; o.away = A.k === 'away'; o.avTag.userData.set(A.text, A.css);
+    botObjs.forEach((o) => { o.hasTask = hasTask(o.data) || (o.slot.type === 'group' && !!o.slot.team);
+      if (o.hasTask && !o.data.manager && !o.holdAtEnd && o.route && (o.mode === 'walk' || o.mode === 'pause' || o.mode === 'rise')) routeHome(o); // got a task: straight back to the seat
+      const A = availOf(o.data); o.avail = A; o.away = A.k === 'away'; o.avTag.userData.set(A.text, A.css);
       if (A.k === 'problem') { o.r.mats.light.color.set(0xff2a2a); o.r.halo.material.color.set(0xff2a2a); } // red antenna
       else { o.r.mats.light.color.set(o.s.color); o.r.halo.material.color.set(o.s.color); } });
     if (selected) { const el = panel.querySelector('.pill.av'); if (el) { const A = selected.avail; el.style.setProperty('--c', A.css); el.innerHTML = `<span class="ld"></span>${esc(A.text)}`; } }
@@ -3497,7 +3524,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   function refreshHeader() {
     document.getElementById('snap').textContent = 'Snapshot taken at ' + (fmtCT(DATA.snapshot_at) || 'unknown time');
     const c = { working: 0, idle: 0, problem: 0, unknown: 0 }; botObjs.forEach((o) => { const k = (o.data.status || 'unknown').toLowerCase(); c[k] = (c[k] || 0) + 1; });
-    document.getElementById('summary').textContent = `${botObjs.length} bots · ${c.working} working · ${c.idle} idle${c.problem ? ` · ${c.problem} problem` : ''} · ${deskSlots.filter((d) => !d.groupOnly).length - botObjs.filter((o) => !o.slot.groupOnly).length} open seats`;
+    document.getElementById('summary').textContent = `${botObjs.length} bots · ${c.working} working · ${c.idle} idle${c.problem ? ` · ${c.problem} problem` : ''} · ${deskSlots.filter((d) => !d.groupOnly && !d.homeBot).length - botObjs.filter((o) => !o.slot.groupOnly).length} open seats`;
   }
   const keyOf = (b) => b.id || b.name;
   const txt = (it) => (typeof it === 'string' ? it : it.text);
@@ -3587,6 +3614,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     btn.addEventListener('click', () => { SND.on = !SND.on; try { localStorage.setItem('bothq.sound', SND.on ? 'on' : 'off'); } catch (e) {} sndUnlock(); paint(); });
     paint(); row.appendChild(btn); }
   window.__bothq.sound = () => ({ on: SND.on, state: SND.ctx ? SND.ctx.state : 'none', chimes: SND.chimes, clicks: SND.clicks });
+  window.__bothq.refreshAvail = refreshAvail;
+  window.__bothq.applyStatus = applyStatus; window.__bothq.plan = () => PLAN.sig;
   window.__bothq.avail = () => botObjs.map((o) => [o.data.name, o.avail && o.avail.text]);
 
   // ---------- ambient toggle ----------
@@ -3846,7 +3875,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     css.textContent = `.tgicon{position:fixed;z-index:31;width:30px;height:30px;padding:0;margin:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;
       background:rgba(255,253,249,0.94);border:1px solid rgba(90,70,50,0.16);box-shadow:0 3px 12px rgba(60,40,20,0.16);color:#c0663f;touch-action:manipulation;
       -webkit-tap-highlight-color:transparent;transition:left .28s ease, top .28s ease, opacity .2s ease, transform .15s ease}
-      .tgicon svg{width:15px;height:15px;pointer-events:none}.tgicon:active{transform:scale(.92)}.tgicon.off{color:#7a6e63;opacity:.92}.tgicon.gone{display:none}
+      .tgicon::after{content:'';position:absolute;inset:-5px;border-radius:50%}.tgicon svg{width:15px;height:15px;pointer-events:none}.tgicon:active{transform:scale(.92)}.tgicon.off{color:#7a6e63;opacity:.92}.tgicon.gone{display:none}
       .tgicon[data-k=hud]{color:#e08a3a}`;
     document.head.appendChild(css);
     const sa = () => { const cs = getComputedStyle(document.documentElement); const v = (n) => parseFloat(cs.getPropertyValue(n)) || 0; return { t: v('--sat'), r: v('--sar'), b: v('--sab'), l: v('--sal') }; };
@@ -3875,6 +3904,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       [btn, ic].forEach((b) => { b.addEventListener('click', toggle); ['pointerdown', 'touchstart'].forEach((ev) => b.addEventListener(ev, (e) => e.stopPropagation(), { passive: true })); });
       if (extraTrigger) extraTrigger.addEventListener('click', toggle);
       apply(); if (window.ResizeObserver) new ResizeObserver(() => { if (!hidden) { place(); resolve(); } }).observe(el);
+      el.addEventListener('transitionend', (e) => { if (e.target === el && !hidden) { lastRc = null; place(); resolve(); } }); // re-pin once the bar has slid back in
       all.push(place); icons.push(ic); return { toggle: () => toggle(), hidden: () => hidden, icon: ic };
     }
     // keep icons from overlapping each other or the arrow handles (nudge sideways)
@@ -3892,7 +3922,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const hudEl = document.getElementById('hud');
     const api = {
       hud: makeToggle('hud', 'hud', 'hudtoggle', 'bothq.hudHidden', 'header', (rc) => [rc.right - 38, rc.top + 10],
-        (rc) => [rc.left - 8, rc.bottom - 16], (rc, s) => [s.l + 8, s.t + 8], hudEl && hudEl.querySelector('h1')),
+        (rc) => [rc.left - 8, rc.bottom - 16], (rc, s) => [s.l + 8, s.t + 8], null), // icons are the only tap targets
       voice: makeToggle('voice', 'voice', 'voicetoggle', 'bothq.voiceHidden', 'voice bar', (rc) => [rc.right - 18, Math.max(2, rc.top - 12)],
         (rc, s) => [rc.left - 8, Math.max(s.t + 2, rc.top - 16)],
         (rc, s) => [Math.min(W() - s.r - 38, Math.max(s.l + 8, rc.left + rc.width / 2 - 15)), rc.top + rc.height / 2 < H() / 2 ? s.t + 8 : H() - s.b - 38]),
