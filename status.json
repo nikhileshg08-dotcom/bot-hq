@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T16:43:38-05:00",
+  "snapshot_at": "2026-10-26T16:57:15-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -85,8 +85,8 @@
       "role": "Job Applier",
       "color": "#7ed957",
       "status": "working",
-      "current_task": "107 submitted today (Capital One and JeffreyM excluded); Huron JR-0016998 submitted 4:40 PM CT. Fifth Third 184 skipped (already applied); Guidewire 216 and Nordstrom 189 flagged (Workday drafts saved). Next apply list in /workspace/next_queue.json; flagged items awaiting Nikhilesh in /workspace/flagged_questions.json. Dice Easy Apply paused by the daily limit.",
-      "last_active": "2026-10-26T16:41:00-05:00",
+      "current_task": "108 submitted today (Capital One and JeffreyM excluded); Cencora R2617265 submitted ~4:52 PM CT. LexisNexis 152 skipped (posting gone); Exelixis 129 and Armanino 178 flagged/held (Workday drafts saved). Next apply list in /workspace/next_queue.json; flagged items awaiting Nikhilesh in /workspace/flagged_questions.json. Dice Easy Apply paused by the daily limit.",
+      "last_active": "2026-10-26T16:53:00-05:00",
       "pending": [
         {
           "text": "58 Sky roles Not Started"
@@ -159,7 +159,7 @@
         "Went on hold for new applications at 1:34 AM CT."
       ],
       "groupTask": "H-1B Job Search",
-      "last_checkin": "2026-10-26T16:41:00-05:00",
+      "last_checkin": "2026-10-26T16:53:00-05:00",
       "working_with": []
     },
     {
@@ -292,24 +292,24 @@
       "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-26T16:41:00-05:00",
+  "latest_bot_activity": "2026-10-26T16:53:00-05:00",
   "files": {
-    "generated_at": "2026-10-26T16:43:38-05:00",
+    "generated_at": "2026-10-26T16:57:15-05:00",
     "total": 360,
     "today": 262,
     "last_24h": 277,
-    "bytes": 332411703,
+    "bytes": 332414106,
     "runs": 29,
     "runs_today": 22,
     "by_bot": {
       "Sky": {
         "files": 260,
-        "bytes": 297540343,
+        "bytes": 297540485,
         "runs": 12
       },
       "Appie": {
         "files": 17,
-        "bytes": 2055452,
+        "bytes": 2055952,
         "runs": 7
       },
       "Stocker": {
@@ -339,7 +339,7 @@
       },
       "other": {
         "files": 19,
-        "bytes": 2353832,
+        "bytes": 2355593,
         "runs": 2
       }
     },
@@ -412,11 +412,11 @@
       {
         "date": "2026-10-26",
         "files": 262,
-        "bytes": 225858913,
+        "bytes": 225861316,
         "runs": 22,
         "run_ids": [
-          "appie-task-1026-1641",
-          "sky-task-1026-1641",
+          "appie-task-1026-1653",
+          "sky-task-1026-1653",
           "appie-task-1026-1520",
           "run_1026_1455",
           "other-task-1026-1442",
@@ -442,9 +442,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127328145408,
-      "disk_used_all": 9452544000,
-      "task_files_bytes": 332411703,
+      "disk_free": 127311126528,
+      "disk_used_all": 9469562880,
+      "task_files_bytes": 332414106,
       "task_pct_of_disk": 0.243
     }
   }
