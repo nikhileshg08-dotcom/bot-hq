@@ -2037,10 +2037,10 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
   if (isTouch) { controls.rotateSpeed = 0.7; controls.panSpeed = 0.9; }
   controls.minDistance = 3; controls.maxDistance = 70;
-  controls.maxPolarAngle = Math.PI * 0.46; controls.minPolarAngle = 0.15;
+  controls.maxPolarAngle = Math.PI * 0.9; controls.minPolarAngle = 0.15; // can drop to eye level and tilt up past the horizon (floor guard below)
   controls.screenSpacePanning = false;
   controls.addEventListener('change', () => {
-    const t = controls.target; t.x = THREE.MathUtils.clamp(t.x, -20, 20); t.z = THREE.MathUtils.clamp(t.z, -14, 14); t.y = THREE.MathUtils.clamp(t.y, 0, 4);
+    const t = controls.target; t.x = THREE.MathUtils.clamp(t.x, -20, 20); t.z = THREE.MathUtils.clamp(t.z, -14, 14); t.y = THREE.MathUtils.clamp(t.y, 0, 80); // y above 4 only via the floor guard while looking up
   });
 
   // ---------- lights ----------
@@ -3924,6 +3924,18 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     window.__bothq.toggles = api; window.__bothq.hud = api.hud;
   })();
 
+  // camera floor guard: the camera never goes below y=0.5. Tilting further up lifts the orbit pivot instead (view direction kept),
+  // and the pivot settles back to its normal 0–4 range as the view tilts back down.
+  const CAM_MIN_Y = 0.5;
+  let pivotBase = null; // pivot height before the guard started lifting it
+  function camFloorGuard() {
+    const c = camera.position, tg = controls.target;
+    if (fly) pivotBase = null;
+    if (c.y < CAM_MIN_Y) { if (pivotBase === null) pivotBase = tg.y; const d = CAM_MIN_Y - c.y; c.y += d; tg.y += d; }
+    else if (pivotBase !== null && c.y > CAM_MIN_Y) { const d = Math.min(tg.y - pivotBase, c.y - CAM_MIN_Y); if (d > 0) { c.y -= d; tg.y -= d; } if (tg.y <= pivotBase + 1e-4) pivotBase = null; }
+    if (tg.y < 0) tg.y = 0;
+  }
+
   // ---------- animate ----------
   const clock = new THREE.Clock(); let frame = 0;
   const tmpC = new THREE.Color();
@@ -3934,7 +3946,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       camera.position.lerpVectors(fly.p0, fly.p1, e); controls.target.lerpVectors(fly.t0, fly.t1, e);
       if (k >= 1) fly = null;
     }
-    controls.update();
+    controls.update(); camFloorGuard();
     for (const o of botObjs) {
       const { r, s } = o; const sp = s.speed; const tt = t + o.phase;
       const working = o.data.status === 'working';
