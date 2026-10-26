@@ -1,6 +1,6 @@
 {
  "title": "Nikki's Company",
- "snapshot_at": "2026-10-26T06:17:00-05:00",
+ "snapshot_at": "2026-10-26T06:29:00-05:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -80,34 +80,37 @@
    "name": "Appie",
    "role": "Job Applier",
    "color": "#7ed957",
-   "status": "idle",
-   "current_task": "",
-   "last_active": "2026-10-26T05:30:00-05:00",
+   "status": "working",
+   "current_task": "Applying to H-1B roles from Sky's sheet one by one, starting with Xcede Forward Deployed Engineer on LinkedIn",
+   "last_active": "2026-10-26T06:29:00-05:00",
    "pending": [
     {
-     "text": "Waiting for Nikhilesh to approve any applications"
+     "text": "Which H-1B role Nikhilesh applied to himself"
     },
     {
-     "text": "Nicholas_resume.pdf not found yet; resume.pdf is the fallback, to confirm before first use"
+     "text": "Whether to sign in to Dice (account nikhileshg08) for the 12 Dice roles"
     }
    ],
    "completed": [
     {
-     "text": "Rime Labs Machine Learning Scientist application submitted (Oct 26, ~4:30 AM CT)"
+     "text": "Rime Labs ML Scientist applied (4:30 AM CT)"
     },
     {
-     "text": "Tracker jobs applied 2026-10-26.xlsx shows 3 applications"
-    },
-    {
-     "text": "Logged out of LinkedIn (Oct 26, 4:44 AM CT)"
-    },
-    {
-     "text": "Confirmed Sky's 5:28 AM CT update in group chat and posted both files"
+     "text": "Tracker shows 3 applications"
     }
    ],
    "queued": [
     {
-     "text": "Sky's Nikhilesh_Jobs_24h_Oct26.xlsx roles (H-1B 17, FT On-site 148, FT Remote 136, C2C On-site 19, C2C Remote 6, Other/Not Listed 93), on hold until Nikhilesh approves"
+     "text": "Anthropic Applied AI Security Architect"
+    },
+    {
+     "text": "Amoha AI Automation Engineer"
+    },
+    {
+     "text": "Minerva Applied AI Engineer"
+    },
+    {
+     "text": "12 Dice H-1B roles"
     }
    ],
    "recent": [
