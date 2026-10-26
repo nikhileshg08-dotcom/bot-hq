@@ -80,8 +80,8 @@
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "working",
-      "current_task": "H-1B refresh: filling 3 TechniPros Dice roles to review (no submit)",
+      "status": "idle",
+      "current_task": "All H-1B roles done incl. 3 TechniPros (26 today). Waiting on Nikhilesh",
       "last_active": "2026-10-26T09:03:57-05:00",
       "pending": [
         {
