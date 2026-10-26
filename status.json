@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T11:42:25-05:00",
+  "snapshot_at": "2026-10-26T11:54:37-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -12,14 +12,22 @@
       "current_task": "Monitoring bots and maintaining Nikki's Company site",
       "last_active": "2026-10-26T06:05:31-05:00",
       "pending": [
-        "Switch the 10-minute status push to read each bot's status file"
+        {
+          "text": "Switch the 10-minute status push to read each bot's status file"
+        }
       ],
       "completed": [
-        "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
+        {
+          "text": "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
+        }
       ],
       "queued": [
-        "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT",
-        "Status push monitor every 2 hours"
+        {
+          "text": "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT"
+        },
+        {
+          "text": "Status push monitor every 2 hours"
+        }
       ],
       "recent": [
         "Started building the Bot HQ office page at 1:39 AM CT."
@@ -36,18 +44,30 @@
       "color": "#3fa9f5",
       "status": "working",
       "current_task": "Ad-hoc H-1B job search refresh (started 11:42 AM CT, ETA ~12:25 PM CT); ~11:50 AM scheduled run skipped",
-      "last_active": "2026-10-26T11:43:00-05:00",
+      "last_active": "2026-10-26T11:53:12-05:00",
       "pending": [
-        "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
+        {
+          "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
+        }
       ],
       "completed": [
-        "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT",
-        "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT",
-        "Wider 72-hour search: 308 new roles (5:28 AM CT)",
-        "Skipped today's 7 AM and 10 AM runs"
+        {
+          "text": "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT"
+        },
+        {
+          "text": "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
+        },
+        {
+          "text": "Wider 72-hour search: 308 new roles (5:28 AM CT)"
+        },
+        {
+          "text": "Skipped today's 7 AM and 10 AM runs"
+        }
       ],
       "queued": [
-        "Scheduled refreshes every 3 hours (next ~2:50 PM CT)"
+        {
+          "text": "Scheduled refreshes every 3 hours (next ~2:50 PM CT)"
+        }
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -56,7 +76,7 @@
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
       "groupTask": "H-1B Job Search",
-      "last_checkin": "2026-10-26T11:43:00-05:00",
+      "last_checkin": "2026-10-26T11:53:12-05:00",
       "working_with": []
     },
     {
@@ -64,36 +84,68 @@
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "idle",
-      "current_task": "All H-1B roles done incl. 3 TechniPros (26 today). Waiting on Nikhilesh",
+      "status": "working",
+      "current_task": "C2C On-site sheet: filling 21 Dice roles to review (no submit)",
       "last_active": "2026-10-26T09:03:57-05:00",
       "pending": [
-        "Anthropic: waiting on Nikhilesh's answers to 6 required questions",
-        "Minerva: needs a 'thing you built' answer",
-        "Remaining Dice roles on the H-1B sheet"
+        {
+          "text": "Anthropic: waiting on Nikhilesh's answers to 6 required questions"
+        },
+        {
+          "text": "Minerva: needs a 'thing you built' answer"
+        },
+        {
+          "text": "Remaining Dice roles on the H-1B sheet"
+        }
       ],
       "completed": [
-        "Rime Labs ML Scientist applied (4:30 AM CT)",
-        "Tracker shows 3 applications",
-        "Amoha AI Automation Engineer submitted 6:45 AM CT",
-        "J-RAM AI Developer (Dice) submitted 7:05 AM CT",
-        "ETS AI Engineer (Dice) submitted 7:08 AM CT",
-        "Data Capital Senior LLM Cost Optimization Engineer (submitted by Nikhilesh)",
-        "NIC INFO TEK Gen AI Agent Platform Engineer (Dice, 7:28 AM CT)",
-        "Digital Dhara Agentic AI engineer with J2EE (Dice, 7:32 AM CT)",
-        "Etsy Scala Senior SWE I, ML Enablement (Workday) submitted 8:05 AM CT",
-        "Data Capital Senior AI/LLM Optimization Engineer (Dice) submitted 8:11 AM CT",
-        "Magicforce Python AI Developer (Dice) submitted 8:20 AM CT",
-        "TechniPros AI/ML Engineer (Dice): skipped, job no longer available",
-        "Trebecon .Net Full Stack AI Engineer (Dice) submitted 8:43 AM CT",
         {
-          "company": "Latitude AI",
-          "role": "Senior Software Engineer - ML Infrastructure",
-          "result": "submitted"
+          "text": "Rime Labs ML Scientist applied (4:30 AM CT)"
+        },
+        {
+          "text": "Tracker shows 3 applications"
+        },
+        {
+          "text": "Amoha AI Automation Engineer submitted 6:45 AM CT"
+        },
+        {
+          "text": "J-RAM AI Developer (Dice) submitted 7:05 AM CT"
+        },
+        {
+          "text": "ETS AI Engineer (Dice) submitted 7:08 AM CT"
+        },
+        {
+          "text": "Data Capital Senior LLM Cost Optimization Engineer (submitted by Nikhilesh)"
+        },
+        {
+          "text": "NIC INFO TEK Gen AI Agent Platform Engineer (Dice, 7:28 AM CT)"
+        },
+        {
+          "text": "Digital Dhara Agentic AI engineer with J2EE (Dice, 7:32 AM CT)"
+        },
+        {
+          "text": "Etsy Scala Senior SWE I, ML Enablement (Workday) submitted 8:05 AM CT"
+        },
+        {
+          "text": "Data Capital Senior AI/LLM Optimization Engineer (Dice) submitted 8:11 AM CT"
+        },
+        {
+          "text": "Magicforce Python AI Developer (Dice) submitted 8:20 AM CT"
+        },
+        {
+          "text": "TechniPros AI/ML Engineer (Dice): skipped, job no longer available"
+        },
+        {
+          "text": "Trebecon .Net Full Stack AI Engineer (Dice) submitted 8:43 AM CT"
+        },
+        {
+          "text": "Latitude AI Senior Software Engineer - ML Infrastructure: submitted"
         }
       ],
       "queued": [
-        "Sky 5:59 AM CT refresh: 8 new non-H-1B roles (queued, not applying)"
+        {
+          "text": "Sky 5:59 AM CT refresh: 8 new non-H-1B roles (queued, not applying)"
+        }
       ],
       "recent": [
         "Renamed the tracker to jobs applied.xlsx, with a sheet named 2026-10-26.",
@@ -102,7 +154,7 @@
         "Went on hold for new applications at 1:34 AM CT."
       ],
       "groupTask": null,
-      "last_checkin": "2026-10-26T10:01:15-05:00",
+      "last_checkin": "2026-10-26T11:49:45-05:00",
       "working_with": []
     },
     {
@@ -114,12 +166,20 @@
       "current_task": "",
       "last_active": "2026-10-26T05:30:00-05:00",
       "pending": [
-        "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
+        {
+          "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
+        }
       ],
       "completed": [
-        "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered",
-        "Apify LinkedIn jobs scraper screenshots shared",
-        "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
+        {
+          "text": "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered"
+        },
+        {
+          "text": "Apify LinkedIn jobs scraper screenshots shared"
+        },
+        {
+          "text": "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
+        }
       ],
       "queued": [],
       "recent": [
@@ -141,12 +201,20 @@
       "current_task": "",
       "last_active": "2026-10-26T05:30:25-05:00",
       "pending": [
-        "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
+        {
+          "text": "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
+        }
       ],
       "completed": [
-        "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)",
-        "Five-year monthly market review with near-term outlook",
-        "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
+        {
+          "text": "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)"
+        },
+        {
+          "text": "Five-year monthly market review with near-term outlook"
+        },
+        {
+          "text": "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
+        }
       ],
       "queued": [],
       "recent": [
@@ -169,10 +237,18 @@
       "last_active": "2026-10-26T05:30:00-05:00",
       "pending": [],
       "completed": [
-        "Researched SEO and Google Ads options for Carfax-related searches",
-        "Researched vehicle history report APIs and NMVTIS-approved providers",
-        "Researched reselling vehicle history reports: vendors, setup, pricing",
-        "Researched feasibility of an India-based NMVTIS reseller"
+        {
+          "text": "Researched SEO and Google Ads options for Carfax-related searches"
+        },
+        {
+          "text": "Researched vehicle history report APIs and NMVTIS-approved providers"
+        },
+        {
+          "text": "Researched reselling vehicle history reports: vendors, setup, pricing"
+        },
+        {
+          "text": "Researched feasibility of an India-based NMVTIS reseller"
+        }
       ],
       "queued": [],
       "recent": [
@@ -196,10 +272,14 @@
       "last_active": "2026-10-26T10:28:07-05:00",
       "pending": [],
       "completed": [
-        "Built the file tracker and the Files panel on Bot HQ"
+        {
+          "text": "Built the file tracker and the Files panel on Bot HQ"
+        }
       ],
       "queued": [
-        "Refresh file counts with every site build (count_files.py)"
+        {
+          "text": "Refresh file counts with every site build (count_files.py)"
+        }
       ],
       "recent": [],
       "last_checkin": "2026-10-26T10:28:07-05:00",
@@ -207,24 +287,24 @@
       "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-26T11:43:00-05:00",
+  "latest_bot_activity": "2026-10-26T11:53:12-05:00",
   "files": {
-    "generated_at": "2026-10-26T11:42:25-05:00",
-    "total": 284,
-    "today": 186,
-    "last_24h": 201,
-    "bytes": 266586914,
-    "runs": 24,
-    "runs_today": 17,
+    "generated_at": "2026-10-26T11:54:37-05:00",
+    "total": 305,
+    "today": 207,
+    "last_24h": 222,
+    "bytes": 295299372,
+    "runs": 25,
+    "runs_today": 18,
     "by_bot": {
       "Sky": {
-        "files": 203,
-        "bytes": 234195818,
-        "runs": 10
+        "files": 224,
+        "bytes": 262907931,
+        "runs": 11
       },
       "Appie": {
         "files": 17,
-        "bytes": 1929020,
+        "bytes": 1929365,
         "runs": 6
       },
       "Stocker": {
@@ -256,7 +336,7 @@
     "top_types": [
       {
         "type": "json",
-        "files": 168
+        "files": 188
       },
       {
         "type": "png",
@@ -321,13 +401,14 @@
       },
       {
         "date": "2026-10-26",
-        "files": 186,
-        "bytes": 160034124,
-        "runs": 17,
+        "files": 207,
+        "bytes": 188746582,
+        "runs": 18,
         "run_ids": [
+          "appie-task-1026-1146",
+          "run_1026_1142",
           "sky-task-1026-1142",
           "filo-task-1026-1034",
-          "appie-task-1026-1001",
           "appie-task-1026-0858",
           "oct26/run_0854",
           "manny-task-1026-0832",
@@ -347,10 +428,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127937576960,
-      "disk_used_all": 8843112448,
-      "task_files_bytes": 266586914,
-      "task_pct_of_disk": 0.1949
+      "disk_free": 127884341248,
+      "disk_used_all": 8896348160,
+      "task_files_bytes": 295299372,
+      "task_pct_of_disk": 0.2159
     }
   }
 }
