@@ -1,251 +1,217 @@
 {
-  "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T01:45:00-05:00",
-  "bots": [
+ "title": "Nikki's Company",
+ "snapshot_at": "2026-10-26T05:30:25-05:00",
+ "bots": [
+  {
+   "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
+   "name": "Manny",
+   "role": "Manager: manages and monitors the other bots",
+   "manager": true,
+   "color": "#f0a030",
+   "status": "working",
+   "current_task": "Setting up live bot status files for Nikki's Company and monitoring Sky and Appie.",
+   "last_active": "2026-10-26T05:30:00-05:00",
+   "pending": [
     {
-      "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
-      "name": "Manny",
-      "role": "Manager: manages and monitors the other bots",
-      "manager": true,
-      "color": "#f0a030",
-      "status": "working",
-      "current_task": "Built this office page. Runs a health check on Sky and Appie every 2 hours, 8 AM to 10 PM CT.",
-      "last_active": "2026-10-26T01:39:00-05:00",
-      "pending": [
-        {
-          "text": "Building the 3D Bot HQ office page",
-          "time": "2026-10-26T01:39:00-05:00"
-        }
-      ],
-      "completed": [],
-      "queued": [
-        {
-          "text": "Next health check on Sky and Appie, around 8 AM CT",
-          "time": "2026-10-26T08:00:00-05:00"
-        },
-        {
-          "text": "Health checks repeat every 2 hours until 10 PM CT"
-        }
-      ],
-      "recent": [
-        "Started building the Bot HQ office page at 1:39 AM CT."
-      ],
-      "source_note": "Reading Manny's id returned this build session, so Manny's role and schedule come from the brief."
-    },
-    {
-      "id": "1d32907d-b422-46e8-83cb-6788b25ea079",
-      "name": "Sky",
-      "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
-      "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "Running the first job search, which builds Nikhilesh_Jobs_24h_Oct26.xlsx (started 1:18 AM CT).",
-      "last_active": "2026-10-26T01:27:00-05:00",
-      "pending": [
-        {
-          "text": "First job search run, building Nikhilesh_Jobs_24h_Oct26.xlsx",
-          "time": "2026-10-26T01:18:00-05:00"
-        },
-        {
-          "text": "Waiting on Nikhilesh: did he mean a 10 PM run instead of a second 10 AM run?"
-        },
-        {
-          "text": "Waiting on Nikhilesh: add Dice's sponsorship filter to the scheduled search?"
-        }
-      ],
-      "completed": [
-        {
-          "text": "Researched job-search APIs for Dice, LinkedIn and Workday and posted a summary",
-          "time": "2026-10-26T01:27:00-05:00"
-        },
-        {
-          "text": "Switched to one workbook per day, with each day's runs in that day's file",
-          "time": "2026-10-26T01:24:00-05:00"
-        },
-        {
-          "text": "Set each run to add its own H-1B and No Sponsorship sheets, named by run time",
-          "time": "2026-10-26T01:24:00-05:00"
-        },
-        {
-          "text": "Added a daily run around 10 AM CT to the routine"
-        }
-      ],
-      "queued": [
-        {
-          "text": "When the current run finishes: post results and run time here and in the group chat, and send Appie the file location"
-        },
-        {
-          "text": "Next scheduled routine run, around 3 AM CT (can start from 2:50 AM)",
-          "time": "2026-10-26T02:50:00-05:00"
-        },
-        {
-          "text": "Daily run around 7 AM CT",
-          "time": "2026-10-26T07:00:00-05:00"
-        },
-        {
-          "text": "Daily run around 10 AM CT",
-          "time": "2026-10-26T10:00:00-05:00"
-        },
-        {
-          "text": "Starting tomorrow, the first run creates Nikhilesh_Jobs_24h_Oct27.xlsx"
-        }
-      ],
-      "recent": [
-        "Started the first job search at 1:18 AM CT.",
-        "Agreed to report each run's duration; can't see compute usage, so links the Usage page instead.",
-        "Changed runs to add their own sheets, and to start a new workbook each day.",
-        "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
-      ]
-    },
-    {
-      "id": "97613071-7408-45e7-9d24-9743ab15c420",
-      "name": "Appie",
-      "role": "Job Applier",
-      "color": "#7ed957",
-      "status": "idle",
-      "current_task": "On hold: not applying to new jobs until Nikhilesh says so. Updates jobs applied.xlsx after every submitted application.",
-      "last_active": "2026-10-26T01:34:00-05:00",
-      "pending": [],
-      "completed": [
-        {
-          "text": "Saved standing rules: no new applications until Nikhilesh says, and update the tracker after each one",
-          "time": "2026-10-26T01:34:00-05:00"
-        },
-        {
-          "text": "Rebuilt jobs applied.xlsx with 22 columns and sent it to Nikhilesh",
-          "time": "2026-10-26T01:31:00-05:00"
-        },
-        {
-          "text": "Added Role Name and Application Details columns",
-          "time": "2026-10-26T01:30:00-05:00"
-        },
-        {
-          "text": "Set the tracker to add one sheet per day (YYYY-MM-DD)",
-          "time": "2026-10-26T01:29:00-05:00"
-        }
-      ],
-      "queued": [
-        {
-          "text": "Hold any job files Sky sends (such as today's Oct26 workbook) until Nikhilesh gives the go-ahead"
-        },
-        {
-          "text": "Update jobs applied.xlsx right after each submitted application"
-        }
-      ],
-      "recent": [
-        "Renamed the tracker to jobs applied.xlsx, with a sheet named 2026-10-26.",
-        "Filled in Capital One and JeffreyM details; no recruiter was named on either posting.",
-        "Sent the updated 22-column tracker at 1:31 AM CT.",
-        "Went on hold for new applications at 1:34 AM CT."
-      ]
-    },
-    {
-      "id": "5e05cab1-8a7a-4871-8c92-f36e2e6e8c2c",
-      "name": "Neo",
-      "role": "Shopping research: laptops on Amazon",
-      "color": "#b07cf0",
-      "status": "idle",
-      "current_task": "Laptop search done. Waiting for Nikhilesh to choose between the HP OmniBook 7 AI and the Acer Nitro V 15.",
-      "last_active": "2026-10-24T17:47:00-05:00",
-      "pending": [],
-      "completed": [
-        {
-          "text": "Checked 32GB/1TB variants. Recommended the HP OmniBook 7 AI ($1,199.99, like new) or Acer Nitro V 15 ($1,299.99)",
-          "time": "2026-10-24T17:47:00-05:00"
-        },
-        {
-          "text": "Searched again with a $1,300 budget; no new listing met every spec",
-          "time": "2026-10-24T17:46:00-05:00"
-        },
-        {
-          "text": "Searched for i7 / 32GB / 1TB / graphics card under $1,100; none matched every spec",
-          "time": "2026-10-24T17:40:00-05:00"
-        },
-        {
-          "text": "Found 22 recent Windows laptops under $1,000 with 32GB and 1TB",
-          "time": "2026-10-24T17:29:00-05:00"
-        }
-      ],
-      "queued": [
-        {
-          "text": "Waiting on Nikhilesh to pick a laptop"
-        }
-      ],
-      "recent": [
-        "Narrowed the search to 2025 and 2026 models.",
-        "Found that none of the 22 laptops had a dedicated graphics card.",
-        "Raised the budget to $1,300 at Nikhilesh's request.",
-        "Sent the final two options at 5:47 PM CT on Oct 24."
-      ]
-    },
-    {
-      "id": "8e88aa47-6fca-4cc4-b4b3-3bfcef51f2cf",
-      "name": "Stocker",
-      "role": "Stock market research and picks",
-      "color": "#e8584f",
-      "status": "idle",
-      "current_task": "Delivered the five-year market review and a $1,000 paper-test plan (Oct 26 to Nov 6). Nothing running now.",
-      "last_active": "2026-10-24T02:17:00-05:00",
-      "pending": [],
-      "completed": [
-        {
-          "text": "Sent the $1,000 paper-test plan: XOM $300, CRWD $250, AMZN $250, $200 cash",
-          "time": "2026-10-24T02:17:00-05:00"
-        },
-        {
-          "text": "Finished the five-year market review and near-term outlook",
-          "time": "2026-10-24T02:17:00-05:00"
-        },
-        {
-          "text": "Sent picks for Monday, Oct 26, with expected open and close ranges",
-          "time": "2026-10-24T02:12:00-05:00"
-        },
-        {
-          "text": "Finished this week's market briefing",
-          "time": "2026-10-24T02:12:00-05:00"
-        }
-      ],
-      "queued": [],
-      "recent": [
-        "Researched this week's daily movers and sector themes.",
-        "Expanded the research to five years, weighted toward recent months.",
-        "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
-        "Last posted at 2:17 AM CT on Oct 24."
-      ]
-    },
-    {
-      "id": "a4c8649c-2d39-4f0a-b4e5-89eeb6224db2",
-      "name": "Rio",
-      "role": "Research: vehicle history report APIs and reselling",
-      "color": "#f06fb0",
-      "status": "idle",
-      "current_task": "Paused. Nikhilesh asked to continue the India-based reseller discussion next time.",
-      "last_active": "2026-10-24T02:08:00-05:00",
-      "pending": [],
-      "completed": [
-        {
-          "text": "Found that an India-based company can't apply to NMVTIS directly; a US company with US hosting is needed",
-          "time": "2026-10-24T02:07:00-05:00"
-        },
-        {
-          "text": "Researched reselling vehicle reports; VinAudit looks cheapest (about $1 per report)",
-          "time": "2026-10-24T02:03:00-05:00"
-        },
-        {
-          "text": "Found no public Carfax API; NMVTIS-approved providers are the route",
-          "time": "2026-10-24T01:44:00-05:00"
-        }
-      ],
-      "queued": [
-        {
-          "text": "Continue the India reseller discussion when Nikhilesh picks it up again"
-        }
-      ],
-      "recent": [
-        "Researched Carfax API access.",
-        "Said hello to Nikhilesh at Sky's request.",
-        "Researched vendors and pricing for reselling reports.",
-        "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
-      ]
+     "text": "Switch the 10-minute status push to read each bot's status file"
     }
-  ]
+   ],
+   "completed": [
+    {
+     "text": "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
+    }
+   ],
+   "queued": [
+    {
+     "text": "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT"
+    },
+    {
+     "text": "Status push monitor every 2 hours"
+    }
+   ],
+   "recent": [
+    "Started building the Bot HQ office page at 1:39 AM CT."
+   ],
+   "source_note": "Reading Manny's id returned this build session, so Manny's role and schedule come from the brief.",
+   "groupTask": null
+  },
+  {
+   "id": "1d32907d-b422-46e8-83cb-6788b25ea079",
+   "name": "Sky",
+   "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
+   "color": "#3fa9f5",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-10-26T05:30:00-05:00",
+   "pending": [
+    {
+     "text": "Open questions for Nikhilesh: 10 AM vs 10 PM second run, save recruiter Jordan, 3-day weekday window"
+    }
+   ],
+   "completed": [
+    {
+     "text": "Wider 72-hour job search: 308 new roles added to Nikhilesh_Jobs_24h_Oct26.xlsx (5:28 AM CT)"
+    },
+    {
+     "text": "Workbook trimmed to 8 sheets in final order"
+    },
+    {
+     "text": "Group chat and Appie notified of new roles"
+    }
+   ],
+   "queued": [
+    {
+     "text": "Scheduled H-1B job search refresh ~5:50 AM CT (every 3 hours plus 7 AM and 10 AM)"
+    }
+   ],
+   "recent": [
+    "Started the first job search at 1:18 AM CT.",
+    "Agreed to report each run's duration; can't see compute usage, so links the Usage page instead.",
+    "Changed runs to add their own sheets, and to start a new workbook each day.",
+    "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
+   ],
+   "groupTask": null
+  },
+  {
+   "id": "97613071-7408-45e7-9d24-9743ab15c420",
+   "name": "Appie",
+   "role": "Job Applier",
+   "color": "#7ed957",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-10-26T05:30:00-05:00",
+   "pending": [
+    {
+     "text": "Waiting for Nikhilesh to approve any applications"
+    },
+    {
+     "text": "Nicholas_resume.pdf not found yet; resume.pdf is the fallback, to confirm before first use"
+    }
+   ],
+   "completed": [
+    {
+     "text": "Rime Labs Machine Learning Scientist application submitted (Oct 26, ~4:30 AM CT)"
+    },
+    {
+     "text": "Tracker jobs applied 2026-10-26.xlsx shows 3 applications"
+    },
+    {
+     "text": "Logged out of LinkedIn (Oct 26, 4:44 AM CT)"
+    },
+    {
+     "text": "Confirmed Sky's 5:28 AM CT update in group chat and posted both files"
+    }
+   ],
+   "queued": [
+    {
+     "text": "Sky's Nikhilesh_Jobs_24h_Oct26.xlsx roles (H-1B 17, FT On-site 148, FT Remote 136, C2C On-site 19, C2C Remote 6, Other/Not Listed 93), on hold until Nikhilesh approves"
+    }
+   ],
+   "recent": [
+    "Renamed the tracker to jobs applied.xlsx, with a sheet named 2026-10-26.",
+    "Filled in Capital One and JeffreyM details; no recruiter was named on either posting.",
+    "Sent the updated 22-column tracker at 1:31 AM CT.",
+    "Went on hold for new applications at 1:34 AM CT."
+   ],
+   "groupTask": null
+  },
+  {
+   "id": "5e05cab1-8a7a-4871-8c92-f36e2e6e8c2c",
+   "name": "Neo",
+   "role": "Shopping research: laptops on Amazon",
+   "color": "#b07cf0",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-10-26T05:30:00-05:00",
+   "pending": [
+    {
+     "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
+    }
+   ],
+   "completed": [
+    {
+     "text": "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered"
+    },
+    {
+     "text": "Apify LinkedIn jobs scraper screenshots shared"
+    },
+    {
+     "text": "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
+    }
+   ],
+   "queued": [],
+   "recent": [
+    "Narrowed the search to 2025 and 2026 models.",
+    "Found that none of the 22 laptops had a dedicated graphics card.",
+    "Raised the budget to $1,300 at Nikhilesh's request.",
+    "Sent the final two options at 5:47 PM CT on Oct 24."
+   ],
+   "groupTask": null
+  },
+  {
+   "id": "8e88aa47-6fca-4cc4-b4b3-3bfcef51f2cf",
+   "name": "Stocker",
+   "role": "Stock market research and picks",
+   "color": "#e8584f",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-10-26T05:30:25-05:00",
+   "pending": [
+    {
+     "text": "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
+    }
+   ],
+   "completed": [
+    {
+     "text": "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)"
+    },
+    {
+     "text": "Five-year monthly market review with near-term outlook"
+    },
+    {
+     "text": "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
+    }
+   ],
+   "queued": [],
+   "recent": [
+    "Researched this week's daily movers and sector themes.",
+    "Expanded the research to five years, weighted toward recent months.",
+    "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
+    "Last posted at 2:17 AM CT on Oct 24."
+   ],
+   "groupTask": null
+  },
+  {
+   "id": "a4c8649c-2d39-4f0a-b4e5-89eeb6224db2",
+   "name": "Rio",
+   "role": "Research: vehicle history report APIs and reselling",
+   "color": "#f06fb0",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-10-26T05:30:00-05:00",
+   "pending": [],
+   "completed": [
+    {
+     "text": "Researched SEO and Google Ads options for Carfax-related searches"
+    },
+    {
+     "text": "Researched vehicle history report APIs and NMVTIS-approved providers"
+    },
+    {
+     "text": "Researched reselling vehicle history reports: vendors, setup, pricing"
+    },
+    {
+     "text": "Researched feasibility of an India-based NMVTIS reseller"
+    }
+   ],
+   "queued": [],
+   "recent": [
+    "Researched Carfax API access.",
+    "Said hello to Nikhilesh at Sky's request.",
+    "Researched vendors and pricing for reselling reports.",
+    "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
+   ],
+   "groupTask": null
+  }
+ ]
 }
