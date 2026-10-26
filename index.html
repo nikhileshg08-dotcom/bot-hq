@@ -3568,7 +3568,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
         const res = applyStatus(nd); refreshAvail(); liveEl.textContent = 'Live sync on · updated ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); liveEl.title = 'Checked status.json at ' + fmtCT(new Date().toISOString()); liveEl.className = 'live on'; return res;
       } catch (e) { liveEl.textContent = 'Live sync: no status.json'; liveEl.className = 'live off'; }
     };
-    poll(); setInterval(poll, 30000);
+    poll(); setInterval(poll, 15000);
     document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') poll(); });
     window.__bothq.poll = poll;
   } else { liveEl.textContent = 'Live sync off · file snapshot'; liveEl.title = 'Opened from a file, so the page shows the embedded snapshot. Serve the folder over http to auto-refresh from status.json.'; liveEl.className = 'live off'; }
