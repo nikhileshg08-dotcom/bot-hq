@@ -6,7 +6,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#f3e9dc">
-<title>Nikhilesh's Bot HQ</title>
+<title>Nikki's Company</title>
+<meta name="apple-mobile-web-app-title" content="Nikki's Company">
+<meta property="og:title" content="Nikki's Company">
 <style>
   :root { --ink:#2a2420; --muted:#7a6e63; --glass:rgba(255,251,245,0.72); --line:rgba(120,90,60,0.14); }
   * { box-sizing: border-box; }
@@ -117,6 +119,24 @@
     #panel::before { content:''; position:sticky; display:block; top:-18px; margin:-16px auto 10px; width:42px; height:5px; border-radius:3px; background:rgba(90,70,50,0.25); }
     #panel .close { top:12px; right:12px; width:36px; height:36px; }
   }
+  /* ---------- hide/show toggles: header (#hud), voice bar (#voice), status legend (#legend) ---------- */
+  #hud, #legend { transition:transform .28s ease, opacity .22s ease; }
+  #voice { transition:left .45s, transform .45s, translate .28s ease, opacity .22s ease; }
+  #hud h1 { cursor:pointer; -webkit-user-select:none; user-select:none; padding-right:30px; }
+  #hud.tg-hidden { transform:translateY(calc(-100% - 40px)); }
+  #voice.tg-hidden { translate:0 calc(100% + 40px); }
+  #hud.tg-hidden, #voice.tg-hidden, #legend.tg-hidden { opacity:0; pointer-events:none; }
+  #legend.tg-hidden { transform:translateY(calc(100% + 40px)); }
+  .tgbtn { position:fixed; z-index:30; width:28px; height:28px; padding:0; margin:0; border-radius:50%; border:1px solid transparent; background:transparent; color:var(--muted, #7a6e63);
+    display:grid; place-items:center; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; transition:background .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  .tgbtn.edge { width:24px; height:24px; background:rgba(255,253,249,0.9); border-color:rgba(90,70,50,0.16); box-shadow:0 2px 8px rgba(60,40,20,0.14); }
+  .tgbtn svg { width:16px; height:16px; transition:transform .28s ease; pointer-events:none; }
+  .tgbtn.edge svg { width:14px; height:14px; }
+  .tgbtn:hover { background:rgba(255,255,255,0.85); }
+  .tgbtn.off { background:rgba(255,253,249,0.92); border-color:rgba(90,70,50,0.18); box-shadow:0 3px 12px rgba(60,40,20,0.18); }
+  .tgbtn.flip svg { transform:rotate(180deg); }
+  .tgbtn.off.flip svg { transform:none; } .tgbtn.off:not(.flip) svg { transform:rotate(180deg); }
+  .tgbtn.gone { display:none; }
 </style>
 <!-- Import map: CDN fallback, used only if the inlined copy below fails to load -->
 <script type="importmap">
@@ -127,12 +147,15 @@
 <div id="scene"></div>
 <div id="loading">Setting up the office…</div>
 <div id="hud" class="glass">
-  <h1><span class="logo">◆</span><span id="title">Nikhilesh's Bot HQ</span></h1>
+  <h1><span class="logo">◆</span><span id="title">Nikki's Company</span></h1>
   <div id="snap"></div>
   <div id="summary"></div>
   <div id="chips"></div>
   <div id="hudrow"><label class="switch"><input type="checkbox" id="ambient" checked> Ambient activity</label><span id="live" class="live">Live sync…</span></div>
 </div>
+<button id="hudtoggle" class="tgbtn" type="button" aria-expanded="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4-4 4 4"/></svg></button>
+<button id="voicetoggle" class="tgbtn edge flip" type="button" aria-expanded="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4-4 4 4"/></svg></button>
+<button id="legendtoggle" class="tgbtn edge flip" type="button" aria-expanded="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4-4 4 4"/></svg></button>
 <div id="legend" class="glass">
   <b>Status</b>
   <span class="i"><span class="d" style="background:#34d46a;color:#34d46a"></span>Working</span>
@@ -157,7 +180,7 @@
 
 <!-- STATUS_DATA_START -->
 <script type="application/json" id="bot-status">{
- "title": "Nikhilesh's Bot HQ",
+ "title": "Nikki's Company",
  "snapshot_at": "2026-10-26T01:45:00-05:00",
  "bots": [
   {
@@ -2252,6 +2275,60 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     return m;
   }
 
+  // ---------- articulated hands (shared by every robot) ----------
+  // palm + 4 fingers (3 phalanges each) + opposable thumb (2), spherical knuckles; phones get 2-segment fingers, no knuckle balls
+  const HAND_LO = TIER === 'phone', HAND_RAD = TIER === 'desktop' ? 8 : TIER === 'tablet' ? 6 : 4, HAND_CAP = HAND_LO ? 2 : 3;
+  const handGeoCache = new Map();
+  const handGeo = (key, make) => { if (!handGeoCache.has(key)) handGeoCache.set(key, make()); return handGeoCache.get(key); };
+  const capGeo = (r, len) => handGeo(`c${r.toFixed(4)}|${len.toFixed(4)}`, () => new THREE.CapsuleGeometry(r, Math.max(0.002, len), HAND_CAP, HAND_RAD));
+  const knuckleGeo = (r) => handGeo(`k${r.toFixed(4)}`, () => new THREE.SphereGeometry(r, HAND_RAD + 2, Math.max(4, HAND_RAD - 2)));
+  // index, middle, ring, pinky: x offset (thumb side = 0), base y, total length, radius, rest curl, splay
+  const FINGERS = [
+    { x: 0.034, y: -0.040, len: 0.068, r: 0.0105, curl: 0.22, splay: 0.07 },
+    { x: 0.011, y: -0.043, len: 0.076, r: 0.0110, curl: 0.27, splay: 0.02 },
+    { x: -0.012, y: -0.041, len: 0.071, r: 0.0105, curl: 0.32, splay: -0.03 },
+    { x: -0.034, y: -0.036, len: 0.056, r: 0.0090, curl: 0.38, splay: -0.09 },
+  ];
+  const PHAL = HAND_LO ? [0.55, 0.45] : [0.45, 0.30, 0.25]; // proximal / middle / distal share of finger length
+  function fingerChain(parent, mats, segs, r, curls, castS) {
+    const joints = []; let at = parent;
+    segs.forEach((L, k) => {
+      const j = new THREE.Group(); if (k) j.position.y = -segs[k - 1]; at.add(j); joints.push(j);
+      if (!HAND_LO) mesh(knuckleGeo(r * 1.18), mats.joint, 0, 0, 0, j, castS);
+      mesh(capGeo(r * (1 - k * 0.07), L - r), mats.shell, 0, -L / 2, 0, j, castS);
+      j.rotation.x = curls[k]; at = j;
+    });
+    return joints;
+  }
+  // inward = +1 when the thumb sits on +x of this hand (thumb faces the body). Palm side is local -z (faces down when typing).
+  function buildHand(hand, mats, inward) {
+    const castS = TIER === 'desktop';
+    mesh(rbox(0.1, 0.085, 0.055, 0.025), mats.joint, 0, 0, 0, hand); // palm
+    const fingers = [];
+    FINGERS.forEach((f, fi) => {
+      const base = new THREE.Group(); base.position.set(inward * f.x, f.y, -0.004); base.rotation.z = inward * f.splay; hand.add(base);
+      const segs = PHAL.map((k) => k * f.len);
+      const rest = HAND_LO ? [f.curl, f.curl * 1.5] : [f.curl, f.curl * 1.3, f.curl * 0.9];
+      fingers.push({ joints: fingerChain(base, mats, segs, f.r, rest, castS), rest, fi });
+    });
+    // opposable thumb: low on the inner edge of the palm, angled out and rotated toward the palm
+    const tb = new THREE.Group(); tb.position.set(inward * 0.05, 0.005, -0.012); tb.rotation.set(0.55, inward * -0.45, inward * 0.75); hand.add(tb);
+    if (!HAND_LO) mesh(knuckleGeo(0.015), mats.joint, 0, 0, 0, tb, castS);
+    const trest = [0.15, 0.3];
+    fingers.push({ joints: fingerChain(tb, mats, [0.034, 0.028], 0.0122, trest, castS), rest: trest, fi: 4, thumb: true });
+    hand.userData.fingers = fingers; return fingers;
+  }
+  // per-frame finger pose: rest curl, light typing taps, or a grip around a held prop (cheap: ~16 rotations per hand)
+  function animateHand(hand, mode, ph) {
+    const fs = hand.userData.fingers; if (!fs) return;
+    for (const f of fs) {
+      let add = 0;
+      if (mode === 'grip') add = f.thumb ? 0.35 : 0.75;
+      else if (mode === 'type' && !f.thumb) add = Math.max(0, Math.sin(ph * 1.7 + f.fi * 1.9)) * 0.32 - 0.06;
+      for (let k = 0; k < f.joints.length; k++) f.joints[k].rotation.x = f.rest[k] + add * (k ? 0.8 : 1);
+    }
+  }
+
   // ---------- robot ----------
   function robot(data, scale = 1) {
     const accent = new THREE.Color(data.color || '#e0a83e');
@@ -2321,8 +2398,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       mesh(new THREE.SphereGeometry(0.06, 12, 10), mats.joint, 0, 0, 0, el);
       mesh(new THREE.CapsuleGeometry(0.055, 0.2, 6, 12), mats.shell, 0, -0.15, 0, el);
       const hand = new THREE.Group(); hand.position.y = -0.32; el.add(hand);
-      mesh(rbox(0.1, 0.08, 0.12, 0.035), mats.joint, 0, 0, 0, hand);
-      for (let f = -1; f <= 1; f++) mesh(new THREE.CapsuleGeometry(0.014, 0.04, 3, 6), mats.joint, f * 0.03, -0.06, 0.02, hand);
+      buildHand(hand, mats, -sx);
       arms.push({ sh, el, hand, sx });
     }
     // hand props (hidden until used): coffee mug in one hand, phone in the other
@@ -2718,7 +2794,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     panel.querySelector('.close').onclick = () => select(null);
   }
   // header + chips
-  document.getElementById('title').textContent = DATA.title || "Nikhilesh's Bot HQ";
+  document.getElementById('title').textContent = "Nikki's Company";
   document.getElementById('snap').textContent = 'Snapshot taken at ' + (fmtCT(DATA.snapshot_at) || 'unknown time');
   const counts = { working: 0, idle: 0, problem: 0, unknown: 0 }; bots.forEach((b) => counts[(b.status || 'unknown').toLowerCase()] = (counts[(b.status || 'unknown').toLowerCase()] || 0) + 1);
   const openCount = deskSlots.length - assigned.size;
@@ -2977,6 +3053,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     // fast oscillators applied directly so they are not smoothed away
     if (s <= 0.05 && working && (!o.act || o.act === 'lean')) r.arms.forEach((a, i) => { o.pose.arms[i].hand = p.arms[i].hand; });
     applyPose(o);
+    { const typingNow = s <= 0.05 && working && (!o.act || o.act === 'lean');
+      r.arms.forEach((a, i) => animateHand(a.hand, typingNow ? 'type' : ((o.act === 'sip' && i === 1) || (o.act === 'phone' && i === 0)) && s <= 0.05 ? 'grip' : 'rest', (o.typePh || 0) + i * 2.1)); }
     // breathing / bob
     r.torso.scale.set(1, 1 + Math.sin(tt * (working ? 2.4 : 1.4)) * 0.012, 1);
     // eyes + mouth
@@ -3303,11 +3381,15 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   const PROFILES = { manny: { pitch: 0.85, rate: 0.96, hint: /(daniel|david|guy|alex|fred|male)/i }, sky: { pitch: 1.15, rate: 1.04, hint: /(samantha|aria|jenny|zira|google us english)/i },
     appie: { pitch: 1.35, rate: 1.0, hint: /(karen|serena|moira|libby|female)/i }, neo: { pitch: 0.95, rate: 1.12, hint: /(google uk english male|ryan|tom|arthur)/i },
     stocker: { pitch: 0.7, rate: 0.92, hint: /(fred|ralph|george|mark)/i }, rio: { pitch: 1.22, rate: 1.1, hint: /(tessa|victoria|natasha|sonia|uk english female)/i } };
+  const liveUtts = (window.__bothqUtterances = window.__bothqUtterances || []);
+  const keepUtt = (u) => { liveUtts.push(u); if (liveUtts.length > 20) liveUtts.shift(); };
+  const dropUtt = (u) => { const i = liveUtts.indexOf(u); if (i >= 0) liveUtts.splice(i, 1); };
   let voices = []; const assignedVoice = new Map();
   function loadVoices() { try { voices = (synth ? synth.getVoices() : []).filter((v) => /^en(-|_|$)/i.test(v.lang)); voices.sort((a, b) => (b.lang === 'en-US') - (a.lang === 'en-US')); } catch (e) { voices = []; } assignedVoice.clear(); }
   if (synth) { loadVoices(); try { synth.addEventListener('voiceschanged', loadVoices); } catch (e) {} }
   function voiceFor(o) {
-    if (assignedVoice.has(o)) return assignedVoice.get(o);
+    if (assignedVoice.has(o) && (assignedVoice.get(o).voice || !voices.length)) return assignedVoice.get(o);
+    if (!voices.length && synth) try { loadVoices(); } catch (e) {}
     const key = o.data.name.toLowerCase(); const prof = PROFILES[key] || { pitch: 0.8 + (key.length % 5) * 0.12, rate: 0.95 + (key.charCodeAt(0) % 4) * 0.05 };
     let v = null; const used = new Set([...assignedVoice.values()].map((x) => x.voice && x.voice.name));
     if (voices.length) { v = (prof.hint && voices.find((x) => prof.hint.test(x.name) && !used.has(x.name))) || voices.find((x) => !used.has(x.name)) || voices[botObjs.indexOf(o) % voices.length]; }
@@ -3334,18 +3416,26 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const est = Math.max(2.5, text.split(/\s+/).length / 2.6);
     let started = false, ended = false; const finish = () => { if (token !== speakToken || ended) return; ended = true; o.speaking = false; bubbleHideAt = simT + 4; if (onDone) setTimeout(onDone, 500); };
     const rec = { bot: o.data.name, text, synth: !!synth, error: null, voice: null };
+    let delay = 0;
     if (synth && window.SpeechSynthesisUtterance) {
       try {
-        synth.cancel();
+        // iOS: cancel() immediately followed by speak() silences the next utterance -> cancel, then speak after a short gap
+        if (synth.speaking || synth.pending) { synth.cancel(); delay = 150; }
         const spoken = text.replace(/\bCT\b/g, 'Central Time').replace(/\.xlsx\b/gi, ' spreadsheet').replace(/_/g, ' ').replace(/\bH-1B\b/g, 'H 1 B');
         const u = new SpeechSynthesisUtterance(spoken); const vp = voiceFor(o);
-        if (vp.voice) u.voice = vp.voice; u.lang = (vp.voice && vp.voice.lang) || 'en-US'; u.pitch = vp.pitch; u.rate = vp.rate; rec.voice = vp.voice ? vp.voice.name : '(default)'; rec.pitch = vp.pitch; rec.rate = vp.rate;
+        const live = vp.voice && (synth.getVoices() || []).find((x) => x.name === vp.voice.name && x.lang === vp.voice.lang); // chosen voice must still exist, else system default
+        if (live) { u.voice = live; u.lang = live.lang; } else u.lang = 'en-US';
+        const clamp = (v, lo, hi, d) => (Number.isFinite(v) ? Math.min(hi, Math.max(lo, v)) : d);
+        u.volume = 1; u.pitch = clamp(vp.pitch, 0.1, 2, 1); u.rate = clamp(vp.rate, 0.5, 2, 1);
+        rec.voice = live ? live.name : '(default)'; rec.pitch = u.pitch; rec.rate = u.rate;
         u.onstart = () => { started = true; if (token === speakToken) o.speaking = true; };
-        u.onend = finish; u.onerror = (e) => { rec.error = e.error || 'error'; finish(); };
-        synth.speak(u);
+        u.onend = () => { dropUtt(u); finish(); }; u.onerror = (e) => { dropUtt(u); rec.error = e.error || 'error'; finish(); };
+        keepUtt(u); // hold a reference so Safari doesn't GC the utterance mid-speech (lost onend / cut-off audio)
+        const go = () => { if (token !== speakToken) { dropUtt(u); return; } try { if (synth.paused && synth.resume) synth.resume(); synth.speak(u); } catch (e) { rec.error = String(e); } };
+        if (delay) setTimeout(go, delay); else go();
       } catch (e) { rec.error = String(e); }
     }
-    setTimeout(() => { if (!started) finish(); }, est * 1000); // no audio engine/voices: animate for the estimated length
+    setTimeout(() => { if (!started) finish(); }, est * 1000 + delay); // no audio engine/voices: animate for the estimated length
     window.__bothq.lastSpeech = rec; (window.__bothq.spoken || []).push(o.data.name); return rec;
   }
   function updateTo() {
@@ -3384,7 +3474,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     window.__bothq.lastAnswer = { bot: o.data.name, intent: a.intent, text: a.text }; return window.__bothq.lastAnswer;
   }
   // typed input
-  const submit = () => { const v = vEl.input.value; vEl.input.value = ''; handleUtterance(v); };
+  const submit = () => { unlockSpeech(); const v = vEl.input.value; vEl.input.value = ''; handleUtterance(v); };
   vEl.input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); submit(); } if (e.key === 'Escape') { vEl.input.blur(); if (selected) select(null); } e.stopPropagation(); });
   vEl.send.addEventListener('click', submit);
   // speech recognition
@@ -3398,26 +3488,43 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     vEl.note.textContent = "Voice input in Chrome uses the browser's online speech service. Hold Space to talk.";
   }
   // iOS only lets speech play after a user gesture: prime speechSynthesis on the first tap
-  let primed = false;
-  const prime = () => { if (primed || !synth || !window.SpeechSynthesisUtterance) return; primed = true;
-    try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; synth.speak(u); if (synth.resume) synth.resume(); } catch (e) {} };
-  ['pointerdown', 'touchend', 'keydown'].forEach((ev) => window.addEventListener(ev, prime, { once: false, passive: true, capture: true }));
+  // Must run synchronously inside the tap/click. A whitespace-only, volume-0 utterance is skipped by WebKit and does not
+  // unlock, so speak a real (near-silent) character and keep retrying on gestures until it is confirmed to have played.
+  let speechUnlocked = false, unlocking = false;
+  function unlockSpeech() {
+    if (!synth || !window.SpeechSynthesisUtterance) return;
+    try { if (synth.paused && synth.resume) synth.resume(); } catch (e) {}
+    if (speechUnlocked || unlocking || synth.speaking || synth.pending) return;
+    try {
+      const u = new SpeechSynthesisUtterance('.'); u.volume = 0.01; u.rate = 2; u.pitch = 1; u.lang = 'en-US';
+      unlocking = true; const ok = () => { speechUnlocked = true; unlocking = false; dropUtt(u); };
+      u.onstart = ok; u.onend = ok; u.onerror = () => { unlocking = false; dropUtt(u); };
+      keepUtt(u); synth.speak(u); setTimeout(() => { unlocking = false; }, 1500);
+    } catch (e) { unlocking = false; }
+  }
+  ['touchend', 'click', 'keydown'].forEach((ev) => window.addEventListener(ev, unlockSpeech, { passive: true, capture: true }));
   if (!synth) vEl.note.innerHTML += ' Spoken replies aren\'t available in this browser; replies appear as text.';
   function startListening() {
     if (!SR || listening) return;
     try {
       rec = new SR(); rec.lang = 'en-US'; rec.interimResults = true; rec.maxAlternatives = 1; rec.continuous = false;
-      let finalText = '';
+      let finalText = '', done = false, endTimer = null; const r0 = rec;
+      // Speak only once the mic is released: on iOS, speaking while recognition holds the audio session (record mode) is silent.
+      const wrapUp = () => { if (done) return; done = true; clearTimeout(endTimer); listening = false; vEl.mic.classList.remove('on');
+        const t = finalText; if (t.trim()) setTimeout(() => handleUtterance(t), isIOS ? 350 : 0); };
+      r0.__finish = () => { clearTimeout(endTimer); endTimer = setTimeout(() => { try { r0.abort(); } catch (e) {} wrapUp(); }, 1500); };
       rec.onresult = (e) => { let interim = ''; for (let i = e.resultIndex; i < e.results.length; i++) { const r = e.results[i]; if (r.isFinal) finalText += r[0].transcript; else interim += r[0].transcript; }
-        showTranscript(`<span class="you">Listening…</span> ${esc(finalText)}<i>${esc(interim)}</i>`, true); };
+        showTranscript(`<span class="you">Listening…</span> ${esc(finalText)}<i>${esc(interim)}</i>`, true);
+        if (finalText.trim() && !interim) { try { r0.stop(); } catch (er) {} r0.__finish(); } }; // iOS Safari often keeps listening after a final result
       rec.onerror = (e) => { const m = { 'not-allowed': 'Microphone permission was denied.', 'service-not-allowed': 'Microphone permission was denied.', network: "Voice input couldn't reach the browser's online speech service.", 'no-speech': "I didn't catch that. Try again.", 'audio-capture': 'No microphone was found.' }[e.error] || ('Voice input error: ' + e.error);
         showTranscript(`<span class="you">Mic:</span> ${esc(m)}`); };
-      rec.onend = () => { listening = false; vEl.mic.classList.remove('on'); if (finalText.trim()) handleUtterance(finalText); };
+      rec.onend = wrapUp;
+      unlockSpeech(); // synchronous in the mic tap: unlocks speechSynthesis for the reply that arrives later
       rec.start(); listening = true; vEl.mic.classList.add('on'); showTranscript('<span class="you">Listening…</span>', true);
       if (synth && !isIOS) try { synth.cancel(); } catch (e) {}
     } catch (e) { listening = false; vEl.mic.classList.remove('on'); showTranscript(`<span class="you">Mic:</span> ${esc(e.message || String(e))}`); }
   }
-  function stopListening() { if (rec && listening) try { rec.stop(); } catch (e) {} }
+  function stopListening() { if (rec && listening) { try { rec.stop(); } catch (e) {} if (rec.__finish) rec.__finish(); } }
   vEl.mic.addEventListener('click', () => (listening ? stopListening() : startListening()));
   const typingTarget = (el) => el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
   window.addEventListener('keydown', (e) => {
@@ -3451,6 +3558,42 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     act: (name, a) => { const o = botObjs.find((x) => x.data.name === name); o.act = a; o.actUntil = simT + 5; },
     drone: () => { droneFlightStart = simT; }, teams: () => teams.map((t) => ({ task: t.task, members: t.members.map((m) => m.name), sign: !!t.sign, cx: t.group.position.x, cz: t.group.position.z, w: t.w })), plan: () => PLAN.sig, regroup,
     spoken: [], tier: TIER, cards, setAmbient: (v) => { ambEl.checked = v; ambEl.dispatchEvent(new Event('change')); }, state: () => botObjs.map((o) => ({ n: o.data.name, mode: o.mode, act: o.act, speaking: o.speaking })) });
+
+  // ---------- hide/show toggles (handle stays in the same spot; state remembered per bar) ----------
+  (() => {
+    const all = [];
+    function makeToggle(elId, btnId, key, name, spot, extraTrigger) {
+      const el = document.getElementById(elId), btn = document.getElementById(btnId); if (!el || !btn) return;
+      let hidden = false; try { hidden = localStorage.getItem(key) === '1'; } catch (e) {}
+      const place = () => { // measure the bar without its hide offset, then pin the handle to it
+        const was = el.classList.contains('tg-hidden'); el.style.transition = 'none'; if (was) el.classList.remove('tg-hidden');
+        const rc = el.getBoundingClientRect(), shown = getComputedStyle(el).display !== 'none';
+        if (was) el.classList.add('tg-hidden'); void el.offsetWidth; el.style.transition = '';
+        btn.classList.toggle('gone', !shown || !rc.width); if (!shown || !rc.width) return;
+        const pt = spot(rc); btn.style.left = Math.round(pt[0]) + 'px'; btn.style.top = Math.round(pt[1]) + 'px';
+      };
+      const apply = () => { el.classList.toggle('tg-hidden', hidden); btn.classList.toggle('off', hidden); const l = (hidden ? 'Show ' : 'Hide ') + name;
+        btn.setAttribute('aria-label', l); btn.title = l; btn.setAttribute('aria-expanded', String(!hidden));
+        if (hidden && el.contains(document.activeElement)) document.activeElement.blur(); };
+      const toggle = (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } hidden = !hidden; apply(); try { localStorage.setItem(key, hidden ? '1' : '0'); } catch (er) {} };
+      btn.addEventListener('click', toggle); if (extraTrigger) extraTrigger.addEventListener('click', toggle);
+      ['pointerdown', 'touchstart'].forEach((ev) => btn.addEventListener(ev, (e) => e.stopPropagation(), { passive: true }));
+      apply(); if (window.ResizeObserver) new ResizeObserver(place).observe(el);
+      all.push(place); return { toggle: () => toggle(), hidden: () => hidden };
+    }
+    const placeAll = () => all.forEach((f) => f());
+    const hudEl = document.getElementById('hud');
+    const api = {
+      hud: makeToggle('hud', 'hudtoggle', 'bothq.hudHidden', 'header', (rc) => [rc.right - 38, rc.top + 10], hudEl && hudEl.querySelector('h1')),
+      voice: makeToggle('voice', 'voicetoggle', 'bothq.voiceHidden', 'voice bar', (rc) => [rc.right - 18, Math.max(2, rc.top - 12)]),
+      legend: makeToggle('legend', 'legendtoggle', 'bothq.legendHidden', 'status bar', (rc) => [rc.right - 18, rc.top - 12]),
+    };
+    placeAll(); requestAnimationFrame(placeAll); setTimeout(placeAll, 600); setTimeout(placeAll, 2500);
+    window.addEventListener('resize', () => setTimeout(placeAll, 60)); window.addEventListener('orientationchange', () => setTimeout(placeAll, 300));
+    // bars move when a bot panel opens/closes (body.inspecting): re-pin after their slide
+    if (window.MutationObserver) new MutationObserver(() => { placeAll(); setTimeout(placeAll, 500); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    window.__bothq.toggles = api; window.__bothq.hud = api.hud;
+  })();
 
   // ---------- animate ----------
   const clock = new THREE.Clock(); let frame = 0;
