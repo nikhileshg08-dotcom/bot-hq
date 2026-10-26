@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T18:32:53-05:00",
+  "snapshot_at": "2026-10-26T18:46:38-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -36,18 +36,19 @@
       "color": "#3fa9f5",
       "status": "idle",
       "current_task": "",
-      "last_active": "2026-10-26T15:30:00-05:00",
+      "last_active": "2026-10-26T18:34:00-05:00",
       "pending": [
         "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
       ],
       "completed": [
+        "5:53 PM refresh: 51 new roles (2 H-1B), finished 6:33 PM CT",
         "2:55 PM refresh: 104 new roles (2 H-1B), finished 3:28 PM CT",
         "11:42 AM ad-hoc refresh: 63 new roles (1 H-1B), finished 12:41 PM CT",
         "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT",
         "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
       ],
       "queued": [
-        "Scheduled refreshes every 3 hours (next ~5:50 PM CT)"
+        "Scheduled refreshes every 3 hours (next ~8:50 PM CT)"
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -55,7 +56,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-26T15:30:01-05:00",
+      "last_checkin": "2026-10-26T18:34:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -244,19 +245,19 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-26T17:45:00-05:00",
+  "latest_bot_activity": "2026-10-26T18:34:00-05:00",
   "files": {
-    "generated_at": "2026-10-26T18:32:53-05:00",
-    "total": 393,
-    "today": 295,
-    "last_24h": 310,
-    "bytes": 365901888,
+    "generated_at": "2026-10-26T18:46:38-05:00",
+    "total": 395,
+    "today": 297,
+    "last_24h": 312,
+    "bytes": 366366010,
     "runs": 30,
     "runs_today": 23,
     "by_bot": {
       "Sky": {
-        "files": 291,
-        "bytes": 330695931,
+        "files": 293,
+        "bytes": 331123257,
         "runs": 12
       },
       "Appie": {
@@ -291,14 +292,14 @@
       },
       "other": {
         "files": 21,
-        "bytes": 2684058,
+        "bytes": 2720854,
         "runs": 3
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 263
+        "files": 264
       },
       {
         "type": "png",
@@ -363,8 +364,8 @@
       },
       {
         "date": "2026-10-26",
-        "files": 295,
-        "bytes": 259349098,
+        "files": 297,
+        "bytes": 259813220,
         "runs": 23,
         "run_ids": [
           "run_1026_1753",
@@ -395,10 +396,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127207321600,
-      "disk_used_all": 9573367808,
-      "task_files_bytes": 365901888,
-      "task_pct_of_disk": 0.2675
+      "disk_free": 127206088704,
+      "disk_used_all": 9574600704,
+      "task_files_bytes": 366366010,
+      "task_pct_of_disk": 0.2678
     }
   }
 }
