@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T11:54:37-05:00",
+  "snapshot_at": "2026-10-26T12:06:53-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -84,8 +84,8 @@
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "working",
-      "current_task": "C2C On-site sheet: filling 21 Dice roles to review (no submit)",
+      "status": "idle",
+      "current_task": "C2C On-site batch done: 16 submitted (42 today). Waiting on Nikhilesh",
       "last_active": "2026-10-26T09:03:57-05:00",
       "pending": [
         {
@@ -154,7 +154,7 @@
         "Went on hold for new applications at 1:34 AM CT."
       ],
       "groupTask": null,
-      "last_checkin": "2026-10-26T11:49:45-05:00",
+      "last_checkin": "2026-10-26T12:06:03-05:00",
       "working_with": []
     },
     {
@@ -289,22 +289,22 @@
   ],
   "latest_bot_activity": "2026-10-26T11:53:12-05:00",
   "files": {
-    "generated_at": "2026-10-26T11:54:37-05:00",
-    "total": 305,
-    "today": 207,
-    "last_24h": 222,
-    "bytes": 295299372,
+    "generated_at": "2026-10-26T12:06:53-05:00",
+    "total": 308,
+    "today": 210,
+    "last_24h": 225,
+    "bytes": 295813196,
     "runs": 25,
     "runs_today": 18,
     "by_bot": {
       "Sky": {
-        "files": 224,
-        "bytes": 262907931,
+        "files": 227,
+        "bytes": 263416997,
         "runs": 11
       },
       "Appie": {
         "files": 17,
-        "bytes": 1929365,
+        "bytes": 1934123,
         "runs": 6
       },
       "Stocker": {
@@ -336,7 +336,7 @@
     "top_types": [
       {
         "type": "json",
-        "files": 188
+        "files": 191
       },
       {
         "type": "png",
@@ -401,11 +401,11 @@
       },
       {
         "date": "2026-10-26",
-        "files": 207,
-        "bytes": 188746582,
+        "files": 210,
+        "bytes": 189260406,
         "runs": 18,
         "run_ids": [
-          "appie-task-1026-1146",
+          "appie-task-1026-1202",
           "run_1026_1142",
           "sky-task-1026-1142",
           "filo-task-1026-1034",
@@ -428,10 +428,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127884341248,
-      "disk_used_all": 8896348160,
-      "task_files_bytes": 295299372,
-      "task_pct_of_disk": 0.2159
+      "disk_free": 127829520384,
+      "disk_used_all": 8951169024,
+      "task_files_bytes": 295813196,
+      "task_pct_of_disk": 0.2162
     }
   }
 }
