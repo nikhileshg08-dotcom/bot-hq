@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T08:40:24-05:00",
+  "snapshot_at": "2026-10-27T08:52:37-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -59,7 +59,7 @@
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
       "last_checkin": "2026-10-27T08:33:00-05:00",
-      "groupTask": "H-1B Job Search",
+      "groupTask": null,
       "working_with": []
     },
     {
@@ -143,7 +143,8 @@
       ],
       "last_checkin": "2026-10-27T08:29:00-05:00",
       "working_with": [],
-      "groupTask": null
+      "groupTask": null,
+      "source_note": "All applications on hold per Nikhilesh (voice, Oct 27 8:07 AM CT). Submit nothing until he says go. 221 submitted."
     },
     {
       "id": "5e05cab1-8a7a-4871-8c92-f36e2e6e8c2c",
@@ -250,17 +251,17 @@
   ],
   "latest_bot_activity": "2026-10-27T08:33:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T08:40:24-05:00",
-    "total": 732,
-    "today": 280,
-    "last_24h": 486,
-    "bytes": 716939334,
+    "generated_at": "2026-10-27T08:52:37-05:00",
+    "total": 736,
+    "today": 284,
+    "last_24h": 490,
+    "bytes": 720861824,
     "runs": 45,
     "runs_today": 13,
     "by_bot": {
       "Sky": {
-        "files": 610,
-        "bytes": 679910711,
+        "files": 614,
+        "bytes": 683827175,
         "runs": 23
       },
       "Appie": {
@@ -295,14 +296,14 @@
       },
       "other": {
         "files": 41,
-        "bytes": 4427474,
+        "bytes": 4433500,
         "runs": 7
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 554
+        "files": 557
       },
       {
         "type": "png",
@@ -361,7 +362,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 329838222,
+        "bytes": 329844248,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -393,8 +394,8 @@
       },
       {
         "date": "2026-10-27",
-        "files": 280,
-        "bytes": 280548322,
+        "files": 284,
+        "bytes": 284464786,
         "runs": 13,
         "run_ids": [
           "run_1027_0832",
@@ -415,10 +416,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 125941391360,
-      "disk_used_all": 10839298048,
-      "task_files_bytes": 716939334,
-      "task_pct_of_disk": 0.5241
+      "disk_free": 125909073920,
+      "disk_used_all": 10871615488,
+      "task_files_bytes": 720861824,
+      "task_pct_of_disk": 0.527
     }
   }
 }
