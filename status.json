@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-26T23:59:00-05:00",
+  "snapshot_at": "2026-10-27T00:18:17-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -12,22 +12,14 @@
       "current_task": "Monitoring bots and maintaining Nikki's Company site",
       "last_active": "2026-10-26T06:05:31-05:00",
       "pending": [
-        {
-          "text": "Switch the 10-minute status push to read each bot's status file"
-        }
+        "Switch the 10-minute status push to read each bot's status file"
       ],
       "completed": [
-        {
-          "text": "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
-        }
+        "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
       ],
       "queued": [
-        {
-          "text": "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT"
-        },
-        {
-          "text": "Status push monitor every 2 hours"
-        }
+        "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT",
+        "Status push monitor every 2 hours"
       ],
       "recent": [
         "Started building the Bot HQ office page at 1:39 AM CT."
@@ -46,31 +38,17 @@
       "current_task": "11:52 PM CT refresh of Nikhilesh_Jobs_24h_Oct26.xlsx (started 11:52 PM CT)",
       "last_active": "2026-10-26T23:53:00-05:00",
       "pending": [
-        {
-          "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
-        }
+        "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
       ],
       "completed": [
-        {
-          "text": "5:53 PM refresh: 51 new roles (2 H-1B), finished 6:33 PM CT"
-        },
-        {
-          "text": "2:55 PM refresh: 104 new roles (2 H-1B), finished 3:28 PM CT"
-        },
-        {
-          "text": "11:42 AM ad-hoc refresh: 63 new roles (1 H-1B), finished 12:41 PM CT"
-        },
-        {
-          "text": "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT"
-        },
-        {
-          "text": "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
-        }
+        "5:53 PM refresh: 51 new roles (2 H-1B), finished 6:33 PM CT",
+        "2:55 PM refresh: 104 new roles (2 H-1B), finished 3:28 PM CT",
+        "11:42 AM ad-hoc refresh: 63 new roles (1 H-1B), finished 12:41 PM CT",
+        "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT",
+        "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
       ],
       "queued": [
-        {
-          "text": "Scheduled refreshes every 3 hours, plus 7 AM and 10 AM CT"
-        }
+        "Scheduled refreshes every 3 hours, plus 7 AM and 10 AM CT"
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -80,7 +58,7 @@
       ],
       "last_checkin": "2026-10-26T23:53:33-05:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -88,8 +66,8 @@
       "role": "Job Applier",
       "color": "#7ed957",
       "status": "working",
-      "current_task": "124 submitted today (Capital One and JeffreyM excluded); last: Vanta 362 (~5:44 PM CT). Reviewing the remaining held/flagged items with Nikhilesh one at a time from /workspace/review_list.json; details in /workspace/flagged_questions.json. Dice Easy Apply paused by the daily limit.",
-      "last_active": "2026-10-26T17:45:00-05:00",
+      "current_task": "125 submitted today (adjusted from 127; earlier Capital One R1004297 and JeffreyM still excluded). Sweep: Capital One R1004477 submitted ~12:09 AM CT Oct 27 (sponsorship Yes; 3 GUESS answers flagged); DIRECTV 124 skipped (posting gone); Dice daily limit hit 12:10 AM CT — QUANTUM 367, Visionary 368, JPMorgan 125 left Not Started. Non-Dice remaining queue in /workspace/sheet_order_queue_nondice.json; guesses/salary holds in /workspace/sweep_flagged.json.",
+      "last_active": "2026-10-27T00:15:00-05:00",
       "pending": [
         {
           "text": "58 Sky roles Not Started"
@@ -161,8 +139,8 @@
         "Sent the updated 22-column tracker at 1:31 AM CT.",
         "Went on hold for new applications at 1:34 AM CT."
       ],
-      "groupTask": null,
-      "last_checkin": "2026-10-26T17:45:00-05:00",
+      "groupTask": "H-1B Job Search",
+      "last_checkin": "2026-10-27T00:15:00-05:00",
       "working_with": []
     },
     {
@@ -174,20 +152,12 @@
       "current_task": "",
       "last_active": "2026-10-26T05:30:00-05:00",
       "pending": [
-        {
-          "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
-        }
+        "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
       ],
       "completed": [
-        {
-          "text": "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered"
-        },
-        {
-          "text": "Apify LinkedIn jobs scraper screenshots shared"
-        },
-        {
-          "text": "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
-        }
+        "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered",
+        "Apify LinkedIn jobs scraper screenshots shared",
+        "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
       ],
       "queued": [],
       "recent": [
@@ -209,20 +179,12 @@
       "current_task": "",
       "last_active": "2026-10-26T05:30:25-05:00",
       "pending": [
-        {
-          "text": "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
-        }
+        "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
       ],
       "completed": [
-        {
-          "text": "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)"
-        },
-        {
-          "text": "Five-year monthly market review with near-term outlook"
-        },
-        {
-          "text": "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
-        }
+        "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)",
+        "Five-year monthly market review with near-term outlook",
+        "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
       ],
       "queued": [],
       "recent": [
@@ -245,18 +207,10 @@
       "last_active": "2026-10-26T05:30:00-05:00",
       "pending": [],
       "completed": [
-        {
-          "text": "Researched SEO and Google Ads options for Carfax-related searches"
-        },
-        {
-          "text": "Researched vehicle history report APIs and NMVTIS-approved providers"
-        },
-        {
-          "text": "Researched reselling vehicle history reports: vendors, setup, pricing"
-        },
-        {
-          "text": "Researched feasibility of an India-based NMVTIS reseller"
-        }
+        "Researched SEO and Google Ads options for Carfax-related searches",
+        "Researched vehicle history report APIs and NMVTIS-approved providers",
+        "Researched reselling vehicle history reports: vendors, setup, pricing",
+        "Researched feasibility of an India-based NMVTIS reseller"
       ],
       "queued": [],
       "recent": [
@@ -280,14 +234,10 @@
       "last_active": "2026-10-26T10:28:07-05:00",
       "pending": [],
       "completed": [
-        {
-          "text": "Built the file tracker and the Files panel on Bot HQ"
-        }
+        "Built the file tracker and the Files panel on Bot HQ"
       ],
       "queued": [
-        {
-          "text": "Refresh file counts with every site build (count_files.py)"
-        }
+        "Refresh file counts with every site build (count_files.py)"
       ],
       "recent": [],
       "last_checkin": "2026-10-26T10:28:07-05:00",
@@ -295,24 +245,24 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-26T23:53:00-05:00",
+  "latest_bot_activity": "2026-10-27T00:15:00-05:00",
   "files": {
-    "generated_at": "2026-10-26T23:59:00-05:00",
-    "total": 449,
-    "today": 351,
-    "last_24h": 351,
-    "bytes": 435090075,
-    "runs": 33,
-    "runs_today": 26,
+    "generated_at": "2026-10-27T00:18:17-05:00",
+    "total": 460,
+    "today": 9,
+    "last_24h": 360,
+    "bytes": 436714887,
+    "runs": 34,
+    "runs_today": 2,
     "by_bot": {
       "Sky": {
-        "files": 347,
-        "bytes": 399819786,
+        "files": 353,
+        "bytes": 401058373,
         "runs": 14
       },
       "Appie": {
         "files": 17,
-        "bytes": 2059823,
+        "bytes": 2075080,
         "runs": 7
       },
       "Stocker": {
@@ -341,15 +291,15 @@
         "runs": 1
       },
       "other": {
-        "files": 21,
-        "bytes": 2748390,
-        "runs": 4
+        "files": 26,
+        "bytes": 3119358,
+        "runs": 5
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 312
+        "files": 321
       },
       {
         "type": "png",
@@ -361,13 +311,6 @@
       }
     ],
     "by_day": [
-      {
-        "date": "2026-10-20",
-        "files": 0,
-        "bytes": 0,
-        "runs": 0,
-        "run_ids": []
-      },
       {
         "date": "2026-10-21",
         "files": 0,
@@ -414,15 +357,14 @@
       },
       {
         "date": "2026-10-26",
-        "files": 351,
-        "bytes": 328537285,
-        "runs": 26,
+        "files": 353,
+        "bytes": 329255938,
+        "runs": 25,
         "run_ids": [
           "other-task-1026-2300",
           "oct26/run_2053",
           "oct26/run_2352",
           "run_1026_1753",
-          "appie-task-1026-1745",
           "other-task-1026-1745",
           "appie-task-1026-1520",
           "run_1026_1455",
@@ -445,14 +387,24 @@
           "oct26",
           "appie-task-1026-0005"
         ]
+      },
+      {
+        "date": "2026-10-27",
+        "files": 9,
+        "bytes": 906159,
+        "runs": 2,
+        "run_ids": [
+          "appie-task-1027-0012",
+          "other-task-1027-0003"
+        ]
       }
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 127109320704,
-      "disk_used_all": 9671368704,
-      "task_files_bytes": 435090075,
-      "task_pct_of_disk": 0.3181
+      "disk_free": 127038676992,
+      "disk_used_all": 9742012416,
+      "task_files_bytes": 436714887,
+      "task_pct_of_disk": 0.3192
     }
   }
 }
