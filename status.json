@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T04:12:15-05:00",
+  "snapshot_at": "2026-10-27T04:20:18-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -60,7 +60,7 @@
       ],
       "last_checkin": "2026-10-27T04:12:14-05:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -250,17 +250,17 @@
   ],
   "latest_bot_activity": "2026-10-27T04:38:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T04:12:15-05:00",
-    "total": 535,
-    "today": 83,
+    "generated_at": "2026-10-27T04:20:18-05:00",
+    "total": 536,
+    "today": 84,
     "last_24h": 397,
-    "bytes": 508502194,
+    "bytes": 508677573,
     "runs": 37,
     "runs_today": 4,
     "by_bot": {
       "Sky": {
-        "files": 417,
-        "bytes": 471792148,
+        "files": 418,
+        "bytes": 471967527,
         "runs": 16
       },
       "Appie": {
@@ -302,7 +302,7 @@
     "top_types": [
       {
         "type": "json",
-        "files": 381
+        "files": 382
       },
       {
         "type": "png",
@@ -394,8 +394,8 @@
       },
       {
         "date": "2026-10-27",
-        "files": 83,
-        "bytes": 72397864,
+        "files": 84,
+        "bytes": 72573243,
         "runs": 4,
         "run_ids": [
           "appie-task-1027-0405",
@@ -407,10 +407,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 126421618688,
-      "disk_used_all": 10359070720,
-      "task_files_bytes": 508502194,
-      "task_pct_of_disk": 0.3717
+      "disk_free": 126422396928,
+      "disk_used_all": 10358292480,
+      "task_files_bytes": 508677573,
+      "task_pct_of_disk": 0.3718
     }
   }
 }
