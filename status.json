@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T05:47:25-05:00",
+  "snapshot_at": "2026-10-27T05:55:42-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,15 +42,18 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "5:30 AM Oct 27 scheduled job search refresh (started 5:23 AM CT)",
-      "last_active": "2026-10-27T05:23:47-05:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-10-27T05:54:38-05:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
         }
       ],
       "completed": [
+        {
+          "text": "5:23 AM Oct 27 refresh: 8 new roles (0 H-1B), finished 5:54 AM CT"
+        },
         {
           "text": "4 AM Oct 27 refresh: 26 new roles (1 H-1B), finished 4:38 AM CT"
         },
@@ -68,14 +71,11 @@
         },
         {
           "text": "11:42 AM ad-hoc refresh: 63 new roles (1 H-1B), finished 12:41 PM CT"
-        },
-        {
-          "text": "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT"
         }
       ],
       "queued": [
         {
-          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~5:30 AM CT Oct 27."
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~7:00 AM CT Oct 27."
         }
       ],
       "recent": [
@@ -84,7 +84,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-27T05:23:47-05:00",
+      "last_checkin": "2026-10-27T05:54:38-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -304,20 +304,20 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-27T05:23:47-05:00",
+  "latest_bot_activity": "2026-10-27T05:54:38-05:00",
   "files": {
-    "generated_at": "2026-10-27T05:47:25-05:00",
-    "total": 568,
-    "today": 116,
-    "last_24h": 379,
-    "bytes": 544995549,
-    "runs": 39,
-    "runs_today": 6,
+    "generated_at": "2026-10-27T05:55:42-05:00",
+    "total": 571,
+    "today": 119,
+    "last_24h": 368,
+    "bytes": 545326225,
+    "runs": 38,
+    "runs_today": 5,
     "by_bot": {
       "Sky": {
-        "files": 447,
-        "bytes": 508226088,
-        "runs": 18
+        "files": 450,
+        "bytes": 508554363,
+        "runs": 17
       },
       "Appie": {
         "files": 17,
@@ -351,14 +351,14 @@
       },
       "other": {
         "files": 40,
-        "bytes": 4180819,
+        "bytes": 4183220,
         "runs": 6
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 409
+        "files": 412
       },
       {
         "type": "png",
@@ -417,7 +417,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 329628408,
+        "bytes": 329639094,
         "runs": 26,
         "run_ids": [
           "other-task-1026-2300",
@@ -450,13 +450,12 @@
       },
       {
         "date": "2026-10-27",
-        "files": 116,
-        "bytes": 108814351,
-        "runs": 6,
+        "files": 119,
+        "bytes": 109134341,
+        "runs": 5,
         "run_ids": [
           "run_1027_0523",
           "appie-task-1027-0500",
-          "sky-task-1027-0500",
           "other-task-1027-0404",
           "run_1027_0357",
           "other-task-1027-0049"
@@ -465,10 +464,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 126360379392,
-      "disk_used_all": 10420310016,
-      "task_files_bytes": 544995549,
-      "task_pct_of_disk": 0.3984
+      "disk_free": 126338371584,
+      "disk_used_all": 10442317824,
+      "task_files_bytes": 545326225,
+      "task_pct_of_disk": 0.3986
     }
   }
 }
