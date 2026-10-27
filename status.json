@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T11:10:14-05:00",
+  "snapshot_at": "2026-10-27T11:31:11-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -34,9 +34,9 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "idle",
-      "current_task": "",
-      "last_active": "2026-10-27T10:19:00-05:00",
+      "status": "working",
+      "current_task": "11:30 AM Oct 27 scheduled job-search refresh (12h window)",
+      "last_active": "2026-10-27T11:30:00-05:00",
       "pending": [
         "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
       ],
@@ -58,8 +58,8 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-27T11:10:13-05:00",
-      "groupTask": null,
+      "last_checkin": "2026-10-27T11:30:00-05:00",
+      "groupTask": "H-1B Job Search",
       "working_with": []
     },
     {
@@ -251,20 +251,20 @@
       "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-27T10:35:44-05:00",
+  "latest_bot_activity": "2026-10-27T11:30:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T11:10:14-05:00",
-    "total": 777,
-    "today": 325,
-    "last_24h": 494,
-    "bytes": 761480251,
-    "runs": 46,
-    "runs_today": 14,
+    "generated_at": "2026-10-27T11:31:11-05:00",
+    "total": 778,
+    "today": 326,
+    "last_24h": 495,
+    "bytes": 761611522,
+    "runs": 47,
+    "runs_today": 15,
     "by_bot": {
       "Sky": {
-        "files": 653,
-        "bytes": 724317662,
-        "runs": 23
+        "files": 654,
+        "bytes": 724447067,
+        "runs": 24
       },
       "Appie": {
         "files": 17,
@@ -298,7 +298,7 @@
       },
       "other": {
         "files": 43,
-        "bytes": 4561440,
+        "bytes": 4563306,
         "runs": 8
       }
     },
@@ -313,7 +313,7 @@
       },
       {
         "type": "xlsx",
-        "files": 42
+        "files": 43
       }
     ],
     "by_day": [
@@ -364,7 +364,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 329968816,
+        "bytes": 329970682,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -396,11 +396,12 @@
       },
       {
         "date": "2026-10-27",
-        "files": 325,
-        "bytes": 324958645,
-        "runs": 14,
+        "files": 326,
+        "bytes": 325088050,
+        "runs": 15,
         "run_ids": [
-          "other-task-1027-1055",
+          "sky-task-1027-1131",
+          "other-task-1027-1117",
           "run_1027_1000",
           "run_1027_0832",
           "appie-task-1027-0759",
@@ -419,10 +420,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 125844017152,
-      "disk_used_all": 10936672256,
-      "task_files_bytes": 761480251,
-      "task_pct_of_disk": 0.5566
+      "disk_free": 125843656704,
+      "disk_used_all": 10937032704,
+      "task_files_bytes": 761611522,
+      "task_pct_of_disk": 0.5567
     }
   }
 }
