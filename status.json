@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T10:17:54-05:00",
+  "snapshot_at": "2026-10-27T10:27:02-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -34,23 +34,23 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "10:00 AM Oct 27 scheduled job-search refresh (12h window)",
-      "last_active": "2026-10-27T10:01:00-05:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-10-27T10:19:00-05:00",
       "pending": [
         "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
       ],
       "completed": [
+        "10:00 AM Oct 27 refresh: 34 new roles (2 H-1B), finished 10:18 AM CT",
         "8:32 AM Oct 27 refresh: 18 new roles (1 H-1B), finished 9:07 AM CT",
         "6:59 AM Oct 27 refresh: 21 new roles (1 H-1B), finished 7:46 AM CT",
         "5:23 AM Oct 27 refresh: 8 new roles (0 H-1B), finished 5:54 AM CT",
         "4 AM Oct 27 refresh: 26 new roles (1 H-1B), finished 4:38 AM CT",
         "12:31 AM ad-hoc Oct 27 refresh: 48 new roles (2 H-1B), finished 1:33 AM CT; interrupted mid-run and resumed; wrote Nikhilesh_Jobs_24h_Oct27.xlsx",
-        "11:52 PM refresh: 51 new roles (0 H-1B), finished 12:33 AM CT Oct 27",
-        "5:53 PM refresh: 51 new roles (2 H-1B), finished 6:33 PM CT"
+        "11:52 PM refresh: 51 new roles (0 H-1B), finished 12:33 AM CT Oct 27"
       ],
       "queued": [
-        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~10:00 AM CT Oct 27."
+        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~11:30 AM CT Oct 27."
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -58,7 +58,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-27T10:01:00-05:00",
+      "last_checkin": "2026-10-27T10:19:00-05:00",
       "groupTask": null,
       "working_with": []
     },
@@ -179,25 +179,28 @@
       "name": "Stocker",
       "role": "Stock market research and picks",
       "color": "#e8584f",
-      "status": "idle",
-      "current_task": "",
-      "last_active": "2026-10-26T05:30:25-05:00",
+      "status": "working",
+      "current_task": "Building the $1,000 paper test tracker Page and doing deeper company research to confirm or replace the 3 picks",
+      "last_active": "2026-10-27T10:23:27-05:00",
       "pending": [
-        "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
+        "Waiting on Nikhilesh: confirm whether Nicky's instructions are a standing rule"
       ],
       "completed": [
-        "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)",
+        "Created weekday ~8 AM CT pre-market paper-test routine (through Nov 6)",
         "Five-year monthly market review with near-term outlook",
         "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
       ],
-      "queued": [],
+      "queued": [
+        "Fold final picks into the tracker Page and the daily pre-open check",
+        "Report picks to Nikhilesh and Stocky"
+      ],
       "recent": [
         "Researched this week's daily movers and sector themes.",
         "Expanded the research to five years, weighted toward recent months.",
         "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
         "Last posted at 2:17 AM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-26T05:30:25-05:00",
+      "last_checkin": "2026-10-27T10:23:27-05:00",
       "groupTask": null,
       "working_with": []
     },
@@ -250,19 +253,19 @@
       "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-27T10:01:00-05:00",
+  "latest_bot_activity": "2026-10-27T10:23:27-05:00",
   "files": {
-    "generated_at": "2026-10-27T10:17:54-05:00",
-    "total": 776,
-    "today": 324,
-    "last_24h": 497,
-    "bytes": 761442338,
+    "generated_at": "2026-10-27T10:27:02-05:00",
+    "total": 777,
+    "today": 325,
+    "last_24h": 498,
+    "bytes": 761469887,
     "runs": 46,
     "runs_today": 14,
     "by_bot": {
       "Sky": {
-        "files": 652,
-        "bytes": 724290113,
+        "files": 653,
+        "bytes": 724317662,
         "runs": 23
       },
       "Appie": {
@@ -304,7 +307,7 @@
     "top_types": [
       {
         "type": "json",
-        "files": 592
+        "files": 593
       },
       {
         "type": "png",
@@ -395,8 +398,8 @@
       },
       {
         "date": "2026-10-27",
-        "files": 324,
-        "bytes": 324931096,
+        "files": 325,
+        "bytes": 324958645,
         "runs": 14,
         "run_ids": [
           "other-task-1027-1014",
@@ -418,9 +421,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 125840474112,
-      "disk_used_all": 10940215296,
-      "task_files_bytes": 761442338,
+      "disk_free": 125839822848,
+      "disk_used_all": 10940866560,
+      "task_files_bytes": 761469887,
       "task_pct_of_disk": 0.5566
     }
   }
