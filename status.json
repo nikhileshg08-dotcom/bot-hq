@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T04:03:33-05:00",
+  "snapshot_at": "2026-10-27T04:12:15-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -12,22 +12,14 @@
       "current_task": "Monitoring bots and maintaining Nikki's Company site",
       "last_active": "2026-10-26T06:05:31-05:00",
       "pending": [
-        {
-          "text": "Switch the 10-minute status push to read each bot's status file"
-        }
+        "Switch the 10-minute status push to read each bot's status file"
       ],
       "completed": [
-        {
-          "text": "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
-        }
+        "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
       ],
       "queued": [
-        {
-          "text": "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT"
-        },
-        {
-          "text": "Status push monitor every 2 hours"
-        }
+        "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT",
+        "Status push monitor every 2 hours"
       ],
       "recent": [
         "Started building the Bot HQ office page at 1:39 AM CT."
@@ -46,37 +38,19 @@
       "current_task": "4 AM CT Oct 27 scheduled job-search refresh (12h window), appending to Nikhilesh_Jobs_24h_Oct27.xlsx",
       "last_active": "2026-10-27T03:58:00-05:00",
       "pending": [
-        {
-          "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
-        }
+        "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
       ],
       "completed": [
-        {
-          "text": "12:31 AM ad-hoc Oct 27 refresh: 48 new roles (2 H-1B), finished 1:33 AM CT; interrupted mid-run and resumed; wrote Nikhilesh_Jobs_24h_Oct27.xlsx"
-        },
-        {
-          "text": "11:52 PM refresh: 51 new roles (0 H-1B), finished 12:33 AM CT Oct 27"
-        },
-        {
-          "text": "5:53 PM refresh: 51 new roles (2 H-1B), finished 6:33 PM CT"
-        },
-        {
-          "text": "2:55 PM refresh: 104 new roles (2 H-1B), finished 3:28 PM CT"
-        },
-        {
-          "text": "11:42 AM ad-hoc refresh: 63 new roles (1 H-1B), finished 12:41 PM CT"
-        },
-        {
-          "text": "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT"
-        },
-        {
-          "text": "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
-        }
+        "12:31 AM ad-hoc Oct 27 refresh: 48 new roles (2 H-1B), finished 1:33 AM CT; interrupted mid-run and resumed; wrote Nikhilesh_Jobs_24h_Oct27.xlsx",
+        "11:52 PM refresh: 51 new roles (0 H-1B), finished 12:33 AM CT Oct 27",
+        "5:53 PM refresh: 51 new roles (2 H-1B), finished 6:33 PM CT",
+        "2:55 PM refresh: 104 new roles (2 H-1B), finished 3:28 PM CT",
+        "11:42 AM ad-hoc refresh: 63 new roles (1 H-1B), finished 12:41 PM CT",
+        "8:54 AM refresh: 41 new roles (3 H-1B), finished 9:34 AM CT",
+        "5:59 AM refresh: 8 new roles (0 H-1B), finished 6:44 AM CT"
       ],
       "queued": [
-        {
-          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next real run ~4 AM CT Oct 27."
-        }
+        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next real run ~4 AM CT Oct 27."
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -84,7 +58,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-27T03:58:00-05:00",
+      "last_checkin": "2026-10-27T04:12:14-05:00",
       "working_with": [],
       "groupTask": "H-1B Job Search"
     },
@@ -94,8 +68,8 @@
       "role": "Job Applier",
       "color": "#7ed957",
       "status": "idle",
-      "current_task": "Batch15 logged 3:55 AM CT Oct 27: +8 Applied (NVIDIA 425/427, Turing 426 FLAG NYC No, Netpreme, JeffreyM Workable 4BADE7304A, OpenAI Personalization, Niantic FLAG possible dup, AssemblyAI $190K FLAG auth-without-spon Yes / sponsorship No) → 193 adj; Sony 414 Held verifying In Progress (not counted); Held Target CPT/OPT x2 + Axon EAR; Skipped Xperteez Built In login-only. Held 48; skipped 41.",
-      "last_active": "2026-10-27T03:55:00-05:00",
+      "current_task": "Batch16 logged 4:38 AM CT Oct 27: Sony 414 confirmed Submitted (counted); +Cantina Ops/Voice, XPeng FLAG sponsorship unverified → 197 adj; Skipped Milestone Kochi + Gramian non-US/Rust; Held Motorola R64936 unrestricted-auth FLAG. Held 48; skipped 43.",
+      "last_active": "2026-10-27T04:38:00-05:00",
       "pending": [
         {
           "text": "58 Sky roles Not Started"
@@ -168,7 +142,7 @@
         "Went on hold for new applications at 1:34 AM CT."
       ],
       "groupTask": null,
-      "last_checkin": "2026-10-27T03:55:00-05:00",
+      "last_checkin": "2026-10-27T04:38:00-05:00",
       "working_with": []
     },
     {
@@ -180,20 +154,12 @@
       "current_task": "",
       "last_active": "2026-10-26T05:30:00-05:00",
       "pending": [
-        {
-          "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
-        }
+        "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
       ],
       "completed": [
-        {
-          "text": "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered"
-        },
-        {
-          "text": "Apify LinkedIn jobs scraper screenshots shared"
-        },
-        {
-          "text": "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
-        }
+        "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered",
+        "Apify LinkedIn jobs scraper screenshots shared",
+        "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
       ],
       "queued": [],
       "recent": [
@@ -215,20 +181,12 @@
       "current_task": "",
       "last_active": "2026-10-26T05:30:25-05:00",
       "pending": [
-        {
-          "text": "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
-        }
+        "Waiting on Nikhilesh: whether to set up a $1,000 paper-test tracker Page and pre-market daily checks"
       ],
       "completed": [
-        {
-          "text": "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)"
-        },
-        {
-          "text": "Five-year monthly market review with near-term outlook"
-        },
-        {
-          "text": "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
-        }
+        "Weekly market briefing for Oct 19-23, 2026 with Monday picks (SLB, CRWD, AMZN)",
+        "Five-year monthly market review with near-term outlook",
+        "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
       ],
       "queued": [],
       "recent": [
@@ -251,18 +209,10 @@
       "last_active": "2026-10-26T05:30:00-05:00",
       "pending": [],
       "completed": [
-        {
-          "text": "Researched SEO and Google Ads options for Carfax-related searches"
-        },
-        {
-          "text": "Researched vehicle history report APIs and NMVTIS-approved providers"
-        },
-        {
-          "text": "Researched reselling vehicle history reports: vendors, setup, pricing"
-        },
-        {
-          "text": "Researched feasibility of an India-based NMVTIS reseller"
-        }
+        "Researched SEO and Google Ads options for Carfax-related searches",
+        "Researched vehicle history report APIs and NMVTIS-approved providers",
+        "Researched reselling vehicle history reports: vendors, setup, pricing",
+        "Researched feasibility of an India-based NMVTIS reseller"
       ],
       "queued": [],
       "recent": [
@@ -286,42 +236,36 @@
       "last_active": "2026-10-27T00:48:00-05:00",
       "pending": [],
       "completed": [
-        {
-          "text": "Oct 26 nightly backup cleanup skipped at 12:47 AM CT: Sky's 23:52 run was still writing (main sheet changed 12:35 AM). Nothing changed."
-        },
-        {
-          "text": "Built the file tracker and the Files panel on Bot HQ"
-        }
+        "Oct 26 nightly backup cleanup skipped at 12:47 AM CT: Sky's 23:52 run was still writing (main sheet changed 12:35 AM). Nothing changed.",
+        "Built the file tracker and the Files panel on Bot HQ"
       ],
       "queued": [
-        {
-          "text": "Refresh file counts with every site build (count_files.py)"
-        }
+        "Refresh file counts with every site build (count_files.py)"
       ],
       "recent": [],
-      "last_checkin": "2026-10-27T03:57:07-05:00",
+      "last_checkin": "2026-10-27T04:12:14-05:00",
       "working_with": [],
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-27T03:58:00-05:00",
+  "latest_bot_activity": "2026-10-27T04:38:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T04:03:33-05:00",
-    "total": 529,
-    "today": 77,
-    "last_24h": 391,
-    "bytes": 482123632,
-    "runs": 38,
-    "runs_today": 5,
+    "generated_at": "2026-10-27T04:12:15-05:00",
+    "total": 535,
+    "today": 83,
+    "last_24h": 397,
+    "bytes": 508502194,
+    "runs": 37,
+    "runs_today": 4,
     "by_bot": {
       "Sky": {
-        "files": 411,
-        "bytes": 445430231,
-        "runs": 17
+        "files": 417,
+        "bytes": 471792148,
+        "runs": 16
       },
       "Appie": {
         "files": 17,
-        "bytes": 2118717,
+        "bytes": 2122029,
         "runs": 7
       },
       "Stocker": {
@@ -351,14 +295,14 @@
       },
       "other": {
         "files": 37,
-        "bytes": 4112608,
+        "bytes": 4125941,
         "runs": 6
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 375
+        "files": 381
       },
       {
         "type": "png",
@@ -417,7 +361,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 329548171,
+        "bytes": 329551540,
         "runs": 26,
         "run_ids": [
           "other-task-1026-2300",
@@ -450,24 +394,23 @@
       },
       {
         "date": "2026-10-27",
-        "files": 77,
-        "bytes": 46022671,
-        "runs": 5,
+        "files": 83,
+        "bytes": 72397864,
+        "runs": 4,
         "run_ids": [
+          "appie-task-1027-0405",
+          "other-task-1027-0404",
           "run_1027_0357",
-          "sky-task-1027-0358",
-          "other-task-1027-0358",
-          "appie-task-1027-0358",
           "other-task-1027-0047"
         ]
       }
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 126463131648,
-      "disk_used_all": 10317557760,
-      "task_files_bytes": 482123632,
-      "task_pct_of_disk": 0.3524
+      "disk_free": 126421618688,
+      "disk_used_all": 10359070720,
+      "task_files_bytes": 508502194,
+      "task_pct_of_disk": 0.3717
     }
   }
 }
