@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T00:46:20-05:00",
+  "snapshot_at": "2026-10-27T00:51:12-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -82,19 +82,17 @@
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
       "last_checkin": "2026-10-27T00:35:00-05:00",
-      "working_with": [
-        "Appie"
-      ],
-      "groupTask": "H-1B Job Search"
+      "working_with": [],
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
       "name": "Appie",
       "role": "Job Applier",
       "color": "#7ed957",
-      "status": "working",
-      "current_task": "132 submitted today (adjusted from 134). Sweep 12:25–12:35 AM CT: ServiceNow 137, Precision Castparts 139, McKesson 140 submitted (GUESS flagged); Microsoft 138+266 held (social login only); Peloton 149 held (AI-tools attestation); Cooper 148 iCIMS hCaptcha — retry later. Appended 17 new roles from Sky 1026 2352 refresh. Non-Dice queue now 128 in sheet_order_queue_nondice.json.",
-      "last_active": "2026-10-27T00:37:00-05:00",
+      "status": "idle",
+      "current_task": "Apple 150/151/154 Skipped per Nikhilesh voice 12:48 AM CT Oct 27 (ignore Apple roles). A1: 133 submitted, 33 skipped, 58 held, 30 LinkedIn-pending, 169 not started. Queues stripped of Apple.",
+      "last_active": "2026-10-27T00:48:00-05:00",
       "pending": [
         {
           "text": "58 Sky roles Not Started"
@@ -166,11 +164,9 @@
         "Sent the updated 22-column tracker at 1:31 AM CT.",
         "Went on hold for new applications at 1:34 AM CT."
       ],
-      "groupTask": "H-1B Job Search",
-      "last_checkin": "2026-10-27T00:37:00-05:00",
-      "working_with": [
-        "Sky"
-      ]
+      "groupTask": null,
+      "last_checkin": "2026-10-27T00:48:00-05:00",
+      "working_with": []
     },
     {
       "id": "5e05cab1-8a7a-4871-8c92-f36e2e6e8c2c",
@@ -281,12 +277,15 @@
       "name": "Filo",
       "role": "File manager: tracks the files the bots create",
       "color": "#2bb3a3",
-      "status": "idle",
+      "status": "problem",
       "manager": false,
-      "current_task": "Tracking file counts",
-      "last_active": "2026-10-26T10:28:07-05:00",
+      "current_task": "",
+      "last_active": "2026-10-27T00:48:00-05:00",
       "pending": [],
       "completed": [
+        {
+          "text": "Oct 26 nightly backup cleanup skipped at 12:47 AM CT: Sky's 23:52 run was still writing (main sheet changed 12:35 AM). Nothing changed."
+        },
         {
           "text": "Built the file tracker and the Files panel on Bot HQ"
         }
@@ -297,29 +296,29 @@
         }
       ],
       "recent": [],
-      "last_checkin": "2026-10-26T10:28:07-05:00",
+      "last_checkin": "2026-10-27T00:48:00-05:00",
       "working_with": [],
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-27T00:37:00-05:00",
+  "latest_bot_activity": "2026-10-27T00:48:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T00:46:20-05:00",
-    "total": 492,
-    "today": 40,
-    "last_24h": 392,
-    "bytes": 469120496,
+    "generated_at": "2026-10-27T00:51:12-05:00",
+    "total": 494,
+    "today": 42,
+    "last_24h": 394,
+    "bytes": 469303524,
     "runs": 35,
     "runs_today": 2,
     "by_bot": {
       "Sky": {
-        "files": 385,
-        "bytes": 433431416,
+        "files": 386,
+        "bytes": 433563636,
         "runs": 15
       },
       "Appie": {
         "files": 17,
-        "bytes": 2082371,
+        "bytes": 2084410,
         "runs": 7
       },
       "Stocker": {
@@ -348,15 +347,15 @@
         "runs": 1
       },
       "other": {
-        "files": 26,
-        "bytes": 3144633,
+        "files": 27,
+        "bytes": 3193402,
         "runs": 5
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 347
+        "files": 348
       },
       {
         "type": "png",
@@ -415,7 +414,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 329446231,
+        "bytes": 329454784,
         "runs": 26,
         "run_ids": [
           "other-task-1026-2300",
@@ -448,21 +447,21 @@
       },
       {
         "date": "2026-10-27",
-        "files": 40,
-        "bytes": 33121475,
+        "files": 42,
+        "bytes": 33295950,
         "runs": 2,
         "run_ids": [
-          "appie-task-1027-0036",
-          "other-task-1027-0004"
+          "appie-task-1027-0049",
+          "other-task-1027-0036"
         ]
       }
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 126902198272,
-      "disk_used_all": 9878491136,
-      "task_files_bytes": 469120496,
-      "task_pct_of_disk": 0.3429
+      "disk_free": 126879535104,
+      "disk_used_all": 9901154304,
+      "task_files_bytes": 469303524,
+      "task_pct_of_disk": 0.3431
     }
   }
 }
