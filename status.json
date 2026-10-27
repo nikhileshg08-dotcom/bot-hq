@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T02:52:54-05:00",
+  "snapshot_at": "2026-10-27T03:04:11-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -94,8 +94,8 @@
       "role": "Job Applier",
       "color": "#7ed957",
       "status": "idle",
-      "current_task": "Batch10 logged 2:32 AM CT Oct 27: +6 Applied (CVS 343/347, Home Depot 355, Turing 318, Klaviyo 341, Astera 342) → 171 adj; all FLAGGED sponsorship Yes (+ extras). SandboxAQ 363 stays Held (sponsorship-type / visa-status). Held 23; held_queue 13.",
-      "last_active": "2026-10-27T02:32:00-05:00",
+      "current_task": "Batch11 logged 2:56 AM CT Oct 27: +3 Applied (iManage 141 $160K Chicago hybrid FLAG; Visa 156 $190K race South Asian FLAG; Parts Town 170 21+/Dice FLAG) → 174 adj; PCC 176 Skipped already applied; Held: Nicklaus SSN eSign, Cooper/Keysight hCaptcha, TikTok×2 email code. Held 24; skipped 35.",
+      "last_active": "2026-10-27T02:56:00-05:00",
       "pending": [
         {
           "text": "58 Sky roles Not Started"
@@ -168,7 +168,7 @@
         "Went on hold for new applications at 1:34 AM CT."
       ],
       "groupTask": null,
-      "last_checkin": "2026-10-27T02:32:00-05:00",
+      "last_checkin": "2026-10-27T02:56:00-05:00",
       "working_with": []
     },
     {
@@ -304,24 +304,24 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-27T02:32:00-05:00",
+  "latest_bot_activity": "2026-10-27T02:56:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T02:52:54-05:00",
+    "generated_at": "2026-10-27T03:04:11-05:00",
     "total": 511,
     "today": 59,
-    "last_24h": 392,
-    "bytes": 471311042,
+    "last_24h": 385,
+    "bytes": 471330641,
     "runs": 36,
     "runs_today": 3,
     "by_bot": {
       "Sky": {
         "files": 393,
-        "bytes": 434791177,
+        "bytes": 434791298,
         "runs": 16
       },
       "Appie": {
         "files": 17,
-        "bytes": 2100612,
+        "bytes": 2103385,
         "runs": 7
       },
       "Stocker": {
@@ -351,7 +351,7 @@
       },
       "other": {
         "files": 37,
-        "bytes": 3957177,
+        "bytes": 3973882,
         "runs": 5
       }
     },
@@ -417,7 +417,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 329531372,
+        "bytes": 329532144,
         "runs": 26,
         "run_ids": [
           "other-task-1026-2300",
@@ -451,20 +451,20 @@
       {
         "date": "2026-10-27",
         "files": 59,
-        "bytes": 35226880,
+        "bytes": 35245707,
         "runs": 3,
         "run_ids": [
-          "sky-task-1027-0233",
-          "appie-task-1027-0233",
+          "appie-task-1027-0257",
+          "sky-task-1027-0257",
           "other-task-1027-0047"
         ]
       }
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 126650867712,
-      "disk_used_all": 10129821696,
-      "task_files_bytes": 471311042,
+      "disk_free": 126568001536,
+      "disk_used_all": 10212687872,
+      "task_files_bytes": 471330641,
       "task_pct_of_disk": 0.3445
     }
   }
