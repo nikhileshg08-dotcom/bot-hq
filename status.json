@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T06:12:50-05:00",
+  "snapshot_at": "2026-10-27T06:21:27-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -306,11 +306,11 @@
   ],
   "latest_bot_activity": "2026-10-27T06:00:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T06:12:50-05:00",
+    "generated_at": "2026-10-27T06:21:27-05:00",
     "total": 571,
     "today": 119,
     "last_24h": 350,
-    "bytes": 545355022,
+    "bytes": 545359582,
     "runs": 39,
     "runs_today": 6,
     "by_bot": {
@@ -351,7 +351,7 @@
       },
       "other": {
         "files": 40,
-        "bytes": 4209667,
+        "bytes": 4214227,
         "runs": 7
       }
     },
@@ -451,7 +451,7 @@
       {
         "date": "2026-10-27",
         "files": 119,
-        "bytes": 109161006,
+        "bytes": 109165566,
         "runs": 6,
         "run_ids": [
           "appie-task-1027-0602",
@@ -465,9 +465,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 126315126784,
-      "disk_used_all": 10465562624,
-      "task_files_bytes": 545355022,
+      "disk_free": 126289797120,
+      "disk_used_all": 10490892288,
+      "task_files_bytes": 545359582,
       "task_pct_of_disk": 0.3987
     }
   }
