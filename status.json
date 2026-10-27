@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T15:26:52-05:00",
+  "snapshot_at": "2026-10-27T15:33:50-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -35,7 +35,7 @@
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-27T14:37:00-05:00",
       "pending": [
         "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
@@ -58,7 +58,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-27T15:26:52-05:00",
+      "last_checkin": "2026-10-27T15:33:50-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -256,13 +256,13 @@
   ],
   "latest_bot_activity": "2026-10-27T14:37:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T15:26:52-05:00",
+    "generated_at": "2026-10-27T15:33:50-05:00",
     "total": 995,
     "today": 543,
-    "last_24h": 643,
-    "bytes": 889014747,
-    "runs": 50,
-    "runs_today": 18,
+    "last_24h": 638,
+    "bytes": 889020415,
+    "runs": 51,
+    "runs_today": 19,
     "by_bot": {
       "Sky": {
         "files": 726,
@@ -301,8 +301,8 @@
       },
       "other": {
         "files": 188,
-        "bytes": 44913225,
-        "runs": 10
+        "bytes": 44918893,
+        "runs": 11
       }
     },
     "top_types": [
@@ -367,7 +367,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 330368324,
+        "bytes": 330372087,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -400,9 +400,10 @@
       {
         "date": "2026-10-27",
         "files": 543,
-        "bytes": 452093633,
-        "runs": 18,
+        "bytes": 452095538,
+        "runs": 19,
         "run_ids": [
+          "other-task-1027-1528",
           "run_1027_1406",
           "other-task-1027-1349",
           "appie-task-1027-1328",
@@ -426,9 +427,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 125353107456,
-      "disk_used_all": 11427581952,
-      "task_files_bytes": 889014747,
+      "disk_free": 125257494528,
+      "disk_used_all": 11523194880,
+      "task_files_bytes": 889020415,
       "task_pct_of_disk": 0.6499
     }
   }
