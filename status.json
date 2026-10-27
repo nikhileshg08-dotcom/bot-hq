@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T16:43:41-05:00",
+  "snapshot_at": "2026-10-27T16:48:36-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -35,7 +35,7 @@
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
       "status": "idle",
-      "current_task": "",
+      "current_task": null,
       "last_active": "2026-10-27T14:37:00-05:00",
       "pending": [
         "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
@@ -58,7 +58,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-27T16:37:09-05:00",
+      "last_checkin": "2026-10-27T16:48:36-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -257,11 +257,11 @@
   ],
   "latest_bot_activity": "2026-10-27T16:15:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T16:43:41-05:00",
+    "generated_at": "2026-10-27T16:48:36-05:00",
     "total": 995,
     "today": 543,
     "last_24h": 635,
-    "bytes": 889073787,
+    "bytes": 889074341,
     "runs": 52,
     "runs_today": 20,
     "by_bot": {
@@ -302,7 +302,7 @@
       },
       "other": {
         "files": 188,
-        "bytes": 44945826,
+        "bytes": 44946380,
         "runs": 11
       }
     },
@@ -368,7 +368,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 330407909,
+        "bytes": 330408463,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -429,9 +429,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 125057400832,
-      "disk_used_all": 11723288576,
-      "task_files_bytes": 889073787,
+      "disk_free": 125057019904,
+      "disk_used_all": 11723669504,
+      "task_files_bytes": 889074341,
       "task_pct_of_disk": 0.6499
     }
   }
