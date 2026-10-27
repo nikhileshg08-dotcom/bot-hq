@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T07:42:16-05:00",
+  "snapshot_at": "2026-10-27T07:56:06-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -25,30 +25,32 @@
         "Started building the Bot HQ office page at 1:39 AM CT."
       ],
       "source_note": "Reading Manny's id returned this build session, so Manny's role and schedule come from the brief.",
-      "last_checkin": "2026-10-26T06:05:31-05:00"
+      "last_checkin": "2026-10-26T06:05:31-05:00",
+      "groupTask": null,
+      "working_with": []
     },
     {
       "id": "1d32907d-b422-46e8-83cb-6788b25ea079",
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "7:00 AM Oct 27 scheduled job-search refresh (12h window), started 6:59 AM CT",
-      "last_active": "2026-10-27T06:59:00-05:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-10-27T07:46:10-05:00",
       "pending": [
         "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
       ],
       "completed": [
+        "6:59 AM Oct 27 refresh: 21 new roles (1 H-1B), finished 7:46 AM CT",
         "5:23 AM Oct 27 refresh: 8 new roles (0 H-1B), finished 5:54 AM CT",
         "4 AM Oct 27 refresh: 26 new roles (1 H-1B), finished 4:38 AM CT",
         "12:31 AM ad-hoc Oct 27 refresh: 48 new roles (2 H-1B), finished 1:33 AM CT; interrupted mid-run and resumed; wrote Nikhilesh_Jobs_24h_Oct27.xlsx",
         "11:52 PM refresh: 51 new roles (0 H-1B), finished 12:33 AM CT Oct 27",
         "5:53 PM refresh: 51 new roles (2 H-1B), finished 6:33 PM CT",
-        "2:55 PM refresh: 104 new roles (2 H-1B), finished 3:28 PM CT",
-        "11:42 AM ad-hoc refresh: 63 new roles (1 H-1B), finished 12:41 PM CT"
+        "2:55 PM refresh: 104 new roles (2 H-1B), finished 3:28 PM CT"
       ],
       "queued": [
-        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~7:00 AM CT Oct 27."
+        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~8:30 AM CT Oct 27."
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -56,7 +58,9 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-27T06:59:00-05:00"
+      "last_checkin": "2026-10-27T07:46:10-05:00",
+      "groupTask": null,
+      "working_with": []
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -64,8 +68,8 @@
       "role": "Job Applier",
       "color": "#7ed957",
       "status": "idle",
-      "current_task": "Batch18b logged 6:41 AM CT Oct 27: Walmart 339 R-2592781 + 455 R-2648117 Applied (FLAG H1-B sponsorship type + work auth within 3 days Yes) → 218; Optum 320 Taleo password expired; Xperteez 456 OTP never arrived. Held 59; skipped 44.",
-      "last_active": "2026-10-27T06:41:00-05:00",
+      "current_task": "Batch19 logged 7:41 AM CT Oct 27: Brillio 235 Held (Lever verify error×2; retry Lever URL, $160K, sponsorship Yes); HPE 412 Held FLAGGED (Workday draft Application Questions citizenship/work-permit/residency; residency No needs fix; nothing submitted). Submitted stays 218; held 61.",
+      "last_active": "2026-10-27T07:41:00-05:00",
       "pending": [
         {
           "text": "58 Sky roles Not Started"
@@ -138,7 +142,7 @@
         "Went on hold for new applications at 1:34 AM CT."
       ],
       "groupTask": null,
-      "last_checkin": "2026-10-27T06:41:00-05:00",
+      "last_checkin": "2026-10-27T07:41:00-05:00",
       "working_with": []
     },
     {
@@ -164,7 +168,9 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-26T05:30:20-05:00"
+      "last_checkin": "2026-10-26T05:30:20-05:00",
+      "groupTask": null,
+      "working_with": []
     },
     {
       "id": "8e88aa47-6fca-4cc4-b4b3-3bfcef51f2cf",
@@ -189,7 +195,9 @@
         "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
         "Last posted at 2:17 AM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-26T05:30:25-05:00"
+      "last_checkin": "2026-10-26T05:30:25-05:00",
+      "groupTask": null,
+      "working_with": []
     },
     {
       "id": "a4c8649c-2d39-4f0a-b4e5-89eeb6224db2",
@@ -213,7 +221,9 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-26T05:30:34-05:00"
+      "last_checkin": "2026-10-26T05:30:34-05:00",
+      "groupTask": null,
+      "working_with": []
     },
     {
       "id": "bdaff4eb-8345-41f5-beb6-5147b8a5fe7a",
@@ -233,27 +243,29 @@
         "Refresh file counts with every site build (count_files.py)"
       ],
       "recent": [],
-      "last_checkin": "2026-10-27T06:47:51-05:00"
+      "last_checkin": "2026-10-27T06:47:51-05:00",
+      "groupTask": null,
+      "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-27T06:59:00-05:00",
+  "latest_bot_activity": "2026-10-27T07:46:10-05:00",
   "files": {
-    "generated_at": "2026-10-27T07:42:16-05:00",
-    "total": 701,
-    "today": 249,
-    "last_24h": 458,
-    "bytes": 681501600,
-    "runs": 42,
-    "runs_today": 10,
+    "generated_at": "2026-10-27T07:56:06-05:00",
+    "total": 702,
+    "today": 250,
+    "last_24h": 459,
+    "bytes": 681531310,
+    "runs": 43,
+    "runs_today": 11,
     "by_bot": {
       "Sky": {
-        "files": 579,
-        "bytes": 644497626,
+        "files": 580,
+        "bytes": 644517361,
         "runs": 21
       },
       "Appie": {
         "files": 17,
-        "bytes": 2135142,
+        "bytes": 2135782,
         "runs": 7
       },
       "Stocker": {
@@ -283,14 +295,14 @@
       },
       "other": {
         "files": 41,
-        "bytes": 4406756,
-        "runs": 6
+        "bytes": 4416091,
+        "runs": 7
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 526
+        "files": 527
       },
       {
         "type": "png",
@@ -349,7 +361,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 329822884,
+        "bytes": 329828776,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -381,15 +393,16 @@
       },
       {
         "date": "2026-10-27",
-        "files": 249,
-        "bytes": 245125926,
-        "runs": 10,
+        "files": 250,
+        "bytes": 245149744,
+        "runs": 11,
         "run_ids": [
+          "appie-task-1027-0742",
+          "other-task-1027-0732",
           "run_1027_0659/run_2053",
           "run_1027_0659/run_2352",
           "run_1027_0659",
           "run_1027_0659/run_0854",
-          "appie-task-1027-0642",
           "other-task-1027-0558",
           "run_1027_0523",
           "other-task-1027-0404",
@@ -400,9 +413,9 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 125972123648,
-      "disk_used_all": 10808565760,
-      "task_files_bytes": 681501600,
+      "disk_free": 125979975680,
+      "disk_used_all": 10800713728,
+      "task_files_bytes": 681531310,
       "task_pct_of_disk": 0.4982
     }
   }
