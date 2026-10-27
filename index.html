@@ -238,7 +238,7 @@
 <!-- STATUS_DATA_START -->
 <script type="application/json" id="bot-status">{
  "title": "Nikki's Company",
- "snapshot_at": "2026-10-27T17:26:59-05:00",
+ "snapshot_at": "2026-10-27T17:31:39-05:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -287,7 +287,9 @@
     "4 AM Oct 27 refresh: 26 new roles (1 H-1B), finished 4:38 AM CT"
    ],
    "queued": [
-    "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~5:00 PM CT Oct 27."
+    {
+     "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~5:00 PM CT Oct 27."
+    }
    ],
    "recent": [
     "Started the first job search at 1:18 AM CT.",
@@ -295,7 +297,7 @@
     "Changed runs to add their own sheets, and to start a new workbook each day.",
     "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
    ],
-   "last_checkin": "2026-10-27T17:06:00-05:00",
+   "last_checkin": "2026-10-27T17:06:19-05:00",
    "working_with": []
   },
   {
@@ -417,7 +419,7 @@
    "color": "#e8584f",
    "status": "idle",
    "current_task": "Waiting on Robinhood sign-in; next pre-market picks Oct 28 by 6:15 AM ET",
-   "last_active": "2026-10-27T17:21:09-05:00",
+   "last_active": "2026-10-27T17:28:06-05:00",
    "pending": [
     "Waiting on Nikhilesh: confirm whether Nicky's instructions are a standing rule"
    ],
@@ -426,7 +428,8 @@
     "Created weekday pre-market paper-test routine",
     "Five-year monthly market review with near-term outlook",
     "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)",
-    "Oct 27 evening: 2 momentum paper picks for Oct 28 (AVGO, CDNS)"
+    "Oct 27 evening: 2 momentum paper picks for Oct 28 (AVGO, CDNS)",
+    "Oct 27 evening: top-10 paper watchlist for Oct 28 buys, sell ~Nov 6-9"
    ],
    "queued": [],
    "recent": [
@@ -435,7 +438,7 @@
     "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
     "Last posted at 2:17 AM CT on Oct 24."
    ],
-   "last_checkin": "2026-10-27T17:21:09-05:00",
+   "last_checkin": "2026-10-27T17:28:06-05:00",
    "working_with": []
   },
   {
@@ -487,19 +490,19 @@
    "working_with": []
   }
  ],
- "latest_bot_activity": "2026-10-27T17:21:09-05:00",
+ "latest_bot_activity": "2026-10-27T17:28:06-05:00",
  "files": {
-  "generated_at": "2026-10-27T17:26:59-05:00",
-  "total": 1040,
-  "today": 588,
-  "last_24h": 679,
-  "bytes": 938281350,
-  "runs": 53,
-  "runs_today": 21,
+  "generated_at": "2026-10-27T17:31:39-05:00",
+  "total": 1072,
+  "today": 620,
+  "last_24h": 711,
+  "bytes": 938889839,
+  "runs": 54,
+  "runs_today": 22,
   "by_bot": {
    "Sky": {
     "files": 763,
-    "bytes": 859090931,
+    "bytes": 859322859,
     "runs": 26
    },
    "Appie": {
@@ -508,9 +511,9 @@
     "runs": 7
    },
    "Stocker": {
-    "files": 17,
-    "bytes": 4128432,
-    "runs": 1
+    "files": 37,
+    "bytes": 4431092,
+    "runs": 2
    },
    "Neo": {
     "files": 2,
@@ -533,19 +536,19 @@
     "runs": 1
    },
    "other": {
-    "files": 196,
-    "bytes": 46560885,
+    "files": 208,
+    "bytes": 46634786,
     "runs": 12
    }
   },
   "top_types": [
    {
     "type": "json",
-    "files": 702
+    "files": 723
    },
    {
     "type": "html",
-    "files": 156
+    "files": 167
    },
    {
     "type": "png",
@@ -577,7 +580,7 @@
    {
     "date": "2026-10-24",
     "files": 83,
-    "bytes": 97100771,
+    "bytes": 97111404,
     "runs": 6,
     "run_ids": [
      "oct24",
@@ -600,7 +603,7 @@
    {
     "date": "2026-10-26",
     "files": 354,
-    "bytes": 330446705,
+    "bytes": 330634341,
     "runs": 25,
     "run_ids": [
      "oct26/run_2053",
@@ -632,10 +635,11 @@
    },
    {
     "date": "2026-10-27",
-    "files": 588,
-    "bytes": 501281855,
-    "runs": 21,
+    "files": 620,
+    "bytes": 501692075,
+    "runs": 22,
     "run_ids": [
+     "stocker-task-1027-1728",
      "appie-task-1027-1719",
      "run_1027_1706",
      "other-task-1027-1701",
@@ -662,10 +666,10 @@
   ],
   "storage": {
    "disk_total": 136797466624,
-   "disk_free": 124955561984,
-   "disk_used_all": 11825127424,
-   "task_files_bytes": 938281350,
-   "task_pct_of_disk": 0.6859
+   "disk_free": 124954411008,
+   "disk_used_all": 11826278400,
+   "task_files_bytes": 938889839,
+   "task_pct_of_disk": 0.6863
   }
  }
 }</script>
