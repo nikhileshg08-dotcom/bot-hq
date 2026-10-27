@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T05:34:40-05:00",
+  "snapshot_at": "2026-10-27T05:47:25-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -86,7 +86,7 @@
       ],
       "last_checkin": "2026-10-27T05:23:47-05:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -306,17 +306,17 @@
   ],
   "latest_bot_activity": "2026-10-27T05:23:47-05:00",
   "files": {
-    "generated_at": "2026-10-27T05:34:40-05:00",
-    "total": 565,
-    "today": 113,
+    "generated_at": "2026-10-27T05:47:25-05:00",
+    "total": 568,
+    "today": 116,
     "last_24h": 379,
-    "bytes": 544132516,
+    "bytes": 544995549,
     "runs": 39,
     "runs_today": 6,
     "by_bot": {
       "Sky": {
-        "files": 446,
-        "bytes": 507363929,
+        "files": 447,
+        "bytes": 508226088,
         "runs": 18
       },
       "Appie": {
@@ -350,15 +350,15 @@
         "runs": 1
       },
       "other": {
-        "files": 38,
-        "bytes": 4179945,
+        "files": 40,
+        "bytes": 4180819,
         "runs": 6
       }
     },
     "top_types": [
       {
         "type": "json",
-        "files": 407
+        "files": 409
       },
       {
         "type": "png",
@@ -450,8 +450,8 @@
       },
       {
         "date": "2026-10-27",
-        "files": 113,
-        "bytes": 107951318,
+        "files": 116,
+        "bytes": 108814351,
         "runs": 6,
         "run_ids": [
           "run_1027_0523",
@@ -465,10 +465,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 126371786752,
-      "disk_used_all": 10408902656,
-      "task_files_bytes": 544132516,
-      "task_pct_of_disk": 0.3978
+      "disk_free": 126360379392,
+      "disk_used_all": 10420310016,
+      "task_files_bytes": 544995549,
+      "task_pct_of_disk": 0.3984
     }
   }
 }
