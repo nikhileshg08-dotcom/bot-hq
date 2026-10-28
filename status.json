@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T15:26:34-05:00",
+  "snapshot_at": "2026-10-28T15:34:56-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -147,28 +147,29 @@
       "role": "Research: vehicle history report APIs and reselling",
       "color": "#f06fb0",
       "status": "idle",
-      "current_task": "2 PM news scan done; quiet window, 2 modest post ideas sent to Nikhilesh (best: July as Indian American Heritage Month resolution)",
-      "last_active": "2026-10-28T14:12:00-05:00",
+      "current_task": "Waiting for Nikhilesh to upload the EAD reel with Urgent News audio from his phone, then I add the caption",
+      "last_active": "2026-10-28T15:34:00-05:00",
       "pending": [
-        "User approval of Diwali post",
-        "User pick from 8 AM, 10 AM, 12 PM and 2 PM news ideas"
+        "Add caption to Nikhilesh's new EAD reel once it's up",
+        "Decide whether to delete old drill reel",
+        "User approval of Diwali post"
       ],
       "completed": [
-        "EAD photo post published",
-        "Instagram bio reformatted",
-        "Diwali post v1 designed",
-        "10 AM viral news scan (3 ideas)",
-        "12 PM viral news scan (4 ideas)",
-        "2 PM viral news scan (2 ideas)"
+        "Silent drill reel copy and caption sent for phone upload",
+        "Drill-style EAD reel posted",
+        "Follow batch 1 (5 follows)"
       ],
-      "queued": [],
+      "queued": [
+        "Follow batches 2-4 this afternoon",
+        "10 PM daily growth table"
+      ],
       "recent": [
         "Researched Carfax API access.",
         "Said hello to Nikhilesh at Sky's request.",
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-28T14:28:22-05:00",
+      "last_checkin": "2026-10-28T15:34:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -196,13 +197,13 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T14:27:00-05:00",
+  "latest_bot_activity": "2026-10-28T15:34:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T15:26:34-05:00",
-    "total": 3991,
-    "today": 590,
-    "last_24h": 2996,
-    "bytes": 2266871282,
+    "generated_at": "2026-10-28T15:34:56-05:00",
+    "total": 3993,
+    "today": 592,
+    "last_24h": 2998,
+    "bytes": 2301421558,
     "runs": 44,
     "runs_today": 44,
     "by_bot": {
@@ -242,8 +243,8 @@
         "runs": 1
       },
       "other": {
-        "files": 2734,
-        "bytes": 920914180,
+        "files": 2736,
+        "bytes": 955464456,
         "runs": 1
       }
     },
@@ -306,8 +307,8 @@
       },
       {
         "date": "2026-10-28",
-        "files": 590,
-        "bytes": 557477336,
+        "files": 592,
+        "bytes": 592027612,
         "runs": 44,
         "run_ids": [
           "sky-task-1028-1516",
@@ -359,10 +360,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 124946694144,
-      "disk_used_all": 11818569728,
-      "task_files_bytes": 2266871282,
-      "task_pct_of_disk": 1.6573
+      "disk_free": 124775194624,
+      "disk_used_all": 11990069248,
+      "task_files_bytes": 2301421558,
+      "task_pct_of_disk": 1.6825
     }
   }
 }
