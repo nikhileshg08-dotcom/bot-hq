@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T03:24:30-05:00",
+  "snapshot_at": "2026-10-28T03:33:07-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -213,35 +213,14 @@
       "role": "Research: vehicle history report APIs and reselling",
       "color": "#f06fb0",
       "status": "idle",
-      "current_task": "IG EAD post draft ready (unpublished); user posting from phone with music",
-      "last_active": "2026-10-28T03:21-05:00",
-      "pending": [
-        "Waiting on Nikhilesh to confirm whether to follow Nicky's instructions"
-      ],
+      "current_task": null,
+      "last_active": "2026-10-28T03:25:00-05:00",
+      "pending": [],
       "completed": [
-        "EAD post v14: narrower detail card (dallas_ead_post_v14.jpg)",
-        "EAD post v13: bigger glowing headline + solid yellow Immigration Alert badge (dallas_ead_post_v13.jpg)",
-        "EAD post v12: detailed card (affects / what to do / what to check), yellow-black, real logo (dallas_ead_post_v12.jpg)",
-        "EAD post v9: smaller headings, follow-us pill, uscis.gov footer (dallas_ead_post_v9.jpg)",
-        "EAD post v7: yellow-black with details card, side buildings, plane, real logo (dallas_ead_post_v7.jpg)",
-        "EAD post v6 in yellow-black brand colors with real logo (dallas_ead_post_v6.jpg)",
-        "EAD post v5 with real Dallas Nagaram logo (dallas_ead_post_v5.jpg)",
-        "EAD post v5: plain gradient background (dallas_ead_post_v5.jpg)",
-        "EAD post v4: clean layout with logo, uscis.gov check, not-legal-advice line (dallas_ead_post_v4.jpg)",
-        "Added Dallas Nagaram logo to EAD post v3; news roundup cancelled",
-        "EAD post v3 with expanded details (dallas_ead_post_v3.jpg)",
-        "Updated 3D EAD immigration post image for dallas_nagaram",
-        "EAD Reel script and caption for Telugu and Indian audiences",
-        "Top Telugu Instagram pages research and funny bios",
-        "Instagram post ideas for Telugu audiences",
-        "EAD post v15 with @dallas_nagaram follow line",
-        "EAD post v16: header glow removed, flat yellow headline",
-        "EAD post v12: plain header, no badge or glow",
-        "EAD post v17: clearer four-section explanation card",
-        "EAD post v13 (voice): card explains Oct 14 2026 rule and Oct 30 2025 cutoff",
-        "EAD post v18: title-case card text",
-        "EAD post v19: sentence case, capital after colons",
-        "EAD post v20 with yellow badge; caption finalized with 5 hashtags"
+        "EAD post image v20",
+        "EAD caption",
+        "EAD Reel v1 rendered",
+        "EAD photo post published to @dallas_nagaram (https://www.instagram.com/p/DfB_zhhPzdj/)"
       ],
       "queued": [],
       "recent": [
@@ -250,7 +229,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-28T03:21-05:00",
+      "last_checkin": "2026-10-28T03:25:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -278,9 +257,9 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T03:21-05:00",
+  "latest_bot_activity": "2026-10-28T03:25:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T03:24:30-05:00",
+    "generated_at": "2026-10-28T03:33:07-05:00",
     "total": 3472,
     "today": 74,
     "last_24h": 2961,
@@ -461,8 +440,8 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 121267630080,
-      "disk_used_all": 15513059328,
+      "disk_free": 121252917248,
+      "disk_used_all": 15527772160,
       "task_files_bytes": 1764328201,
       "task_pct_of_disk": 1.2897
     }
