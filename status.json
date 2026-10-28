@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-27T23:49:09-05:00",
+  "snapshot_at": "2026-10-28T00:05:53-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -260,22 +260,22 @@
   ],
   "latest_bot_activity": "2026-10-27T21:48:00-05:00",
   "files": {
-    "generated_at": "2026-10-27T23:49:09-05:00",
+    "generated_at": "2026-10-28T00:05:53-05:00",
     "total": 3361,
-    "today": 2909,
-    "last_24h": 2928,
-    "bytes": 1661342777,
+    "today": 0,
+    "last_24h": 2907,
+    "bytes": 1661349258,
     "runs": 57,
-    "runs_today": 25,
+    "runs_today": 0,
     "by_bot": {
       "Sky": {
         "files": 811,
-        "bytes": 908895676,
+        "bytes": 908895754,
         "runs": 29
       },
       "Appie": {
         "files": 17,
-        "bytes": 2204283,
+        "bytes": 2206122,
         "runs": 7
       },
       "Stocker": {
@@ -305,7 +305,7 @@
       },
       "other": {
         "files": 2449,
-        "bytes": 719478082,
+        "bytes": 719482646,
         "runs": 12
       }
     },
@@ -324,13 +324,6 @@
       }
     ],
     "by_day": [
-      {
-        "date": "2026-10-21",
-        "files": 0,
-        "bytes": 0,
-        "runs": 0,
-        "run_ids": []
-      },
       {
         "date": "2026-10-22",
         "files": 0,
@@ -371,7 +364,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 330871501,
+        "bytes": 330873340,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -404,11 +397,11 @@
       {
         "date": "2026-10-27",
         "files": 2909,
-        "bytes": 1223907853,
+        "bytes": 1223912495,
         "runs": 25,
         "run_ids": [
-          "appie-task-1027-2346",
-          "sky-task-1027-2346",
+          "appie-task-1027-2352",
+          "sky-task-1027-2352",
           "sky-task-1027-2254",
           "run_1027_2056",
           "other-task-1027-2005",
@@ -433,13 +426,20 @@
           "run_1027_0357",
           "other-task-1027-0049"
         ]
+      },
+      {
+        "date": "2026-10-28",
+        "files": 0,
+        "bytes": 0,
+        "runs": 0,
+        "run_ids": []
       }
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 123034447872,
-      "disk_used_all": 13746241536,
-      "task_files_bytes": 1661342777,
+      "disk_free": 122992947200,
+      "disk_used_all": 13787742208,
+      "task_files_bytes": 1661349258,
       "task_pct_of_disk": 1.2145
     }
   }
