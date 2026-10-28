@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T14:04:18-05:00",
+  "snapshot_at": "2026-10-28T14:17:04-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -86,7 +86,7 @@
       ],
       "last_checkin": "2026-10-28T13:59:00-05:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -193,14 +193,14 @@
       "role": "Research: vehicle history report APIs and reselling",
       "color": "#f06fb0",
       "status": "idle",
-      "current_task": "12 PM news scan done; 4 post ideas sent to Nikhilesh (best: Fort Worth illegal-voting verdict for Indian green card holder)",
-      "last_active": "2026-10-28T12:14:00-05:00",
+      "current_task": "2 PM news scan done; quiet window, 2 modest post ideas sent to Nikhilesh (best: July as Indian American Heritage Month resolution)",
+      "last_active": "2026-10-28T14:12:00-05:00",
       "pending": [
         {
           "text": "User approval of Diwali post"
         },
         {
-          "text": "User pick from 8 AM, 10 AM and 12 PM news ideas"
+          "text": "User pick from 8 AM, 10 AM, 12 PM and 2 PM news ideas"
         }
       ],
       "completed": [
@@ -214,13 +214,13 @@
           "text": "Diwali post v1 designed"
         },
         {
-          "text": "8 AM viral news scan (4 ideas)"
-        },
-        {
           "text": "10 AM viral news scan (3 ideas)"
         },
         {
           "text": "12 PM viral news scan (4 ideas)"
+        },
+        {
+          "text": "2 PM viral news scan (2 ideas)"
         }
       ],
       "queued": [],
@@ -230,7 +230,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-28T13:51:24-05:00",
+      "last_checkin": "2026-10-28T14:12:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -266,19 +266,19 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T13:59:00-05:00",
+  "latest_bot_activity": "2026-10-28T14:12:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T14:04:18-05:00",
-    "total": 3942,
-    "today": 541,
-    "last_24h": 3121,
-    "bytes": 2195735341,
-    "runs": 70,
-    "runs_today": 14,
+    "generated_at": "2026-10-28T14:17:04-05:00",
+    "total": 3967,
+    "today": 566,
+    "last_24h": 3112,
+    "bytes": 2219925832,
+    "runs": 71,
+    "runs_today": 15,
     "by_bot": {
       "Sky": {
-        "files": 1126,
-        "bytes": 1285198577,
+        "files": 1135,
+        "bytes": 1308963776,
         "runs": 36
       },
       "Appie": {
@@ -312,9 +312,9 @@
         "runs": 1
       },
       "other": {
-        "files": 2706,
-        "bytes": 877413037,
-        "runs": 16
+        "files": 2722,
+        "bytes": 877838329,
+        "runs": 17
       }
     },
     "top_types": [
@@ -324,7 +324,7 @@
       },
       {
         "type": "json",
-        "files": 1137
+        "files": 1150
       },
       {
         "type": "txt",
@@ -372,7 +372,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 331373138,
+        "bytes": 331382894,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -405,7 +405,7 @@
       {
         "date": "2026-10-27",
         "files": 2949,
-        "bytes": 1271238788,
+        "bytes": 1271241876,
         "runs": 24,
         "run_ids": [
           "run_1028_0102/prev",
@@ -436,11 +436,12 @@
       },
       {
         "date": "2026-10-28",
-        "files": 541,
-        "bytes": 486559992,
-        "runs": 14,
+        "files": 566,
+        "bytes": 510737639,
+        "runs": 15,
         "run_ids": [
           "oct28/run_1359",
+          "other-task-1028-1242",
           "other-task-1028-1152",
           "oct28/run_1127",
           "oct28/run_1004",
@@ -459,10 +460,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 120144355328,
-      "disk_used_all": 16636334080,
-      "task_files_bytes": 2195735341,
-      "task_pct_of_disk": 1.6051
+      "disk_free": 120114040832,
+      "disk_used_all": 16666648576,
+      "task_files_bytes": 2219925832,
+      "task_pct_of_disk": 1.6228
     }
   }
 }
