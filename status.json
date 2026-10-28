@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T02:18:38-05:00",
+  "snapshot_at": "2026-10-28T02:33:27-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -154,7 +154,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-27T09:13:00-05:00",
       "pending": [
         "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
@@ -214,11 +214,15 @@
       "color": "#f06fb0",
       "status": "idle",
       "current_task": null,
-      "last_active": "2026-10-27T14:20:00-05:00",
+      "last_active": "2026-10-28T02:32-05:00",
       "pending": [
         "Waiting on Nikhilesh to confirm whether to follow Nicky's instructions"
       ],
       "completed": [
+        "EAD post v5: plain gradient background (dallas_ead_post_v5.jpg)",
+        "EAD post v4: clean layout with logo, uscis.gov check, not-legal-advice line (dallas_ead_post_v4.jpg)",
+        "Added Dallas Nagaram logo to EAD post v3; news roundup cancelled",
+        "EAD post v3 with expanded details (dallas_ead_post_v3.jpg)",
         "Updated 3D EAD immigration post image for dallas_nagaram",
         "EAD Reel script and caption for Telugu and Indian audiences",
         "Top Telugu Instagram pages research and funny bios",
@@ -231,7 +235,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-27T14:20:20-05:00",
+      "last_checkin": "2026-10-28T02:32-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -242,7 +246,7 @@
       "color": "#2bb3a3",
       "status": "problem",
       "manager": false,
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-28T00:50:00-05:00",
       "pending": [],
       "completed": [
@@ -254,18 +258,18 @@
         "Refresh file counts with every site build (count_files.py)"
       ],
       "recent": [],
-      "last_checkin": "2026-10-28T01:41:58-05:00",
+      "last_checkin": "2026-10-28T02:33:26-05:00",
       "working_with": [],
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T01:29:00-05:00",
+  "latest_bot_activity": "2026-10-28T02:32-05:00",
   "files": {
-    "generated_at": "2026-10-28T02:18:38-05:00",
-    "total": 3449,
-    "today": 51,
-    "last_24h": 2940,
-    "bytes": 1752277898,
+    "generated_at": "2026-10-28T02:33:27-05:00",
+    "total": 3453,
+    "today": 55,
+    "last_24h": 2942,
+    "bytes": 1753769596,
     "runs": 60,
     "runs_today": 4,
     "by_bot": {
@@ -305,8 +309,8 @@
         "runs": 1
       },
       "other": {
-        "files": 2461,
-        "bytes": 719805104,
+        "files": 2465,
+        "bytes": 721296802,
         "runs": 13
       }
     },
@@ -429,8 +433,8 @@
       },
       {
         "date": "2026-10-28",
-        "files": 51,
-        "bytes": 43838273,
+        "files": 55,
+        "bytes": 45329971,
         "runs": 4,
         "run_ids": [
           "appie-task-1028-0203",
@@ -442,10 +446,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 121668661248,
-      "disk_used_all": 15112028160,
-      "task_files_bytes": 1752277898,
-      "task_pct_of_disk": 1.2809
+      "disk_free": 121659068416,
+      "disk_used_all": 15121620992,
+      "task_files_bytes": 1753769596,
+      "task_pct_of_disk": 1.282
     }
   }
 }
