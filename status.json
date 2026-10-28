@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T02:45:59-05:00",
+  "snapshot_at": "2026-10-28T02:56:00-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -214,7 +214,7 @@
       "color": "#f06fb0",
       "status": "idle",
       "current_task": null,
-      "last_active": "2026-10-28T02:48:00-05:00",
+      "last_active": "2026-10-28T02:56-05:00",
       "pending": [
         "Waiting on Nikhilesh to confirm whether to follow Nicky's instructions"
       ],
@@ -233,7 +233,13 @@
         "Updated 3D EAD immigration post image for dallas_nagaram",
         "EAD Reel script and caption for Telugu and Indian audiences",
         "Top Telugu Instagram pages research and funny bios",
-        "Instagram post ideas for Telugu audiences"
+        "Instagram post ideas for Telugu audiences",
+        "EAD post v15 with @dallas_nagaram follow line",
+        "EAD post v16: header glow removed, flat yellow headline",
+        "EAD post v12: plain header, no badge or glow",
+        "EAD post v17: clearer four-section explanation card",
+        "EAD post v13 (voice): card explains Oct 14 2026 rule and Oct 30 2025 cutoff",
+        "EAD post v18: title-case card text"
       ],
       "queued": [],
       "recent": [
@@ -242,7 +248,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-28T02:48:00-05:00",
+      "last_checkin": "2026-10-28T02:56-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -270,13 +276,13 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T02:48:00-05:00",
+  "latest_bot_activity": "2026-10-28T02:56-05:00",
   "files": {
-    "generated_at": "2026-10-28T02:45:59-05:00",
-    "total": 3464,
-    "today": 66,
-    "last_24h": 2953,
-    "bytes": 1757021070,
+    "generated_at": "2026-10-28T02:56:00-05:00",
+    "total": 3469,
+    "today": 71,
+    "last_24h": 2958,
+    "bytes": 1758771441,
     "runs": 60,
     "runs_today": 4,
     "by_bot": {
@@ -316,8 +322,8 @@
         "runs": 1
       },
       "other": {
-        "files": 2476,
-        "bytes": 724548276,
+        "files": 2481,
+        "bytes": 726298647,
         "runs": 13
       }
     },
@@ -409,7 +415,7 @@
       {
         "date": "2026-10-27",
         "files": 2946,
-        "bytes": 1270950553,
+        "bytes": 1270953441,
         "runs": 24,
         "run_ids": [
           "run_1028_0102/prev",
@@ -440,8 +446,8 @@
       },
       {
         "date": "2026-10-28",
-        "files": 66,
-        "bytes": 48581445,
+        "files": 71,
+        "bytes": 50328928,
         "runs": 4,
         "run_ids": [
           "appie-task-1028-0203",
@@ -453,10 +459,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 121651535872,
-      "disk_used_all": 15129153536,
-      "task_files_bytes": 1757021070,
-      "task_pct_of_disk": 1.2844
+      "disk_free": 121602428928,
+      "disk_used_all": 15178260480,
+      "task_files_bytes": 1758771441,
+      "task_pct_of_disk": 1.2857
     }
   }
 }
