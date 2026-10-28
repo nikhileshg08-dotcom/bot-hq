@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T10:00:28-05:00",
+  "snapshot_at": "2026-10-28T10:11:58-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,9 +42,9 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "idle",
-      "current_task": "",
-      "last_active": "2026-10-28T08:55:00-05:00",
+      "status": "working",
+      "current_task": "10:04 AM Oct 28 scheduled job-search refresh (12h window)",
+      "last_active": "2026-10-28T10:05:00-05:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
@@ -84,9 +84,9 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-28T08:55:00-05:00",
+      "last_checkin": "2026-10-28T10:05:00-05:00",
       "working_with": [],
-      "groupTask": null
+      "groupTask": "H-1B Job Search"
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -193,14 +193,14 @@
       "role": "Research: vehicle history report APIs and reselling",
       "color": "#f06fb0",
       "status": "idle",
-      "current_task": "8 AM news scan done; 4 post ideas sent to Nikhilesh (best: Cyclone Arnab)",
-      "last_active": "2026-10-28T08:12:00-05:00",
+      "current_task": "10 AM news scan done; 3 post ideas sent to Nikhilesh (best: Cyclone Arnab death toll + relief package)",
+      "last_active": "2026-10-28T10:07:00-05:00",
       "pending": [
         {
           "text": "User approval of Diwali post"
         },
         {
-          "text": "User pick from 8 AM news ideas"
+          "text": "User pick from 8 AM and 10 AM news ideas"
         }
       ],
       "completed": [
@@ -214,10 +214,10 @@
           "text": "Diwali post v1 designed"
         },
         {
-          "text": "Diwali post fact-check + sources saved"
+          "text": "8 AM viral news scan (4 ideas)"
         },
         {
-          "text": "8 AM viral news scan (4 ideas, news_log.md started)"
+          "text": "10 AM viral news scan (3 ideas)"
         }
       ],
       "queued": [],
@@ -227,7 +227,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-28T09:13:10-05:00",
+      "last_checkin": "2026-10-28T10:07:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -263,20 +263,20 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T08:55:00-05:00",
+  "latest_bot_activity": "2026-10-28T10:07:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T10:00:28-05:00",
-    "total": 3774,
-    "today": 373,
-    "last_24h": 3033,
-    "bytes": 2073362927,
-    "runs": 66,
-    "runs_today": 10,
+    "generated_at": "2026-10-28T10:11:58-05:00",
+    "total": 3811,
+    "today": 410,
+    "last_24h": 3039,
+    "bytes": 2116136975,
+    "runs": 68,
+    "runs_today": 12,
     "by_bot": {
       "Sky": {
-        "files": 1032,
-        "bytes": 1172534287,
-        "runs": 34
+        "files": 1058,
+        "bytes": 1213404111,
+        "runs": 35
       },
       "Appie": {
         "files": 20,
@@ -309,23 +309,23 @@
         "runs": 1
       },
       "other": {
-        "files": 2632,
-        "bytes": 867704913,
-        "runs": 14
+        "files": 2643,
+        "bytes": 869609137,
+        "runs": 15
       }
     },
     "top_types": [
       {
         "type": "html",
-        "files": 1434
+        "files": 1439
       },
       {
         "type": "json",
-        "files": 1037
+        "files": 1062
       },
       {
         "type": "txt",
-        "files": 1033
+        "files": 1037
       }
     ],
     "by_day": [
@@ -402,7 +402,7 @@
       {
         "date": "2026-10-27",
         "files": 2949,
-        "bytes": 1271228205,
+        "bytes": 1271237081,
         "runs": 24,
         "run_ids": [
           "run_1028_0102/prev",
@@ -433,12 +433,14 @@
       },
       {
         "date": "2026-10-28",
-        "files": 373,
-        "bytes": 364464636,
-        "runs": 10,
+        "files": 410,
+        "bytes": 407229808,
+        "runs": 12,
         "run_ids": [
+          "oct28/run_1004",
           "appie-task-1028-0931",
           "sky-task-1028-0931",
+          "other-task-1028-0853",
           "oct28/run_0828",
           "run_1028_0706",
           "other-task-1028-0658",
@@ -452,10 +454,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 120372908032,
-      "disk_used_all": 16407781376,
-      "task_files_bytes": 2073362927,
-      "task_pct_of_disk": 1.5156
+      "disk_free": 120355778560,
+      "disk_used_all": 16424910848,
+      "task_files_bytes": 2116136975,
+      "task_pct_of_disk": 1.5469
     }
   }
 }
