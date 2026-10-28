@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T01:16:29-05:00",
+  "snapshot_at": "2026-10-28T01:22:02-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -12,14 +12,22 @@
       "current_task": "Monitoring bots and maintaining Nikki's Company site",
       "last_active": "2026-10-26T06:05:31-05:00",
       "pending": [
-        "Switch the 10-minute status push to read each bot's status file"
+        {
+          "text": "Switch the 10-minute status push to read each bot's status file"
+        }
       ],
       "completed": [
-        "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
+        {
+          "text": "Hid toggle arrows, icon-only taps, task-based roaming, fuller clouds, 15-second page checks"
+        }
       ],
       "queued": [
-        "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT",
-        "Status push monitor every 2 hours"
+        {
+          "text": "Sky and Appie health check every 2 hours, 8 AM to 10 PM CT"
+        },
+        {
+          "text": "Status push monitor every 2 hours"
+        }
       ],
       "recent": [
         "Started building the Bot HQ office page at 1:39 AM CT."
@@ -38,19 +46,37 @@
       "current_task": "1:02 AM Oct 28 scheduled job-search refresh (new day file Oct28)",
       "last_active": "2026-10-28T01:02:00-05:00",
       "pending": [
-        "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
+        {
+          "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
+        }
       ],
       "completed": [
-        "8:56 PM Oct 27 refresh: 33 new roles (3 H-1B), finished 9:18 PM CT",
-        "5:06 PM Oct 27 refresh: 77 new roles (3 H-1B), finished 5:33 PM CT",
-        "2:06 PM Oct 27 refresh: 60 new roles (4 H-1B), finished 2:34 PM CT",
-        "11:30 AM Oct 27 refresh: 38 new roles (5 H-1B), finished ~11:52 AM CT",
-        "10:00 AM Oct 27 refresh: 34 new roles (2 H-1B), finished 10:18 AM CT",
-        "8:32 AM Oct 27 refresh: 18 new roles (1 H-1B), finished 9:07 AM CT",
-        "6:59 AM Oct 27 refresh: 21 new roles (1 H-1B), finished 7:46 AM CT"
+        {
+          "text": "8:56 PM Oct 27 refresh: 33 new roles (3 H-1B), finished 9:18 PM CT"
+        },
+        {
+          "text": "5:06 PM Oct 27 refresh: 77 new roles (3 H-1B), finished 5:33 PM CT"
+        },
+        {
+          "text": "2:06 PM Oct 27 refresh: 60 new roles (4 H-1B), finished 2:34 PM CT"
+        },
+        {
+          "text": "11:30 AM Oct 27 refresh: 38 new roles (5 H-1B), finished ~11:52 AM CT"
+        },
+        {
+          "text": "10:00 AM Oct 27 refresh: 34 new roles (2 H-1B), finished 10:18 AM CT"
+        },
+        {
+          "text": "8:32 AM Oct 27 refresh: 18 new roles (1 H-1B), finished 9:07 AM CT"
+        },
+        {
+          "text": "6:59 AM Oct 27 refresh: 21 new roles (1 H-1B), finished 7:46 AM CT"
+        }
       ],
       "queued": [
-        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~1:00 AM CT Oct 28."
+        {
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~1:00 AM CT Oct 28."
+        }
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -58,9 +84,9 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-28T01:02:00-05:00",
+      "last_checkin": "2026-10-28T01:02:19-05:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -154,16 +180,26 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-27T09:13:00-05:00",
       "pending": [
-        "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
-        "Waiting on Nikhilesh to confirm (or not) a standing rule to follow Nicky - The Boss's commands"
+        {
+          "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
+        },
+        {
+          "text": "Waiting on Nikhilesh to confirm (or not) a standing rule to follow Nicky - The Boss's commands"
+        }
       ],
       "completed": [
-        "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered",
-        "Apify LinkedIn jobs scraper screenshots shared",
-        "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
+        {
+          "text": "Free job board API research (LinkedIn, Dice, Indeed, Greenhouse, Lever, USAJobs) delivered"
+        },
+        {
+          "text": "Apify LinkedIn jobs scraper screenshots shared"
+        },
+        {
+          "text": "Amazon laptop search (i7, 32GB, 1TB, GPU under $1,300) delivered"
+        }
       ],
       "queued": [],
       "recent": [
@@ -185,16 +221,32 @@
       "current_task": "Waiting on Robinhood sign-in; next pre-market picks Oct 28 by 6:15 AM ET",
       "last_active": "2026-10-27T17:32:24.175834-05:00",
       "pending": [
-        "Waiting on Nikhilesh: confirm whether Nicky's instructions are a standing rule"
+        {
+          "text": "Waiting on Nikhilesh: confirm whether Nicky's instructions are a standing rule"
+        }
       ],
       "completed": [
-        "Built $1,000 paper test tracker Page",
-        "Created weekday pre-market paper-test routine",
-        "Five-year monthly market review with near-term outlook",
-        "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)",
-        "Oct 27 evening: 2 momentum paper picks for Oct 28 (AVGO, CDNS)",
-        "Oct 27 evening: top-10 paper watchlist for Oct 28 buys, sell ~Nov 6-9",
-        "Oct 27 evening: researched top-10 paper table (buy Oct 28, sell Nov 5-9) posted in chat"
+        {
+          "text": "Built $1,000 paper test tracker Page"
+        },
+        {
+          "text": "Created weekday pre-market paper-test routine"
+        },
+        {
+          "text": "Five-year monthly market review with near-term outlook"
+        },
+        {
+          "text": "$1,000 paper-test plan for Oct 26-Nov 6 (XOM, CRWD, AMZN)"
+        },
+        {
+          "text": "Oct 27 evening: 2 momentum paper picks for Oct 28 (AVGO, CDNS)"
+        },
+        {
+          "text": "Oct 27 evening: top-10 paper watchlist for Oct 28 buys, sell ~Nov 6-9"
+        },
+        {
+          "text": "Oct 27 evening: researched top-10 paper table (buy Oct 28, sell Nov 5-9) posted in chat"
+        }
       ],
       "queued": [],
       "recent": [
@@ -203,7 +255,7 @@
         "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
         "Last posted at 2:17 AM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-27T23:48:06-05:00",
+      "last_checkin": "2026-10-28T01:22:02-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -213,16 +265,26 @@
       "role": "Research: vehicle history report APIs and reselling",
       "color": "#f06fb0",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-27T14:20:00-05:00",
       "pending": [
-        "Waiting on Nikhilesh to confirm whether to follow Nicky's instructions"
+        {
+          "text": "Waiting on Nikhilesh to confirm whether to follow Nicky's instructions"
+        }
       ],
       "completed": [
-        "Updated 3D EAD immigration post image for dallas_nagaram",
-        "EAD Reel script and caption for Telugu and Indian audiences",
-        "Top Telugu Instagram pages research and funny bios",
-        "Instagram post ideas for Telugu audiences"
+        {
+          "text": "Updated 3D EAD immigration post image for dallas_nagaram"
+        },
+        {
+          "text": "EAD Reel script and caption for Telugu and Indian audiences"
+        },
+        {
+          "text": "Top Telugu Instagram pages research and funny bios"
+        },
+        {
+          "text": "Instagram post ideas for Telugu audiences"
+        }
       ],
       "queued": [],
       "recent": [
@@ -242,41 +304,49 @@
       "color": "#2bb3a3",
       "status": "problem",
       "manager": false,
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-28T00:50:00-05:00",
       "pending": [],
       "completed": [
-        "Oct 27 nightly backup cleanup skipped at 12:49 AM CT: the Oct 27 main sheet was modified at 12:47 AM, so a run looked unfinished. Nothing changed.",
-        "Oct 26 nightly backup cleanup skipped at 12:47 AM CT: Sky's 23:52 run was still writing (main sheet changed 12:35 AM). Nothing changed.",
-        "Built the file tracker and the Files panel on Bot HQ"
+        {
+          "text": "Oct 27 nightly backup cleanup skipped at 12:49 AM CT: the Oct 27 main sheet was modified at 12:47 AM, so a run looked unfinished. Nothing changed."
+        },
+        {
+          "text": "Oct 26 nightly backup cleanup skipped at 12:47 AM CT: Sky's 23:52 run was still writing (main sheet changed 12:35 AM). Nothing changed."
+        },
+        {
+          "text": "Built the file tracker and the Files panel on Bot HQ"
+        }
       ],
       "queued": [
-        "Refresh file counts with every site build (count_files.py)"
+        {
+          "text": "Refresh file counts with every site build (count_files.py)"
+        }
       ],
       "recent": [],
-      "last_checkin": "2026-10-28T01:05:12-05:00",
+      "last_checkin": "2026-10-28T01:22:02-05:00",
       "working_with": [],
       "groupTask": null
     }
   ],
   "latest_bot_activity": "2026-10-28T01:02:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T01:16:29-05:00",
-    "total": 3439,
-    "today": 41,
-    "last_24h": 2940,
-    "bytes": 1751491992,
+    "generated_at": "2026-10-28T01:22:02-05:00",
+    "total": 3445,
+    "today": 47,
+    "last_24h": 2946,
+    "bytes": 1752131880,
     "runs": 58,
     "runs_today": 2,
     "by_bot": {
       "Sky": {
-        "files": 876,
-        "bytes": 998623467,
+        "files": 882,
+        "bytes": 999253995,
         "runs": 29
       },
       "Appie": {
         "files": 20,
-        "bytes": 2340158,
+        "bytes": 2341025,
         "runs": 7
       },
       "Stocker": {
@@ -306,7 +376,7 @@
       },
       "other": {
         "files": 2459,
-        "bytes": 719763631,
+        "bytes": 719772124,
         "runs": 13
       }
     },
@@ -317,11 +387,11 @@
       },
       {
         "type": "txt",
-        "files": 992
+        "files": 994
       },
       {
         "type": "json",
-        "files": 874
+        "files": 877
       }
     ],
     "by_day": [
@@ -365,7 +435,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 330877436,
+        "bytes": 330878666,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -398,7 +468,7 @@
       {
         "date": "2026-10-27",
         "files": 2946,
-        "bytes": 1270935700,
+        "bytes": 1270938720,
         "runs": 24,
         "run_ids": [
           "run_1028_0102/prev",
@@ -429,21 +499,21 @@
       },
       {
         "date": "2026-10-28",
-        "files": 41,
-        "bytes": 43115433,
+        "files": 47,
+        "bytes": 43751071,
         "runs": 2,
         "run_ids": [
-          "appie-task-1028-0047",
+          "appie-task-1028-0105",
           "other-task-1028-0044"
         ]
       }
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 122030534656,
-      "disk_used_all": 14750154752,
-      "task_files_bytes": 1751491992,
-      "task_pct_of_disk": 1.2804
+      "disk_free": 121962213376,
+      "disk_used_all": 14818476032,
+      "task_files_bytes": 1752131880,
+      "task_pct_of_disk": 1.2808
     }
   }
 }
