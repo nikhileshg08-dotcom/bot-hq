@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T00:36:38-05:00",
+  "snapshot_at": "2026-10-28T00:45:24-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -260,22 +260,22 @@
   ],
   "latest_bot_activity": "2026-10-27T21:48:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T00:36:38-05:00",
-    "total": 3361,
-    "today": 0,
-    "last_24h": 2881,
-    "bytes": 1661354137,
+    "generated_at": "2026-10-28T00:45:24-05:00",
+    "total": 3363,
+    "today": 2,
+    "last_24h": 2873,
+    "bytes": 1661484050,
     "runs": 58,
     "runs_today": 3,
     "by_bot": {
       "Sky": {
         "files": 811,
-        "bytes": 908895779,
+        "bytes": 908895848,
         "runs": 29
       },
       "Appie": {
         "files": 17,
-        "bytes": 2207494,
+        "bytes": 2209967,
         "runs": 7
       },
       "Stocker": {
@@ -304,8 +304,8 @@
         "runs": 1
       },
       "other": {
-        "files": 2449,
-        "bytes": 719486128,
+        "files": 2451,
+        "bytes": 719613499,
         "runs": 13
       }
     },
@@ -320,7 +320,7 @@
       },
       {
         "type": "json",
-        "files": 811
+        "files": 813
       }
     ],
     "by_day": [
@@ -364,7 +364,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 330874712,
+        "bytes": 330877185,
         "runs": 25,
         "run_ids": [
           "oct26/run_2053",
@@ -397,7 +397,7 @@
       {
         "date": "2026-10-27",
         "files": 2909,
-        "bytes": 1223916002,
+        "bytes": 1223923729,
         "runs": 23,
         "run_ids": [
           "sky-task-1027-2254",
@@ -427,22 +427,22 @@
       },
       {
         "date": "2026-10-28",
-        "files": 0,
-        "bytes": 0,
+        "files": 2,
+        "bytes": 119713,
         "runs": 3,
         "run_ids": [
-          "appie-task-1028-0035",
-          "sky-task-1028-0035",
-          "other-task-1028-0034"
+          "appie-task-1028-0045",
+          "sky-task-1028-0045",
+          "other-task-1028-0044"
         ]
       }
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 122949550080,
-      "disk_used_all": 13831139328,
-      "task_files_bytes": 1661354137,
-      "task_pct_of_disk": 1.2145
+      "disk_free": 122192289792,
+      "disk_used_all": 14588399616,
+      "task_files_bytes": 1661484050,
+      "task_pct_of_disk": 1.2146
     }
   }
 }
