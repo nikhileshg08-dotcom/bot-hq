@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T03:48:06-05:00",
+  "snapshot_at": "2026-10-28T03:58:23-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,9 +42,9 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "idle",
-      "current_task": "",
-      "last_active": "2026-10-28T01:29:00-05:00",
+      "status": "working",
+      "current_task": "4:00 AM Oct 28 scheduled job-search refresh (started 3:56 AM CT)",
+      "last_active": "2026-10-28T03:57:00-05:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
@@ -84,9 +84,9 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-28T03:48:06-05:00",
+      "last_checkin": "2026-10-28T03:57:00-05:00",
       "working_with": [],
-      "groupTask": null
+      "groupTask": "H-1B Job Search"
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -265,15 +265,25 @@
       "role": "Research: vehicle history report APIs and reselling",
       "color": "#f06fb0",
       "status": "working",
-      "current_task": "Researching latest content ideas for @dallas_nagaram",
-      "last_active": "2026-10-28T03:46:00-05:00",
-      "pending": [],
+      "current_task": "Fact-checking Diwali post and saving source copies",
+      "last_active": "2026-10-28T03:54:00-05:00",
+      "pending": [
+        {
+          "text": "User approval of Diwali post"
+        }
+      ],
       "completed": [
         {
           "text": "EAD photo post published"
         },
         {
-          "text": "Instagram bio reformatted into 4 clean lines"
+          "text": "Instagram bio reformatted"
+        },
+        {
+          "text": "Created 2-hourly viral news scan routine"
+        },
+        {
+          "text": "Diwali post v1 designed"
         }
       ],
       "queued": [],
@@ -283,7 +293,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-28T03:46:00-05:00",
+      "last_checkin": "2026-10-28T03:54:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -319,20 +329,20 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T03:46:00-05:00",
+  "latest_bot_activity": "2026-10-28T03:57:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T03:48:06-05:00",
-    "total": 3472,
-    "today": 74,
-    "last_24h": 2961,
-    "bytes": 1764328201,
-    "runs": 60,
-    "runs_today": 4,
+    "generated_at": "2026-10-28T03:58:23-05:00",
+    "total": 3516,
+    "today": 118,
+    "last_24h": 3005,
+    "bytes": 1776226914,
+    "runs": 62,
+    "runs_today": 6,
     "by_bot": {
       "Sky": {
-        "files": 884,
-        "bytes": 999366352,
-        "runs": 30
+        "files": 890,
+        "bytes": 1003921839,
+        "runs": 32
       },
       "Appie": {
         "files": 20,
@@ -365,23 +375,23 @@
         "runs": 1
       },
       "other": {
-        "files": 2484,
-        "bytes": 731855410,
+        "files": 2522,
+        "bytes": 739198636,
         "runs": 13
       }
     },
     "top_types": [
       {
         "type": "html",
-        "files": 1384
+        "files": 1401
       },
       {
         "type": "txt",
-        "files": 996
+        "files": 1016
       },
       {
         "type": "json",
-        "files": 879
+        "files": 882
       }
     ],
     "by_day": [
@@ -489,10 +499,12 @@
       },
       {
         "date": "2026-10-28",
-        "files": 74,
-        "bytes": 55880208,
-        "runs": 4,
+        "files": 118,
+        "bytes": 67778921,
+        "runs": 6,
         "run_ids": [
+          "run_1028_0356",
+          "sky-task-1028-0357",
           "appie-task-1028-0313",
           "sky-task-1028-0203",
           "appie-task-1028-0105",
@@ -502,10 +514,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 121226297344,
-      "disk_used_all": 15554392064,
-      "task_files_bytes": 1764328201,
-      "task_pct_of_disk": 1.2897
+      "disk_free": 120970960896,
+      "disk_used_all": 15809728512,
+      "task_files_bytes": 1776226914,
+      "task_pct_of_disk": 1.2984
     }
   }
 }
