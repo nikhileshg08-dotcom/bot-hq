@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T02:33:27-05:00",
+  "snapshot_at": "2026-10-28T02:45:51-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -69,7 +69,7 @@
       "color": "#7ed957",
       "status": "idle",
       "current_task": "Sky 9 PM refresh: all 12 company-site roles submitted. Next: scheduled Dice run Oct 28 7:30 AM CT.",
-      "last_active": "2026-10-27T21:48:00-05:00",
+      "last_active": "2026-10-27 21:48 CT",
       "pending": [
         {
           "text": "58 Sky roles Not Started"
@@ -143,7 +143,7 @@
         "Sent the updated 22-column tracker at 1:31 AM CT.",
         "Went on hold for new applications at 1:34 AM CT."
       ],
-      "last_checkin": "2026-10-27T21:48:00-05:00",
+      "last_checkin": "2026-10-27 21:48 CT",
       "working_with": [],
       "source_note": "All applications on hold per Nikhilesh (voice, Oct 27 8:07 AM CT). Submit nothing until he says go. 221 submitted.",
       "groupTask": null
@@ -214,11 +214,18 @@
       "color": "#f06fb0",
       "status": "idle",
       "current_task": null,
-      "last_active": "2026-10-28T02:32-05:00",
+      "last_active": "2026-10-28T02:48-05:00",
       "pending": [
         "Waiting on Nikhilesh to confirm whether to follow Nicky's instructions"
       ],
       "completed": [
+        "EAD post v14: narrower detail card (dallas_ead_post_v14.jpg)",
+        "EAD post v13: bigger glowing headline + solid yellow Immigration Alert badge (dallas_ead_post_v13.jpg)",
+        "EAD post v12: detailed card (affects / what to do / what to check), yellow-black, real logo (dallas_ead_post_v12.jpg)",
+        "EAD post v9: smaller headings, follow-us pill, uscis.gov footer (dallas_ead_post_v9.jpg)",
+        "EAD post v7: yellow-black with details card, side buildings, plane, real logo (dallas_ead_post_v7.jpg)",
+        "EAD post v6 in yellow-black brand colors with real logo (dallas_ead_post_v6.jpg)",
+        "EAD post v5 with real Dallas Nagaram logo (dallas_ead_post_v5.jpg)",
         "EAD post v5: plain gradient background (dallas_ead_post_v5.jpg)",
         "EAD post v4: clean layout with logo, uscis.gov check, not-legal-advice line (dallas_ead_post_v4.jpg)",
         "Added Dallas Nagaram logo to EAD post v3; news roundup cancelled",
@@ -235,7 +242,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-28T02:32-05:00",
+      "last_checkin": "2026-10-28T02:48-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -263,13 +270,13 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-28T02:32-05:00",
+  "latest_bot_activity": "2026-10-28T02:48-05:00",
   "files": {
-    "generated_at": "2026-10-28T02:33:27-05:00",
-    "total": 3453,
-    "today": 55,
-    "last_24h": 2942,
-    "bytes": 1753769596,
+    "generated_at": "2026-10-28T02:45:52-05:00",
+    "total": 3464,
+    "today": 66,
+    "last_24h": 2953,
+    "bytes": 1757021070,
     "runs": 60,
     "runs_today": 4,
     "by_bot": {
@@ -309,8 +316,8 @@
         "runs": 1
       },
       "other": {
-        "files": 2465,
-        "bytes": 721296802,
+        "files": 2476,
+        "bytes": 724548276,
         "runs": 13
       }
     },
@@ -433,8 +440,8 @@
       },
       {
         "date": "2026-10-28",
-        "files": 55,
-        "bytes": 45329971,
+        "files": 66,
+        "bytes": 48581445,
         "runs": 4,
         "run_ids": [
           "appie-task-1028-0203",
@@ -446,10 +453,10 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 121659068416,
-      "disk_used_all": 15121620992,
-      "task_files_bytes": 1753769596,
-      "task_pct_of_disk": 1.282
+      "disk_free": 121651994624,
+      "disk_used_all": 15128694784,
+      "task_files_bytes": 1757021070,
+      "task_pct_of_disk": 1.2844
     }
   }
 }
