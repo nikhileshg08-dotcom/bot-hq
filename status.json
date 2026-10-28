@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T04:31:18-05:00",
+  "snapshot_at": "2026-10-28T04:40:36-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -43,7 +43,7 @@
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
       "status": "idle",
-      "current_task": "4:00 AM Oct 28 scheduled job-search refresh (started 3:56 AM CT)",
+      "current_task": "",
       "last_active": "2026-10-28T04:27:00-05:00",
       "pending": [
         {
@@ -84,7 +84,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-28T04:27:00-05:00",
+      "last_checkin": "2026-10-28T04:40:36-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -262,10 +262,10 @@
   ],
   "latest_bot_activity": "2026-10-28T04:38:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T04:31:18-05:00",
+    "generated_at": "2026-10-28T04:40:37-05:00",
     "total": 3573,
     "today": 175,
-    "last_24h": 3037,
+    "last_24h": 3033,
     "bytes": 1938499061,
     "runs": 61,
     "runs_today": 5,
@@ -444,8 +444,8 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 120812359680,
-      "disk_used_all": 15968329728,
+      "disk_free": 120811917312,
+      "disk_used_all": 15968772096,
       "task_files_bytes": 1938499061,
       "task_pct_of_disk": 1.4171
     }
