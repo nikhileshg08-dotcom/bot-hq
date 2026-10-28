@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T15:34:56-05:00",
+  "snapshot_at": "2026-10-28T15:42:57-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -199,11 +199,11 @@
   ],
   "latest_bot_activity": "2026-10-28T15:34:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T15:34:56-05:00",
+    "generated_at": "2026-10-28T15:42:58-05:00",
     "total": 3993,
     "today": 592,
     "last_24h": 2998,
-    "bytes": 2301421558,
+    "bytes": 2301426316,
     "runs": 44,
     "runs_today": 44,
     "by_bot": {
@@ -244,7 +244,7 @@
       },
       "other": {
         "files": 2736,
-        "bytes": 955464456,
+        "bytes": 955469214,
         "runs": 1
       }
     },
@@ -294,21 +294,21 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 331588228,
+        "bytes": 331589836,
         "runs": 0,
         "run_ids": []
       },
       {
         "date": "2026-10-27",
         "files": 2949,
-        "bytes": 1271242295,
+        "bytes": 1271242427,
         "runs": 0,
         "run_ids": []
       },
       {
         "date": "2026-10-28",
         "files": 592,
-        "bytes": 592027612,
+        "bytes": 592030630,
         "runs": 44,
         "run_ids": [
           "sky-task-1028-1516",
@@ -360,10 +360,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 124775194624,
-      "disk_used_all": 11990069248,
-      "task_files_bytes": 2301421558,
-      "task_pct_of_disk": 1.6825
+      "disk_free": 124705861632,
+      "disk_used_all": 12059402240,
+      "task_files_bytes": 2301426316,
+      "task_pct_of_disk": 1.6826
     }
   }
 }
