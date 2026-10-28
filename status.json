@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T14:45:53-05:00",
+  "snapshot_at": "2026-10-28T14:48:33-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -198,7 +198,7 @@
   ],
   "latest_bot_activity": "2026-10-28T14:27:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T14:45:53-05:00",
+    "generated_at": "2026-10-28T14:48:33-05:00",
     "total": 3983,
     "today": 582,
     "last_24h": 2988,
@@ -358,8 +358,8 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 125704798208,
-      "disk_used_all": 11060465664,
+      "disk_free": 125658546176,
+      "disk_used_all": 11106717696,
       "task_files_bytes": 2230259342,
       "task_pct_of_disk": 1.6305
     }
