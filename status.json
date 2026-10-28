@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-28T06:00:27-05:00",
+  "snapshot_at": "2026-10-28T06:16:27-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -84,7 +84,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-28T05:44:00-05:00",
+      "last_checkin": "2026-10-28T05:44:04-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -183,7 +183,7 @@
         "Added risk analysis and a $1,000 paper test with entries, stops and targets.",
         "Last posted at 2:17 AM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-28T05:25:40-05:00",
+      "last_checkin": "2026-10-28T06:16:26-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -255,14 +255,14 @@
         }
       ],
       "recent": [],
-      "last_checkin": "2026-10-28T05:25:40-05:00",
+      "last_checkin": "2026-10-28T06:16:26-05:00",
       "working_with": [],
       "groupTask": null
     }
   ],
   "latest_bot_activity": "2026-10-28T05:44:00-05:00",
   "files": {
-    "generated_at": "2026-10-28T06:00:27-05:00",
+    "generated_at": "2026-10-28T06:16:27-05:00",
     "total": 3628,
     "today": 227,
     "last_24h": 3057,
@@ -445,8 +445,8 @@
     ],
     "storage": {
       "disk_total": 136797466624,
-      "disk_free": 120728788992,
-      "disk_used_all": 16051900416,
+      "disk_free": 120728346624,
+      "disk_used_all": 16052342784,
       "task_files_bytes": 1982569633,
       "task_pct_of_disk": 1.4493
     }
