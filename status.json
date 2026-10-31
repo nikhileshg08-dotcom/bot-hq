@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T13:13:01-05:00",
+  "snapshot_at": "2026-10-31T13:27:00-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -119,7 +119,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": "",
+      "current_task": null,
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         {
@@ -326,11 +326,11 @@
   ],
   "latest_bot_activity": "2026-10-31T12:10:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T13:13:01-05:00",
-    "total": 19172,
-    "today": 1108,
-    "last_24h": 3986,
-    "bytes": 27656402323,
+    "generated_at": "2026-10-31T13:27:00-05:00",
+    "total": 20589,
+    "today": 2525,
+    "last_24h": 5373,
+    "bytes": 27730298279,
     "runs": 68,
     "runs_today": 5,
     "by_bot": {
@@ -370,23 +370,23 @@
         "runs": 1
       },
       "other": {
-        "files": 17525,
-        "bytes": 25839054908,
+        "files": 18942,
+        "bytes": 25912950864,
         "runs": 14
       }
     },
     "top_types": [
       {
         "type": "jpg",
-        "files": 5302
+        "files": 5320
       },
       {
         "type": "json",
-        "files": 2849
+        "files": 2852
       },
       {
-        "type": "png",
-        "files": 2179
+        "type": "(none)",
+        "files": 2530
       }
     ],
     "by_day": [
@@ -400,7 +400,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334519162,
+        "bytes": 334493225,
         "runs": 0,
         "run_ids": []
       },
@@ -496,8 +496,8 @@
       },
       {
         "date": "2026-10-31",
-        "files": 1108,
-        "bytes": 4765670066,
+        "files": 2525,
+        "bytes": 4839591959,
         "runs": 5,
         "run_ids": [
           "other-task-1031-1002",
@@ -510,10 +510,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 87957200896,
-      "disk_used_all": 48808062976,
-      "task_files_bytes": 27656402323,
-      "task_pct_of_disk": 20.2193
+      "disk_free": 86855446528,
+      "disk_used_all": 49909817344,
+      "task_files_bytes": 27730298279,
+      "task_pct_of_disk": 20.2733
     }
   }
 }
