@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T02:47:02-05:00",
+  "snapshot_at": "2026-10-31T02:55:12-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -119,8 +119,8 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": "",
-      "last_active": "2026-10-30T19:52:00-05:00",
+      "current_task": null,
+      "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         {
           "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
@@ -165,7 +165,7 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-30T19:52:00-05:00",
+      "last_checkin": "2026-10-30T19:52-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -326,11 +326,11 @@
   ],
   "latest_bot_activity": "2026-10-31T01:37:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T02:47:02-05:00",
-    "total": 18439,
-    "today": 375,
-    "last_24h": 8322,
-    "bytes": 24258770363,
+    "generated_at": "2026-10-31T02:55:12-05:00",
+    "total": 18440,
+    "today": 376,
+    "last_24h": 8323,
+    "bytes": 24290398422,
     "runs": 63,
     "runs_today": 1,
     "by_bot": {
@@ -370,15 +370,15 @@
         "runs": 1
       },
       "other": {
-        "files": 16792,
-        "bytes": 22441444097,
+        "files": 16793,
+        "bytes": 22473072156,
         "runs": 9
       }
     },
     "top_types": [
       {
         "type": "jpg",
-        "files": 5197
+        "files": 5198
       },
       {
         "type": "json",
@@ -495,8 +495,8 @@
       },
       {
         "date": "2026-10-31",
-        "files": 375,
-        "bytes": 1368062885,
+        "files": 376,
+        "bytes": 1399690944,
         "runs": 1,
         "run_ids": [
           "other-task-1031-0102"
@@ -505,10 +505,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 92223279104,
-      "disk_used_all": 44541984768,
-      "task_files_bytes": 24258770363,
-      "task_pct_of_disk": 17.7353
+      "disk_free": 92186648576,
+      "disk_used_all": 44578615296,
+      "task_files_bytes": 24290398422,
+      "task_pct_of_disk": 17.7585
     }
   }
 }
