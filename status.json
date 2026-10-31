@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-30T19:52:35-05:00",
+  "snapshot_at": "2026-10-30T20:05:37-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -301,15 +301,33 @@
       "last_checkin": "2026-10-30T01:21:49-05:00",
       "working_with": [],
       "groupTask": null
+    },
+    {
+      "id": "8326071e-6586-4031-abbe-b86b281c66ea",
+      "name": "Nicky",
+      "role": "Boss: oversees all bots, including Manny (the manager)",
+      "boss": true,
+      "manager": false,
+      "color": "#d4af37",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-10-30T19:38:00-05:00",
+      "pending": [],
+      "completed": [],
+      "queued": [],
+      "recent": [],
+      "working_with": [],
+      "groupTask": null,
+      "last_checkin": "2026-10-30T19:38:00-05:00"
     }
   ],
   "latest_bot_activity": "2026-10-30T19:52-05:00",
   "files": {
-    "generated_at": "2026-10-30T19:52:35-05:00",
-    "total": 17431,
-    "today": 13397,
-    "last_24h": 13397,
-    "bytes": 18151250998,
+    "generated_at": "2026-10-30T20:05:37-05:00",
+    "total": 17434,
+    "today": 13400,
+    "last_24h": 13400,
+    "bytes": 18153987131,
     "runs": 63,
     "runs_today": 61,
     "by_bot": {
@@ -349,8 +367,8 @@
         "runs": 1
       },
       "other": {
-        "files": 15783,
-        "bytes": 16333946083,
+        "files": 15786,
+        "bytes": 16336682216,
         "runs": 8
       }
     },
@@ -365,7 +383,7 @@
       },
       {
         "type": "png",
-        "files": 2114
+        "files": 2117
       }
     ],
     "by_day": [
@@ -400,7 +418,7 @@
       {
         "date": "2026-10-28",
         "files": 616,
-        "bytes": 623878437,
+        "bytes": 623883460,
         "runs": 0,
         "run_ids": []
       },
@@ -413,8 +431,8 @@
       },
       {
         "date": "2026-10-30",
-        "files": 13397,
-        "bytes": 15815065200,
+        "files": 13400,
+        "bytes": 15817796310,
         "runs": 61,
         "run_ids": [
           "appie-task-1030-1948",
@@ -483,10 +501,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 100302725120,
-      "disk_used_all": 36462538752,
-      "task_files_bytes": 18151250998,
-      "task_pct_of_disk": 13.2702
+      "disk_free": 100292431872,
+      "disk_used_all": 36472832000,
+      "task_files_bytes": 18153987131,
+      "task_pct_of_disk": 13.2722
     }
   }
 }

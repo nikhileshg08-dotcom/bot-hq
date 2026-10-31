@@ -238,7 +238,7 @@
 <!-- STATUS_DATA_START -->
 <script type="application/json" id="bot-status">{
  "title": "Nikki's Company",
- "snapshot_at": "2026-10-30T19:52:35-05:00",
+ "snapshot_at": "2026-10-30T20:05:37-05:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -532,15 +532,32 @@
    "recent": [],
    "last_checkin": "2026-10-30T01:21:49-05:00",
    "working_with": []
+  },
+  {
+   "id": "8326071e-6586-4031-abbe-b86b281c66ea",
+   "name": "Nicky",
+   "role": "Boss: oversees all bots, including Manny (the manager)",
+   "boss": true,
+   "manager": false,
+   "color": "#d4af37",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-10-30T19:38:00-05:00",
+   "pending": [],
+   "completed": [],
+   "queued": [],
+   "recent": [],
+   "working_with": [],
+   "last_checkin": "2026-10-30T19:38:00-05:00"
   }
  ],
  "latest_bot_activity": "2026-10-30T19:52-05:00",
  "files": {
-  "generated_at": "2026-10-30T19:52:35-05:00",
-  "total": 17431,
-  "today": 13397,
-  "last_24h": 13397,
-  "bytes": 18151250998,
+  "generated_at": "2026-10-30T20:05:37-05:00",
+  "total": 17434,
+  "today": 13400,
+  "last_24h": 13400,
+  "bytes": 18153987131,
   "runs": 63,
   "runs_today": 61,
   "by_bot": {
@@ -580,8 +597,8 @@
     "runs": 1
    },
    "other": {
-    "files": 15783,
-    "bytes": 16333946083,
+    "files": 15786,
+    "bytes": 16336682216,
     "runs": 8
    }
   },
@@ -596,7 +613,7 @@
    },
    {
     "type": "png",
-    "files": 2114
+    "files": 2117
    }
   ],
   "by_day": [
@@ -631,7 +648,7 @@
    {
     "date": "2026-10-28",
     "files": 616,
-    "bytes": 623878437,
+    "bytes": 623883460,
     "runs": 0,
     "run_ids": []
    },
@@ -644,8 +661,8 @@
    },
    {
     "date": "2026-10-30",
-    "files": 13397,
-    "bytes": 15815065200,
+    "files": 13400,
+    "bytes": 15817796310,
     "runs": 61,
     "run_ids": [
      "appie-task-1030-1948",
@@ -714,10 +731,10 @@
   ],
   "storage": {
    "disk_total": 136782041088,
-   "disk_free": 100302725120,
-   "disk_used_all": 36462538752,
-   "task_files_bytes": 18151250998,
-   "task_pct_of_disk": 13.2702
+   "disk_free": 100292431872,
+   "disk_used_all": 36472832000,
+   "task_files_bytes": 18153987131,
+   "task_pct_of_disk": 13.2722
   }
  }
 }</script>
@@ -2703,6 +2720,13 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       const band = mesh(new THREE.TorusGeometry(0.27, 0.018, 8, 24, Math.PI), mats.accent, 0, 0.02, 0, head); band.rotation.y = Math.PI / 2;
       const mic = mesh(new THREE.CylinderGeometry(0.01, 0.01, 0.2, 6), mats.joint, 0.24, -0.1, 0.1, head); mic.rotation.x = 1.2;
     }
+    if (data.boss) { // boss: small gold crown around the antenna + gold tie
+      const gold = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.3, roughness: 0.3, emissive: 0x4a3505, side: THREE.DoubleSide });
+      mesh(new THREE.CylinderGeometry(0.17, 0.15, 0.09, 20, 1, true), gold, 0, 0.235, 0, head);
+      for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; mesh(new THREE.ConeGeometry(0.035, 0.1, 6), gold, Math.cos(a) * 0.16, 0.32, Math.sin(a) * 0.16, head);
+        mesh(new THREE.SphereGeometry(0.018, 8, 6), new THREE.MeshStandardMaterial({ color: i % 2 ? 0xc0263a : 0x2a62d4, roughness: 0.2 }), Math.cos(a) * 0.165, 0.245, Math.sin(a) * 0.165, head); }
+      const tie = mesh(new THREE.ConeGeometry(0.05, 0.2, 4), gold, 0, 0.2, 0.17, torso); tie.rotation.x = Math.PI;
+    }
     // arms
     const arms = [];
     for (const sx of [-1, 1]) {
@@ -2808,6 +2832,89 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     slot.plateAnchor = new THREE.Vector3(w / 2 - 0.6 - door / 2 - 0.2, 2.62, d / 2 + 0.02);
     deskSlots.push(slot); return slot;
   }
+  // ---------- boss cabin (boss:true): Nicky's executive suite in front of the manager cabin ----------
+  // larger than every other cabin, raised dark-walnut floor with gold edging, gold crown moulding, burgundy carpet,
+  // executive desk facing the office, visitor chairs, leather sofa, trophy credenza, a "BOSS" marquee and a floating gold crown.
+  const GOLD = 0xd4af37;
+  let bossCrown = null;
+  function bossCabin(cx, cz, w, d, boss) {
+    const g = new THREE.Group(); g.position.set(cx, 0, cz); scene.add(g);
+    const slot = { type: 'boss', group: g, w, d, backDir: V3(1, 0, 0), noLamp: true };
+    const goldM = M(GOLD, { metalness: 0.3, roughness: 0.35, emissive: 0x4a3505 });
+    slot.pad = mesh(rbox(w - 0.04, 0.05, d - 0.04, 0.015), M(0x5b3a28, { roughness: 0.5 }), 0, 0.025, 0, g, false, true); // raised floor
+    for (const [x, z, lw, ld] of [[0, -d / 2, w, 0.07], [0, d / 2, w, 0.07], [-w / 2, 0, 0.07, d], [w / 2, 0, 0.07, d]]) mesh(new THREE.BoxGeometry(lw, 0.06, ld), goldM, x, 0.03, z, g, false, false);
+    const carpet = mesh(new THREE.PlaneGeometry(4.6, 3.6), M(0x7a2433, { roughness: 1 }), -1.0, 0.052, -0.3, g, false, true); carpet.rotation.x = -Math.PI / 2;
+    for (const [x, z, lw, ld] of [[-1.0, -2.08, 4.6, 0.05], [-1.0, 1.48, 4.6, 0.05], [-3.28, -0.3, 0.05, 3.6], [1.28, -0.3, 0.05, 3.6]]) { const e = mesh(new THREE.PlaneGeometry(lw, ld), M(GOLD, { roughness: 0.6 }), x, 0.054, z, g, false, false); e.rotation.x = -Math.PI / 2; }
+    slot.walls = []; const door = 1.1;
+    slot.wallBuild = (accentCss) => {
+      slot.walls.forEach((x) => g.remove(x)); slot.walls = []; const gc = new THREE.Color(GOLD);
+      slot.walls.push(glassWall(g, w, 0, -d / 2, 0, accentCss, gc, true));
+      slot.walls.push(glassWall(g, d, -w / 2, 0, Math.PI / 2, accentCss, gc, true));
+      slot.walls.push(glassWall(g, d, w / 2, 0, Math.PI / 2, accentCss, gc, true));
+      const fl = w - door - 0.6;
+      slot.walls.push(glassWall(g, fl, -w / 2 + fl / 2, d / 2, 0, accentCss, gc, true));
+      slot.walls.push(glassWall(g, 0.6, w / 2 - 0.3, d / 2, 0, accentCss, gc, true));
+      for (const [x, z, lw, ld] of [[0, -d / 2, w + 0.08, 0.09], [0, d / 2, w + 0.08, 0.09], [-w / 2, 0, 0.09, d], [w / 2, 0, 0.09, d]]) slot.walls.push(mesh(new THREE.BoxGeometry(lw, 0.09, ld), goldM, x, 2.45, z, g, false, false)); // gold crown moulding
+      for (const [x, z] of [[-w / 2, -d / 2], [w / 2, -d / 2], [-w / 2, d / 2], [w / 2, d / 2]]) slot.walls.push(mesh(new THREE.CylinderGeometry(0.07, 0.07, 2.5, 12), goldM, x, 1.25, z, g, false, false)); // gold corner posts
+    };
+    // executive desk facing the office (bot faces +z), walnut top with a gold edge
+    const ws = new THREE.Group(); ws.position.set(-1.0, 0, -0.53); ws.rotation.y = Math.PI; g.add(ws);
+    const dw = 2.8; desk(ws, dw, 1.0, P.walnut);
+    mesh(new THREE.BoxGeometry(dw, 0.035, 0.03), goldM, 0, 0.735, -0.5, ws, false, false);
+    mesh(new THREE.BoxGeometry(dw - 0.2, 0.5, 0.03), M(0x6e4630, { roughness: 0.5 }), 0, 0.45, -0.47, ws); // modesty panel
+    slot.monitors = [monitor(ws, -0.72, -0.18, 0.95, 0.22), monitor(ws, 0.0, -0.24, 1.05, 0), monitor(ws, 0.72, -0.18, 0.95, -0.22)];
+    keyboard(ws, 0.0, 0.15, 0); mug(ws, 1.2, 0.25, GOLD);
+    const lp = lamp(ws, -1.28, -0.3, new THREE.Color(GOLD)); lp.rotation.y = -Math.PI / 2;
+    mesh(rbox(0.36, 0.09, 0.05, 0.01), goldM, 0.9, 0.8, -0.42, ws); // desk name block (visitor side)
+    slot.lampG = ws; slot.ws = ws; slot.dw = dw;
+    slot.seat = new THREE.Vector3(0, 0, 0.72).applyEuler(ws.rotation).add(ws.position).add(g.position);
+    slot.face = new THREE.Vector3(0, 0, -1).applyEuler(ws.rotation);
+    slot.chairParent = ws; slot.chairLocal = new THREE.Vector3(0, 0, 0.78);
+    // trophy credenza behind the desk
+    mesh(rbox(2.6, 0.75, 0.45, 0.03), M(P.walnut, { roughness: 0.5 }), -1.0, 0.4, -d / 2 + 0.36, g);
+    mesh(new THREE.BoxGeometry(2.6, 0.03, 0.46), goldM, -1.0, 0.79, -d / 2 + 0.36, g, false, false);
+    const tro = new THREE.Group(); tro.position.set(-1.9, 0.8, -d / 2 + 0.36); g.add(tro);
+    mesh(rbox(0.16, 0.08, 0.16, 0.01), M(P.charcoal), 0, 0.04, 0, tro); mesh(new THREE.CylinderGeometry(0.02, 0.03, 0.12, 8), goldM, 0, 0.14, 0, tro);
+    mesh(new THREE.CylinderGeometry(0.11, 0.05, 0.16, 16, 1, true), M(GOLD, { metalness: 0.3, roughness: 0.3, emissive: 0x4a3505, side: THREE.DoubleSide }), 0, 0.28, 0, tro);
+    plant(g, -0.1, -d / 2 + 0.36, 0.5); // small plant on the credenza
+    g.children[g.children.length - 1].position.y = 0.8;
+    // visitor chairs facing the desk
+    chair(g, -1.75, 0.62, 0, 0x7a2433); chair(g, -0.35, 0.62, 0, 0x7a2433);
+    // leather sofa + round coffee table along the right wall
+    const sofa = new THREE.Group(); sofa.position.set(w / 2 - 0.65, 0, -1.25); sofa.rotation.y = -Math.PI / 2; g.add(sofa);
+    const lea = M(0x4a2c22, { roughness: 0.6 });
+    mesh(rbox(2.0, 0.35, 0.8, 0.1), lea, 0, 0.3, 0, sofa); mesh(rbox(2.0, 0.55, 0.2, 0.1), lea, 0, 0.62, -0.32, sofa);
+    for (const sx of [-1, 1]) mesh(rbox(0.2, 0.45, 0.8, 0.08), lea, sx * 1.0, 0.4, 0, sofa);
+    mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.05, 28), M(P.walnut, { roughness: 0.4 }), w / 2 - 1.85, 0.45, -1.25, g);
+    mesh(new THREE.TorusGeometry(0.42, 0.015, 6, 32), goldM, w / 2 - 1.85, 0.45, -1.25, g).rotation.x = Math.PI / 2;
+    mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.42, 8), goldM, w / 2 - 1.85, 0.22, -1.25, g);
+    plant(g, w / 2 - 0.45, -d / 2 + 0.45, 1.2, true); plant(g, -w / 2 + 0.5, d / 2 - 0.5, 1.1, true);
+    slot.shelfPos = [1.85, 1.55, -d / 2 + 0.2, 2.2];
+    slot.plateAnchor = new THREE.Vector3(w / 2 - 0.6 - door / 2 - 0.2, 2.68, d / 2 + 0.06);
+    // walking spots: step out beside the chair, round the desk's right end, then window / sofa / shelf
+    const side = { x: 0.95, z: -1.25 };
+    slot.bossRoutes = [[side, { x: 1.4, z: 1.85, face: 0, look: 'window' }, side], [side, { x: 2.75, z: -0.1, face: Math.PI / 2, look: 'team' }, side], [side, { x: 1.85, z: -d / 2 + 0.85, face: Math.PI, look: 'shelf' }, side]];
+    // "BOSS" marquee on top of the front wall (click opens the boss)
+    const ct = canvasTex(1024, 192, (c, W, H) => {
+      roundRect(c, 4, 4, W - 8, H - 8, 30); c.fillStyle = '#1d1a24'; c.fill(); c.lineWidth = 10; c.strokeStyle = '#d4af37'; c.stroke();
+      const cx0 = 110, cy0 = 96; c.fillStyle = '#d4af37'; c.beginPath(); // crown icon
+      c.moveTo(cx0 - 62, cy0 + 40); c.lineTo(cx0 - 66, cy0 - 34); c.lineTo(cx0 - 30, cy0 - 2); c.lineTo(cx0, cy0 - 48); c.lineTo(cx0 + 30, cy0 - 2); c.lineTo(cx0 + 66, cy0 - 34); c.lineTo(cx0 + 62, cy0 + 40); c.closePath(); c.fill();
+      for (const [x, y] of [[cx0 - 66, cy0 - 38], [cx0, cy0 - 52], [cx0 + 66, cy0 - 38]]) { c.beginPath(); c.arc(x, y, 9, 0, Math.PI * 2); c.fill(); }
+      c.fillStyle = '#d4af37'; c.font = '800 84px Inter, "Segoe UI", system-ui, sans-serif'; c.textBaseline = 'middle'; c.fillText('BOSS', 205, 74);
+      c.fillStyle = '#f3e6c0'; c.font = '600 42px Inter, "Segoe UI", system-ui, sans-serif'; c.fillText((boss && boss.name ? boss.name : 'Nicky') + ' \u2014 The Boss', 207, 146);
+    });
+    const marquee = new THREE.Mesh(new THREE.PlaneGeometry(3.3, 0.62), new THREE.MeshBasicMaterial({ map: ct.t, toneMapped: false, side: THREE.DoubleSide }));
+    marquee.position.set(-1.0, 2.86, d / 2 + 0.02); g.add(marquee); marquee.name = 'bossSign';
+    if (boss) { marquee.userData.bot = boss; clickables.push(marquee); }
+    // floating gold crown above the suite
+    const cr = new THREE.Group(); cr.position.set(-1.0, 3.75, -0.3); g.add(cr);
+    const gm = M(GOLD, { metalness: 0.3, roughness: 0.3, emissive: 0x4a3505, side: THREE.DoubleSide });
+    mesh(new THREE.CylinderGeometry(0.42, 0.36, 0.26, 28, 1, true), gm, 0, 0, 0, cr, false, false);
+    for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2; mesh(new THREE.ConeGeometry(0.08, 0.26, 8), gm, Math.cos(a) * 0.4, 0.25, Math.sin(a) * 0.4, cr, false, false);
+      mesh(new THREE.SphereGeometry(0.045, 10, 8), new THREE.MeshStandardMaterial({ color: i % 2 ? 0xc0263a : 0x2a62d4, roughness: 0.2, metalness: 0.2 }), Math.cos(a) * 0.41, 0.0, Math.sin(a) * 0.41, cr, false, false); }
+    bossCrown = cr;
+    deskSlots.push(slot); return slot;
+  }
   // ---------- group tables: every groupTask team (1+; a lone bot on a task still gets its table) sits side by side at ONE continuous desk ----------
   // seats = max(3, team size); each seat has its own chair, monitor, keyboard and mug. Two-sided (facing pairs) when long.
   const GB_SEAT = 1.3, GB_MIN = 3;
@@ -2837,7 +2944,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     return slots;
   }
   // free-floor group tables (spares + extra teams): packed into rows that avoid cabins, the corridors and furniture
-  const GT_ROWS = [{ z: 9.4, x0: -7.5, x1: 4.2 }, { z: -2.0, x0: 10.0, x1: 18.6 }, { z: 12.6, x0: -5.0, x1: 0.2 }];
+  const GT_ROWS = [{ z: 9.4, x0: -7.5, x1: 4.2 }, { z: 12.6, x0: 10.5, x1: 19.0 }, { z: 12.6, x0: -5.0, x1: 0.2 }];
   function floorGroupTable(cx, cz, task, members, twoSided) {
     const g = new THREE.Group(); g.position.set(cx, 0, cz); scene.add(g);
     const S = Math.max(GB_MIN, members.length), L = benchLen(twoSided ? Math.ceil(S / 2) : S);
@@ -2887,7 +2994,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   }
   const groupKey = (b) => String(b.groupTask || '').trim();
   function planLayout(bots) { // 2 rows x 4 cells; a team takes adjacent cells in one row
-    const non = bots.filter((b) => !b.manager); const groups = new Map();
+    const non = bots.filter((b) => !b.manager && !b.boss); const groups = new Map();
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); if (!k) return; if (!groups.has(k)) groups.set(k, { task: groupKey(b), members: [] }); groups.get(k).members.push(b); });
     const units = [], seen = new Set(), teamUnits = [];
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); const gr = k && groups.get(k);
@@ -2907,6 +3014,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   }
   // build cabins
   const MAN = cabin(13.5, -10.4, 8.6, 7.0, 0, true);
+  const BOSS_BOT = (DATA.bots || []).find((b) => b.boss);
+  const BOSS = BOSS_BOT ? bossCabin(14.7, -2.45, 9.6, 5.4, BOSS_BOT) : null;
   const PLAN = planLayout(DATA.bots || []);
   const teams = [];
   for (const pl of PLAN.placed) {
@@ -3018,10 +3127,12 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   // ---------- seat bots ----------
   const bots = DATA.bots || [];
   const managerSlots = deskSlots.filter((s) => s.type === 'manager');
-  const regularSlots = deskSlots.filter((s) => s.type !== 'manager');
+  const bossSlots = deskSlots.filter((s) => s.type === 'boss');
+  const regularSlots = deskSlots.filter((s) => s.type !== 'manager' && s.type !== 'boss');
   const assigned = new Map();
   const queue = [...bots];
-  for (const b of bots.filter((b) => b.manager)) { const s = managerSlots.find((x) => !assigned.has(x)); if (s) { assigned.set(s, b); queue.splice(queue.indexOf(b), 1); } }
+  for (const b of bots.filter((b) => b.boss)) { const s = bossSlots.find((x) => !assigned.has(x)); if (s) { assigned.set(s, b); queue.splice(queue.indexOf(b), 1); } }
+  for (const b of bots.filter((b) => b.manager && queue.includes(b))) { const s = managerSlots.find((x) => !assigned.has(x)); if (s) { assigned.set(s, b); queue.splice(queue.indexOf(b), 1); } }
   for (const s of regularSlots) if (s.preBot && queue.includes(s.preBot)) { assigned.set(s, s.preBot); queue.splice(queue.indexOf(s.preBot), 1); }
   for (const b of queue) {
     let s = regularSlots.find((x) => !assigned.has(x) && !x.preBot && !x.groupOnly && !x.homeBot);
@@ -3039,7 +3150,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const accentCss = own ? (own.color || '#e0a83e') : '#c9c1b6';
     const accentCol = new THREE.Color(accentCss);
     // chair
-    const ch = chair(slot.chairParent, slot.chairLocal.x, slot.chairLocal.z, 0, own ? 0x3c4552 : 0x8b8f96); slot.chair = ch;
+    const ch = chair(slot.chairParent, slot.chairLocal.x, slot.chairLocal.z, 0, slot.type === 'boss' ? 0x3a2219 : own ? 0x3c4552 : 0x8b8f96); slot.chair = ch;
+    if (slot.type === 'boss') { const hb2 = mesh(rbox(0.56, 0.5, 0.1, 0.05), M(0x3a2219, { roughness: 0.55 }), 0, 1.38, 0.33, ch); hb2.rotation.x = -0.12; mesh(new THREE.BoxGeometry(0.5, 0.03, 0.11), M(GOLD, { metalness: 0.3, roughness: 0.35, emissive: 0x4a3505 }), 0, 1.6, 0.36, ch, false, false); }
     if (slot.wallBuild) {
       slot.wallBuild(accentCss, own ? accentCol : new THREE.Color(0xd8d2c8));
       if (!slot.noLamp) lamp(slot.ws, (slot.dw / 2) - 0.55, -0.22, own ? accentCol : new THREE.Color(0xb9b2a8));
@@ -3056,7 +3168,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     }
     slot.monitors.forEach((m, k) => screens.push({ m, bot: own, k, phase: i * 13 + k * 7, lines: [] }));
     if (!b) return;
-    const r = robot(b, slot.type === 'manager' ? 1.12 : 1);
+    const r = robot(b, slot.type === 'boss' ? 1.2 : slot.type === 'manager' ? 1.12 : 1);
     r.root.position.copy(slot.seat); r.root.position.y = 0;
     const f = slot.face; r.root.rotation.y = Math.atan2(f.x, f.z);
     scene.add(r.root);
@@ -3069,7 +3181,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     ring.rotation.x = -Math.PI / 2; ring.position.set(slot.seat.x, 0.06, slot.seat.z); scene.add(ring);
     // label
     const lab = labelSprite(b.name, null, st(b.status).css);
-    lab.position.set(0, (slot.type === 'manager' ? 2.3 : 2.1), 0); r.root.add(lab);
+    lab.position.set(0, (slot.type === 'boss' ? 2.4 : slot.type === 'manager' ? 2.3 : 2.1), 0); r.root.add(lab);
     lab.scale.set(0.15, 0.0375, 1);
     const avTag = tagSprite(); avTag.position.copy(lab.position); r.root.add(avTag);
     const obj = { data: b, r, slot, ring, label: lab, avTag, hover: 0, sel: 0, phase: i * 1.7, s: st(b.status) };
@@ -3144,7 +3256,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       <button class="close" aria-label="Close" title="Close (Esc)">×</button>
       <div class="ph" style="--acc:${esc(b.color || '#e0a83e')}">
         <div class="avatar">${esc((b.name || '?')[0])}</div>
-        <div><h2>${esc(b.name)}${b.manager ? '<span class="tag">Manager</span>' : ''}</h2><div class="role">${esc(b.role || '')}</div>${teamOf(b) ? `<div class="team">Team · ${esc(teamOf(b).task)} (with ${esc(teamOf(b).members.filter((m) => m !== b).map((m) => m.name).join(', '))})</div>` : ''}</div>
+        <div><h2>${esc(b.name)}${b.boss ? '<span class="tag">Boss</span>' : b.manager ? '<span class="tag">Manager</span>' : ''}</h2><div class="role">${esc(b.role || '')}</div>${teamOf(b) ? `<div class="team">Team · ${esc(teamOf(b).task)} (with ${esc(teamOf(b).members.filter((m) => m !== b).map((m) => m.name).join(', '))})</div>` : ''}</div>
       </div>
       <div class="meta">
         <div class="pill" style="--c:${s.css}"><span class="ld"></span>${esc(s.label === 'Idle / waiting' ? 'Idle / waiting' : s.label)}</div>
@@ -3210,7 +3322,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const f = o.slot.face.clone(); // bot facing direction (toward monitor)
     let side = new THREE.Vector3().crossVectors(f, new THREE.Vector3(0, 1, 0)).normalize();
     if (side.z < 0) side.negate();
-    const pos = head.clone().addScaledVector(f, 0.9).addScaledVector(side, 4.4).add(new THREE.Vector3(0, 2.6, 0));
+    const pos = o.data.boss ? head.clone().addScaledVector(f, 4.2).add(new THREE.Vector3(1.4, 2.4, 0)) : head.clone().addScaledVector(f, 0.9).addScaledVector(side, 4.4).add(new THREE.Vector3(0, 2.6, 0));
     // shift target so bot sits left of the side panel
     const camDir = head.clone().sub(pos).normalize(); const right = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0, 1, 0)).normalize();
     const panelShift = window.innerWidth > 900 ? 1.1 : window.innerWidth > 700 ? 1.7 : 0;
@@ -3254,6 +3366,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const g = slot.group.position, w = slot.w, d = slot.d;
     const seat = o.seat.clone();
     const back = backOf(o);
+    if (slot.bossRoutes) return { seat, back, routes: slot.bossRoutes.map((r) => [{ p: back }, ...r.map((q) => Object.assign({ p: cabinLocalToWorld(slot, q.x, q.z) }, q.face !== undefined ? { face: q.face, pause: 4.5, look: q.look } : {})), { p: back }]) };
     if (slot.spots) { const sp = slot.spots.map((q) => ({ p: cabinLocalToWorld(slot, q.x, q.z), face: q.face, pause: 4.5, look: q.look }));
       return { seat, back, routes: [[{ p: back }, sp[0], { p: back }], [{ p: back }, sp[1], { p: back }], [{ p: back }, sp[1], sp[0], { p: back }]] }; }
     const shelfX = slot.shelfPos[0];
@@ -3274,7 +3387,8 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     pts.push({ p: V3(-19.4, 0, -8.9) }, { p: V3(-19.4, 0, -2.3) });
     const rowB = stops(rowZ[1]).sort((a, b) => a.slot.group.position.x - b.slot.group.position.x);
     rowB.forEach((c) => pts.push({ p: V3(doorX(c.slot), 0, -2.3), face: Math.PI, pause: c.slot.team ? 3.5 : 2.2, visit: c.bots, team: c.slot.team ? c.slot.team.task : null }));
-    pts.push({ p: V3(8.0, 0, -2.3) }, { p: V3(dx, 0, g.z + d / 2 + 0.75) }, { p: V3(dx, 0, g.z + d / 2 - 0.7) }, { p: backOf(o) });
+    pts.push({ p: V3(8.0, 0, -2.3) }); if (BOSS) pts.push({ p: V3(8.0, 0, g.z + d / 2 + 0.75) });
+    pts.push({ p: V3(dx, 0, g.z + d / 2 + 0.75) }, { p: V3(dx, 0, g.z + d / 2 - 0.7) }, { p: backOf(o) });
     return pts;
   }
 
@@ -3284,7 +3398,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const out = outsideOf(o.slot), ins = insideOf(o.slot), cab = !!o.slot.wallBuild;
     const head = [{ p: backOf(o) }]; if (ins) head.push({ p: ins }); head.push({ p: out });
     const faceTo = (a, b) => Math.atan2(b.x - a.x, b.z - a.z);
-    const others = botObjs.filter((x) => x !== o && x.slot.group !== o.slot.group && x.mode === 'sit');
+    const others = botObjs.filter((x) => x !== o && x.slot.group !== o.slot.group && x.mode === 'sit' && x.slot.type !== 'boss');
     const opts = [];
     if (others.length) { const n = others.slice().sort((a, b) => a.seat.distanceToSquared(o.seat) - b.seat.distanceToSquared(o.seat))[0];
       const q = outsideOf(n.slot).add(V3(0.7, 0, 0)); opts.push({ p: q, face: faceTo(q, n.seat), pause: 4, visit: [n], kind: 'neighbour' }); }
@@ -3315,7 +3429,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     o.nextAct = rand(4, 12) + i; o.routes = makeRoutes(o);
     o.nextWalk = o.data.manager ? 14 : rand(18, 45) + i * 4;
     o.speaking = false; o.speakEnd = 0; o.glance = null;
-    o.walkCount = 0; o.nextRoam = o.data.manager ? Infinity : rand(40, 90) * IDLE_SLOW + i * 9; o.react = -99;
+    o.walkCount = 0; o.nextRoam = (o.data.manager || o.data.boss) ? Infinity : rand(40, 90) * IDLE_SLOW + i * 9; o.react = -99;
   });
   const outsideOf = (slot) => slot.outsideP ? slot.outsideP.clone() : slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 + 0.75) : V3(slot.seat.x, 0, -0.6);
   const insideOf = (slot) => slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 - 0.7) : null;
@@ -3364,7 +3478,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     const r = o.r, p = o.tgt, working = (o.data.status === 'working' || o.hasTask) && !o.away, tt = t + o.phase;
     // --- schedule new things while seated ---
     if (o.mode === 'sit' && ambient && !o.speaking && o !== selected) {
-      const roamFull = !o.data.manager && botObjs.filter((x) => !x.data.manager && x.mode !== 'sit' && !x.holdAtEnd).length >= 2; // max two roamers at once
+      const roamFull = !o.data.manager && !o.data.boss && botObjs.filter((x) => !x.data.manager && !x.data.boss && x.mode !== 'sit' && !x.holdAtEnd).length >= 2; // max two roamers at once
       if (roamFull && (t > o.nextRoam || (o.routes && t > o.nextWalk)) && !o.hasTask) { o.nextRoam = Math.max(o.nextRoam, t + rand(8, 25)); o.nextWalk = Math.max(o.nextWalk, t + rand(8, 25)); } // wait for a free slot
       else if (t > o.nextRoam && !regrouping && !o.hasTask) { // occasional short roam, then back to the seat (away bots step out more)
         startRoute(o, roamRoute(o)); o.nextRoam = t + rand(90, 170) * IDLE_SLOW * (working ? 1.4 : 1) * (o.away ? 0.5 : 1); o.nextWalk = Math.max(o.nextWalk, t + 30);
@@ -3843,6 +3957,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   if (TIER === 'phone') pendants.forEach((p) => { p.pl.visible = false; p.pl.intensity = 0; });
   function ambientTick(dt, t) {
     // plants sway
+    if (bossCrown) { bossCrown.rotation.y = t * 0.5; bossCrown.position.y = 3.75 + Math.sin(t * 1.2) * 0.06; }
     plants.forEach((p) => { const a = ambient ? p.amp : 0; p.g.rotation.z = Math.sin(t * 0.9 + p.ph) * a; p.g.rotation.x = Math.sin(t * 0.7 + p.ph * 1.3) * a * 0.6; });
     // pendant lights breathing
     pendants.forEach((p) => { const k = ambient ? 0.5 + 0.5 * Math.sin(t * 0.25 + p.ph) : 0.5; p.pl.intensity = (0.9 + 0.6 * k) * (dayCur ? dayCur.lamp : 1); p.bulbM.color.setRGB(1, 0.93 + 0.05 * k, 0.78 + 0.1 * k); });
@@ -4004,7 +4119,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   const synth = window.speechSynthesis;
   const vEl = { bar: document.getElementById('voice'), mic: document.getElementById('mic'), input: document.getElementById('ask'), send: document.getElementById('send'),
     to: document.getElementById('to'), tr: document.getElementById('transcript'), note: document.getElementById('vnote'), bubble: document.getElementById('bubble') };
-  const ALIASES = { manny: ['manny', 'manager', 'mani'], sky: ['sky', 'skye'], appie: ['appie', 'appy', 'api', 'apy'], neo: ['neo'], stocker: ['stocker', 'stoker'], rio: ['rio'] };
+  const ALIASES = { manny: ['manny', 'manager', 'mani'], sky: ['sky', 'skye'], appie: ['appie', 'appy', 'api', 'apy'], neo: ['neo'], stocker: ['stocker', 'stoker'], rio: ['rio'], nicky: ['nicky', 'nickie', 'nicki', 'the boss'] };
   function aliasesFor(o) { const n = o.data.name.toLowerCase(); return [...new Set([n, ...(ALIASES[n] || [])])]; }
   const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   function detectBot(text) {
