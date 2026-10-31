@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T12:29:33-05:00",
+  "snapshot_at": "2026-10-31T12:48:34-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -61,7 +61,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-31T12:29:32-05:00",
+      "last_checkin": "2026-10-31T12:48:33-05:00",
       "groupTask": null,
       "working_with": []
     },
@@ -93,7 +93,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": "",
+      "current_task": null,
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
@@ -232,7 +232,7 @@
   ],
   "latest_bot_activity": "2026-10-31T12:10:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T12:29:33-05:00",
+    "generated_at": "2026-10-31T12:48:34-05:00",
     "total": 19115,
     "today": 1051,
     "last_24h": 3969,
@@ -416,8 +416,8 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 87969095680,
-      "disk_used_all": 48796168192,
+      "disk_free": 87966527488,
+      "disk_used_all": 48798736384,
       "task_files_bytes": 27650374052,
       "task_pct_of_disk": 20.2149
     }
