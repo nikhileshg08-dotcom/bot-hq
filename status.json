@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T18:01:16-05:00",
+  "snapshot_at": "2026-10-31T18:15:32-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -120,7 +120,7 @@
       "color": "#b07cf0",
       "status": "idle",
       "current_task": null,
-      "last_active": "2026-10-30T19:52-05:00",
+      "last_active": "2026-10-30T19:52:00-05:00",
       "pending": [
         {
           "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
@@ -165,7 +165,7 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-30T19:52:07-05:00",
+      "last_checkin": "2026-10-30T19:52:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -215,7 +215,7 @@
       "color": "#f06fb0",
       "status": "working",
       "current_task": "Building POV price reel v10 (adding Follow us end card)",
-      "last_active": "2026-10-31T16:08:00-05:00",
+      "last_active": "2026-10-31T18:11:00-05:00",
       "pending": [
         {
           "text": "User pick of hero image, then build 24s reel (no faces, no copyrighted content)"
@@ -225,6 +225,9 @@
         }
       ],
       "completed": [
+        {
+          "text": "Oct 31 6 PM news scan: nothing new within 24h (optional older item: Hyderabad PopVax personalized mRNA cancer vaccine foundry)"
+        },
         {
           "text": "Oct 31 4 PM news scan: 1 new idea (PV Sindhu in HYLO Open final Sun Nov 1, 7 AM CST)"
         },
@@ -245,9 +248,6 @@
         },
         {
           "text": "Oct 30 6 PM news scan: nothing new worth posting"
-        },
-        {
-          "text": "Oct 30 4 PM news scan: nothing new worth posting (Aurora temple case court update, story-only)"
         }
       ],
       "queued": [
@@ -264,7 +264,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-31T16:08:29-05:00",
+      "last_checkin": "2026-10-31T18:11:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -324,13 +324,13 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-10-31T17:27:49-05:00",
+  "latest_bot_activity": "2026-10-31T18:11:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T18:01:16-05:00",
-    "total": 23315,
-    "today": 5250,
-    "last_24h": 7350,
-    "bytes": 29117973881,
+    "generated_at": "2026-10-31T18:15:32-05:00",
+    "total": 23299,
+    "today": 5234,
+    "last_24h": 7287,
+    "bytes": 29123132531,
     "runs": 68,
     "runs_today": 5,
     "by_bot": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 21668,
-        "bytes": 27300421312,
+        "files": 21652,
+        "bytes": 27305579962,
         "runs": 14
       }
     },
@@ -382,7 +382,7 @@
       },
       {
         "type": "json",
-        "files": 3118
+        "files": 3124
       },
       {
         "type": "(none)",
@@ -400,7 +400,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334728122,
+        "bytes": 334728111,
         "runs": 0,
         "run_ids": []
       },
@@ -414,7 +414,7 @@
       {
         "date": "2026-10-28",
         "files": 616,
-        "bytes": 623910963,
+        "bytes": 623914169,
         "runs": 0,
         "run_ids": []
       },
@@ -496,8 +496,8 @@
       },
       {
         "date": "2026-10-31",
-        "files": 5250,
-        "bytes": 6227014255,
+        "files": 5234,
+        "bytes": 6232169710,
         "runs": 5,
         "run_ids": [
           "other-task-1031-1002",
@@ -510,10 +510,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 81558216704,
-      "disk_used_all": 55207047168,
-      "task_files_bytes": 29117973881,
-      "task_pct_of_disk": 21.2879
+      "disk_free": 81544777728,
+      "disk_used_all": 55220486144,
+      "task_files_bytes": 29123132531,
+      "task_pct_of_disk": 21.2916
     }
   }
 }
