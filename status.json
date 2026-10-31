@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-30T20:08:16-05:00",
+  "snapshot_at": "2026-10-30T20:11:48-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -93,7 +93,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
@@ -231,7 +231,7 @@
   ],
   "latest_bot_activity": "2026-10-30T20:04:00-05:00",
   "files": {
-    "generated_at": "2026-10-30T20:08:16-05:00",
+    "generated_at": "2026-10-30T20:11:48-05:00",
     "total": 17434,
     "today": 13400,
     "last_24h": 13400,
@@ -409,8 +409,8 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 100288811008,
-      "disk_used_all": 36476452864,
+      "disk_free": 100287905792,
+      "disk_used_all": 36477358080,
       "task_files_bytes": 18153987131,
       "task_pct_of_disk": 13.2722
     }
