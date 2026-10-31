@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T00:48:36-05:00",
+  "snapshot_at": "2026-10-31T01:06:45-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -34,9 +34,9 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "idle",
-      "current_task": "",
-      "last_active": "2026-10-30T21:35:00-05:00",
+      "status": "working",
+      "current_task": "1:00 AM Oct 31 job-search refresh (creates Nikhilesh_Jobs_24h_Oct31.xlsx)",
+      "last_active": "2026-10-31T01:04:00-05:00",
       "pending": [
         "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
       ],
@@ -59,9 +59,9 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-30T21:35:01-05:00",
+      "last_checkin": "2026-10-31T01:04:00-05:00",
       "working_with": [],
-      "groupTask": null
+      "groupTask": "H-1B Job Search"
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -91,7 +91,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
@@ -115,7 +115,7 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-30T19:52-05:00",
+      "last_checkin": "2026-10-30T19:52:07-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -192,9 +192,10 @@
       "status": "idle",
       "manager": false,
       "current_task": "",
-      "last_active": "2026-10-30T00:55:00-05:00",
+      "last_active": "2026-10-31T00:56:00-05:00",
       "pending": [],
       "completed": [
+        "Oct 30 nightly backup cleanup done at 12:56 AM CT: verified all 9 output runs (0402, 0525, 0656, 0828, 1005, 1127, 1359, 1659, 2100; the 0100 run failed with no output) in the main sheet, made the daily copy and next-day carry-forward copy (174,631 bytes, sha256 matched), deleted 13 backup files (1,304,477 bytes freed). Main sheet unchanged.",
         "Oct 29 nightly backup cleanup done at 12:55 AM CT: verified all 8 output runs (0357, 0521, 0703, 0821, 0957, 1119, 1357, 2100; 1657 failed with no output) in the main sheet, made the daily copy and next-day carry-forward copy (237,019 bytes, sha256 matched), deleted 8 Oct 29 backup_pre_* files (955,387 bytes freed). Main sheet unchanged.",
         "Oct 27 nightly backup cleanup skipped at 12:49 AM CT: the Oct 27 main sheet was modified at 12:47 AM, so a run looked unfinished. Nothing changed.",
         "Oct 26 nightly backup cleanup skipped at 12:47 AM CT: Sky's 23:52 run was still writing (main sheet changed 12:35 AM). Nothing changed.",
@@ -204,7 +205,7 @@
         "Refresh file counts with every site build (count_files.py)"
       ],
       "recent": [],
-      "last_checkin": "2026-10-30T01:21:49-05:00",
+      "last_checkin": "2026-10-31T00:56:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -227,19 +228,19 @@
       "last_checkin": "2026-10-30T19:38:00-05:00"
     }
   ],
-  "latest_bot_activity": "2026-10-30T21:35:00-05:00",
+  "latest_bot_activity": "2026-10-31T01:04:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T00:48:36-05:00",
-    "total": 18126,
-    "today": 51,
-    "last_24h": 14092,
-    "bytes": 23313354400,
-    "runs": 61,
-    "runs_today": 0,
+    "generated_at": "2026-10-31T01:06:45-05:00",
+    "total": 18134,
+    "today": 70,
+    "last_24h": 14100,
+    "bytes": 23330414140,
+    "runs": 63,
+    "runs_today": 1,
     "by_bot": {
       "Sky": {
-        "files": 1537,
-        "bytes": 1784441515,
+        "files": 1534,
+        "bytes": 1784116201,
         "runs": 46
       },
       "Appie": {
@@ -273,19 +274,19 @@
         "runs": 1
       },
       "other": {
-        "files": 16477,
-        "bytes": 21495759762,
-        "runs": 7
+        "files": 16488,
+        "bytes": 21513144816,
+        "runs": 9
       }
     },
     "top_types": [
       {
         "type": "jpg",
-        "files": 5140
+        "files": 5141
       },
       {
         "type": "json",
-        "files": 2542
+        "files": 2555
       },
       {
         "type": "png",
@@ -330,11 +331,12 @@
       },
       {
         "date": "2026-10-30",
-        "files": 14041,
-        "bytes": 20555321250,
-        "runs": 59,
+        "files": 14030,
+        "bytes": 20554366035,
+        "runs": 60,
         "run_ids": [
           "appie-task-1030-1948",
+          "other-task-1030-1928",
           "appie-task-1030-1849",
           "other-task-1030-1255",
           "other-task-1030-0957",
@@ -397,18 +399,20 @@
       },
       {
         "date": "2026-10-31",
-        "files": 51,
-        "bytes": 421705296,
-        "runs": 0,
-        "run_ids": []
+        "files": 70,
+        "bytes": 439720251,
+        "runs": 1,
+        "run_ids": [
+          "other-task-1031-0102"
+        ]
       }
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 93464653824,
-      "disk_used_all": 43300610048,
-      "task_files_bytes": 23313354400,
-      "task_pct_of_disk": 17.0442
+      "disk_free": 93445615616,
+      "disk_used_all": 43319648256,
+      "task_files_bytes": 23330414140,
+      "task_pct_of_disk": 17.0566
     }
   }
 }
