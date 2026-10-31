@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-30T23:31:16-05:00",
+  "snapshot_at": "2026-10-30T23:31:27-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -50,7 +50,9 @@
         "6:56 AM Oct 30 refresh (7:00 slot): 3 new roles (0 H-1B) in Nikhilesh_Jobs_24h_Oct30.xlsx, finished 7:25 AM CT",
         "5:25 AM Oct 30 refresh (5:30 slot): 2 new roles (0 H-1B) in Nikhilesh_Jobs_24h_Oct30.xlsx, finished 5:52 AM CT"
       ],
-      "queued": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~1:00 AM CT Oct 31 (creates Nikhilesh_Jobs_24h_Oct31.xlsx).",
+      "queued": [
+        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~1:00 AM CT Oct 31 (creates Nikhilesh_Jobs_24h_Oct31.xlsx)."
+      ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
         "Agreed to report each run's duration; can't see compute usage, so links the Usage page instead.",
@@ -227,11 +229,11 @@
   ],
   "latest_bot_activity": "2026-10-30T21:35:00-05:00",
   "files": {
-    "generated_at": "2026-10-30T23:31:16-05:00",
+    "generated_at": "2026-10-30T23:31:27-05:00",
     "total": 18052,
     "today": 14018,
     "last_24h": 14018,
-    "bytes": 22813733433,
+    "bytes": 22823957049,
     "runs": 61,
     "runs_today": 59,
     "by_bot": {
@@ -272,7 +274,7 @@
       },
       "other": {
         "files": 16403,
-        "bytes": 20996138795,
+        "bytes": 21006362411,
         "runs": 7
       }
     },
@@ -336,7 +338,7 @@
       {
         "date": "2026-10-30",
         "files": 14018,
-        "bytes": 20477405579,
+        "bytes": 20487629195,
         "runs": 59,
         "run_ids": [
           "appie-task-1030-1948",
@@ -403,10 +405,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 94357184512,
-      "disk_used_all": 42408079360,
-      "task_files_bytes": 22813733433,
-      "task_pct_of_disk": 16.6789
+      "disk_free": 94345908224,
+      "disk_used_all": 42419355648,
+      "task_files_bytes": 22823957049,
+      "task_pct_of_disk": 16.6864
     }
   }
 }
