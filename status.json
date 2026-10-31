@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-30T21:33:31-05:00",
+  "snapshot_at": "2026-10-30T21:46:24-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,15 +42,18 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "9:00 PM Oct 30 scheduled job-search refresh (started 9:00 PM CT)",
-      "last_active": "2026-10-30T21:01:00-05:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-10-30T21:35:00-05:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
         }
       ],
       "completed": [
+        {
+          "text": "9:00 PM Oct 30 refresh (9:00 slot): 43 new roles (3 H-1B) in Nikhilesh_Jobs_24h_Oct30.xlsx, finished 9:33 PM CT"
+        },
         {
           "text": "4:59 PM Oct 30 refresh (5:00 slot): 49 new roles (1 H-1B) in Nikhilesh_Jobs_24h_Oct30.xlsx, finished 5:36 PM CT"
         },
@@ -71,14 +74,11 @@
         },
         {
           "text": "5:25 AM Oct 30 refresh (5:30 slot): 2 new roles (0 H-1B) in Nikhilesh_Jobs_24h_Oct30.xlsx, finished 5:52 AM CT"
-        },
-        {
-          "text": "4:02 AM Oct 30 refresh: 22 new roles (0 H-1B) in new Nikhilesh_Jobs_24h_Oct30.xlsx, finished 4:29 AM CT (1 AM run lost to box restart)"
         }
       ],
       "queued": [
         {
-          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~9:00 PM CT Oct 30."
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~1:00 AM CT Oct 31 (creates Nikhilesh_Jobs_24h_Oct31.xlsx)."
         }
       ],
       "recent": [
@@ -87,7 +87,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-30T21:33:29-05:00",
+      "last_checkin": "2026-10-30T21:35:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -321,19 +321,19 @@
       "last_checkin": "2026-10-30T19:38:00-05:00"
     }
   ],
-  "latest_bot_activity": "2026-10-30T21:01:00-05:00",
+  "latest_bot_activity": "2026-10-30T21:35:00-05:00",
   "files": {
-    "generated_at": "2026-10-30T21:33:31-05:00",
-    "total": 17888,
-    "today": 13854,
-    "last_24h": 13854,
-    "bytes": 21712059853,
+    "generated_at": "2026-10-30T21:46:24-05:00",
+    "total": 17936,
+    "today": 13902,
+    "last_24h": 13902,
+    "bytes": 22327879216,
     "runs": 61,
     "runs_today": 59,
     "by_bot": {
       "Sky": {
         "files": 1537,
-        "bytes": 1784441272,
+        "bytes": 1784441515,
         "runs": 46
       },
       "Appie": {
@@ -367,23 +367,23 @@
         "runs": 1
       },
       "other": {
-        "files": 16239,
-        "bytes": 19894465458,
+        "files": 16287,
+        "bytes": 20510284578,
         "runs": 7
       }
     },
     "top_types": [
       {
         "type": "jpg",
-        "files": 5077
+        "files": 5089
       },
       {
         "type": "json",
-        "files": 2501
+        "files": 2503
       },
       {
         "type": "png",
-        "files": 2119
+        "files": 2120
       }
     ],
     "by_day": [
@@ -404,14 +404,14 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334489060,
+        "bytes": 334497862,
         "runs": 0,
         "run_ids": []
       },
       {
         "date": "2026-10-27",
         "files": 2949,
-        "bytes": 1271270365,
+        "bytes": 1271270974,
         "runs": 0,
         "run_ids": []
       },
@@ -431,8 +431,8 @@
       },
       {
         "date": "2026-10-30",
-        "files": 13854,
-        "bytes": 19375744719,
+        "files": 13902,
+        "bytes": 19991554671,
         "runs": 59,
         "run_ids": [
           "appie-task-1030-1948",
@@ -499,10 +499,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 95953350656,
-      "disk_used_all": 40811913216,
-      "task_files_bytes": 21712059853,
-      "task_pct_of_disk": 15.8735
+      "disk_free": 95034322944,
+      "disk_used_all": 41730940928,
+      "task_files_bytes": 22327879216,
+      "task_pct_of_disk": 16.3237
     }
   }
 }
