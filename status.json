@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-30T23:31:27-05:00",
+  "snapshot_at": "2026-10-30T23:47:30-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -91,7 +91,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": "",
+      "current_task": null,
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
@@ -229,11 +229,11 @@
   ],
   "latest_bot_activity": "2026-10-30T21:35:00-05:00",
   "files": {
-    "generated_at": "2026-10-30T23:31:27-05:00",
-    "total": 18052,
-    "today": 14018,
-    "last_24h": 14018,
-    "bytes": 22823957049,
+    "generated_at": "2026-10-30T23:47:30-05:00",
+    "total": 18057,
+    "today": 14023,
+    "last_24h": 14023,
+    "bytes": 22875002448,
     "runs": 61,
     "runs_today": 59,
     "by_bot": {
@@ -273,15 +273,15 @@
         "runs": 1
       },
       "other": {
-        "files": 16403,
-        "bytes": 21006362411,
+        "files": 16408,
+        "bytes": 21057407810,
         "runs": 7
       }
     },
     "top_types": [
       {
         "type": "jpg",
-        "files": 5120
+        "files": 5122
       },
       {
         "type": "json",
@@ -337,8 +337,8 @@
       },
       {
         "date": "2026-10-30",
-        "files": 14018,
-        "bytes": 20487629195,
+        "files": 14023,
+        "bytes": 20538674594,
         "runs": 59,
         "run_ids": [
           "appie-task-1030-1948",
@@ -405,10 +405,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 94345908224,
-      "disk_used_all": 42419355648,
-      "task_files_bytes": 22823957049,
-      "task_pct_of_disk": 16.6864
+      "disk_free": 94290227200,
+      "disk_used_all": 42475036672,
+      "task_files_bytes": 22875002448,
+      "task_pct_of_disk": 16.7237
     }
   }
 }
