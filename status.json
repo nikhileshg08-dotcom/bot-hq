@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T07:01:15-05:00",
+  "snapshot_at": "2026-10-31T07:15:38-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -61,7 +61,7 @@
       ],
       "last_checkin": "2026-10-31T06:58:04-05:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -91,7 +91,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
@@ -230,12 +230,12 @@
   ],
   "latest_bot_activity": "2026-10-31T06:58:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T07:01:15-05:00",
-    "total": 18666,
-    "today": 602,
-    "last_24h": 8351,
-    "bytes": 24632115783,
-    "runs": 65,
+    "generated_at": "2026-10-31T07:15:38-05:00",
+    "total": 18686,
+    "today": 622,
+    "last_24h": 8335,
+    "bytes": 24649178078,
+    "runs": 66,
     "runs_today": 3,
     "by_bot": {
       "Sky": {
@@ -274,9 +274,9 @@
         "runs": 1
       },
       "other": {
-        "files": 17019,
-        "bytes": 22814781846,
-        "runs": 11
+        "files": 17039,
+        "bytes": 22831844141,
+        "runs": 12
       }
     },
     "top_types": [
@@ -286,7 +286,7 @@
       },
       {
         "type": "json",
-        "files": 2693
+        "files": 2707
       },
       {
         "type": "png",
@@ -304,7 +304,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334515091,
+        "bytes": 334508023,
         "runs": 0,
         "run_ids": []
       },
@@ -318,7 +318,7 @@
       {
         "date": "2026-10-28",
         "files": 616,
-        "bytes": 623885590,
+        "bytes": 623885796,
         "runs": 0,
         "run_ids": []
       },
@@ -333,10 +333,11 @@
         "date": "2026-10-30",
         "files": 14030,
         "bytes": 20554366035,
-        "runs": 60,
+        "runs": 61,
         "run_ids": [
+          "other-task-1030-2322",
           "appie-task-1030-1948",
-          "other-task-1030-1928",
+          "other-task-1030-1937",
           "appie-task-1030-1849",
           "other-task-1030-1255",
           "other-task-1030-0957",
@@ -399,8 +400,8 @@
       },
       {
         "date": "2026-10-31",
-        "files": 602,
-        "bytes": 1741404305,
+        "files": 622,
+        "bytes": 1758473462,
         "runs": 3,
         "run_ids": [
           "other-task-1031-0656",
@@ -411,10 +412,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 91764211712,
-      "disk_used_all": 45001052160,
-      "task_files_bytes": 24632115783,
-      "task_pct_of_disk": 18.0083
+      "disk_free": 91745914880,
+      "disk_used_all": 45019348992,
+      "task_files_bytes": 24649178078,
+      "task_pct_of_disk": 18.0208
     }
   }
 }
