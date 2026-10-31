@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-30T19:35:20-05:00",
+  "snapshot_at": "2026-10-30T19:40:15-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -51,7 +51,9 @@
         "4:02 AM Oct 30 refresh: 22 new roles (0 H-1B) in new Nikhilesh_Jobs_24h_Oct30.xlsx, finished 4:29 AM CT (1 AM run lost to box restart)"
       ],
       "queued": [
-        "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~9:00 PM CT Oct 30."
+        {
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~9:00 PM CT Oct 30."
+        }
       ],
       "recent": [
         "Started the first job search at 1:18 AM CT.",
@@ -207,11 +209,11 @@
   ],
   "latest_bot_activity": "2026-10-30T18:07:00-05:00",
   "files": {
-    "generated_at": "2026-10-30T19:35:20-05:00",
-    "total": 15999,
-    "today": 11965,
-    "last_24h": 11965,
-    "bytes": 18092057999,
+    "generated_at": "2026-10-30T19:40:15-05:00",
+    "total": 16061,
+    "today": 12027,
+    "last_24h": 12027,
+    "bytes": 18123595276,
     "runs": 62,
     "runs_today": 60,
     "by_bot": {
@@ -251,8 +253,8 @@
         "runs": 1
       },
       "other": {
-        "files": 14352,
-        "bytes": 16274753185,
+        "files": 14414,
+        "bytes": 16306290462,
         "runs": 8
       }
     },
@@ -263,11 +265,11 @@
       },
       {
         "type": "json",
-        "files": 2437
+        "files": 2440
       },
       {
         "type": "png",
-        "files": 1887
+        "files": 1928
       }
     ],
     "by_day": [
@@ -288,7 +290,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334364900,
+        "bytes": 334364901,
         "runs": 0,
         "run_ids": []
       },
@@ -315,8 +317,8 @@
       },
       {
         "date": "2026-10-30",
-        "files": 11965,
-        "bytes": 15755872202,
+        "files": 12027,
+        "bytes": 15787409478,
         "runs": 60,
         "run_ids": [
           "other-task-1030-1928",
@@ -384,10 +386,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 100445564928,
-      "disk_used_all": 36319698944,
-      "task_files_bytes": 18092057999,
-      "task_pct_of_disk": 13.2269
+      "disk_free": 100412628992,
+      "disk_used_all": 36352634880,
+      "task_files_bytes": 18123595276,
+      "task_pct_of_disk": 13.25
     }
   }
 }
