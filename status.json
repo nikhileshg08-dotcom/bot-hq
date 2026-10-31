@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T16:02:03-05:00",
+  "snapshot_at": "2026-10-31T16:12:11-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -155,20 +155,20 @@
       "color": "#f06fb0",
       "status": "working",
       "current_task": "Building POV price reel v10 (adding Follow us end card)",
-      "last_active": "2026-10-31T14:04:00-05:00",
+      "last_active": "2026-10-31T16:08:00-05:00",
       "pending": [
         "User pick of hero image, then build 24s reel (no faces, no copyrighted content)",
         "EAD reel caption after phone upload"
       ],
       "completed": [
+        "Oct 31 4 PM news scan: 1 new idea (PV Sindhu in HYLO Open final Sun Nov 1, 7 AM CST)",
         "Oct 31 2 PM news scan: 1 new idea (Hyderabad TG SAFE suspends 14 eateries incl. Shah Ghouse; Falaknuma, Pista House get notices)",
         "Oct 31 12 PM news scan: 1 new idea (IMD now forecasts severe cyclone landfall Nellore-Narsapur Tue Nov 3, 100-110 gusting 120 km/h)",
         "Oct 31 10 AM news scan: nothing new worth posting (cyclone not yet upgraded; Quad statement has no visa/trade angle)",
         "Oct 31 8 AM news scan: 3 new ideas (AP cyclone 'Murasu' Nov 2-3, Anantapur school chainsaw attack, AK47 USA $648K)",
         "Oct 30 8 PM news scan: 1 new idea (Cisco unlimited AI tokens legacy-code rewrite), plus optional McKinney Spices of India",
         "Oct 30 6 PM news scan: nothing new worth posting",
-        "Oct 30 4 PM news scan: nothing new worth posting (Aurora temple case court update, story-only)",
-        "Oct 30 2 PM news scan: nothing new worth posting"
+        "Oct 30 4 PM news scan: nothing new worth posting (Aurora temple case court update, story-only)"
       ],
       "queued": [
         "Follows resume Oct 29",
@@ -180,7 +180,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-31T15:51:52-05:00",
+      "last_checkin": "2026-10-31T16:08:00-05:00",
       "groupTask": null,
       "working_with": []
     },
@@ -228,13 +228,13 @@
       "working_with": []
     }
   ],
-  "latest_bot_activity": "2026-10-31T14:38:00-05:00",
+  "latest_bot_activity": "2026-10-31T16:08:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T16:02:03-05:00",
-    "total": 21581,
-    "today": 3517,
-    "last_24h": 5952,
-    "bytes": 28527337555,
+    "generated_at": "2026-10-31T16:12:11-05:00",
+    "total": 21611,
+    "today": 3547,
+    "last_24h": 5939,
+    "bytes": 28541353163,
     "runs": 68,
     "runs_today": 5,
     "by_bot": {
@@ -274,8 +274,8 @@
         "runs": 1
       },
       "other": {
-        "files": 19934,
-        "bytes": 26709983706,
+        "files": 19964,
+        "bytes": 26723999314,
         "runs": 14
       }
     },
@@ -286,7 +286,7 @@
       },
       {
         "type": "json",
-        "files": 3061
+        "files": 3065
       },
       {
         "type": "(none)",
@@ -304,7 +304,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334502296,
+        "bytes": 334502297,
         "runs": 0,
         "run_ids": []
       },
@@ -318,7 +318,7 @@
       {
         "date": "2026-10-28",
         "files": 616,
-        "bytes": 623906737,
+        "bytes": 623910963,
         "runs": 0,
         "run_ids": []
       },
@@ -400,8 +400,8 @@
       },
       {
         "date": "2026-10-31",
-        "files": 3517,
-        "bytes": 5636617453,
+        "files": 3547,
+        "bytes": 5650628834,
         "runs": 5,
         "run_ids": [
           "other-task-1031-1002",
@@ -414,10 +414,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 85356953600,
-      "disk_used_all": 51408310272,
-      "task_files_bytes": 28527337555,
-      "task_pct_of_disk": 20.8561
+      "disk_free": 84943601664,
+      "disk_used_all": 51821662208,
+      "task_files_bytes": 28541353163,
+      "task_pct_of_disk": 20.8663
     }
   }
 }
