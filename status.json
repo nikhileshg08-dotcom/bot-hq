@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T08:10:27-05:00",
+  "snapshot_at": "2026-10-31T08:26:41-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,9 +42,9 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "idle",
-      "current_task": "",
-      "last_active": "2026-10-31T07:23:00-05:00",
+      "status": "working",
+      "current_task": "8:22 AM Oct 31 scheduled job-search refresh (8:30 slot) appending to Nikhilesh_Jobs_24h_Oct31.xlsx",
+      "last_active": "2026-10-31T08:23:00-05:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
@@ -87,9 +87,9 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-31T07:23:13-05:00",
+      "last_checkin": "2026-10-31T08:23:00-05:00",
       "working_with": [],
-      "groupTask": null
+      "groupTask": "H-1B Job Search"
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -215,7 +215,7 @@
       "color": "#f06fb0",
       "status": "working",
       "current_task": "Building POV price reel v10 (adding Follow us end card)",
-      "last_active": "2026-10-30T20:04:00-05:00",
+      "last_active": "2026-10-31T08:12:00-05:00",
       "pending": [
         {
           "text": "User pick of hero image, then build 24s reel (no faces, no copyrighted content)"
@@ -225,6 +225,9 @@
         }
       ],
       "completed": [
+        {
+          "text": "Oct 31 8 AM news scan: 3 new ideas (AP cyclone 'Murasu' Nov 2-3, Anantapur school chainsaw attack, AK47 USA $648K)"
+        },
         {
           "text": "Oct 30 8 PM news scan: 1 new idea (Cisco unlimited AI tokens legacy-code rewrite), plus optional McKinney Spices of India"
         },
@@ -245,9 +248,6 @@
         },
         {
           "text": "8 AM news scan: 4 new ideas (Talarico dosa in Irving, AK47 US premieres, early voting last day, Miyapur land SC verdict)"
-        },
-        {
-          "text": "8 PM news scan: 1 new idea (AK47 USA premiere talk)"
         }
       ],
       "queued": [
@@ -264,7 +264,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-10-31T07:56:12-05:00",
+      "last_checkin": "2026-10-31T08:12:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -324,15 +324,15 @@
       "last_checkin": "2026-10-30T19:38:00-05:00"
     }
   ],
-  "latest_bot_activity": "2026-10-31T07:23:00-05:00",
+  "latest_bot_activity": "2026-10-31T08:23:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T08:10:27-05:00",
-    "total": 18694,
-    "today": 630,
-    "last_24h": 8312,
-    "bytes": 24653401376,
-    "runs": 66,
-    "runs_today": 3,
+    "generated_at": "2026-10-31T08:26:41-05:00",
+    "total": 18722,
+    "today": 658,
+    "last_24h": 8340,
+    "bytes": 24677718258,
+    "runs": 67,
+    "runs_today": 4,
     "by_bot": {
       "Sky": {
         "files": 1535,
@@ -370,9 +370,9 @@
         "runs": 1
       },
       "other": {
-        "files": 17047,
-        "bytes": 22836057960,
-        "runs": 12
+        "files": 17075,
+        "bytes": 22860374842,
+        "runs": 13
       }
     },
     "top_types": [
@@ -382,7 +382,7 @@
       },
       {
         "type": "json",
-        "files": 2713
+        "files": 2736
       },
       {
         "type": "png",
@@ -414,7 +414,7 @@
       {
         "date": "2026-10-28",
         "files": 616,
-        "bytes": 623885796,
+        "bytes": 623891337,
         "runs": 0,
         "run_ids": []
       },
@@ -496,10 +496,11 @@
       },
       {
         "date": "2026-10-31",
-        "files": 630,
-        "bytes": 1762687985,
-        "runs": 3,
+        "files": 658,
+        "bytes": 1786999326,
+        "runs": 4,
         "run_ids": [
+          "other-task-1031-0810",
           "other-task-1031-0656",
           "other-task-1031-0400",
           "other-task-1031-0102"
@@ -508,10 +509,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 91688960000,
-      "disk_used_all": 45076303872,
-      "task_files_bytes": 24653401376,
-      "task_pct_of_disk": 18.0239
+      "disk_free": 91662897152,
+      "disk_used_all": 45102366720,
+      "task_files_bytes": 24677718258,
+      "task_pct_of_disk": 18.0416
     }
   }
 }
