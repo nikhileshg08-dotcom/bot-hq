@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T01:57:30-05:00",
+  "snapshot_at": "2026-10-31T02:04:43-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -59,7 +59,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-10-31T01:44:35-05:00",
+      "last_checkin": "2026-10-31T02:04:43-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -91,7 +91,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": "",
+      "current_task": null,
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?",
@@ -115,7 +115,7 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-30T19:52-05:00",
+      "last_checkin": "2026-10-30T19:52:07-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -230,11 +230,11 @@
   ],
   "latest_bot_activity": "2026-10-31T01:37:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T01:57:30-05:00",
-    "total": 18360,
-    "today": 296,
-    "last_24h": 8243,
-    "bytes": 24224260210,
+    "generated_at": "2026-10-31T02:04:43-05:00",
+    "total": 18359,
+    "today": 295,
+    "last_24h": 8242,
+    "bytes": 24224022735,
     "runs": 63,
     "runs_today": 1,
     "by_bot": {
@@ -274,8 +274,8 @@
         "runs": 1
       },
       "other": {
-        "files": 16713,
-        "bytes": 22406933944,
+        "files": 16712,
+        "bytes": 22406696469,
         "runs": 9
       }
     },
@@ -399,8 +399,8 @@
       },
       {
         "date": "2026-10-31",
-        "files": 296,
-        "bytes": 1333552732,
+        "files": 295,
+        "bytes": 1333315257,
         "runs": 1,
         "run_ids": [
           "other-task-1031-0102"
@@ -409,10 +409,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 92375416832,
-      "disk_used_all": 44389847040,
-      "task_files_bytes": 24224260210,
-      "task_pct_of_disk": 17.7101
+      "disk_free": 92360798208,
+      "disk_used_all": 44404465664,
+      "task_files_bytes": 24224022735,
+      "task_pct_of_disk": 17.7099
     }
   }
 }
