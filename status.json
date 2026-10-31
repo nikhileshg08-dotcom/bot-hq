@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-10-31T07:56:12-05:00",
+  "snapshot_at": "2026-10-31T08:01:07-05:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -119,7 +119,7 @@
       "role": "Shopping research: laptops on Amazon",
       "color": "#b07cf0",
       "status": "idle",
-      "current_task": null,
+      "current_task": "",
       "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         {
@@ -326,7 +326,7 @@
   ],
   "latest_bot_activity": "2026-10-31T07:23:00-05:00",
   "files": {
-    "generated_at": "2026-10-31T07:56:12-05:00",
+    "generated_at": "2026-10-31T08:01:07-05:00",
     "total": 18694,
     "today": 630,
     "last_24h": 8312,
@@ -508,8 +508,8 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 91690713088,
-      "disk_used_all": 45074550784,
+      "disk_free": 91689910272,
+      "disk_used_all": 45075353600,
       "task_files_bytes": 24653401376,
       "task_pct_of_disk": 18.0239
     }
