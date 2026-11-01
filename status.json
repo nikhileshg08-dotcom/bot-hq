@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T16:46:57-06:00",
+  "snapshot_at": "2026-11-01T16:51:30-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -326,11 +326,11 @@
   ],
   "latest_bot_activity": "2026-11-01T16:16:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T16:46:57-06:00",
-    "total": 37573,
-    "today": 3017,
-    "last_24h": 14423,
-    "bytes": 36638799068,
+    "generated_at": "2026-11-01T16:51:30-06:00",
+    "total": 37588,
+    "today": 3032,
+    "last_24h": 14426,
+    "bytes": 36871822135,
     "runs": 75,
     "runs_today": 6,
     "by_bot": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 35917,
-        "bytes": 34820993999,
+        "files": 35932,
+        "bytes": 35054017066,
         "runs": 21
       }
     },
@@ -382,7 +382,7 @@
       },
       {
         "type": "jpg",
-        "files": 6892
+        "files": 6901
       },
       {
         "type": "json",
@@ -503,8 +503,8 @@
       },
       {
         "date": "2026-11-01",
-        "files": 3017,
-        "bytes": 6341453876,
+        "files": 3032,
+        "bytes": 6574476943,
         "runs": 6,
         "run_ids": [
           "other-task-1101-1531",
@@ -518,10 +518,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 72033665024,
-      "disk_used_all": 64731598848,
-      "task_files_bytes": 36638799068,
-      "task_pct_of_disk": 26.7863
+      "disk_free": 71799144448,
+      "disk_used_all": 64966119424,
+      "task_files_bytes": 36871822135,
+      "task_pct_of_disk": 26.9566
     }
   }
 }
