@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T14:21:13-06:00",
+  "snapshot_at": "2026-11-01T14:37:39-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,15 +42,18 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "2:00 PM Nov 1 scheduled job-search refresh (appending to Nikhilesh_Jobs_24h_Nov01.xlsx)",
-      "last_active": "2026-11-01T13:59:30-06:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-11-01T14:33:00-06:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
         }
       ],
       "completed": [
+        {
+          "text": "1:59 PM Nov 1 refresh (2:00 slot): 0 new roles in Nikhilesh_Jobs_24h_Nov01.xlsx (Run Log + Summary updated; 2 candidates, Honda and Evlo AI, dropped as reposts), finished 2:31 PM CST"
+        },
         {
           "text": "11:28 AM Nov 1 refresh (11:30 slot): 1 new role (FT-Remote: Rearc Senior AI Engineer, fit 86, verified Ashby link) in Nikhilesh_Jobs_24h_Nov01.xlsx, finished 11:41 AM CST"
         },
@@ -71,14 +74,11 @@
         },
         {
           "text": "8:59 PM Oct 31 refresh (9:00 slot): 1 new role (H-1B sheet, BearSignal inferred, San Jose) in Nikhilesh_Jobs_24h_Oct31.xlsx, finished 9:32 PM CT"
-        },
-        {
-          "text": "4:58 PM Oct 31 refresh (5:00 slot): 0 new roles in Nikhilesh_Jobs_24h_Oct31.xlsx (Run Log + Summary updated; 32 candidates dropped, mostly Dice re-dated old listings), finished 5:27 PM CT"
         }
       ],
       "queued": [
         {
-          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~2:00 PM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~5:00 PM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
         }
       ],
       "recent": [
@@ -87,7 +87,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-11-01T13:59:30-06:00",
+      "last_checkin": "2026-11-01T14:33:00-06:00",
       "working_with": [],
       "groupTask": null
     },
@@ -324,20 +324,20 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-11-01T14:20:00-06:00",
+  "latest_bot_activity": "2026-11-01T14:33:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T14:21:13-06:00",
-    "total": 36326,
-    "today": 1770,
-    "last_24h": 15046,
-    "bytes": 34579368485,
-    "runs": 75,
-    "runs_today": 6,
+    "generated_at": "2026-11-01T14:37:39-06:00",
+    "total": 36328,
+    "today": 1772,
+    "last_24h": 15048,
+    "bytes": 34579522481,
+    "runs": 74,
+    "runs_today": 5,
     "by_bot": {
       "Sky": {
         "files": 1544,
-        "bytes": 1784651032,
-        "runs": 47
+        "bytes": 1784651946,
+        "runs": 46
       },
       "Appie": {
         "files": 21,
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 34670,
-        "bytes": 32761564330,
+        "files": 34672,
+        "bytes": 32761717412,
         "runs": 20
       }
     },
@@ -386,7 +386,7 @@
       },
       {
         "type": "json",
-        "files": 3864
+        "files": 3865
       }
     ],
     "by_day": [
@@ -503,11 +503,10 @@
       },
       {
         "date": "2026-11-01",
-        "files": 1770,
-        "bytes": 4282027732,
-        "runs": 6,
+        "files": 1772,
+        "bytes": 4282181728,
+        "runs": 5,
         "run_ids": [
-          "sky-task-1101-1359",
           "other-task-1101-1248",
           "other-task-1101-1000",
           "other-task-1101-0822",
@@ -518,10 +517,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 74146279424,
-      "disk_used_all": 62618984448,
-      "task_files_bytes": 34579368485,
-      "task_pct_of_disk": 25.2806
+      "disk_free": 74144972800,
+      "disk_used_all": 62620291072,
+      "task_files_bytes": 34579522481,
+      "task_pct_of_disk": 25.2807
     }
   }
 }
