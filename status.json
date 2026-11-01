@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T10:19:08-06:00",
+  "snapshot_at": "2026-11-01T10:33:15-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,15 +42,18 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "10:00 AM Nov 1 scheduled job-search refresh (started 9:59 AM CST), appending to Nikhilesh_Jobs_24h_Nov01.xlsx",
-      "last_active": "2026-11-01T09:59:00-06:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-11-01T10:29:00-06:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
         }
       ],
       "completed": [
+        {
+          "text": "9:59 AM Nov 1 refresh (10:00 slot): 1 new role (FT-Onsite: Relevance Lab AI/ML GenAI Developer – Agentic AI, LA, fit 90, LinkedIn, no portal link) in Nikhilesh_Jobs_24h_Nov01.xlsx, finished 10:27 AM CST; Qualcomm carry-over dropped as reposts"
+        },
         {
           "text": "8:21 AM Nov 1 refresh (8:30 slot): 0 new roles in Nikhilesh_Jobs_24h_Nov01.xlsx (Run Log + Summary updated; 3 in-window candidates dropped as re-dated reposts), finished 8:43 AM CST"
         },
@@ -71,14 +74,11 @@
         },
         {
           "text": "2:01 PM Oct 31 refresh (2:00 slot): 2 new roles (0 H-1B; 1 FT-Onsite, 1 Other-NotListed) in Nikhilesh_Jobs_24h_Oct31.xlsx, finished 2:37 PM CT (Workday 22/65 unreachable)"
-        },
-        {
-          "text": "11:28 AM Oct 31 refresh (11:30 slot): 1 new role (0 H-1B, Other-NotListed) in Nikhilesh_Jobs_24h_Oct31.xlsx, finished 11:50 AM CT (Workday partly throttled)"
         }
       ],
       "queued": [
         {
-          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~10:00 AM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~11:30 AM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
         }
       ],
       "recent": [
@@ -87,7 +87,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-11-01T09:59:00-06:00",
+      "last_checkin": "2026-11-01T10:29:00-06:00",
       "working_with": [],
       "groupTask": null
     },
@@ -120,7 +120,7 @@
       "color": "#b07cf0",
       "status": "idle",
       "current_task": "",
-      "last_active": "2026-10-30T19:52-05:00",
+      "last_active": "2026-10-30T19:52:00-05:00",
       "pending": [
         {
           "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
@@ -165,7 +165,7 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-30T19:52-05:00",
+      "last_checkin": "2026-10-30T19:52:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -324,20 +324,20 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-11-01T10:12:00-06:00",
+  "latest_bot_activity": "2026-11-01T10:29:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T10:19:08-06:00",
-    "total": 35524,
-    "today": 968,
-    "last_24h": 16516,
-    "bytes": 30963053973,
-    "runs": 74,
-    "runs_today": 5,
+    "generated_at": "2026-11-01T10:33:15-06:00",
+    "total": 35527,
+    "today": 971,
+    "last_24h": 16493,
+    "bytes": 30963188094,
+    "runs": 73,
+    "runs_today": 4,
     "by_bot": {
       "Sky": {
         "files": 1542,
-        "bytes": 1784569728,
-        "runs": 47
+        "bytes": 1784572636,
+        "runs": 46
       },
       "Appie": {
         "files": 21,
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 33870,
-        "bytes": 29145331122,
+        "files": 33873,
+        "bytes": 29145462335,
         "runs": 19
       }
     },
@@ -386,14 +386,14 @@
       },
       {
         "type": "json",
-        "files": 3689
+        "files": 3690
       }
     ],
     "by_day": [
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334739450,
+        "bytes": 334740105,
         "runs": 0,
         "run_ids": []
       },
@@ -503,12 +503,11 @@
       },
       {
         "date": "2026-11-01",
-        "files": 968,
-        "bytes": 665730163,
-        "runs": 5,
+        "files": 971,
+        "bytes": 665863629,
+        "runs": 4,
         "run_ids": [
           "other-task-1101-1000",
-          "sky-task-1101-1000",
           "other-task-1101-0822",
           "other-task-1101-0701",
           "other-task-1101-0403"
@@ -517,10 +516,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 78132772864,
-      "disk_used_all": 58632491008,
-      "task_files_bytes": 30963053973,
-      "task_pct_of_disk": 22.6368
+      "disk_free": 78132621312,
+      "disk_used_all": 58632642560,
+      "task_files_bytes": 30963188094,
+      "task_pct_of_disk": 22.6369
     }
   }
 }
