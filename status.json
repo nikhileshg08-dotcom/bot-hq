@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T11:49:18-06:00",
+  "snapshot_at": "2026-11-01T12:06:44-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -215,7 +215,7 @@
       "color": "#f06fb0",
       "status": "working",
       "current_task": "Building POV price reel v10 (adding Follow us end card)",
-      "last_active": "2026-11-01T10:12:00-06:00",
+      "last_active": "2026-11-01T12:07:00-06:00",
       "pending": [
         {
           "text": "User pick of hero image, then build 24s reel (no faces, no copyrighted content)"
@@ -225,6 +225,9 @@
         }
       ],
       "completed": [
+        {
+          "text": "Nov 1 12 PM news scan: 3 new ideas (Cyclone Murasu: Nellore schools shut Mon + landfall near Ongole; Digi Yatra international trials incl. Hyderabad; ENE Repeat trailer Nov 3)"
+        },
         {
           "text": "Nov 1 10 AM news scan: 1 new idea (Lakshya Sen wins HYLO Open, India double with Sindhu)"
         },
@@ -245,9 +248,6 @@
         },
         {
           "text": "Oct 31 12 PM news scan: 1 new idea (IMD now forecasts severe cyclone landfall Nellore-Narsapur Tue Nov 3, 100-110 gusting 120 km/h)"
-        },
-        {
-          "text": "Oct 31 10 AM news scan: nothing new worth posting (cyclone not yet upgraded; Quad statement has no visa/trade angle)"
         }
       ],
       "queued": [
@@ -264,7 +264,7 @@
         "Researched vendors and pricing for reselling reports.",
         "Ended at 2:08 AM CT on Oct 24, with the topic held for next time."
       ],
-      "last_checkin": "2026-11-01T10:12:00-06:00",
+      "last_checkin": "2026-11-01T12:07:00-06:00",
       "working_with": [],
       "groupTask": null
     },
@@ -324,13 +324,13 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-11-01T11:42:00-06:00",
+  "latest_bot_activity": "2026-11-01T12:07:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T11:49:18-06:00",
+    "generated_at": "2026-11-01T12:06:44-06:00",
     "total": 36069,
     "today": 1513,
-    "last_24h": 16965,
-    "bytes": 32658161675,
+    "last_24h": 16908,
+    "bytes": 32658169562,
     "runs": 73,
     "runs_today": 4,
     "by_bot": {
@@ -371,7 +371,7 @@
       },
       "other": {
         "files": 34414,
-        "bytes": 30840396222,
+        "bytes": 30840404109,
         "runs": 19
       }
     },
@@ -393,7 +393,7 @@
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334741795,
+        "bytes": 334742964,
         "runs": 0,
         "run_ids": []
       },
@@ -407,7 +407,7 @@
       {
         "date": "2026-10-28",
         "files": 616,
-        "bytes": 623929541,
+        "bytes": 623936259,
         "runs": 0,
         "run_ids": []
       },
@@ -516,9 +516,9 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 76234276864,
-      "disk_used_all": 60530987008,
-      "task_files_bytes": 32658161675,
+      "disk_free": 76232708096,
+      "disk_used_all": 60532555776,
+      "task_files_bytes": 32658169562,
       "task_pct_of_disk": 23.8761
     }
   }
