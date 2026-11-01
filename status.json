@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T08:36:38-06:00",
+  "snapshot_at": "2026-11-01T08:43:57-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -89,7 +89,7 @@
       ],
       "last_checkin": "2026-11-01T08:22:00-06:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -326,17 +326,17 @@
   ],
   "latest_bot_activity": "2026-11-01T08:22:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T08:36:38-06:00",
-    "total": 35384,
-    "today": 828,
-    "last_24h": 16657,
-    "bytes": 30890087598,
+    "generated_at": "2026-11-01T08:43:57-06:00",
+    "total": 35385,
+    "today": 829,
+    "last_24h": 16658,
+    "bytes": 30889919909,
     "runs": 71,
     "runs_today": 2,
     "by_bot": {
       "Sky": {
         "files": 1541,
-        "bytes": 1784535559,
+        "bytes": 1784536151,
         "runs": 46
       },
       "Appie": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 33731,
-        "bytes": 29072398916,
+        "files": 33732,
+        "bytes": 29072230635,
         "runs": 17
       }
     },
@@ -386,14 +386,14 @@
       },
       {
         "type": "json",
-        "files": 3611
+        "files": 3612
       }
     ],
     "by_day": [
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334765375,
+        "bytes": 334765608,
         "runs": 0,
         "run_ids": []
       },
@@ -503,8 +503,8 @@
       },
       {
         "date": "2026-11-01",
-        "files": 828,
-        "bytes": 592741883,
+        "files": 829,
+        "bytes": 592573961,
         "runs": 2,
         "run_ids": [
           "other-task-1101-0701",
@@ -514,10 +514,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 78239444992,
-      "disk_used_all": 58525818880,
-      "task_files_bytes": 30890087598,
-      "task_pct_of_disk": 22.5834
+      "disk_free": 78237990912,
+      "disk_used_all": 58527272960,
+      "task_files_bytes": 30889919909,
+      "task_pct_of_disk": 22.5833
     }
   }
 }
