@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T01:14:37-06:00",
+  "snapshot_at": "2026-11-01T01:23:45-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -120,7 +120,7 @@
       "color": "#b07cf0",
       "status": "idle",
       "current_task": "",
-      "last_active": "2026-10-30T19:52:00-05:00",
+      "last_active": "2026-10-30T19:52-05:00",
       "pending": [
         {
           "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
@@ -165,7 +165,7 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-30T19:52:07-05:00",
+      "last_checkin": "2026-10-30T19:52-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -326,7 +326,7 @@
   ],
   "latest_bot_activity": "2026-11-01T01:26:00-05:00",
   "files": {
-    "generated_at": "2026-11-01T01:14:37-06:00",
+    "generated_at": "2026-11-01T01:23:45-06:00",
     "total": 34892,
     "today": 328,
     "last_24h": 16534,
@@ -511,8 +511,8 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 78841647104,
-      "disk_used_all": 57923616768,
+      "disk_free": 78840131584,
+      "disk_used_all": 57925132288,
       "task_files_bytes": 30575528570,
       "task_pct_of_disk": 22.3535
     }
