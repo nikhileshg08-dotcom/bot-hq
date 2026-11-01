@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T15:28:53-06:00",
+  "snapshot_at": "2026-11-01T15:46:48-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -326,11 +326,11 @@
   ],
   "latest_bot_activity": "2026-11-01T14:33:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T15:28:53-06:00",
-    "total": 36328,
-    "today": 1772,
-    "last_24h": 14840,
-    "bytes": 34579522480,
+    "generated_at": "2026-11-01T15:46:48-06:00",
+    "total": 36518,
+    "today": 1962,
+    "last_24h": 14997,
+    "bytes": 36121146581,
     "runs": 75,
     "runs_today": 6,
     "by_bot": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 34672,
-        "bytes": 32761717411,
+        "files": 34862,
+        "bytes": 34303341512,
         "runs": 21
       }
     },
@@ -382,18 +382,18 @@
       },
       {
         "type": "jpg",
-        "files": 5767
+        "files": 5908
       },
       {
         "type": "json",
-        "files": 3865
+        "files": 3867
       }
     ],
     "by_day": [
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334743872,
+        "bytes": 334743873,
         "runs": 0,
         "run_ids": []
       },
@@ -503,11 +503,11 @@
       },
       {
         "date": "2026-11-01",
-        "files": 1772,
-        "bytes": 4282181728,
+        "files": 1962,
+        "bytes": 5823805828,
         "runs": 6,
         "run_ids": [
-          "other-task-1101-1522",
+          "other-task-1101-1531",
           "other-task-1101-1248",
           "other-task-1101-1000",
           "other-task-1101-0822",
@@ -518,10 +518,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 74138128384,
-      "disk_used_all": 62627135488,
-      "task_files_bytes": 34579522480,
-      "task_pct_of_disk": 25.2807
+      "disk_free": 72591798272,
+      "disk_used_all": 64173465600,
+      "task_files_bytes": 36121146581,
+      "task_pct_of_disk": 26.4078
     }
   }
 }
