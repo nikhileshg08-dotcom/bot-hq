@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T14:09:08-06:00",
+  "snapshot_at": "2026-11-01T14:21:13-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -89,7 +89,7 @@
       ],
       "last_checkin": "2026-11-01T13:59:30-06:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -120,7 +120,7 @@
       "color": "#b07cf0",
       "status": "idle",
       "current_task": "",
-      "last_active": "2026-10-30T19:52-05:00",
+      "last_active": "2026-10-30T19:52:00-05:00",
       "pending": [
         {
           "text": "Waiting on Nikhilesh's answer: build a free job-alert script plus an hourly routine for new Texas ML engineer postings?"
@@ -165,7 +165,7 @@
         "Raised the budget to $1,300 at Nikhilesh's request.",
         "Sent the final two options at 5:47 PM CT on Oct 24."
       ],
-      "last_checkin": "2026-10-30T19:52-05:00",
+      "last_checkin": "2026-10-30T19:52:00-05:00",
       "working_with": [],
       "groupTask": null
     },
@@ -326,11 +326,11 @@
   ],
   "latest_bot_activity": "2026-11-01T14:20:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T14:09:08-06:00",
-    "total": 36301,
-    "today": 1745,
-    "last_24h": 15188,
-    "bytes": 34233951678,
+    "generated_at": "2026-11-01T14:21:13-06:00",
+    "total": 36326,
+    "today": 1770,
+    "last_24h": 15046,
+    "bytes": 34579368485,
     "runs": 75,
     "runs_today": 6,
     "by_bot": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 34645,
-        "bytes": 32416147523,
+        "files": 34670,
+        "bytes": 32761564330,
         "runs": 20
       }
     },
@@ -382,11 +382,11 @@
       },
       {
         "type": "jpg",
-        "files": 5755
+        "files": 5767
       },
       {
         "type": "json",
-        "files": 3862
+        "files": 3864
       }
     ],
     "by_day": [
@@ -503,8 +503,8 @@
       },
       {
         "date": "2026-11-01",
-        "files": 1745,
-        "bytes": 3936610925,
+        "files": 1770,
+        "bytes": 4282027732,
         "runs": 6,
         "run_ids": [
           "sky-task-1101-1359",
@@ -518,10 +518,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 74524958720,
-      "disk_used_all": 62240305152,
-      "task_files_bytes": 34233951678,
-      "task_pct_of_disk": 25.0281
+      "disk_free": 74146279424,
+      "disk_used_all": 62618984448,
+      "task_files_bytes": 34579368485,
+      "task_pct_of_disk": 25.2806
     }
   }
 }
