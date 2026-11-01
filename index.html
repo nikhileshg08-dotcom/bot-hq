@@ -238,7 +238,7 @@
 <!-- STATUS_DATA_START -->
 <script type="application/json" id="bot-status">{
  "title": "Nikki's Company",
- "snapshot_at": "2026-11-01T07:27:50-06:00",
+ "snapshot_at": "2026-11-01T07:33:07-06:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -279,15 +279,18 @@
    "name": "Sky",
    "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
    "color": "#3fa9f5",
-   "status": "working",
-   "current_task": "7:00 AM Nov 1 scheduled job-search refresh (appending to Nikhilesh_Jobs_24h_Nov01.xlsx)",
-   "last_active": "2026-11-01T07:03:00-06:00",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-11-01T07:31:00-06:00",
    "pending": [
     {
      "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
     }
    ],
    "completed": [
+    {
+     "text": "7:02 AM Nov 1 refresh (7:00 slot): 0 new roles in Nikhilesh_Jobs_24h_Nov01.xlsx (Run Log + Summary updated; 5 in-window candidates dropped as re-dated/reposts/poor fit), finished 7:30 AM CST"
+    },
     {
      "text": "5:23 AM Nov 1 refresh (5:30 slot): 1 new role (FT-Onsite: Rhoda AI Senior Inference Optimization ML Engineer, fit 77, verified Ashby link) appended to Nikhilesh_Jobs_24h_Nov01.xlsx, finished 5:46 AM CST (the 4:00 AM run had failed before writing)"
     },
@@ -308,14 +311,11 @@
     },
     {
      "text": "10:02 AM Oct 31 refresh (10:00 slot): 0 new roles in Nikhilesh_Jobs_24h_Oct31.xlsx (Run Log + Summary updated), finished 10:24 AM CT (21 Workday tenants throttled)"
-    },
-    {
-     "text": "8:22 AM Oct 31 refresh (8:30 slot): 0 new roles in Nikhilesh_Jobs_24h_Oct31.xlsx (Run Log + Summary updated), finished 8:47 AM CT (Workday throttled, 22 sites unreachable)"
     }
    ],
    "queued": [
     {
-     "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~7:00 AM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
+     "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~8:30 AM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
     }
    ],
    "recent": [
@@ -324,7 +324,7 @@
     "Changed runs to add their own sheets, and to start a new workbook each day.",
     "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
    ],
-   "last_checkin": "2026-11-01T07:03:00-06:00",
+   "last_checkin": "2026-11-01T07:31:00-06:00",
    "working_with": []
   },
   {
@@ -554,20 +554,20 @@
    "working_with": []
   }
  ],
- "latest_bot_activity": "2026-11-01T07:03:00-06:00",
+ "latest_bot_activity": "2026-11-01T07:31:00-06:00",
  "files": {
-  "generated_at": "2026-11-01T07:27:50-06:00",
-  "total": 35298,
-  "today": 742,
-  "last_24h": 16582,
-  "bytes": 30817676314,
-  "runs": 72,
-  "runs_today": 3,
+  "generated_at": "2026-11-01T07:33:07-06:00",
+  "total": 35302,
+  "today": 746,
+  "last_24h": 16584,
+  "bytes": 30820103357,
+  "runs": 71,
+  "runs_today": 2,
   "by_bot": {
    "Sky": {
     "files": 1540,
-    "bytes": 1784501693,
-    "runs": 47
+    "bytes": 1784502574,
+    "runs": 46
    },
    "Appie": {
     "files": 21,
@@ -600,8 +600,8 @@
     "runs": 1
    },
    "other": {
-    "files": 33646,
-    "bytes": 29000021498,
+    "files": 33650,
+    "bytes": 29002447660,
     "runs": 17
    }
   },
@@ -616,7 +616,7 @@
    },
    {
     "type": "json",
-    "files": 3541
+    "files": 3542
    }
   ],
   "by_day": [
@@ -733,11 +733,10 @@
    },
    {
     "date": "2026-11-01",
-    "files": 742,
-    "bytes": 520365495,
-    "runs": 3,
+    "files": 746,
+    "bytes": 522792538,
+    "runs": 2,
     "run_ids": [
-     "sky-task-1101-0704",
      "other-task-1101-0701",
      "other-task-1101-0403"
     ]
@@ -745,10 +744,10 @@
   ],
   "storage": {
    "disk_total": 136782041088,
-   "disk_free": 78345097216,
-   "disk_used_all": 58420166656,
-   "task_files_bytes": 30817676314,
-   "task_pct_of_disk": 22.5305
+   "disk_free": 78342991872,
+   "disk_used_all": 58422272000,
+   "task_files_bytes": 30820103357,
+   "task_pct_of_disk": 22.5323
   }
  }
 }</script>
