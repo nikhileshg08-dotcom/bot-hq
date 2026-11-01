@@ -238,7 +238,7 @@
 <!-- STATUS_DATA_START -->
 <script type="application/json" id="bot-status">{
  "title": "Nikki's Company",
- "snapshot_at": "2026-11-01T01:25:22-05:00",
+ "snapshot_at": "2026-11-01T01:28:29-05:00",
  "bots": [
   {
    "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -279,15 +279,18 @@
    "name": "Sky",
    "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
    "color": "#3fa9f5",
-   "status": "working",
-   "current_task": "1:00 AM Nov 1 scheduled job-search refresh (creates Nikhilesh_Jobs_24h_Nov01.xlsx)",
-   "last_active": "2026-11-01T01:01:00-05:00",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-11-01T01:26:00-05:00",
    "pending": [
     {
      "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
     }
    ],
    "completed": [
+    {
+     "text": "1:00 AM Nov 1 refresh (1:00 slot): created Nikhilesh_Jobs_24h_Nov01.xlsx with 2 new roles (1 H-1B, 1 FT-Onsite, both LinkedIn, 0 portal links), finished 1:24 AM CDT"
+    },
     {
      "text": "8:59 PM Oct 31 refresh (9:00 slot): 1 new role (H-1B sheet, BearSignal inferred, San Jose) in Nikhilesh_Jobs_24h_Oct31.xlsx, finished 9:32 PM CT"
     },
@@ -308,14 +311,11 @@
     },
     {
      "text": "6:57 AM Oct 31 refresh (7:00 slot): 1 new role (0 H-1B) in Nikhilesh_Jobs_24h_Oct31.xlsx, finished 7:20 AM CT (Workday partial, throttled)"
-    },
-    {
-     "text": "5:28 AM Oct 31 refresh (5:30 slot): 0 new roles in Nikhilesh_Jobs_24h_Oct31.xlsx (Run Log + Summary updated, 7 portal links backfilled), finished 5:47 AM CT"
     }
    ],
    "queued": [
     {
-     "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~1:00 AM CT Nov 1 (creates Nikhilesh_Jobs_24h_Nov01.xlsx)."
+     "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~4:00 AM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx; times now CST after DST ends)."
     }
    ],
    "recent": [
@@ -324,7 +324,7 @@
     "Changed runs to add their own sheets, and to start a new workbook each day.",
     "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
    ],
-   "last_checkin": "2026-11-01T01:01:00-05:00",
+   "last_checkin": "2026-11-01T01:26:00-05:00",
    "working_with": []
   },
   {
@@ -554,13 +554,13 @@
    "working_with": []
   }
  ],
- "latest_bot_activity": "2026-11-01T01:01:00-05:00",
+ "latest_bot_activity": "2026-11-01T01:26:00-05:00",
  "files": {
-  "generated_at": "2026-11-01T01:25:22-05:00",
-  "total": 34836,
-  "today": 261,
-  "last_24h": 16631,
-  "bytes": 30568603078,
+  "generated_at": "2026-11-01T01:28:29-05:00",
+  "total": 34840,
+  "today": 265,
+  "last_24h": 16635,
+  "bytes": 30571400002,
   "runs": 69,
   "runs_today": 0,
   "by_bot": {
@@ -600,8 +600,8 @@
     "runs": 1
    },
    "other": {
-    "files": 33187,
-    "bytes": 28751043110,
+    "files": 33191,
+    "bytes": 28753840034,
     "runs": 15
    }
   },
@@ -720,7 +720,7 @@
    {
     "date": "2026-10-31",
     "files": 16511,
-    "bytes": 7411667552,
+    "bytes": 7411675744,
     "runs": 6,
     "run_ids": [
      "other-task-1031-1940",
@@ -733,18 +733,18 @@
    },
    {
     "date": "2026-11-01",
-    "files": 261,
-    "bytes": 266131716,
+    "files": 265,
+    "bytes": 268920448,
     "runs": 0,
     "run_ids": []
    }
   ],
   "storage": {
    "disk_total": 136782041088,
-   "disk_free": 79011618816,
-   "disk_used_all": 57753645056,
-   "task_files_bytes": 30568603078,
-   "task_pct_of_disk": 22.3484
+   "disk_free": 79004917760,
+   "disk_used_all": 57760346112,
+   "task_files_bytes": 30571400002,
+   "task_pct_of_disk": 22.3504
   }
  }
 }</script>
