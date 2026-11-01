@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T17:32:15-06:00",
+  "snapshot_at": "2026-11-01T17:46:44-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,15 +42,18 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "5:00 PM Nov 1 scheduled job-search refresh (started 4:59 PM CST), appending to Nikhilesh_Jobs_24h_Nov01.xlsx",
-      "last_active": "2026-11-01T16:59:00-06:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-11-01T17:41:00-06:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
         }
       ],
       "completed": [
+        {
+          "text": "4:59 PM Nov 1 refresh (5:00 slot): 3 new roles (2 FT-Onsite: InfoDyne Gen AI Lead/Architect fit 80, TikTok USDS Sr Data Scientist fit 62; 1 Other-NotListed: Thesis AI Engineer fit 81) in Nikhilesh_Jobs_24h_Nov01.xlsx, all LinkedIn, 1/3 portal links, finished 5:40 PM CST"
+        },
         {
           "text": "1:59 PM Nov 1 refresh (2:00 slot): 0 new roles in Nikhilesh_Jobs_24h_Nov01.xlsx (Run Log + Summary updated; 2 candidates, Honda and Evlo AI, dropped as reposts), finished 2:31 PM CST"
         },
@@ -71,14 +74,11 @@
         },
         {
           "text": "1:00 AM Nov 1 refresh (1:00 slot): created Nikhilesh_Jobs_24h_Nov01.xlsx with 2 new roles (1 H-1B, 1 FT-Onsite, both LinkedIn, 0 portal links), finished 1:24 AM CDT"
-        },
-        {
-          "text": "8:59 PM Oct 31 refresh (9:00 slot): 1 new role (H-1B sheet, BearSignal inferred, San Jose) in Nikhilesh_Jobs_24h_Oct31.xlsx, finished 9:32 PM CT"
         }
       ],
       "queued": [
         {
-          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~5:00 PM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~9:00 PM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
         }
       ],
       "recent": [
@@ -87,7 +87,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-11-01T16:59:00-06:00",
+      "last_checkin": "2026-11-01T17:41:00-06:00",
       "working_with": [],
       "groupTask": null
     },
@@ -324,20 +324,20 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-11-01T16:59:00-06:00",
+  "latest_bot_activity": "2026-11-01T17:41:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T17:32:15-06:00",
-    "total": 37655,
-    "today": 3099,
-    "last_24h": 14463,
-    "bytes": 37277810365,
-    "runs": 76,
-    "runs_today": 7,
+    "generated_at": "2026-11-01T17:46:44-06:00",
+    "total": 37658,
+    "today": 3102,
+    "last_24h": 14466,
+    "bytes": 37278248578,
+    "runs": 75,
+    "runs_today": 6,
     "by_bot": {
       "Sky": {
         "files": 1545,
-        "bytes": 1784691562,
-        "runs": 47
+        "bytes": 1784696450,
+        "runs": 46
       },
       "Appie": {
         "files": 21,
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 35998,
-        "bytes": 35459965680,
+        "files": 36001,
+        "bytes": 35460399005,
         "runs": 21
       }
     },
@@ -386,14 +386,14 @@
       },
       {
         "type": "json",
-        "files": 3917
+        "files": 3918
       }
     ],
     "by_day": [
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334744220,
+        "bytes": 334745904,
         "runs": 0,
         "run_ids": []
       },
@@ -503,11 +503,10 @@
       },
       {
         "date": "2026-11-01",
-        "files": 3099,
-        "bytes": 6980464826,
-        "runs": 7,
+        "files": 3102,
+        "bytes": 6980901355,
+        "runs": 6,
         "run_ids": [
-          "sky-task-1101-1700",
           "other-task-1101-1531",
           "other-task-1101-1248",
           "other-task-1101-1000",
@@ -519,10 +518,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 71326928896,
-      "disk_used_all": 65438334976,
-      "task_files_bytes": 37277810365,
-      "task_pct_of_disk": 27.2534
+      "disk_free": 71325507584,
+      "disk_used_all": 65439756288,
+      "task_files_bytes": 37278248578,
+      "task_pct_of_disk": 27.2538
     }
   }
 }
