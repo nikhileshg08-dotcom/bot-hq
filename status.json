@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T21:15:15-06:00",
+  "snapshot_at": "2026-11-01T21:27:23-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -89,7 +89,7 @@
       ],
       "last_checkin": "2026-11-01T21:05:00-06:00",
       "working_with": [],
-      "groupTask": "H-1B Job Search"
+      "groupTask": null
     },
     {
       "id": "97613071-7408-45e7-9d24-9743ab15c420",
@@ -326,11 +326,11 @@
   ],
   "latest_bot_activity": "2026-11-01T21:05:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T21:15:15-06:00",
-    "total": 38097,
-    "today": 3558,
-    "last_24h": 14341,
-    "bytes": 37655139783,
+    "generated_at": "2026-11-01T21:27:23-06:00",
+    "total": 38098,
+    "today": 3559,
+    "last_24h": 14300,
+    "bytes": 37655250773,
     "runs": 76,
     "runs_today": 7,
     "by_bot": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 36439,
-        "bytes": 35837247391,
+        "files": 36440,
+        "bytes": 35837358381,
         "runs": 22
       }
     },
@@ -386,14 +386,14 @@
       },
       {
         "type": "json",
-        "files": 4060
+        "files": 4061
       }
     ],
     "by_day": [
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334746432,
+        "bytes": 334746950,
         "runs": 0,
         "run_ids": []
       },
@@ -503,8 +503,8 @@
       },
       {
         "date": "2026-11-01",
-        "files": 3558,
-        "bytes": 7423212651,
+        "files": 3559,
+        "bytes": 7423323123,
         "runs": 7,
         "run_ids": [
           "other-task-1101-1923",
@@ -519,10 +519,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 70496964608,
-      "disk_used_all": 66268299264,
-      "task_files_bytes": 37655139783,
-      "task_pct_of_disk": 27.5293
+      "disk_free": 70495473664,
+      "disk_used_all": 66269790208,
+      "task_files_bytes": 37655250773,
+      "task_pct_of_disk": 27.5294
     }
   }
 }
