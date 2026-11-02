@@ -322,6 +322,38 @@
       "last_checkin": "2026-10-30T19:38:00-05:00",
       "working_with": [],
       "groupTask": null
+    },
+    {
+      "id": "249d2b27-8f9c-432e-82eb-74826f9a93fd",
+      "name": "Nimmi",
+      "role": "",
+      "color": "#5c6bc0",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-11-02T11:10:00-06:00",
+      "pending": [],
+      "completed": [],
+      "queued": [],
+      "recent": [],
+      "last_checkin": "2026-11-02T11:10:00-06:00",
+      "groupTask": null,
+      "working_with": []
+    },
+    {
+      "id": "2be6371f-3587-4a7e-b3ad-655fc4c9379c",
+      "name": "Phani",
+      "role": "",
+      "color": "#a0785a",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-11-02T11:10:00-06:00",
+      "pending": [],
+      "completed": [],
+      "queued": [],
+      "recent": [],
+      "last_checkin": "2026-11-02T11:10:00-06:00",
+      "groupTask": null,
+      "working_with": []
     }
   ],
   "latest_bot_activity": "2026-11-01T21:40:00-06:00",
