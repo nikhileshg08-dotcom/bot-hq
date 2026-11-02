@@ -6,9 +6,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#f3e9dc">
-<title>Nikki's Company</title>
-<meta name="apple-mobile-web-app-title" content="Nikki's Company">
-<meta property="og:title" content="Nikki's Company">
+<title>Nicky's Office</title>
+<meta name="apple-mobile-web-app-title" content="Nicky's Office">
+<meta property="og:title" content="Nicky's Office">
 <style>
   :root { --ink:#2a2420; --muted:#7a6e63; --glass:rgba(255,251,245,0.72); --line:rgba(120,90,60,0.14); }
   * { box-sizing: border-box; }
@@ -200,7 +200,7 @@
 <div id="scene"></div>
 <div id="loading">Setting up the office…</div>
 <div id="hud" class="glass">
-  <h1><span class="logo">◆</span><span id="title">Nikki's Company</span></h1>
+  <h1><span class="logo">◆</span><span id="title">Nicky's Office</span></h1>
   <div id="snap"></div>
   <div id="summary"></div>
   <div id="chips"></div>
@@ -507,6 +507,7 @@
    "color": "#2bb3a3",
    "status": "idle",
    "manager": false,
+   "seat": "manager_cabin",
    "current_task": "",
    "last_active": "2026-11-01T00:50:00-05:00",
    "pending": [],
@@ -534,6 +535,21 @@
    ],
    "recent": [],
    "last_checkin": "2026-11-01T23:36:40-06:00",
+   "working_with": []
+  },
+  {
+   "id": "27320591-c97c-405b-a4ca-26c0a192d35c",
+   "name": "Vyshu",
+   "role": "",
+   "color": "#b5c42e",
+   "status": "idle",
+   "current_task": "",
+   "last_active": "2026-11-02T11:44:35-06:00",
+   "pending": [],
+   "completed": [],
+   "queued": [],
+   "recent": [],
+   "last_checkin": "2026-11-02T11:44:35-06:00",
    "working_with": []
   },
   {
@@ -3042,8 +3058,23 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     return team;
   }
   const groupKey = (b) => String(b.groupTask || '').trim();
+  // seat:"manager_cabin" -> the bot shares Manny's manager cabin at a second desk by the front glass (max 2 such desks)
+  const MATE_X = [-0.3, -2.45];
+  const mateBots = (bots) => bots.filter((b) => b.seat === 'manager_cabin' && !b.manager && !b.boss).slice(0, MATE_X.length);
+  function mateDesk(cab, i, b) {
+    const cp = cab.group.position, lz = cab.d / 2 - 0.75;
+    const g = new THREE.Group(); g.position.set(cp.x + MATE_X[i], 0, cp.z + lz); g.rotation.y = Math.PI; scene.add(g);
+    desk(g, 2.0, 0.85); const mons = [monitor(g, -0.22, -0.2, 1, 0.12), monitor(g, 0.58, -0.16, 0.9, -0.3)]; keyboard(g, 0, 0.12); mug(g, 0.75, 0.15, P.mustard);
+    const slot = { type: 'mate', group: g, ws: g, dw: 2.0, monitors: mons, chairParent: g, chairLocal: new THREE.Vector3(0, 0, 0.78), preBot: b, groupOnly: true, noLabel: true,
+      backDir: new THREE.Vector3(0, 0, 1).applyEuler(g.rotation) };
+    slot.seat = new THREE.Vector3(0, 0, 0.72).applyEuler(g.rotation).add(g.position);
+    slot.face = new THREE.Vector3(0, 0, -1).applyEuler(g.rotation);
+    const dx = cp.x + cab.w / 2 - 0.6 - 0.55; // the manager cabin's door
+    slot.insideP = V3(dx, 0, cp.z + cab.d / 2 - 0.7); slot.outsideP = V3(dx, 0, cp.z + cab.d / 2 + 0.75);
+    deskSlots.push(slot); return slot;
+  }
   function planLayout(bots) { // 2 rows x 4 cells; a team takes adjacent cells in one row
-    const non = bots.filter((b) => !b.manager && !b.boss); const groups = new Map();
+    const mates = mateBots(bots); const non = bots.filter((b) => !b.manager && !b.boss && !mates.includes(b)); const groups = new Map();
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); if (!k) return; if (!groups.has(k)) groups.set(k, { task: groupKey(b), members: [] }); groups.get(k).members.push(b); });
     const units = [], seen = new Set(), teamUnits = [];
     non.forEach((b) => { const k = groupKey(b).toLowerCase(); const gr = k && groups.get(k);
@@ -3059,7 +3090,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
       }
       if (!ok) { if (u.team) floor.push(u); else u.members.forEach((m) => overflow.push(m)); }
     }
-    return { placed, occ, overflow, floor, cellsFor, sig: floor.map((u) => 'F:' + u.members.map((m) => m.id || m.name).join(',')).join('|') + '/' + placed.map((p) => `${p.r}:${p.c}:${p.u.team ? 'T' : 'S'}:${p.u.members.map((m) => m.id || m.name).join(',')}`).sort().join('|') + '#' + overflow.map((m) => m.id || m.name).join(',') };
+    return { placed, occ, overflow, floor, cellsFor, sig: (mates.length ? 'M:' + mates.map((m) => m.id || m.name).join(',') + '/' : '') + floor.map((u) => 'F:' + u.members.map((m) => m.id || m.name).join(',')).join('|') + '/' + placed.map((p) => `${p.r}:${p.c}:${p.u.team ? 'T' : 'S'}:${p.u.members.map((m) => m.id || m.name).join(',')}`).sort().join('|') + '#' + overflow.map((m) => m.id || m.name).join(',') };
   }
   // build cabins
   const MAN = cabin(13.5, -10.4, 8.6, 7.0, 0, true);
@@ -3174,6 +3205,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
   }
 
   // ---------- seat bots ----------
+  mateBots(DATA.bots || []).forEach((b, i) => mateDesk(MAN, i, b)); // after every other desk so the bot chips keep their order
   const bots = DATA.bots || [];
   const managerSlots = deskSlots.filter((s) => s.type === 'manager');
   const bossSlots = deskSlots.filter((s) => s.type === 'boss');
@@ -3324,7 +3356,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     panel.querySelector('.close').onclick = () => select(null);
   }
   // header + chips
-  document.getElementById('title').textContent = "Nikki's Company";
+  document.getElementById('title').textContent = "Nicky's Office";
   document.getElementById('snap').textContent = 'Updated ' + (fmtCT(DATA.snapshot_at, false) || 'unknown time');
   const counts = { working: 0, idle: 0, problem: 0, unknown: 0 }; bots.forEach((b) => counts[(b.status || 'unknown').toLowerCase()] = (counts[(b.status || 'unknown').toLowerCase()] || 0) + 1);
   const openCount = deskSlots.filter((x) => !assigned.has(x) && !x.homeBot && !x.groupOnly).length;
@@ -3372,17 +3404,74 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     let side = new THREE.Vector3().crossVectors(f, new THREE.Vector3(0, 1, 0)).normalize();
     if (side.z < 0) side.negate();
     const pos = o.data.boss ? head.clone().addScaledVector(f, 4.2).add(new THREE.Vector3(1.4, 2.4, 0)) : head.clone().addScaledVector(f, 0.9).addScaledVector(side, 4.4).add(new THREE.Vector3(0, 2.6, 0));
-    // shift target so bot sits left of the side panel
-    const camDir = head.clone().sub(pos).normalize(); const right = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0, 1, 0)).normalize();
-    const panelShift = window.innerWidth > 900 ? 1.1 : window.innerWidth > 700 ? 1.7 : 0;
-    if (window.innerWidth > 700 && window.innerWidth <= 900) pos.copy(head).add(pos.clone().sub(head).multiplyScalar(1.35)); // iPad portrait: bot left of the panel
-    if (window.innerWidth <= 700) { // bottom sheet: keep the bot in the top part of the screen
-      const a = window.innerWidth / window.innerHeight; const back = pos.clone().sub(head).multiplyScalar(a < 1 ? 1.35 : 1.1);
-      flyTo(head.clone().add(back), head.clone().add(new THREE.Vector3(0, -1.9, 0))); return;
-    }
-    flyTo(pos, head.clone().addScaledVector(right, panelShift).add(new THREE.Vector3(0, -0.2, 0)));
+    const fr = frameBot(o, pos.clone().sub(head).normalize());
+    flyTo(fr.pos, fr.target);
   };
-  window.__bothq = { controls, select: (name) => select(botObjs.find((o) => o.data.name === name) || null), bots: botObjs, camera, renderer, scene, project: (name) => { const o = botObjs.find((x) => x.data.name === name); const v = o.r.root.position.clone().add(new THREE.Vector3(0, 1.0, 0)).project(camera); return { x: (v.x + 1) / 2 * window.innerWidth, y: (1 - v.y) / 2 * window.innerHeight }; } };
+  // Click-to-zoom framing: fit the whole bot (feet to name tag, plus a little desk/floor around it) inside the part of the
+  // screen the info panel, header and voice bar leave free. Keeps the per-seat viewing direction, solves for distance + aim.
+  const _fc = new THREE.PerspectiveCamera(), _fv = new THREE.Vector3();
+  function freeRect() { // free screen area in NDC [x0, x1, y0, y1] once the panel is open (layout boxes ignore the slide-in transform)
+    const W = window.innerWidth, H = window.innerHeight, sheet = W <= 700;
+    let l = 0, r = W, t = 0, b = H;
+    const vis = (el) => el && !el.classList.contains('tg-hidden') && getComputedStyle(el).display !== 'none';
+    if (sheet) {
+      b = Math.min(H, panel.offsetTop || H - Math.min(panel.offsetHeight, H * 0.6));
+      for (const id of ['voice', 'transcript']) { const el = document.getElementById(id); if (vis(el) && el.offsetHeight && el.offsetTop < b * 0.5) t = Math.max(t, el.offsetTop + el.offsetHeight); }
+    } else {
+      r = Math.max(W * 0.35, (panel.offsetLeft || (W - panel.offsetWidth - 18)) - 8);
+      const hud = document.getElementById('hud'), vc = document.getElementById('voice');
+      if (vis(hud)) t = Math.min(H * 0.3, hud.offsetTop + hud.offsetHeight);
+      if (vis(vc) && vc.offsetHeight) b = Math.max(H * 0.65, vc.offsetTop);
+    }
+    if (b - t < H * 0.15) t = 0; // almost no room left: let the top bar overlap rather than shrink the bot to nothing (never the panel)
+    return [l / W * 2 - 1, r / W * 2 - 1, 1 - b / H * 2, 1 - t / H * 2];
+  }
+  function botBox(o, withLabel = true) { // world box of the bot's visible body, floor (feet) up to its name tag
+    o.r.root.updateMatrixWorld(true);
+    const box = new THREE.Box3();
+    o.r.root.traverse((m) => { if (m.isMesh && !m.isSprite && m.visible && m.geometry && !(m.material && m.material.transparent && m.material.opacity === 0)) { if (!m.geometry.boundingBox) m.geometry.computeBoundingBox(); box.union(m.geometry.boundingBox.clone().applyMatrix4(m.matrixWorld)); } });
+    if (box.isEmpty()) box.setFromCenterAndSize(o.r.root.position.clone().add(V3(0, 0.8, 0)), V3(0.7, 1.6, 0.7));
+    box.min.y = Math.min(box.min.y, 0);
+    if (o.label && withLabel) { o.label.getWorldPosition(_fv); box.max.y = Math.max(box.max.y, _fv.y + 0.05); }
+    return box;
+  }
+  function frameBot(o, dir) { // dir: unit vector from the bot toward where the camera should sit
+    const compact = window.innerWidth <= 700 || window.innerHeight <= 500; // phones: little free screen, so frame the body itself (the name is in the panel)
+    const box = botBox(o, !compact).expandByVector(compact ? V3(0.08, 0.06, 0.08) : V3(0.15, 0.08, 0.15)); // a little desk / chair / floor around the bot
+    const pts = []; for (let i = 0; i < 8; i++) pts.push(V3(i & 1 ? box.max.x : box.min.x, i & 2 ? box.max.y : box.min.y, i & 4 ? box.max.z : box.min.z));
+    const C = box.getCenter(new THREE.Vector3());
+    const [x0, x1, y0, y1] = freeRect(), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, pad = compact ? 0.04 : 0.08, mx = (x1 - x0) * pad, my = (y1 - y0) * pad;
+    _fc.fov = camera.fov; _fc.aspect = window.innerWidth / window.innerHeight; _fc.near = camera.near; _fc.far = camera.far; _fc.updateProjectionMatrix();
+    const place = (d) => { // camera at distance d along dir, aimed so the box centre lands in the middle of the free area
+      _fc.position.copy(C).addScaledVector(dir, d); const T = C.clone(); _fc.lookAt(T);
+      for (let k = 0; k < 4; k++) {
+        _fc.updateMatrixWorld(true); _fv.copy(C).project(_fc);
+        const ux = new THREE.Vector3().setFromMatrixColumn(_fc.matrixWorld, 0), uy = new THREE.Vector3().setFromMatrixColumn(_fc.matrixWorld, 1);
+        const dist = _fc.position.distanceTo(T), th = Math.tan(THREE.MathUtils.degToRad(_fc.fov / 2));
+        T.addScaledVector(ux, (_fv.x - cx) * dist * th * _fc.aspect).addScaledVector(uy, (_fv.y - cy) * dist * th); _fc.lookAt(T);
+      }
+      _fc.updateMatrixWorld(true);
+      const fits = pts.every((p) => { _fv.copy(p).project(_fc); return _fv.z < 1 && _fv.x >= x0 + mx && _fv.x <= x1 - mx && _fv.y >= y0 + my && _fv.y <= y1 - my; });
+      // OrbitControls clamps its pivot (x ±20, z ±14, y ≥ 0): slide the aim point back along the same view ray until it is inside, so the framing is unchanged
+      const P = _fc.position, D = T.clone().sub(P); let k = 1;
+      for (const [ax, lo, hi] of [['x', -20, 20], ['y', 0.3, 80], ['z', -14, 14]]) { const v = P[ax] + D[ax] * k;
+        if (v < lo && D[ax] < 0 && P[ax] > lo) k = (lo - P[ax]) / D[ax]; else if (v > hi && D[ax] > 0 && P[ax] < hi) k = (hi - P[ax]) / D[ax]; }
+      k = Math.max(k, Math.min(1, 3.2 / D.length())); // stay outside the controls' minDistance
+      return { fits, pos: P.clone(), target: P.clone().addScaledVector(D, k) };
+    };
+    let lo = 2, hi = 40, best = place(hi);
+    for (let i = 0; i < 22; i++) { const m = (lo + hi) / 2, r = place(m); if (r.fits) { hi = m; best = r; } else lo = m; }
+    return best;
+  }
+  function frameCheck(name) { // test hook: where the selected bot's box lands on screen vs the free area
+    const o = botObjs.find((x) => x.data.name === name); if (!o) return null;
+    const box = botBox(o);
+    camera.updateMatrixWorld(true); let a = [1e9, -1e9, 1e9, -1e9];
+    for (let i = 0; i < 8; i++) { _fv.set(i & 1 ? box.max.x : box.min.x, i & 2 ? box.max.y : box.min.y, i & 4 ? box.max.z : box.min.z).project(camera); const X = (_fv.x + 1) / 2 * window.innerWidth, Y = (1 - _fv.y) / 2 * window.innerHeight; a = [Math.min(a[0], X), Math.max(a[1], X), Math.min(a[2], Y), Math.max(a[3], Y)]; }
+    const f = freeRect(), W = window.innerWidth, H = window.innerHeight;
+    return { bot: a.map(Math.round), free: [(f[0] + 1) / 2 * W, (f[1] + 1) / 2 * W, (1 - f[3]) / 2 * H, (1 - f[2]) / 2 * H].map(Math.round), dist: +camera.position.distanceTo(box.getCenter(new THREE.Vector3())).toFixed(2), size: box.getSize(new THREE.Vector3()).toArray().map((v) => +v.toFixed(2)) };
+  }
+  window.__bothq = { controls, frameCheck, select: (name) => select(botObjs.find((o) => o.data.name === name) || null), bots: botObjs, camera, renderer, scene, project: (name) => { const o = botObjs.find((x) => x.data.name === name); const v = o.r.root.position.clone().add(new THREE.Vector3(0, 1.0, 0)).project(camera); return { x: (v.x + 1) / 2 * window.innerWidth, y: (1 - v.y) / 2 * window.innerHeight }; } };
 
   // =====================================================================
   // ===== LIVE OFFICE LIFE: behaviours, task cards, ambient, voice, sync =====
@@ -3481,7 +3570,7 @@ function start(THREE, OrbitControls, RoundedBoxGeometry, DATA) {
     o.walkCount = 0; o.nextRoam = (o.data.manager || o.data.boss) ? Infinity : rand(40, 90) * IDLE_SLOW + i * 9; o.react = -99;
   });
   const outsideOf = (slot) => slot.outsideP ? slot.outsideP.clone() : slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 + 0.75) : V3(slot.seat.x, 0, -0.6);
-  const insideOf = (slot) => slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 - 0.7) : null;
+  const insideOf = (slot) => slot.insideP ? slot.insideP.clone() : slot.wallBuild ? V3(doorX(slot), 0, slot.group.position.z + slot.d / 2 - 0.7) : null;
   const hubPath = (a, b) => (Math.abs(a.z - b.z) < 0.05 ? [b] : [V3(7.0, 0, a.z), V3(7.0, 0, b.z), b]);
   // arriving after a regroup: start standing where we left the old seat and walk to the new one
   try {
