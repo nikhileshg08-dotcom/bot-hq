@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T21:38:10-06:00",
+  "snapshot_at": "2026-11-01T21:41:59-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -42,15 +42,18 @@
       "name": "Sky",
       "role": "H-1B job search: finds new roles and builds the daily jobs workbook",
       "color": "#3fa9f5",
-      "status": "working",
-      "current_task": "9:00 PM Nov 1 scheduled job-search refresh (appending to Nikhilesh_Jobs_24h_Nov01.xlsx)",
-      "last_active": "2026-11-01T21:05:00-06:00",
+      "status": "idle",
+      "current_task": "",
+      "last_active": "2026-11-01T21:40:00-06:00",
       "pending": [
         {
           "text": "Open questions for Nikhilesh: save recruiter Jordan, 3-day weekday window"
         }
       ],
       "completed": [
+        {
+          "text": "9:04 PM Nov 1 refresh (9:00 slot): 5 new roles in Nikhilesh_Jobs_24h_Nov01.xlsx (1 FT-Onsite: Thomson Reuters Sr Integration Engineer AI fit 93 incl. Frisco TX; 1 FT-Remote: TailorCare Lead ML/AI Engineer fit 79; 3 Other-NotListed: Amazon SDE Ads AI Core Infra fit 100, Symosis Sr MLE fit 88, Children's Healthcare of Atlanta AI/ML Engineer fit 80), 4/5 portal links, finished 9:38 PM CST"
+        },
         {
           "text": "4:59 PM Nov 1 refresh (5:00 slot): 3 new roles (2 FT-Onsite: InfoDyne Gen AI Lead/Architect fit 80, TikTok USDS Sr Data Scientist fit 62; 1 Other-NotListed: Thesis AI Engineer fit 81) in Nikhilesh_Jobs_24h_Nov01.xlsx, all LinkedIn, 1/3 portal links, finished 5:40 PM CST"
         },
@@ -71,14 +74,11 @@
         },
         {
           "text": "5:23 AM Nov 1 refresh (5:30 slot): 1 new role (FT-Onsite: Rhoda AI Senior Inference Optimization ML Engineer, fit 77, verified Ashby link) appended to Nikhilesh_Jobs_24h_Nov01.xlsx, finished 5:46 AM CST (the 4:00 AM run had failed before writing)"
-        },
-        {
-          "text": "1:00 AM Nov 1 refresh (1:00 slot): created Nikhilesh_Jobs_24h_Nov01.xlsx with 2 new roles (1 H-1B, 1 FT-Onsite, both LinkedIn, 0 portal links), finished 1:24 AM CDT"
         }
       ],
       "queued": [
         {
-          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~9:00 PM CT Nov 1 (appends to Nikhilesh_Jobs_24h_Nov01.xlsx)."
+          "text": "Scheduled refreshes daily at 1:00, 4:00, 5:30, 7:00, 8:30, 10:00 and 11:30 AM, 2:00, 5:00 and 9:00 PM CT (no overlap; a run waits for the previous one). Next run ~1:00 AM CT Nov 2 (creates Nikhilesh_Jobs_24h_Nov02.xlsx)."
         }
       ],
       "recent": [
@@ -87,7 +87,7 @@
         "Changed runs to add their own sheets, and to start a new workbook each day.",
         "Finished the Dice, LinkedIn and Workday API research at about 1:27 AM CT."
       ],
-      "last_checkin": "2026-11-01T21:05:00-06:00",
+      "last_checkin": "2026-11-01T21:40:00-06:00",
       "working_with": [],
       "groupTask": null
     },
@@ -324,19 +324,19 @@
       "groupTask": null
     }
   ],
-  "latest_bot_activity": "2026-11-01T21:05:00-06:00",
+  "latest_bot_activity": "2026-11-01T21:40:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T21:38:10-06:00",
-    "total": 38103,
-    "today": 3564,
-    "last_24h": 14304,
-    "bytes": 37659141244,
+    "generated_at": "2026-11-01T21:42:00-06:00",
+    "total": 38104,
+    "today": 3565,
+    "last_24h": 14305,
+    "bytes": 37659150365,
     "runs": 76,
     "runs_today": 7,
     "by_bot": {
       "Sky": {
         "files": 1546,
-        "bytes": 1784761195,
+        "bytes": 1784763509,
         "runs": 46
       },
       "Appie": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 36445,
-        "bytes": 35841226926,
+        "files": 36446,
+        "bytes": 35841233733,
         "runs": 22
       }
     },
@@ -386,14 +386,14 @@
       },
       {
         "type": "json",
-        "files": 4066
+        "files": 4067
       }
     ],
     "by_day": [
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334767207,
+        "bytes": 334768834,
         "runs": 0,
         "run_ids": []
       },
@@ -503,8 +503,8 @@
       },
       {
         "date": "2026-11-01",
-        "files": 3564,
-        "bytes": 7427193337,
+        "files": 3565,
+        "bytes": 7427200831,
         "runs": 7,
         "run_ids": [
           "other-task-1101-1923",
@@ -519,9 +519,9 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 70464708608,
-      "disk_used_all": 66300555264,
-      "task_files_bytes": 37659141244,
+      "disk_free": 70463438848,
+      "disk_used_all": 66301825024,
+      "task_files_bytes": 37659150365,
       "task_pct_of_disk": 27.5322
     }
   }
