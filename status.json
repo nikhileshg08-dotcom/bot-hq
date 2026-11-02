@@ -1,6 +1,6 @@
 {
   "title": "Nikki's Company",
-  "snapshot_at": "2026-11-01T20:33:16-06:00",
+  "snapshot_at": "2026-11-01T20:43:01-06:00",
   "bots": [
     {
       "id": "bd774432-0035-4829-8b61-1f2c475c9d62",
@@ -326,11 +326,11 @@
   ],
   "latest_bot_activity": "2026-11-01T20:10:00-06:00",
   "files": {
-    "generated_at": "2026-11-01T20:33:16-06:00",
-    "total": 37916,
-    "today": 3369,
-    "last_24h": 14226,
-    "bytes": 37545845831,
+    "generated_at": "2026-11-01T20:43:01-06:00",
+    "total": 37949,
+    "today": 3404,
+    "last_24h": 14261,
+    "bytes": 37515736284,
     "runs": 76,
     "runs_today": 7,
     "by_bot": {
@@ -370,8 +370,8 @@
         "runs": 1
       },
       "other": {
-        "files": 36259,
-        "bytes": 35727996258,
+        "files": 36292,
+        "bytes": 35697886711,
         "runs": 22
       }
     },
@@ -386,14 +386,14 @@
       },
       {
         "type": "json",
-        "files": 3978
+        "files": 4001
       }
     ],
     "by_day": [
       {
         "date": "2026-10-26",
         "files": 354,
-        "bytes": 334746432,
+        "bytes": 334746431,
         "runs": 0,
         "run_ids": []
       },
@@ -489,8 +489,8 @@
       },
       {
         "date": "2026-10-31",
-        "files": 16483,
-        "bytes": 7341488030,
+        "files": 16481,
+        "bytes": 7341284509,
         "runs": 6,
         "run_ids": [
           "other-task-1031-1940",
@@ -503,8 +503,8 @@
       },
       {
         "date": "2026-11-01",
-        "files": 3369,
-        "bytes": 7313510475,
+        "files": 3404,
+        "bytes": 7283604450,
         "runs": 7,
         "run_ids": [
           "other-task-1101-1915",
@@ -519,10 +519,10 @@
     ],
     "storage": {
       "disk_total": 136782041088,
-      "disk_free": 70844051456,
-      "disk_used_all": 65921212416,
-      "task_files_bytes": 37545845831,
-      "task_pct_of_disk": 27.4494
+      "disk_free": 70649524224,
+      "disk_used_all": 66115739648,
+      "task_files_bytes": 37515736284,
+      "task_pct_of_disk": 27.4274
     }
   }
 }
